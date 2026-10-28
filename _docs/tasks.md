@@ -28,19 +28,18 @@ Bootstrap criteria preserve environment-before-skeleton separation. PM reconcile
 
 ## Checkpoint — 2026-10-28
 
-- Phase: Setup integrated and checks PASS; PM skeleton Ready handoff.
-- Agreed task set: environment-setup, application-skeleton, 001–010 (12 tasks); plan REQ-001–027 and D/P defaults unchanged.
-- Delivery branch: `develop`, created from `main` at `b8ea110`; grooming `66245f5fcde8bce1e189b7ff86885a3d232b8d7d`, PM checkpoint `18e9ab25fb08609d6709ce8af5e866486bee4fe3`.
-- Current task: environment-setup Done after QA PASS and orchestrator PASS at `1dc5e2406abd49d3cb20e2a20c4f5e191f577274`; evidence/status tip `156e10f6b1a8de15b2814c0b86480fe8cb05b2ef`; integrate before dependent work. Detailed handoff history follows.
-- Readiness: Skeleton Ready after PM review and issue reconciliation; features remain Draft.
-- Environment: Project-owned PostgreSQL17.11 loopback55432 running, unrelated PostgreSQL13:5432 preserved; Mailpit stopped. Setup commands validated; application/feature commands UNVERIFIED.
-- Per-task developer-to-QA attempts: environment-setup 2/3; application-skeleton 0/3; 001 0/3; 002 0/3; 003 0/3; 004 0/3; 005 0/3; 006 0/3; 007 0/3; 008 0/3; 009 0/3; 010 0/3. Counts persist across sessions/batches.
-- Delivery batch: 1; completions 1/10; setup integration successful. Default limit stops after ten completions; 009/010 then need batch renewal.
-- Evidence: [QA PASS](verification/environment-setup-qa-attempt-2.md), [orchestrator PASS](verification/environment-setup-orchestrator.md); no application tests or feature completion claimed.
-- GitHub: origin Alex-Yu/done-together, issues #1–#12 reconciled; issue #11 Done/closed after successful integration, body/state readback verified. Issue #12 Ready/open; feature issues #1–#10 remain Draft/open.
-- Push authorization: None; local commits only. Issue synchronization authorized separately.
-- Blockers: None for local setup. Production decisions remain outside local scope.
-- Next routing: Developer creates `task/application-skeleton` from current committed develop grooming; implement, commit exact implementation, submit to independent QA (attempt1).
+- Phase/current routing: Bootstrap complete; PM grooms task001 accounts next on develop.
+- Agreed task set: environment-setup, application-skeleton, 001–010; plan REQ-001–027 and confirmed defaults unchanged.
+- Delivery state: `develop`; setup delivered `e1d8b42d520abe8acf6bae470568ca0e0d67757e`, skeleton delivered `79711b8348ff400983c5e6d265b90a476c3a6bad`. Skeleton verified implementation `f663bfe2149500d13516c1d82d924c3fb0a87185`; QA and orchestrator PASS. Detailed history below.
+- Integration: Django check0 issues, migration drift none, server/config11 tests passed, Ruff lint/format and diff check passed after skeleton fast-forward. No code changes during integration.
+- Evidence: [skeleton QA](verification/application-skeleton-qa.md), [orchestrator](verification/application-skeleton-orchestrator.md), [commands](commands.md). Feature work/final release remain incomplete.
+- Readiness: Setup/skeleton Done; tasks001–010 Draft pending integrated dependency/current PM readiness.
+- Attempts: setup2/3; skeleton1/3; 001–010 each0/3; persist counts across sessions/batches.
+- Batch1 completions2/10; stop at ten unless user renews batch.
+- Environment: project PostgreSQL17.11 loopback55432 running, PG13:5432 preserved; webserver/Mailpit/geckodriver stopped. Stable Chrome156/Firefox159 verified100/200 zoom. No real household data.
+- GitHub: Issues1–12 mapped/reconciled, setup11 closed; skeleton12 Done/closed; exact body and state readback verified. No pushes authorized; issue synchronization separately authorized.
+- Blockers: None for next local task; production decisions remain outside local delivery.
+- Next action: PM reads issue1, grooms on develop and commits, then developer branches with grooming commit, implementation→QA→orchestrator gate.
 
 Source publication: Issue bodies contain complete specifications; local source is unpushed. Issue links to develop source may not resolve until separately authorized source publication.
 
@@ -142,3 +141,9 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Evidence: [QA](verification/application-skeleton-qa.md), [requirements re-check](verification/application-skeleton-orchestrator.md).
 - Next: commit Done records, integrate task/application-skeleton into develop, run integration server/check/drift/lint commands, record delivery hash and close issue12 after readback.
 - Attempts setup2/3, skeleton1/3, others0/3. Batch completions2/10 after successful integration. No push.
+
+## Skeleton integration result
+
+- Final task tip/fast-forward delivery `79711b8348ff400983c5e6d265b90a476c3a6bad` on develop.
+- Post-merge Django checks/drift, server/config11 tests, Ruff lint/format, git diff check PASS. No implementation change during integration.
+- Attempts skeleton1/3, setup2/3; batch2/10. Issue12 Done/closed, exact body and state readback verified; no push.

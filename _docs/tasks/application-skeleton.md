@@ -48,7 +48,7 @@ Use the integrated environment-setup result and agreed architecture. Setup is Do
 - Implementation summary: Django settings/entrypoints, custom parent initial migration, PostgreSQL-backed health, provisional accessible landing/CSRF HTMX smoke, locally pinned HTMX, meaningful isolated server/browser tests, and reproducible installed stable-browser nativezoom helper.
 - Task branch / verified implementation commit: `task/application-skeleton` / `f663bfe2149500d13516c1d82d924c3fb0a87185`; independent QA attempt1 PASS for all five criteria.
 - Changed files / revision: manage.py, config/, accounts/, board/, templates/, static/, tests/, tools/verify_skeleton_browsers.py, pyproject tooling, commands and delivery records; dependencies unchanged.
-- Final branch tip / delivery commit / integration results: Pending
+- Final branch tip / delivery commit / integration results: `79711b8348ff400983c5e6d265b90a476c3a6bad` task final tip and fast-forward delivery on `develop`. Post-merge Django checks, migration drift, server/config11 tests, Ruff lint/format and diff check all pass. Later checkpoint commits are records only.
 - Push status / authorized remote and branch targets: None authorized
 - Checks and results: Migrations, Django checks/drift, Ruff lint/format, locked sync and static collection passed; targeted health4, server11 and dual bundled-browser2 tests passed. Installed Chrome156/Firefox159 native100/200% keyboard/focus/HTMX checks passed with inspected screenshots. Feature/scheduler commands remain UNVERIFIED.
 - Verification record: [developer evidence](../verification/application-skeleton-developer.md); [independent QA PASS](../verification/application-skeleton-qa.md).
