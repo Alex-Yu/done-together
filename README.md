@@ -136,3 +136,7 @@ The local Markdown backlog is the default. If you move to an issue tracker, reco
 ## Inspiration
 
 Based on Alexey Grigorev’s [AI-Native Development: Specifications, Loop and Graph Engineering](https://aishippingblog.com/p/ai-native-development-specifications), adapted into a local-first, language- and platform-agnostic template with requirement links and verification records.
+
+## License
+
+This template is licensed under the [MIT License](LICENSE).
