@@ -116,7 +116,7 @@ Source publication: Issue bodies contain complete specifications; local source i
 
 - Current role/task: Skeleton implementation complete, In review; route independent QA.
 - Branch: `task/application-skeleton`, from PM tip e1e23a8a05dad5075cd997298f7e2e76a9c51add including grooming87b54c097f99613a23972b6b08efc194f1088f91.
-- Exact implementation commit: Recorded after implementation commit; later handoff records do not change code.
+- Exact implementation commit: `f663bfe2149500d13516c1d82d924c3fb0a87185`; later handoff records do not change code.
 - Evidence: [developer record](verification/application-skeleton-developer.md), [validated commands](commands.md), tracked installed-browser helper.
 - Checks: migrations/system/drift/lint/format/static/locked sync pass; targeted health4/server11/bundled browsers2 pass; installed Chrome156/Firefox159 native100/200% keyboard/focus/HTMX screenshots inspected.
 - Services: PG17 running127.0.0.1:55432; existing PG13:5432 preserved. Webserver/geckodriver stopped after verification.

@@ -46,7 +46,7 @@ Use the integrated environment-setup result and agreed architecture. Setup is Do
 - PM scope review: 2026-10-28; five criteria complete and architecture aligned; Ready after setup integration/current PM review. Full grooming commit recorded in backlog checkpoint.
 
 - Implementation summary: Django settings/entrypoints, custom parent initial migration, PostgreSQL-backed health, provisional accessible landing/CSRF HTMX smoke, locally pinned HTMX, meaningful isolated server/browser tests, and reproducible installed stable-browser nativezoom helper.
-- Task branch / verified implementation commit: `task/application-skeleton`; full implementation hash recorded after commit; independent QA pending.
+- Task branch / verified implementation commit: `task/application-skeleton` / `f663bfe2149500d13516c1d82d924c3fb0a87185`; independent QA pending.
 - Changed files / revision: manage.py, config/, accounts/, board/, templates/, static/, tests/, tools/verify_skeleton_browsers.py, pyproject tooling, commands and delivery records; dependencies unchanged.
 - Final branch tip / delivery commit / integration results: Pending
 - Push status / authorized remote and branch targets: None authorized

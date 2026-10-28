@@ -2,7 +2,7 @@
 
 Overall verdict: PENDING — independent QA required.
 Task / specification: [application-skeleton](../tasks/application-skeleton.md), [commands](../commands.md).
-Revision: Implementation commit recorded in backlog/handoff after commit.
+Revision: `f663bfe2149500d13516c1d82d924c3fb0a87185` on `task/application-skeleton`; subsequent record-only handoff commit changes no implementation.
 Reviewer / independence: Developer self-check; not independent QA.
 Environment: macOS x86_64, uv0.12.19, Python3.13.15/Django5.2.18/PostgreSQL17.11, locked dependencies; installed Chrome156.0.8078.48, Firefox159.0; bundled Chromium156.0.8078.4 and Firefox157.
 Date:2026-10-28
