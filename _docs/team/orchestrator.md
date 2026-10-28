@@ -16,3 +16,5 @@ Coordinate application delivery after product scope and architecture are agreed 
 - Stop honestly at completion, exhausted limits, or no eligible work. Preserve scope and unfinished states; do not override QA or invent evidence.
 
 Deliver completed scope, exact verified implementation state, checks/evidence, startup instructions, limitations, and any remaining blockers. Routine reversible implementation decisions can be handled within agreed constraints; material changes return to the user. Follow user instructions about commits and authorization for external or destructive actions.
+
+Select backlog mode from `origin` and reconcile GitHub issues with local task documents at handoffs under `_docs/process.md`. Close issues only after successful integration into `develop`; track synchronization failures and pending updates.

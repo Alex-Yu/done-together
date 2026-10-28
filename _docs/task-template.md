@@ -2,6 +2,7 @@
 
 Status: Draft
 Labels: <applicable labels or None>
+GitHub issue: <URL or Not applicable for local backlog>
 Requirement links: <REQ identifiers and specification links>
 Dependencies: <task links or None>
 

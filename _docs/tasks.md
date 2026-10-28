@@ -1,6 +1,9 @@
 # Backlog
 
-Authoritative backlog: this file and the task files it links.
+Authoritative backlog: this file and the task files it links until origin detection selects GitHub mode under `_docs/process.md`.
+
+Backlog mode / origin repository: Not yet checked
+Pending issue synchronization: None
 
 Two Draft bootstrap tasks are provided below. After choosing the architecture, refine their scope and acceptance criteria before marking them Ready. Feature tasks are added from the product specification.
 
@@ -15,4 +18,4 @@ Create task files as `_docs/tasks/001-short-title.md` using `_docs/task-template
 
 The developer executes setup as ordinary tasks: first install and configure the development environment, then build and verify the application skeleton. Users review choices and provide required authorization or credentials; they are not assigned manual installation steps. Later tasks should deliver small, verifiable slices of behavior.
 
-If migrating to an issue tracker, replace the authoritative-backlog statement with its location and archive this table. Do not keep two active task lists.
+If `origin` points to GitHub, record its issue tracker as authoritative here and add issue links to this index. Keep task files synchronized with those issues; this table becomes an index/checkpoint rather than a separate backlog. Otherwise retain the local backlog. Follow the synchronization policy in `_docs/process.md`.

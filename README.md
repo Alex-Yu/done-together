@@ -26,7 +26,7 @@ Keep the workflow documents in your new project; they provide context when you s
 
 Replace `[your application idea]` in this prompt and send it to the assistant:
 
-> Help me turn [your application idea] into a product specification in `_docs/plan.md`. Ask one focused question at a time about users, main workflows, expected outcomes, first-release scope, failure cases, data, and constraints. Record my answers. Keep technology choices separate. Do not write application code yet.
+> Help me turn [your application idea] into a product specification in `_docs/plan.md`. Ask one focused question at a time about users, main workflows, expected outcomes, first-release scope, failure cases, data, and constraints. Record my answers. Keep technology choices separate. After scope confirmation, check the Git remote named `origin`. Only if it points to GitHub, create or update one GitHub issue per concrete task identified in `_docs/plan.md`, link each issue to its requirement IDs, and keep issues and local task documents synchronized using `_docs/process.md`. Do not create issues for unresolved questions or template placeholders. Do not write application code yet.
 
 Answer the questions, then read the completed plan. Correct anything that does not describe the application you want. Pay particular attention to what the first version includes and excludes.
 
@@ -129,7 +129,7 @@ Describe future changes to the orchestrator. It assesses the impact, resolves co
 
 Replace angle-bracket placeholders in prompts and documents with project facts. Resolve blocking placeholders before marking a task Ready; a task may explicitly deliver configuration that does not exist yet.
 
-The local Markdown backlog is the default. If you move to an issue tracker, record its location in `_docs/tasks.md` and archive the local backlog so there is one authoritative task list.
+When `origin` points to GitHub, GitHub issues are the authoritative task backlog; local task files and `_docs/tasks.md` are synchronized specifications and an index/checkpoint. Otherwise, use only the local Markdown backlog. See the [issue synchronization policy](_docs/process.md#github-issue-synchronization).
 
 `CLAUDE.md` points to `AGENTS.md`. For other assistants, explicitly ask them to read `AGENTS.md` if they do not discover it automatically. The role files and prompts describe a workflow; they do not launch agents or automate it. The delivery graph and execution limits from step 4 onward are described in `_docs/process.md`.
 
