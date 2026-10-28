@@ -15,7 +15,7 @@ Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature 
 | application-skeleton | [Create a runnable application skeleton](tasks/application-skeleton.md) | Done | environment-setup Done/integrated | [#12](https://github.com/Alex-Yu/done-together/issues/12) |
 | 001 | [Account registration, verification, sign-in, recovery, and safeguards](tasks/001-accounts.md) | In review | application-skeleton Done/integrated | [#1](https://github.com/Alex-Yu/done-together/issues/1) |
 | 002 | [Household creation, timezone setup, and second-parent invitation](tasks/002-households.md) | In review | 001 Done/integrated | [#2](https://github.com/Alex-Yu/done-together/issues/2) |
-| 003 | [Child profiles, parent/child PIN management, and protected shared access](tasks/003-pins.md) | Draft | 002 | [#3](https://github.com/Alex-Yu/done-together/issues/3) |
+| 003 | [Child profiles, parent/child PIN management, and protected shared access](tasks/003-pins.md) | Ready | 002 Done/integrated | [#3](https://github.com/Alex-Yu/done-together/issues/3) |
 | 004 | [Shared board, empty states, and settings navigation](tasks/004-board.md) | Draft | 003 | [#4](https://github.com/Alex-Yu/done-together/issues/4) |
 | 005 | [One-off chore assignment and maintenance](tasks/005-one-off-chores.md) | Draft | 004 | [#5](https://github.com/Alex-Yu/done-together/issues/5) |
 | 006 | [Recurrence, occurrence generation, future edits, and deletion](tasks/006-recurrence.md) | Draft | 005 | [#6](https://github.com/Alex-Yu/done-together/issues/6) |
@@ -28,18 +28,18 @@ Bootstrap criteria preserve environment-before-skeleton separation. PM reconcile
 
 ## Checkpoint — 2026-10-28
 
-- Phase/current routing: Setup, skeleton,001 accounts and002 households Done/integrated; PM003 PIN readiness next.
+- Phase/current routing: Setup, skeleton,001 accounts and002 households Done/integrated; 003 PIN task Ready; developer handoff next.
 - Agreed scope: bootstrap plus001–010; REQ-001–027 and confirmed defaults unchanged. Full release incomplete.
 - Delivery: develop at `f98ba7ba2a46b875bb3a2c0c643d8a3bbe5a1cad`; household task tip `39297ba6903bfe1c7e96c9b85fb8d7dd8892f877`, verified implementation `8269f5a6f5bd6fb71468a93e1a2c405f0aea519a`, independent QA2 PASS. F001 resolved; attempt1 evidence retained.
 - Integration: non-FF merge preserves parallel PM/QA documentation at96e7018; implementation unchanged. Migrate/check/drift,53 server/config tests, Ruff lint/format and diff check all PASS.
-- Preparation integrated: PM Draft003–010 grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d`; QA plans `29bdf2e2b576592ab2654456b5bb42e863874333` under verification/plans. Issues3–10 synchronized Draft/open; dependencies still gate Ready.
+- Preparation integrated: PM Draft003–010 grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d`; QA plans `29bdf2e2b576592ab2654456b5bb42e863874333` under verification/plans. 003 is Ready after current PM review;004–010 remain Draft with dependencies gating readiness.
 - Workflow override: independent per-task QA→completion/integration; no per-task orchestrator verification. Final release requires integrated QA and orchestrator requirements review.
 - Evidence: [household QA2 PASS](verification/002-households-qa-attempt-2.md), [QA1 FAIL](verification/002-households-qa.md), [commands](commands.md).
 - Attempts: setup2/3;skeleton1/3;0011/3;0022/3;003–010 each0/3. Preserve histories.
 - Active batch2 completions2/10 after user reset; historical batch1 bootstrap2. Remaining003–010 fit renewed batch.
 - Environment: PG17.11 loopback55432 running; unrelated PG13:5432 preserved; app/Mailpit/geckodriver stopped. Synthetic data only.
 - GitHub:11/12/1 closed; issue2 Done/closed; exact completion body and state readback verified. No push authorization; issue writes separately authorized.
-- Blockers: None for PM003 readiness. Next: PM marks003 Ready on develop, developer implementation→QA.
+- Blockers: None for003 implementation. Next: developer creates task/003-pins from committed develop grooming→implementation→independent QA attempt1. Issue3 Ready/open exactbody readback verified; no pending sync.
 
 Source publication: Issue bodies contain complete specifications; local source is unpushed. Issue links to develop source may not resolve until separately authorized source publication.
 
@@ -290,3 +290,11 @@ Source publication: Issue bodies contain complete specifications; local source i
 
 - Delivery `f98ba7ba2a46b875bb3a2c0c643d8a3bbe5a1cad`, task tip `39297ba6903bfe1c7e96c9b85fb8d7dd8892f877`. Normal merge with parallel future-task grooming/QA plans; diff from task branch contains only those preparation documents, no implementation change.
 - Post-merge migrate/check/drift,53 server/config tests, Ruff lint/format and diff check PASS. Batch2 2/10,002 attempts2/3; issue2 Done/closed, exact body and state readback verified. PM003 next; no push.
+
+## PM Ready handoff —003 PIN/shared access, 2026-10-28
+
+- Dependency002 Done/integrated `f98ba7ba2a46b875bb3a2c0c643d8a3bbe5a1cad`, QA2 PASS `8269f5a6f5bd6fb71468a93e1a2c405f0aea519a`; postmerge53 server/check/migrate/drift/Ruff PASS.
+- Six ACs unchanged; parallel grooming8feda09 and QA plan29bdf2e integrated, current readiness complete. Selected parent's own password for first/reset PIN; exact four digits/leading zeros; either-parent unlock; PostgreSQL shared identity5/5; server60-second parent-only activity and protected existing002 management. Verified-account creation/join and own-password recovery remain bootstrap paths. Full board004/submission007 remain later owners.
+- Issue3 Ready/open body readback verified. Grooming on develop; full readiness commit recorded after creation. No implementation/QA claim from readiness.
+- Counters unchanged: batch2 completions2/10; setup2/3,skeleton1/3,0011/3,0022/3,003–010 each0/3. No pushes.
+- Next: developer branch task/003-pins includes readiness commit; exact implementation to independent QA attempt1, then completion/integration on PASS.

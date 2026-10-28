@@ -1,11 +1,11 @@
 # 003: Child profiles, parent/child PIN management, and protected shared access
 
-Status: Draft
+Status: Ready
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/3
 Local task: `_docs/tasks/003-pins.md`
 Requirement links: [REQ-004](../plan.md), [REQ-005](../plan.md), [REQ-006](../plan.md), [REQ-007](../plan.md), [REQ-027](../plan.md)
-Dependencies: [002](002-households.md) Done and integrated into `develop`; PM readiness review after that dependency.
+Dependencies: [002](002-households.md) Done/integrated at `f98ba7ba2a46b875bb3a2c0c643d8a3bbe5a1cad`; independent QA2 PASS implementation `8269f5a6f5bd6fb71468a93e1a2c405f0aea519a`; current PM readiness passed.
 
 ## Goal
 
@@ -28,9 +28,11 @@ Technology selection, unrelated release features, public launch, deployment, pai
 
 First/own parent PIN setup/reset verifies the selected member’s own account password and remains reachable when locked. Existing household management/invitations from002 acquire parent-unlock protection here; verified-account initial household creation/join remain bootstrap actions. Child submission authority is integrated in007; full board columns in004.
 
-Follow the confirmed first-release scope and P-01–P-07 in [plan.md](../plan.md). Use the selected Django 5.2/Python 3.13/PostgreSQL 17/HTMX approach in [architecture.md](../architecture.md), ADR-001–003 and the locked setup dependencies. No SQLite substitute, frontend build stack, external email provider or deployment is authorized. Follow [process.md](../process.md) and [testing-guidelines.md](../testing-guidelines.md). The user handed over delivery on 2026-10-28. PM refined scope/verification in parallel on an isolated grooming branch; acceptance IDs and release behavior are unchanged. This task remains Draft until its dependency is Done/integrated, this grooming is integrated onto `develop`, and current PM readiness is recorded. Independent task QA leads to completion/integration; orchestrator requirements review is final-release-only.
+Follow the confirmed first-release scope and P-01–P-07 in [plan.md](../plan.md). Use the selected Django 5.2/Python 3.13/PostgreSQL 17/HTMX approach in [architecture.md](../architecture.md), ADR-001–003 and the locked setup dependencies. No SQLite substitute, frontend build stack, external email provider or deployment is authorized. Follow [process.md](../process.md) and [testing-guidelines.md](../testing-guidelines.md). The user handed over delivery on 2026-10-28. PM refined scope/verification in parallel on an isolated grooming branch; acceptance IDs and release behavior are unchanged. Dependency002 and parallel grooming8feda09b8b827736f832fd8dff6a48ece0e7075d are integrated onto `develop`; current PM review confirms all six criteria, exclusions, constraints and verification plan complete. This task is Ready. Independent task QA leads to completion/integration; orchestrator requirements review is final-release-only.
 
 ## Verification plan
+
+Use the integrated [QA preparation matrix](../verification/plans/003-006-identity-board-assignment.md) alongside the six-criterion plan below. Preparation is not a QA verdict; independent QA verifies the exact implementation after handoff.
 
 - AC-001: Browser and direct-request tests add/edit a child's display name and set/reset child PIN in protected settings. Use exact strings `0007`/`0123`, reject non-four-digit/non-ASCII-digit/blank input without partial data, and prove replaced PINs fail using the credential verifier. Selected member's own account password authorizes first/own parent PIN setup/reset; wrong password, another parent's password and outsider identity fail. Verify password lockout safeguards on this path. No PIN can be read back.
 - AC-002: The board-opening account may differ from selected unlocking parent; either member's valid PIN grants equal authority for that board session only. Apply the server-side parent guard to existing task002 household management/invitation settings as well as children/PIN settings. Anonymous/unverified/outsider/child/incorrect PIN and locked direct requests cannot manage. Verified-account initial household creation/join remain bootstrap actions; password-authorized own PIN setup/reset must stay reachable when locked. Test separate browser sessions and forged parent/child/household IDs; no Django admin bypass.
@@ -42,18 +44,18 @@ For each named AC, record expected and actual observations at the exact implemen
 
 ## Questions and assumptions
 
-Product scope and architecture are confirmed; no consequential product question identified. Existing setup/skeleton/account commands are verified; new feature commands remain UNVERIFIED until their owning task executes them. Parallel preparation is not readiness: dependency integration, grooming integration onto develop and current PM review remain pending. No material question found; minor sequencing assumptions are explicit in verification plan. GitHub issues are authoritative. Existing issues were inspected before initial creation; match by local task ID/path at each synchronization to avoid duplicates.
+Product scope and architecture are confirmed; no consequential product question identified. Existing setup/skeleton/account commands are verified; new feature commands remain UNVERIFIED until their owning task executes them. Dependency/grooming integration and current PM readiness are complete. Existing task002 settings/invitation management must now require selected-parent unlock; verified-account create/join and password-authorized own-PIN recovery remain reachable while locked. No material question found; minor sequencing assumptions are explicit in verification plan. GitHub issues are authoritative. Existing issues were inspected before initial creation; match by local task ID/path at each synchronization to avoid duplicates.
 
 ## Handoff
 
-- PM parallel scope review: 2026-10-28; acceptance IDs/behavior retained, concrete per-criterion checks and later integration ownership recorded. Draft until dependency/grooming integration and current readiness review; isolated grooming commit supplied to orchestrator for develop integration.
+- PM readiness: Ready on 2026-10-28 after002 and parallel grooming integration; six ACs unchanged, no consequential question. Full readiness grooming commit recorded in backlog checkpoint.
 
 - Implementation summary: Not started
 - Task branch / verified implementation commit: Pending
-- Changed files / revision: Parallel grooming in isolated `grooming/future-release`; full commit supplied to orchestrator for integration onto develop before readiness
+- Changed files / revision: Parallel grooming8feda09 integrated; current Ready grooming committed on develop and recorded in backlog checkpoint
 - Final branch tip / delivery commit / integration results: Pending
 - Push status / authorized remote and branch targets: No pushes authorized
 - Checks and results: PM scope/architecture/AC-link consistency checked; issue3–10 Draft bodies synchronized/readback during parallel grooming. No implementation verification run or claimed
 - Verification record: Pending
 - Completion / integration evidence / outcome: Pending
-- Remaining risks or blockers: Dependency integration and current readiness review; no material scope blocker found
+- Remaining risks or blockers: None at readiness; real child submission007 and full board004 remain named later integration owners; no source pushes authorized
