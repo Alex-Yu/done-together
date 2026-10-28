@@ -30,7 +30,7 @@ Bootstrap criteria preserve environment-before-skeleton separation. PM reconcile
 
 - Phase: Delegated delivery started; PM grooming complete; route Ready environment-setup to developer.
 - Agreed task set: environment-setup, application-skeleton, 001–010 (12 tasks); [plan.md](plan.md) REQ-001–027, D-01–07, P-01–07 unchanged.
-- Delivery branch / starting state: `develop` created from `main` at `b8ea110`; no implementation exists yet. Full grooming commit recorded below after commit.
+- Delivery branch / starting state: `develop` created from `main` at `b8ea110`; no implementation exists yet. PM grooming commit: `66245f5fcde8bce1e189b7ff86885a3d232b8d7d` on `develop`; contains all 12 task mirrors and synchronized scope. Subsequent checkpoint-only commit records this hash without changing task scope.
 - Current role/task: PM handoff → developer / [environment-setup](tasks/environment-setup.md); create `task/environment-setup` from committed grooming on develop.
 - Readiness: environment-setup Ready; skeleton scope refined but Draft until setup Done/integrated; features Draft pending integrated dependencies/current PM review.
 - Architecture / commands: Django + PostgreSQL + HTMX; commands remain UNVERIFIED until executed. Preserve unrelated PostgreSQL 13 on 5432; developer uses isolated project-owned PostgreSQL 17 on loopback 55432 and project-local tooling/cache where needed.
