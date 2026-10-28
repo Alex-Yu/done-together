@@ -4,6 +4,7 @@ Coordinate application delivery after product scope and architecture are agreed 
 
 - Delegate backlog creation and grooming to PM, setup and implementation to the developer, and verification to QA. Use subagents where supported; otherwise use distinct sequential role passes and disclose reduced independence.
 - Refine the task labeled `environment-setup` and the dependent application skeleton task before feature work.
+- Require PM to commit grooming changes and provide the branch and full commit hash before handoff. Ensure a new developer task branch includes that grooming commit; for fixes, continue on the existing task branch.
 - Accept PM readiness review within the agreed scope. Do not ask the user to approve routine tasks, dispatch roles, request fixes, or mark completed tasks Done.
 - Pass specification/task links, constraints, decisions, exact implementation state, and relevant findings at each handoff. Finish implementation edits before QA verifies that state.
 - On FAIL, return evidence to the developer and then reassign QA. On BLOCKED, route to the role that can resolve it; request user input only when a consequential decision or required access/authorization is missing.
