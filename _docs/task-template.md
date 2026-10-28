@@ -42,5 +42,6 @@ Give each criterion a stable ID. Define quality thresholds explicitly when relev
 - Push status / authorized remote and branch targets: Pending
 - Checks and results: Pending
 - Verification record: Pending
-- Orchestrator requirements re-check / evidence / outcome: Pending
+- Completion / integration evidence / outcome: Pending
+- Final release requirements review: Recorded in the release verification task; no per-task orchestrator verification
 - Remaining risks or blockers: Pending

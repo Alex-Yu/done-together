@@ -28,18 +28,18 @@ Bootstrap criteria preserve environment-before-skeleton separation. PM reconcile
 
 ## Checkpoint — 2026-10-28
 
-- Phase/current routing: Bootstrap complete; task001 accounts Ready, PM hands committed grooming to developer.
-- Agreed task set: environment-setup, application-skeleton, 001–010; plan REQ-001–027 and confirmed defaults unchanged.
-- Delivery state: `develop`; setup delivered `e1d8b42d520abe8acf6bae470568ca0e0d67757e`, skeleton delivered `79711b8348ff400983c5e6d265b90a476c3a6bad`. Skeleton verified implementation `f663bfe2149500d13516c1d82d924c3fb0a87185`; QA and orchestrator PASS. Detailed history below.
-- Integration: Django check0 issues, migration drift none, server/config11 tests passed, Ruff lint/format and diff check passed after skeleton fast-forward. No code changes during integration.
-- Evidence: [skeleton QA](verification/application-skeleton-qa.md), [orchestrator](verification/application-skeleton-orchestrator.md), [commands](commands.md). Feature work/final release remain incomplete.
-- Readiness: Setup/skeleton Done; 001 Ready at grooming0be3570381f86976bd0fbdfe214d4cfa06025c75; 002–010 Draft pending integrated dependency/current PM readiness.
-- Attempts: setup2/3; skeleton1/3; 001–010 each0/3; persist counts across sessions/batches.
-- Batch1 completions2/10; stop at ten unless user renews batch.
-- Environment: project PostgreSQL17.11 loopback55432 running, PG13:5432 preserved; webserver/Mailpit/geckodriver stopped. Stable Chrome156/Firefox159 verified100/200 zoom. No real household data.
-- GitHub: Issues1–12 mapped/reconciled, setup11 closed; skeleton12 Done/closed; exact body and state readback verified. No pushes authorized; issue synchronization separately authorized.
-- Blockers: None for next local task; production decisions remain outside local delivery.
-- Next action: Developer creates task/001-accounts from current committed develop, implements scope, commits exact revision; QA attempt1 then orchestrator gate. Issue1 Ready/open exact readback verified; no pending sync.
+- Phase/current routing: Bootstrap Done/integrated; 001 accounts implementation In review, independent QA attempt1 next after workflow documentation handoff.
+- Agreed task set: environment-setup, application-skeleton, 001–010; REQ-001–027 and confirmed defaults unchanged.
+- Delivery state: develop includes setup delivery `e1d8b42d520abe8acf6bae470568ca0e0d67757e` and skeleton delivery `79711b8348ff400983c5e6d265b90a476c3a6bad`. Current branch `task/001-accounts`; exact account implementation `5f471f53c8b17128b9bd63c69af8fefa2028c6ab`, developer records tip `8c949311770573b746983a43f24fb2c4d2d851b5`; workflow-only changes follow with no application changes.
+- Current workflow (user override): retain independent per-task QA; remove the separate orchestrator per-task requirements verification. QA PASS → Done/completion records → integration checks. Failures or implementation changes route to developer and fresh affected QA. Orchestrator requirements review occurs only at final release verification alongside integrated-product QA; historical re-check evidence is preserved.
+- Readiness/evidence: Setup and skeleton Done; 001 In review; 002–010 Draft. [Account developer evidence](verification/001-accounts-developer.md) is not a QA verdict. [Commands](commands.md) contains actual validation; full feature release remains incomplete.
+- Attempts: setup2/3; skeleton1/3; 0010/3 before QA dispatch; 002–010 each0/3. Counts persist across sessions/batches.
+- Active batch2 completions0/10, explicitly reset/renewed by user during001. Historical batch1 completed setup and skeleton (2 tasks); no workflow-doc task counted.
+- Environment: project PostgreSQL17.11 loopback55432 running; unrelated PG13:5432 preserved. App/Mailpit/geckodriver stopped; synthetic data only.
+- GitHub: setup11 and skeleton12 Done/closed. Issue1 In review, exact implementation/hash readback verified by developer. Draft issues2–10 completion fields synchronized/readback for the current user-requested workflow; no pending synchronization.
+- Blockers: None for account QA dispatch; production decisions remain outside local delivery.
+- Push authorization: None; all commits local. Issue synchronization separately authorized.
+- Next action: QA verifies 001 at exact implementation (attempt1); PASS permits completion/integration directly under updated process; then PM grooms002 after successful integration.
 
 Source publication: Issue bodies contain complete specifications; local source is unpushed. Issue links to develop source may not resolve until separately authorized source publication.
 
@@ -177,3 +177,10 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Active batch2:0/10 completions, explicitly renewed by user during001. Historical batch1 completed setup/skeleton2 tasks. Attempts:setup2/3,skeleton1/3,0010/3 before QA dispatch;002–010 all0/3.
 - Issue1 In review exact-body/hash readback verified at handoff; no pushes authorized or performed.
 - Next: PM commits/synchronizes user-requested workflow documents on this branch; independent QA001 attempt1 at exact implementation, then completion/integration on PASS. Actual household/PIN rights remain later tasks.
+
+## User workflow change — 2026-10-28
+
+- User requested removal of orchestrator verification for each task, keeping release verification. Independent per-task QA retained; only the extra orchestrator requirements gate is removed. Completion records, integration checks, failure/fix/fresh-QA routing and final release QA remain required. Orchestrator requirements review is final-release-only.
+- Updated AGENTS, README graph/prose, process, orchestrator role, reusable prompt, task template and unstarted002–010 completion handoff fields. Historic setup/skeleton verification records and account implementation are unchanged.
+- Checks: git diff --check passed; local Markdown targets in15 changed workflow/task documents resolve; current-instruction assertions confirm no obsolete extra per-task gate. GitHub Draft issue2–10 mirror fields updated and exact readback verified.
+- Commit: workflow-only commit recorded after creation; no application code changes, no feature completion/attempt increment, no push.

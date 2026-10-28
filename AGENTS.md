@@ -14,7 +14,7 @@ Load `_docs/testing-guidelines.md` before implementation or verification. Read t
 
 ## Delivery coordination
 
-After product scope and architecture are agreed and the user hands over delivery (README step 4), follow `_docs/team/orchestrator.md` and the graph in `_docs/process.md`. Coordinate PM, developer, and QA roles without routine per-task user prompts. Template maintenance requests remain scoped document edits.
+After product scope and architecture are agreed and the user hands over delivery (README step 4), follow `_docs/team/orchestrator.md` and the graph in `_docs/process.md`. Coordinate PM, developer, and QA roles without routine per-task user prompts. Independent per-task QA PASS leads to completion records and integration checks; the orchestrator performs its requirements review only at final release verification. Template maintenance requests remain scoped document edits.
 
 ## Working rules
 

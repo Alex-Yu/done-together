@@ -72,22 +72,24 @@ flowchart TD
     P --> D[Developer sets up or implements]
     D --> Q[QA verifies implementation]
     Q -->|FAIL| D
-    Q -->|PASS| V{Orchestrator re-checks requirements}
-    V -->|Unmet| D
-    V -->|Met| C[Orchestrator marks Done]
-    C --> N{More release tasks?}
+    Q -->|PASS| C[Orchestrator records Done and integrates]
+    C --> I{Integration checks pass?}
+    I -->|No| D
+    I -->|Yes| N{More release tasks?}
     N -->|Yes| O
     N -->|No| R[QA verifies full release]
     R -->|FAIL| F[Orchestrator creates defect tasks]
     F --> O
-    R -->|PASS| H[Deliver application and evidence]
+    R -->|PASS| V{Orchestrator reviews release requirements}
+    V -->|Unmet| F
+    V -->|Met| H[Deliver application and evidence]
 ```
 
-The developer first installs and configures the environment through the task labeled `environment-setup`. After QA passes it and the orchestrator re-checks its requirements and marks it Done, the developer creates and starts the application skeleton and runs its smoke check. Feature tasks follow the same grooming, implementation, and verification cycle.
+The developer first installs and configures the environment through the task labeled `environment-setup`. After independent QA passes it and the orchestrator records Done and integrates it, the developer creates and starts the application skeleton and runs its smoke check. Feature tasks follow the same grooming, implementation, and verification cycle.
 
-The developer executes setup and checks and records validated commands in [_docs/commands.md](_docs/commands.md). You do not need to install tools, route tasks, run routine tests, or request each retry. After QA PASS, the orchestrator re-checks the implementation against the task’s linked requirements and acceptance criteria and records evidence before marking Done. QA failures or unmet requirements return the task to In progress and the developer, followed by fresh QA and another orchestrator re-check. Unverifiable requirements block completion. The cycle continues automatically within the agreed scope and execution limits.
+The developer executes setup and checks and records validated commands in [_docs/commands.md](_docs/commands.md). You do not need to install tools, route tasks, run routine tests, or request each retry. After independent QA PASS, the orchestrator records Done and integrates the task without a separate per-task requirements verification. QA or integration failures return the task to In progress and the developer, followed by fresh affected QA. Unverifiable criteria block completion. The orchestrator reviews requirements at final release verification only. The cycle continues automatically within the agreed scope and execution limits.
 
-During delivery, PM commits specification, task, and backlog changes after each grooming pass and records the grooming commit in the handoff. New-task grooming is committed on `develop`; grooming for fixes uses the existing task branch. The developer creates each `task/<task-id>-<short-title>` branch from `develop` and commits implementation and fixes there. QA and the orchestrator verify the recorded implementation commit. After the requirements re-check passes, the orchestrator marks Done, merges the task branch into `develop`, and checks integration before continuing. Integration failures return to the developer. Pushes run automatically only for remotes and branch targets you have authorized; otherwise delivery stays in local commits. Force pushes and history rewriting require explicit authorization. See the [Git policy](_docs/process.md#branching-commits-merges-and-pushes).
+During delivery, PM commits specification, task, and backlog changes after each grooming pass and records the grooming commit in the handoff. New-task grooming is committed on `develop`; grooming for fixes uses the existing task branch. The developer creates each `task/<task-id>-<short-title>` branch from `develop` and commits implementation and fixes there. Independent QA verifies the recorded implementation commit. After QA PASS, the orchestrator marks Done, merges the task branch into `develop`, and checks integration before continuing. Integration failures return to the developer and require fresh affected QA. Pushes run automatically only for remotes and branch targets you have authorized; otherwise delivery stays in local commits. Force pushes and history rewriting require explicit authorization. See the [Git policy](_docs/process.md#branching-commits-merges-and-pushes).
 
 ## 6. Respond only when your input is needed
 
@@ -103,11 +105,11 @@ To resume in the same or a fresh session:
 
 ## 7. Receive the working application
 
-After the release tasks are Done, the orchestrator sends the integrated application to QA for full user-journey verification and required regression checks. Failures become defect tasks and reenter the graph within the execution limits.
+After the release tasks are Done, the orchestrator sends the integrated application to QA for full user-journey verification and required regression checks, and performs its requirements review at this final release stage. Failures from either check become defect tasks and reenter the graph within the execution limits.
 
 The final delivery includes completed scope, the verified code revision or working-tree state, verification evidence, known limitations, and exact startup instructions from [_docs/commands.md](_docs/commands.md). You can then try the application yourself.
 
-**Working application code means:** all agreed first-release tasks are Done, the application starts using documented commands, and final QA passes for the specified user journeys and required checks. Distribution or deployment must be explicit tasks if needed and still require applicable authorization.
+**Working application code means:** all agreed first-release tasks are Done, the application starts using documented commands, and final QA plus the orchestrator’s release requirements review pass at the delivered revision. Distribution or deployment must be explicit tasks if needed and still require applicable authorization.
 
 Describe future changes to the orchestrator. It assesses the impact, resolves consequential decisions with you, updates specifications and tasks, and follows the same graph.
 
