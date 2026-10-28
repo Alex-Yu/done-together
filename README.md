@@ -46,55 +46,70 @@ The developer agent will install tools, configure the local environment, and val
 
 **Before continuing:** the architecture is agreed and the setup work is identified for the developer. There is still no requirement to have application code at this stage.
 
-## 4. Turn the specification into implementation tasks
+## 4. Hand delivery over to the orchestrator
 
-Ask:
+Once the product specification and architecture are agreed, send one delivery prompt:
 
-> Read `AGENTS.md` and the agreed specifications. Create small, dependency-ordered tasks using `_docs/task-template.md`, store them under `_docs/tasks/`, and link them from `_docs/tasks.md`. Each task must have requirement links, observable acceptance criteria, and a verification plan. Refine the existing Draft task labeled `environment-setup` and the runnable application skeleton task for the selected architecture. The developer must perform installation and configuration in the task labeled `environment-setup`; the application skeleton task depends on it and adds a meaningful smoke check. Add feature tasks after these setup tasks. Do not implement yet.
+> /goal Read `AGENTS.md` and act as the orchestrator in `_docs/team/orchestrator.md`. Deliver the agreed first release from `_docs/plan.md` and `_docs/architecture.md`. Delegate backlog creation and grooming to PM, setup and implementation to the developer, and verification to QA. Refine the task labeled `environment-setup` and the dependent application skeleton task, then create the feature tasks. Coordinate the graph in `_docs/process.md` through final release verification. Handle routine decisions, handoffs, fixes, and task completion without asking me to advance each step. Use the default execution limits. Ask me only for consequential unresolved decisions, scope changes, required access, or authorization. Record progress in `_docs/tasks.md` so another session can resume.
 
-Review the task list for missing requirements and unnecessary work. Ask the assistant to split tasks that are too large. Then prepare the first task:
+`/goal` gives a supporting assistant a persistent objective; the orchestrator instructions define how work moves through the roles. Completion requires all agreed release tasks to be Done and final QA to pass against the delivered code. Execution limits and blockers still apply; a goal does not grant extra permissions or guarantee uninterrupted execution.
 
-> Act as the PM in `_docs/team/pm.md` and groom <task path>. Ask me about blocking questions. Once I have reviewed its scope and acceptance criteria, record my review and mark it Ready if the readiness gate is met.
+Supported environments include [Codex builds with Goals](https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex) (0.128.0 or later), [Claude Code](https://claude.com/resources/articles/getting-started-with-loops), and [Cursor versions with Goals enabled](https://cursor.com/docs/agent/overview#goals-with-goal). Availability depends on your installed version and interface. Check its slash-command menu before starting.
 
-Replace `<task path>` with the actual file created by the assistant. Repeat this preparation for later tasks before implementing them.
+**Fallback:** if `/goal` is unavailable, remove only `/goal` and send the same prompt. The assistant can follow the graph, but automatic continuation between turns depends on its environment. If it stops early, use the resume prompt in step 6. A custom command named `/goal` is not necessarily a persistent execution loop.
 
-**Before continuing:** the first task is Ready, with a clear outcome and a way to check it. You do not need to finalize every future task before starting.
+The orchestrator now owns task selection, role dispatch, readiness checks, retries, and backlog updates. PM reviews each task against the scope you already agreed; you do not need to approve every task separately.
 
-## 5. Let the developer set up and build the application
+Use a coding environment with subagent support for separate PM, developer, and QA agents. If subagents are unavailable, the orchestrator performs distinct sequential role passes and records the reduced QA independence. These Markdown files define the graph; your coding environment executes it.
 
-Ask:
+## 5. Let the agents set up and build the application
 
-> Read `AGENTS.md`. Act as the engineer in `_docs/team/software-engineer.md` and implement <ready task path>. Perform the agreed installation, configuration, or application implementation yourself. Run the applicable checks and record the results and handoff. Leave the task In review. Request only permissions, credentials, or decisions you cannot obtain yourself; do not hand me a setup checklist to execute.
+The orchestrator routes work through this graph:
 
-Start with the task labeled `environment-setup`: the developer inspects the environment, installs missing tools, configures dependencies and local services as applicable, and verifies setup. Verify and complete it using step 6. Then groom and implement the application skeleton task: the developer creates the application skeleton, starts it, and runs its smoke check.
+```mermaid
+flowchart TD
+    O[Orchestrator selects task] --> P[PM grooms and checks scope]
+    P --> D[Developer sets up or implements]
+    D --> Q[QA verifies implementation]
+    Q -->|FAIL| D
+    Q -->|PASS| V{Orchestrator re-checks requirements}
+    V -->|Unmet| D
+    V -->|Met| C[Orchestrator marks Done]
+    C --> N{More release tasks?}
+    N -->|Yes| O
+    N -->|No| R[QA verifies full release]
+    R -->|FAIL| F[Orchestrator creates defect tasks]
+    F --> O
+    R -->|PASS| H[Deliver application and evidence]
+```
 
-The agent records reproducible setup and run commands in [_docs/commands.md](_docs/commands.md) for future use. If setup or startup fails, the developer diagnoses and fixes it within the task. If the agent cannot access the required environment, keep the task Blocked and resolve access or authorization before continuing.
+The developer first installs and configures the environment through the task labeled `environment-setup`. After QA passes it and the orchestrator re-checks its requirements and marks it Done, the developer creates and starts the application skeleton and runs its smoke check. Feature tasks follow the same grooming, implementation, and verification cycle.
 
-**Expected result after both tasks pass:** a configured development environment and a runnable application skeleton with documented, validated commands. It will gain the requested features as you implement the remaining tasks.
+The developer executes setup and checks and records validated commands in [_docs/commands.md](_docs/commands.md). You do not need to install tools, route tasks, run routine tests, or request each retry. After QA PASS, the orchestrator re-checks the implementation against the task’s linked requirements and acceptance criteria and records evidence before marking Done. QA failures or unmet requirements return the task to In progress and the developer, followed by fresh QA and another orchestrator re-check. Unverifiable requirements block completion. The cycle continues automatically within the agreed scope and execution limits.
 
-## 6. Verify the task and fix failures
+During delivery, the developer creates each `task/<task-id>-<short-title>` branch from `develop` and commits implementation and fixes there. QA and the orchestrator verify the recorded implementation commit. After the requirements re-check passes, the orchestrator marks Done, merges the task branch into `develop`, and checks integration before continuing. Integration failures return to the developer. Pushes run automatically only for remotes and branch targets you have authorized; otherwise delivery stays in local commits. Force pushes and history rewriting require explicit authorization. See the [Git policy](_docs/process.md#branching-commits-merges-and-pushes).
 
-Start a fresh assistant session for verification when practical, then ask:
+## 6. Respond only when your input is needed
 
-> Read `AGENTS.md`. Act as QA in `_docs/team/qa-engineer.md` for <task path> and the current implementation. Verify every acceptance criterion and required check. Save evidence under `_docs/verification/` using the verification template. Report PASS, FAIL, or BLOCKED. Do not modify application code during this review.
+The orchestrator asks about consequential uncertainty, changes to agreed scope or architecture, unavailable credentials or permissions, and required authorization. It records the answer and continues. Routine reversible implementation decisions are handled within the agreed constraints.
 
-Review the evidence and any manual checks that require your environment.
+Blocked work stays incomplete. The orchestrator routes technical blockers to the developer and product ambiguity to PM, continuing independent eligible work when possible. It never treats unavailable checks as passing.
 
-- **PASS:** if all completion conditions in `_docs/process.md` are met, mark the task Done in its file and the backlog, or ask the assistant to do so.
-- **FAIL:** ask the engineer to fix the reported failures within the agreed scope, then run QA again against the changed code.
-- **BLOCKED:** resolve the missing decision or grant the required access; have the developer handle outstanding installation or configuration, then repeat verification. Keep the task incomplete until it can be checked.
+Default limits are three developer-to-QA attempts per task and ten completed tasks per delivery batch. You can override these in the kickoff prompt. At a limit or when no work can proceed, the orchestrator reports the reason and records task states, retry counts, evidence, and the next action in `_docs/tasks.md`.
 
-Ask the assistant to commit completed work if you want it to manage commits, or commit it yourself.
+To resume in the same or a fresh session:
 
-## 7. Repeat until the first release works
+> Read `AGENTS.md`, `_docs/tasks.md`, and the linked task handoffs. Resume as orchestrator from the recorded state, preserving agreed scope and decisions. Start a new delivery batch with the default limits. Preserve per-task retry counts; ask for a specific limit extension if a task has exhausted its attempts. Continue the graph until verified completion or a documented stop condition.
 
-For each next task whose dependencies are Done, repeat the same cycle: groom and review it, mark it Ready, implement it, and verify it. Continue until all tasks for the agreed first release are Done.
+## 7. Receive the working application
 
-Then run the application using `_docs/commands.md` and exercise the complete user journeys from `_docs/plan.md`. Confirm that the features work together and that the required regression checks pass. Record any gaps as defects or follow-up tasks and verify their fixes.
+After the release tasks are Done, the orchestrator sends the integrated application to QA for full user-journey verification and required regression checks. Failures become defect tasks and reenter the graph within the execution limits.
 
-**You have reached working application code when:** the agreed first-release tasks are Done, the application starts using the documented instructions, its specified user journeys work, and required checks have passing evidence. Packaging, distribution, or deployment should be included as explicit tasks if they are needed for your intended users to access it.
+The final delivery includes completed scope, the verified code revision or working-tree state, verification evidence, known limitations, and exact startup instructions from [_docs/commands.md](_docs/commands.md). You can then try the application yourself.
 
-When you want to change the product, update the specification and affected tasks before implementing the new behavior.
+**Working application code means:** all agreed first-release tasks are Done, the application starts using documented commands, and final QA passes for the specified user journeys and required checks. Distribution or deployment must be explicit tasks if needed and still require applicable authorization.
+
+Describe future changes to the orchestrator. It assesses the impact, resolves consequential decisions with you, updates specifications and tasks, and follows the same graph.
 
 ## Where the project information lives
 
@@ -116,7 +131,7 @@ Replace angle-bracket placeholders in prompts and documents with project facts. 
 
 The local Markdown backlog is the default. If you move to an issue tracker, record its location in `_docs/tasks.md` and archive the local backlog so there is one authoritative task list.
 
-`CLAUDE.md` points to `AGENTS.md`. For other assistants, explicitly ask them to read `AGENTS.md` if they do not discover it automatically. The role files and prompts describe a workflow; they do not launch agents or automate it. Optional bounded loops are described in `_docs/process.md`.
+`CLAUDE.md` points to `AGENTS.md`. For other assistants, explicitly ask them to read `AGENTS.md` if they do not discover it automatically. The role files and prompts describe a workflow; they do not launch agents or automate it. The delivery graph and execution limits from step 4 onward are described in `_docs/process.md`.
 
 ## Inspiration
 

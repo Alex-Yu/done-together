@@ -35,7 +35,11 @@ Give each criterion a stable ID. Define quality thresholds explicitly when relev
 ## Handoff
 
 - Implementation summary: Pending
+- Task branch / verified implementation commit: Pending
 - Changed files / revision: Pending
+- Final branch tip / delivery commit / integration results: Pending
+- Push status / authorized remote and branch targets: Pending
 - Checks and results: Pending
 - Verification record: Pending
+- Orchestrator requirements re-check / evidence / outcome: Pending
 - Remaining risks or blockers: Pending

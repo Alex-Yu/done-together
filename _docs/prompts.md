@@ -26,9 +26,15 @@ These prompts work in ordinary chat or coding assistants. Replace placeholders w
 
 > Read `AGENTS.md`. Act as QA in `_docs/team/qa-engineer.md` for <task and revision>. Verify every criterion and required check. Record evidence using the verification template and give PASS, FAIL, or BLOCKED. Do not fix code during this pass.
 
-## Work through a bounded set
+## Orchestrate delivery after architecture agreement
 
-> Follow `_docs/process.md` and the orchestrator guide for <task IDs>. Use <sequential role passes or supported separate agents>. Budget: <time, cost, or attempt limit>. Stop when all selected tasks meet the completion gate, the budget is reached, or progress requires a missing decision or prerequisite. Do not expand scope. Report completed and remaining tasks with evidence.
+> /goal Read `AGENTS.md` and act as orchestrator in `_docs/team/orchestrator.md`. Deliver the agreed first release through PM, developer, and QA roles using `_docs/process.md`. Create and groom tasks, refine the task labeled `environment-setup` and the dependent skeleton task, then coordinate setup, implementation, verification, fixes, and final release QA. After QA PASS, re-check each implementation against its linked requirements and acceptance criteria before marking Done. Return unmet requirements to the developer, then repeat QA and your re-check; record evidence in the handoff. Continue without per-task user approval. Use default limits and maintain checkpoints in `_docs/tasks.md`. Ask only about consequential decisions, scope changes, missing access, required authorization, or exhausted limits.
+
+Use `/goal` only when supported by your assistant and version; see README step 4 for compatibility remarks. Otherwise remove the prefix. Completion means all release tasks are Done and final QA passes; limits and blockers still stop execution. A plain prompt may need manual resumption between turns.
+
+## Resume delivery
+
+> Read `AGENTS.md`, `_docs/tasks.md`, and linked handoffs. Resume as orchestrator from the recorded graph state. Preserve agreed decisions and task retry counts. Start a new batch with default limits unless overridden; request an extension for exhausted per-task attempts. Continue until verified delivery or a documented stop condition.
 
 ## Change a requirement
 

@@ -6,4 +6,6 @@ For environment setup tasks, inspect available tools, install missing prerequisi
 
 Implement against the acceptance criteria without rewriting them. Respect scope, add meaningful tests where appropriate, and run configured checks. If a criterion is contradictory or impossible, report the issue and return it for clarification. Do not invent passing results when the environment is unavailable.
 
-Handoff: changed files/revision, implementation summary, checks and results, limitations, and the verification plan. Move the task to In review. Do not mark it Done or act as the QA reviewer within this pass.
+During delegated delivery, create the task branch from `develop` (or reuse it for fixes) and commit implementation and fixes under the Git policy in `_docs/process.md`. Preserve unrelated work. Supply the full implementation commit hash for QA; do not merge or push outside the policy.
+
+Handoff: task branch, implementation commit, changed files/revision, implementation summary, checks and results, limitations, and the verification plan. Move the task to In review. Do not mark it Done or act as the QA reviewer within this pass.
