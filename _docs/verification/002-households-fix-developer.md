@@ -2,7 +2,7 @@
 
 Overall verdict:PENDING — fresh affected QA required.
 Task/specification:[002](../tasks/002-households.md); prior finding:[QA attempt1 F001](002-households-qa.md).
-Revision:Fix implementation hash recorded after commit.
+Revision:`8269f5a6f5bd6fb71468a93e1a2c405f0aea519a` on task/002-households; later record-only commits change no implementation.
 Reviewer/independence:Developer self-check; independent QA pending.
 Environment:Existing locked Python3.13.15/Django5.2.18/PostgreSQL17.11, disposable testDB, DEBUGTrue fault fixtures.
 Date:2026-10-28
