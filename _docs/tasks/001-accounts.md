@@ -44,7 +44,7 @@ Product scope and architecture are confirmed; no consequential product question 
 - PM readiness: Ready on 2026-10-28 after skeleton integration; four ACs preserved and mapped to concrete account checks and named later integration owners. Full grooming commit recorded in backlog checkpoint.
 
 - Implementation summary: allauth verified email/password registration/sign-in/recovery, nonce-bound private link handling, atomic PostgreSQL identity/source limits, reusable verified guard, protected logs/headers, recoverable mail/DB errors and accessible account pages. Household/PIN features remain later tasks.
-- Task branch / verified implementation commit: `task/001-accounts`; exact hash recorded after implementation commit; QA pending.
+- Task branch / verified implementation commit: `task/001-accounts` / `5f471f53c8b17128b9bd63c69af8fefa2028c6ab`; independent QA pending.
 - Changed files / revision: accounts models/migration/services/adapter/views/access/privacy; settings/URLs/templates/styles; request/browser tests and tracked stable/SMTP helpers; architecture/commands/evidence. Lock unchanged.
 - Final branch tip / delivery commit / integration results: Pending
 - Push status / authorized remote and branch targets: No pushes authorized

@@ -2,7 +2,7 @@
 
 Overall verdict:PENDING — independent QA required.
 Task/specification:[001](../tasks/001-accounts.md), [plan](../plan.md), [architecture](../architecture.md), [commands](../commands.md).
-Revision:Implementation hash recorded after commit in task/backlog.
+Revision:`5f471f53c8b17128b9bd63c69af8fefa2028c6ab` on `task/001-accounts`; subsequent record/workflow-only commits change no application implementation.
 Reviewer/independence:Developer self-check, not independent QA.
 Environment:macOS x86_64/Python3.13.15/Django5.2.18/allauth65.21.0/PostgreSQL17.11; bundled Chromium156/Firefox157; installed Chrome156.0.8078.48/Firefox159.0; synthetic fixtures only.
 Date:2026-10-28

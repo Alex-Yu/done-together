@@ -169,7 +169,7 @@ Source publication: Issue bodies contain complete specifications; local source i
 
 - Current role/task: Account implementation complete/In review; route independent QA. User removed separate per-task orchestrator requirements re-check; QA PASS proceeds to completion/integration, final release review retained.
 - Branch: `task/001-accounts`, from PM checkpoint c7a085d3d1604951e49c1b9847ecb4d5dc94693e including grooming0be3570381f86976bd0fbdfe214d4cfa06025c75.
-- Exact implementation commit: Recorded after implementation commit; later handoff/workflow-only commits contain no source changes.
+- Exact implementation commit: `5f471f53c8b17128b9bd63c69af8fefa2028c6ab`; later handoff/workflow-only commits contain no source changes.
 - Evidence: [developer account record](verification/001-accounts-developer.md), [validated commands](commands.md), tracked stable-browser and real-SMTP helpers.
 - Results:32 server/config tests and4 browser tests passed; final narrow DB-failure/unsent-SMTP-link cases1 each passed; migrate/check/drift/lint/format/static/locked sync pass. Native stable Chrome156/Firefox159 keyboard100/200% account checks, actual Mailpit verification/recovery capture, and stored synthetic account post-webserver-restart revisit PASS.
 - Services: ProjectPG17 remains127.0.0.1:55432; unrelatedPG13:5432 preserved. App/Mailpit/geckodriver cleanly stopped (exit0; endpoints refuse).
