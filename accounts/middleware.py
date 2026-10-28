@@ -41,7 +41,7 @@ class AccountSafetyMiddleware:
         if isinstance(exception, EmailDeliveryError):
             return render(request, "accounts/delivery_failed.html", status=503)
         if isinstance(exception, DatabaseError) and request.path.startswith(
-            "/accounts/"
+            ("/accounts/", "/households/")
         ):
             return render(request, "accounts/unavailable.html", status=503)
         return None

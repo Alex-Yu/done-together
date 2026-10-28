@@ -408,3 +408,94 @@ def test_invitation_request_logs_redact_private_path_and_encoded_query():
         for secret in ("private-invite", "private-token", "private-flow")
     )
     assert "[redacted]" in rendered
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize(
+    "failure_path", ["create", "settings_render", "invite", "join"]
+)
+def test_household_domain_database_failures_are_private_recoverable_and_retryable(
+    failure_path, monkeypatch, settings
+):
+    from django.db import OperationalError
+
+    settings.DEBUG = True
+    owner = parent("failure-owner@example.test")
+    client = Client(raise_request_exception=False)
+    client.force_login(owner)
+    method, url, payload = (
+        "post",
+        reverse("household_create"),
+        {"timezone": "Europe/Warsaw"},
+    )
+    household = None
+    if failure_path != "create":
+        household = create_household(owner, "Europe/Warsaw")
+        url = reverse("household_settings", args=[household.pk])
+        payload = {"email": "failure-recipient@example.test"}
+    if failure_path == "settings_render":
+        method = "get"
+    if failure_path == "join":
+        target = parent("failure-recipient@example.test")
+        _, private_path = invite(owner, household, target.email)
+        client.force_login(target)
+        url = client.get(private_path).headers["Location"]
+        payload = {}
+
+    marker = "synthetic-private-household-database-detail"
+
+    def fail(*args, **kwargs):
+        raise OperationalError(marker)
+
+    before = (
+        Household.objects.count(),
+        Membership.objects.count(),
+        Invitation.objects.count(),
+        Invitation.objects.filter(consumed_at__isnull=False).count(),
+    )
+    stream = io.StringIO()
+    handler = logging.getLogger("django.request").handlers[0]
+    with monkeypatch.context() as patch:
+        if failure_path == "create":
+            patch.setattr("households.views.create_household", fail)
+        elif failure_path == "settings_render":
+            patch.setattr("households.views.render", fail)
+        elif failure_path == "invite":
+
+            class FailedMailAdapter:
+                send_mail = staticmethod(fail)
+
+            patch.setattr(
+                "households.services.get_adapter",
+                lambda *args, **kwargs: FailedMailAdapter(),
+            )
+        else:
+            patch.setattr("households.views.accept_invitation", fail)
+        previous = handler.stream
+        handler.setStream(stream)
+        try:
+            response = getattr(client, method)(url, payload)
+        finally:
+            handler.setStream(previous)
+    logged = stream.getvalue()
+    exposed = marker.encode() in response.content or marker in logged
+    assert not exposed
+    assert response.status_code == 503
+    assert b"Temporarily unavailable" in response.content
+    assert b"Please try again shortly" in response.content
+    assert "no-store" in response.headers["Cache-Control"]
+    assert response.headers["Referrer-Policy"] == "same-origin"
+    assert "Service Unavailable" in logged
+    assert "Traceback" not in logged
+    if failure_path == "join":
+        assert url.rstrip("/").split("/")[-1] not in logged
+    after = (
+        Household.objects.count(),
+        Membership.objects.count(),
+        Invitation.objects.count(),
+        Invitation.objects.filter(consumed_at__isnull=False).count(),
+    )
+    assert after == before
+    # The unmodified input/current invitation can be retried after recovery.
+    retry = getattr(client, method)(url, payload)
+    assert retry.status_code == (200 if method == "get" else 302)

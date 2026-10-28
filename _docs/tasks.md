@@ -14,7 +14,7 @@ Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature 
 | `environment-setup` | [Set up the development environment](tasks/environment-setup.md) | Done | None; PM readiness passed | [#11](https://github.com/Alex-Yu/done-together/issues/11) |
 | application-skeleton | [Create a runnable application skeleton](tasks/application-skeleton.md) | Done | environment-setup Done/integrated | [#12](https://github.com/Alex-Yu/done-together/issues/12) |
 | 001 | [Account registration, verification, sign-in, recovery, and safeguards](tasks/001-accounts.md) | In review | application-skeleton Done/integrated | [#1](https://github.com/Alex-Yu/done-together/issues/1) |
-| 002 | [Household creation, timezone setup, and second-parent invitation](tasks/002-households.md) | In progress | 001 Done/integrated | [#2](https://github.com/Alex-Yu/done-together/issues/2) |
+| 002 | [Household creation, timezone setup, and second-parent invitation](tasks/002-households.md) | In review | 001 Done/integrated | [#2](https://github.com/Alex-Yu/done-together/issues/2) |
 | 003 | [Child profiles, parent/child PIN management, and protected shared access](tasks/003-pins.md) | Draft | 002 | [#3](https://github.com/Alex-Yu/done-together/issues/3) |
 | 004 | [Shared board, empty states, and settings navigation](tasks/004-board.md) | Draft | 003 | [#4](https://github.com/Alex-Yu/done-together/issues/4) |
 | 005 | [One-off chore assignment and maintenance](tasks/005-one-off-chores.md) | Draft | 004 | [#5](https://github.com/Alex-Yu/done-together/issues/5) |
@@ -248,3 +248,14 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Services: QA app/driver/Mailpit stopped exit0 and fourports closed; projectPG17 remains55432, unrelatedPG13 preserved.
 - Synchronization: issue2 In progress/findings/evidence updated and exact readback; no closure/merge/push. No push authorization.
 - Next: developer generic household DB-error/privacy correction and regression on same branch, new implementation commit then QA attempt2. Preserve prior positive evidence for unchanged code where valid.
+
+## Developer correction handoff —002 F001,2026-10-28
+
+- Current role/task: F001 source correction complete/In review; fresh affected QA next on same task/002-households.
+- Exact fix implementation commit: Recorded after commit. One-line middleware recovery-prefix extension plus four regression cases; prior normal-path implementation unchanged.
+- Evidence: [F001 developer correction](verification/002-households-fix-developer.md), original [QA attempt1 FAIL](verification/002-households-qa.md). Affected4 and original independent QA probe1 pass; fresh server53 plus checks/drift/lint/format/diff pass. Prior6-browser/native100/200/SMTP/restart positive evidence retained, no unchanged reruns.
+- Counters unchanged until QA dispatch:0021/3; batch2 completions1/10; setup2/skeleton1/accounts1 historical attempts,003–010 zero. Final-only orchestrator requirements review remains.
+- No owned app/mail/driver service started; projectPG17 remains55432 and unrelatedPG13 preserved.
+- Develop remains docs-preparation divergence96e7018af88d67b24d0ff63b924f8ebec4f1e906; no merge/rebase/push.
+- Issue2 final In review/fix-hash synchronization/readback pending next handoff step.
+- Next: QA2 on exact fix; completion/integration on PASS then PM003 readiness.

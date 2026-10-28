@@ -1,6 +1,6 @@
 # 002: Household creation, timezone setup, and second-parent invitation
 
-Status: In progress
+Status: In review
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/2
 Local task: `_docs/tasks/002-households.md`
@@ -46,11 +46,11 @@ Product scope and architecture are confirmed; no consequential product question 
 - PM readiness: Ready on 2026-10-28 after account integration; five ACs preserved, selected architecture and dependency confirmed, no consequential question. Full grooming commit recorded in backlog checkpoint.
 
 - Implementation summary: Transactional household/membership/invitation services with DB parent-slot constraints, scoped equal rights, immutable browser-suggested IANA timezone, hashed private invitations/session join flow, recoverable SMTP/validation/conflicts and accessible settings. Parent PIN integration remains003.
-- Task branch / verified implementation commit: `task/002-households` / `1b01711d3fd9962825e38ba87297a22c976d0a09`; independent QA attempt1 FAIL F001.
+- Task branch / verified implementation commit: `task/002-households`; new F001 fix hash recorded after commit; independent QA2 pending. Original implementation1b01711d3fd9962825e38ba87297a22c976d0a09/attempt1 evidence retained.
 - Changed files / revision: households models/migration/services/views/forms/URLs/templates; account redirect/privacy middleware; timezone JS/styles/navigation; request/browser tests and tracked stable SMTP helper; commands/architecture/evidence.
 - Final branch tip / delivery commit / integration results: Pending
 - Push status / authorized remote and branch targets: No pushes authorized
-- Checks and results: Household17, full server49, bundled browser6 PASS; final narrow rejected-flow1 PASS. Migrate/check/drift/lint/format/static/locked sync PASS; stable native100/200 create/invite/join/errors, real Mailpit and stored-state restart revisit PASS.
-- Verification record: [developer household evidence](../verification/002-households-developer.md); [independent QA attempt1 FAIL](../verification/002-households-qa.md).
+- Checks and results: F001 affected4 plus original QA probe1 PASS; fresh full server53 PASS; system/drift/lint/format/diff PASS. Prior normal-path49server/6browser/native100/200/actualSMTP/restart positive evidence retained for unchanged code.
+- Verification record: [developer household evidence](../verification/002-households-developer.md); [independent QA attempt1 FAIL](../verification/002-households-qa.md); [developer F001 correction](../verification/002-households-fix-developer.md).
 - Completion / integration evidence / outcome: Pending
-- Remaining risks or blockers: QA F001: household DatabaseError after initial limiter/guard bypasses generic recovery (accounts/middleware.py only handles /accounts/), causing technical500/private detail exposure in local DEBUG. Developer fix/regression then fresh QA required. AC001–003 and positive browser/SMTP/persistence/race checks pass. Task003 PIN integration remains later. OnlyPG17 running; no pushes authorized.
+- Remaining risks or blockers: F001 source correction and four service/render/privacy/retry regressions pass; fresh affected QA required before completion. Prior positive evidence retained. Task003 PIN integration remains later. No new owned services; onlyPG17 running, no pushes authorized.
