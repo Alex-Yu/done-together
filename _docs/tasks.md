@@ -7,12 +7,12 @@ Pending issue synchronization: None after initial delivery grooming; bootstrap i
 
 ## Task index
 
-Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature roadmap against the selected architecture. Environment-setup is Done/integrated; skeleton is Ready after PM review; feature tasks remain Draft pending dependency integration and current readiness review. Scope was confirmed by the user on 2026-10-28, including P-01–P-07.
+Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature roadmap against the selected architecture. Environment-setup and skeleton are Done/integrated; 001 accounts is Ready after PM review; 002–010 remain Draft pending dependency integration/current readiness review. Scope was confirmed by the user on 2026-10-28, including P-01–P-07.
 
 | ID / labels | Task | Status | Dependencies | GitHub issue |
 | --- | --- | --- | --- | --- |
 | `environment-setup` | [Set up the development environment](tasks/environment-setup.md) | Done | None; PM readiness passed | [#11](https://github.com/Alex-Yu/done-together/issues/11) |
-| application-skeleton | [Create a runnable application skeleton](tasks/application-skeleton.md) | In review | environment-setup Done/integrated | [#12](https://github.com/Alex-Yu/done-together/issues/12) |
+| application-skeleton | [Create a runnable application skeleton](tasks/application-skeleton.md) | Done | environment-setup Done/integrated | [#12](https://github.com/Alex-Yu/done-together/issues/12) |
 | 001 | [Account registration, verification, sign-in, recovery, and safeguards](tasks/001-accounts.md) | Ready | application-skeleton Done/integrated | [#1](https://github.com/Alex-Yu/done-together/issues/1) |
 | 002 | [Household creation, timezone setup, and second-parent invitation](tasks/002-households.md) | Draft | 001 | [#2](https://github.com/Alex-Yu/done-together/issues/2) |
 | 003 | [Child profiles, parent/child PIN management, and protected shared access](tasks/003-pins.md) | Draft | 002 | [#3](https://github.com/Alex-Yu/done-together/issues/3) |
@@ -28,18 +28,18 @@ Bootstrap criteria preserve environment-before-skeleton separation. PM reconcile
 
 ## Checkpoint — 2026-10-28
 
-- Phase/current routing: Bootstrap complete; PM grooms task001 accounts next on develop.
+- Phase/current routing: Bootstrap complete; task001 accounts Ready, PM hands committed grooming to developer.
 - Agreed task set: environment-setup, application-skeleton, 001–010; plan REQ-001–027 and confirmed defaults unchanged.
 - Delivery state: `develop`; setup delivered `e1d8b42d520abe8acf6bae470568ca0e0d67757e`, skeleton delivered `79711b8348ff400983c5e6d265b90a476c3a6bad`. Skeleton verified implementation `f663bfe2149500d13516c1d82d924c3fb0a87185`; QA and orchestrator PASS. Detailed history below.
 - Integration: Django check0 issues, migration drift none, server/config11 tests passed, Ruff lint/format and diff check passed after skeleton fast-forward. No code changes during integration.
 - Evidence: [skeleton QA](verification/application-skeleton-qa.md), [orchestrator](verification/application-skeleton-orchestrator.md), [commands](commands.md). Feature work/final release remain incomplete.
-- Readiness: Setup/skeleton Done; tasks001–010 Draft pending integrated dependency/current PM readiness.
+- Readiness: Setup/skeleton Done; 001 Ready at grooming0be3570381f86976bd0fbdfe214d4cfa06025c75; 002–010 Draft pending integrated dependency/current PM readiness.
 - Attempts: setup2/3; skeleton1/3; 001–010 each0/3; persist counts across sessions/batches.
 - Batch1 completions2/10; stop at ten unless user renews batch.
 - Environment: project PostgreSQL17.11 loopback55432 running, PG13:5432 preserved; webserver/Mailpit/geckodriver stopped. Stable Chrome156/Firefox159 verified100/200 zoom. No real household data.
 - GitHub: Issues1–12 mapped/reconciled, setup11 closed; skeleton12 Done/closed; exact body and state readback verified. No pushes authorized; issue synchronization separately authorized.
 - Blockers: None for next local task; production decisions remain outside local delivery.
-- Next action: PM reads issue1, grooms on develop and commits, then developer branches with grooming commit, implementation→QA→orchestrator gate.
+- Next action: Developer creates task/001-accounts from current committed develop, implements scope, commits exact revision; QA attempt1 then orchestrator gate. Issue1 Ready/open exact readback verified; no pending sync.
 
 Source publication: Issue bodies contain complete specifications; local source is unpushed. Issue links to develop source may not resolve until separately authorized source publication.
 
@@ -153,6 +153,6 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Current role/task: PM → developer / 001 Ready. Skeleton integrated at `79711b8348ff400983c5e6d265b90a476c3a6bad`; QA1/orchestrator PASS implementation `f663bfe2149500d13516c1d82d924c3fb0a87185`, postmerge checks passed.
 - Scope/readiness: four ACs preserved; django-allauth/custom user, mandatory verification, one-hour safe links, recovery invalidation, atomic PostgreSQL five-failure/five-minute identity lockouts, supplementary source/request throttles, CSRF/session privacy, accessible recoverable errors and SMTP retry verified by specified backend/browser checks. No material question.
 - Sequencing: establish reusable verified-account access guard with synthetic protected endpoint fixture now; actual household data isolation 002/004 and PIN/parent authority 003/007 remain named later requirements, never claimed complete here.
-- Authoritative issue1 Ready/open reconciled and body readback verified; no pending synchronization. Grooming branch develop; full grooming commit recorded after commit.
+- Authoritative issue1 Ready/open reconciled and body readback verified; no pending synchronization. Grooming branch `develop`; full grooming commit `0be3570381f86976bd0fbdfe214d4cfa06025c75`. Subsequent checkpoint-only commit records this hash without changing task scope.
 - Counters: batch1 completions2/10; setup2/3, skeleton1/3, 001–010 each0/3. No push authorization.
 - Next: developer creates task/001-accounts from committed grooming, implements account scope, commits exact implementation, hands to independent QA (attempt1).
