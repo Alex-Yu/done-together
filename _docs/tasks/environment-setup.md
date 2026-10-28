@@ -1,6 +1,6 @@
 # environment-setup: Set up the Django development environment
 
-Status: In review
+Status: Done
 Labels: `environment-setup`
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/11
 Local task: `_docs/tasks/environment-setup.md`
@@ -13,13 +13,13 @@ The developer installs and configures a reproducible local Python/Django toolcha
 
 ## Acceptance criteria
 
-- [ ] AC-001: Inspect the macOS environment and existing services, record actual versions/paths, and install only missing compatible prerequisites: uv, Python 3.13, PostgreSQL 17 clients/server, Mailpit, Git/GitHub CLI and stable Chrome/Firefox. Required access failures are recorded; unrelated services/data remain intact.
-- [ ] AC-002: Create metadata/dependency files only (`pyproject.toml`, `.python-version`, `uv.lock`), resolve the runtime/dev package set in commands.md, and reproduce it with `uv sync --locked`. Python/Django versions and required package imports succeed. No Django project, app source, settings, manage.py or templates are created in this task.
-- [ ] AC-003: Configure a dedicated loopback PostgreSQL database and non-superuser application role with isolated test-database creation rights. An authenticated application-role `SELECT 1` succeeds. Test database naming cannot target application data; no SQLite substitute is used.
-- [ ] AC-004: Run loopback-only Mailpit, send a synthetic SMTP message to port 1025 using a repeatable documented procedure and observe it in the UI on port 8025. Confirm no external mail delivery is configured. Record startup/shutdown and any process left running.
-- [ ] AC-005: Create ignored local `.env` values and a placeholder-only `.env.example` for the variable names in commands.md, including generated independent Django/PIN secrets. Ignore local credentials, mail data, environments and private artifacts while tracking examples and lockfiles. Evidence does not expose secrets. Application settings consumption is deferred to the skeleton.
-- [ ] AC-006: Install Playwright Chromium/Firefox binaries and record executable availability, plus versions of the separate stable Chrome/Firefox installations. Ruff and pytest execute their version probes successfully. No application tests are claimed before source exists.
-- [ ] AC-007: Replace the applicable environment command entries in commands.md with exact validated instructions, versions, working directory, prerequisites, expected/observed results and a reproducible synthetic SMTP capture procedure. Leave skeleton/feature commands explicitly UNVERIFIED. Independent QA maps evidence to AC-001–007.
+- [x] AC-001: Inspect the macOS environment and existing services, record actual versions/paths, and install only missing compatible prerequisites: uv, Python 3.13, PostgreSQL 17 clients/server, Mailpit, Git/GitHub CLI and stable Chrome/Firefox. Required access failures are recorded; unrelated services/data remain intact.
+- [x] AC-002: Create metadata/dependency files only (`pyproject.toml`, `.python-version`, `uv.lock`), resolve the runtime/dev package set in commands.md, and reproduce it with `uv sync --locked`. Python/Django versions and required package imports succeed. No Django project, app source, settings, manage.py or templates are created in this task.
+- [x] AC-003: Configure a dedicated loopback PostgreSQL database and non-superuser application role with isolated test-database creation rights. An authenticated application-role `SELECT 1` succeeds. Test database naming cannot target application data; no SQLite substitute is used.
+- [x] AC-004: Run loopback-only Mailpit, send a synthetic SMTP message to port 1025 using a repeatable documented procedure and observe it in the UI on port 8025. Confirm no external mail delivery is configured. Record startup/shutdown and any process left running.
+- [x] AC-005: Create ignored local `.env` values and a placeholder-only `.env.example` for the variable names in commands.md, including generated independent Django/PIN secrets. Ignore local credentials, mail data, environments and private artifacts while tracking examples and lockfiles. Evidence does not expose secrets. Application settings consumption is deferred to the skeleton.
+- [x] AC-006: Install Playwright Chromium/Firefox binaries and record executable availability, plus versions of the separate stable Chrome/Firefox installations. Ruff and pytest execute their version probes successfully. No application tests are claimed before source exists.
+- [x] AC-007: Replace the applicable environment command entries in commands.md with exact validated instructions, versions, working directory, prerequisites, expected/observed results and a reproducible synthetic SMTP capture procedure. Leave skeleton/feature commands explicitly UNVERIFIED. Independent QA maps evidence to AC-001–007.
 
 ## Out of scope
 
@@ -52,9 +52,9 @@ Follow [architecture](../architecture.md) and [commands](../commands.md). Native
 - Implementation summary: Reproducible Python3.13/Django5.2 runtime/dev lockfiles, project-local PostgreSQL17.11 cluster on55432, loopback Mailpit1.32.0 synthetic capture, Playwright browsers, secret-safe ignored local configuration and validated setup commands. No application source introduced.
 - Task branch / verified implementation commit: `task/environment-setup` / `1dc5e2406abd49d3cb20e2a20c4f5e191f577274`; independent QA attempt2 PASS for AC001–007; original attempt1 failure retained in evidence.
 - Changed files / revision: `.gitignore`, `.env.example`, `.python-version`, `pyproject.toml`, `uv.lock`, commands, setup task, backlog and developer evidence. Ignored local services/config are not committed.
-- Final branch tip / delivery commit / integration results: Pending
+- Final branch tip / delivery commit / integration results: Completion records follow QA evidence tip `156e10f6b1a8de15b2814c0b86480fe8cb05b2ef`; local integration results and exact delivery commit recorded in backlog after merge.
 - Push status / authorized remote and branch targets: None authorized
 - Checks and results: `uv sync --locked`, runtime imports, pytest/Ruff version probes, authenticated PostgreSQL SELECT1/role privileges/disposable test database rights, project cluster restart, browser executable availability, synthetic Mailpit SMTP/API/UI capture, loopback bindings, graceful Mailpit stop, config/ignore checks and `git diff --check` passed. Application commands remain UNVERIFIED.
 - Verification record: [developer setup evidence](../verification/environment-setup-developer.md); [independent QA attempt1 FAIL](../verification/environment-setup-qa.md); [independent QA attempt2 PASS](../verification/environment-setup-qa-attempt-2.md).
-- Orchestrator requirements re-check / evidence / outcome: Pending
-- Remaining risks or blockers: No QA blocker. Attempt2/3 PASS after corrected project-specific pg_ctl shutdown and offline Mailpit version probe. Orchestrator requirements re-check/integration pending. PostgreSQL17 left running; Mailpit stopped; existing PostgreSQL13 unchanged. No push authorization.
+- Orchestrator requirements re-check / evidence / outcome: PASS at verified implementation `1dc5e2406abd49d3cb20e2a20c4f5e191f577274`; [re-check evidence](../verification/environment-setup-orchestrator.md) maps every criterion and enabling requirement, including independent repeated locked sync, authenticated database/role queries and offline Mailpit version probe.
+- Remaining risks or blockers: No setup blocker. PostgreSQL17 left running; Mailpit stopped; existing PostgreSQL13 unchanged. Application source and feature behavior remain dependent work. No push authorization.

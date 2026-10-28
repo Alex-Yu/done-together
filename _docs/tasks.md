@@ -28,19 +28,19 @@ Bootstrap criteria preserve environment-before-skeleton separation. PM reconcile
 
 ## Checkpoint — 2026-10-28
 
-- Phase: Delegated delivery started; PM grooming complete; route Ready environment-setup to developer.
-- Agreed task set: environment-setup, application-skeleton, 001–010 (12 tasks); [plan.md](plan.md) REQ-001–027, D-01–07, P-01–07 unchanged.
-- Delivery branch / starting state: `develop` created from `main` at `b8ea110`; no implementation exists yet. PM grooming commit: `66245f5fcde8bce1e189b7ff86885a3d232b8d7d` on `develop`; contains all 12 task mirrors and synchronized scope. Subsequent checkpoint-only commit records this hash without changing task scope.
-- Current role/task: PM handoff → developer / [environment-setup](tasks/environment-setup.md); create `task/environment-setup` from committed grooming on develop.
-- Readiness: environment-setup Ready; skeleton scope refined but Draft until setup Done/integrated; features Draft pending integrated dependencies/current PM review.
-- Architecture / commands: Django + PostgreSQL + HTMX; commands remain UNVERIFIED until executed. Preserve unrelated PostgreSQL 13 on 5432; developer uses isolated project-owned PostgreSQL 17 on loopback 55432 and project-local tooling/cache where needed.
-- Per-task developer-to-QA attempts: environment-setup 2/3; application-skeleton 0/3; 001 0/3; 002 0/3; 003 0/3; 004 0/3; 005 0/3; 006 0/3; 007 0/3; 008 0/3; 009 0/3; 010 0/3. Attempts persist across sessions/batches.
-- Delivery batch: 1; completions 0/10. Default limit stops after ten completed tasks (through 008 if sequential); 009/010 require explicit batch renewal before continuation. Do not claim full release then.
-- Verification evidence: PM scope/architecture review and exact issue-body readback only; no environment/application checks or QA verdict claimed. Developer and independent QA must verify every setup criterion before completion.
-- GitHub: origin `git@github.com:Alex-Yu/done-together.git` confirmed. Issues #1–#12 read/reconciled; #11 environment-setup with preserved label, #12 skeleton newly created; all open. No pending synchronization.
-- Push authorization: None; do not push local develop/task branches. Issue updates are authorized separately.
-- Remaining decisions: Production hosting/provider/budget/operations remain out of local release scope; no consequential local product question identified. Tool/access failures route to developer, then request only specific missing access if necessary.
-- Next routing action: Developer implements one Ready setup task from full grooming commit; commit and submit exact revision to QA (consumes attempt 1); orchestrator re-check follows QA PASS before Done/merge.
+- Phase: Setup completion gate passed; local integration pending, then PM skeleton grooming.
+- Agreed task set: environment-setup, application-skeleton, 001–010 (12 tasks); plan REQ-001–027 and D/P defaults unchanged.
+- Delivery branch: `develop`, created from `main` at `b8ea110`; grooming `66245f5fcde8bce1e189b7ff86885a3d232b8d7d`, PM checkpoint `18e9ab25fb08609d6709ce8af5e866486bee4fe3`.
+- Current task: environment-setup Done after QA PASS and orchestrator PASS at `1dc5e2406abd49d3cb20e2a20c4f5e191f577274`; evidence/status tip `156e10f6b1a8de15b2814c0b86480fe8cb05b2ef`; integrate before dependent work. Detailed handoff history follows.
+- Readiness: Skeleton and features remain Draft; PM grooms skeleton after successful setup integration.
+- Environment: Project-owned PostgreSQL17.11 loopback55432 running, unrelated PostgreSQL13:5432 preserved; Mailpit stopped. Setup commands validated; application/feature commands UNVERIFIED.
+- Per-task developer-to-QA attempts: environment-setup 2/3; application-skeleton 0/3; 001 0/3; 002 0/3; 003 0/3; 004 0/3; 005 0/3; 006 0/3; 007 0/3; 008 0/3; 009 0/3; 010 0/3. Counts persist across sessions/batches.
+- Delivery batch: 1; completions 1/10 after successful integration. Default limit stops after ten completions; 009/010 then need batch renewal.
+- Evidence: [QA PASS](verification/environment-setup-qa-attempt-2.md), [orchestrator PASS](verification/environment-setup-orchestrator.md); no application tests or feature completion claimed.
+- GitHub: origin Alex-Yu/done-together, issues #1–#12 reconciled; issue #11 completion update/closure pending successful integration. Other issues remain Draft/open.
+- Push authorization: None; local commits only. Issue synchronization authorized separately.
+- Blockers: None for local setup. Production decisions remain outside local scope.
+- Next routing: Commit completion, merge setup into develop, integration checks, record delivery hash and close synchronized issue #11; PM skeleton grooming.
 
 Source publication: Issue bodies contain complete specifications; local source is unpushed. Issue links to develop source may not resolve until separately authorized source publication.
 
@@ -88,3 +88,11 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Services: project PG17 stop/start verified and left running on127.0.0.1:55432; unrelated PG13PID858 unchanged; Mailpit stopped.
 - Synchronization: issue11 QA PASS handoff updated/readback; no closure, merge or push. Push authorization None.
 - Next routing: Orchestrator re-check exact implementation/evidence, record completion only if gate passes, merge/integration checks, then PM grooms dependent skeleton.
+
+## Orchestrator completion checkpoint — environment-setup
+
+- Verified implementation: `1dc5e2406abd49d3cb20e2a20c4f5e191f577274`; QA evidence tip `156e10f6b1a8de15b2814c0b86480fe8cb05b2ef`.
+- Re-check: PASS; [evidence](verification/environment-setup-orchestrator.md). All seven setup criteria met; no application requirement claimed complete.
+- Current routing: commit Done records on `task/environment-setup`, integrate into `develop`, run locked sync/database integration checks, record delivery hash, reconcile/close issue #11, then PM grooms skeleton.
+- Attempts: setup 2/3; all other tasks 0/3. Batch 1 completions 1/10 upon successful integration.
+- Push authorization: None; local delivery only.
