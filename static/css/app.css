@@ -8,3 +8,10 @@ section { margin-top: 2rem; padding: 1.5rem; background: white; border: 1px soli
 button { font: inherit; font-weight: 650; background: #235b43; color: white; border: 2px solid #235b43; border-radius: .5rem; padding: .7rem 1rem; cursor: pointer; }
 :focus-visible { outline: 3px solid #a34a16; outline-offset: 4px; }
 #smoke-status { min-height: 1.6em; }
+
+a { color: #235b43; text-underline-offset: .2em; }
+input { display: block; max-width: 100%; width: 24rem; padding: .6rem; font: inherit; border: 1px solid #596e61; border-radius: .35rem; }
+input[type=checkbox] { display: inline; width: auto; }
+label { display: block; font-weight: 600; }
+.errorlist { color: #8c251b; }
+.helptext { display: block; max-width: 38rem; }

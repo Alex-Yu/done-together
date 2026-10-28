@@ -39,6 +39,8 @@ def chrome():
                     page.goto(BASE_URL)
                     page.wait_for_function("window.htmx !== undefined")
                     page.keyboard.press("Tab")
+                    page.keyboard.press("Tab")
+                    page.keyboard.press("Tab")
                     button = page.get_by_role("button", name="Check connection")
                     expect(button).to_be_focused()
                     assert (
@@ -145,7 +147,9 @@ def firefox():
             while not execute("return window.htmx !== undefined"):
                 assert time.monotonic() < deadline
                 time.sleep(0.05)
-            key("\ue004")  # Tab
+            key("\ue004")  # Tab through account navigation to smoke button
+            key("\ue004")
+            key("\ue004")
             assert (
                 execute("return document.activeElement.textContent")
                 == "Check connection"

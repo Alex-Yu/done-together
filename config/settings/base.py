@@ -25,6 +25,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "allauth",
+    "allauth.account",
     "accounts",
     "board",
 ]
@@ -35,6 +37,8 @@ MIDDLEWARE = [
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
+    "accounts.middleware.AccountSafetyMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 ROOT_URLCONF = "config.urls"
@@ -99,3 +103,53 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 X_FRAME_OPTIONS = "DENY"
+
+AUTHENTICATION_BACKENDS = ["allauth.account.auth_backends.AuthenticationBackend"]
+ACCOUNT_ADAPTER = "accounts.adapter.AccountAdapter"
+ACCOUNT_LOGIN_METHODS = {"email"}
+ACCOUNT_SIGNUP_FIELDS = ["email*", "password1*", "password2*"]
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_EMAIL_CONFIRMATION_HMAC = False
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1 / 24
+ACCOUNT_CONFIRM_EMAIL_ON_GET = False
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = False
+ACCOUNT_LOGIN_ON_PASSWORD_RESET = False
+ACCOUNT_PREVENT_ENUMERATION = True
+ACCOUNT_EMAIL_UNKNOWN_ACCOUNTS = True
+ACCOUNT_RATE_LIMITS = False  # Replaced by atomic DB identity and source limits.
+ACCOUNT_PASSWORD_RESET_TOKEN_GENERATOR = "accounts.tokens.OneHourResetTokenGenerator"
+PASSWORD_RESET_TIMEOUT = 3600
+LOGIN_REDIRECT_URL = "/"
+ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = "/accounts/login/"
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = "/"
+ACCOUNT_LOGOUT_REDIRECT_URL = "/accounts/login/"
+SECURE_REFERRER_POLICY = "same-origin"
+DEFAULT_EXCEPTION_REPORTER_FILTER = "accounts.privacy.PrivateExceptionFilter"
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "filters": {"account_private": {"()": "accounts.privacy.AccountLogFilter"}},
+    "handlers": {
+        "private_console": {
+            "class": "logging.StreamHandler",
+            "filters": ["account_private"],
+        }
+    },
+    "loggers": {
+        "django.server": {
+            "handlers": ["private_console"],
+            "level": "INFO",
+            "propagate": False,
+        },
+        "django.security": {
+            "handlers": ["private_console"],
+            "level": "WARNING",
+            "propagate": False,
+        },
+        "django.request": {
+            "handlers": ["private_console"],
+            "level": "WARNING",
+            "propagate": False,
+        },
+    },
+}

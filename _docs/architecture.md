@@ -79,3 +79,9 @@ The scheduler must operate without browsers and recover safely after downtime. L
 - [Django support periods](https://www.djangoproject.com/download/) and [Python compatibility](https://docs.djangoproject.com/en/5.2/faq/install/).
 - [Django transactions](https://docs.djangoproject.com/en/5.2/topics/db/transactions/) and [constraints](https://docs.djangoproject.com/en/5.2/ref/models/constraints/).
 - [HTMX polling](https://htmx.org/docs/#polling) and [django-allauth configuration](https://docs.allauth.org/en/latest/account/configuration.html).
+
+## Account implementation details — task001
+
+Allauth65.21.0 uses email-only login/mandatory verification with DB confirmation records and supported adapter/view/token-generator hooks for exact one-hour expiry and safe link consumption. PostgreSQL identity failure rows enforce P05; separate HMAC-keyed source windows permit60 account POSTs per60seconds using REMOTE_ADDR, replacing process-local allauth cache limits. This supplementary limit is a routine security default and does not replace five failures/five minutes.
+
+Private verification URLs exchange their key into a session-bound nonce flow before rendering a form. Original token responses use no-referrer; token-free forms/ordinary pages use same-origin, since blanket no-referrer makes native browser POSTs send Origin:null and fail CSRF. All account responses are no-store; request/CSRF log filters redact original keys, flow identifiers and all account query strings. DB/SMTP failures return generic recoverable responses. See task001 evidence; household/PIN integration remains subsequent work.

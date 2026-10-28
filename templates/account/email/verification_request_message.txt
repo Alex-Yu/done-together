@@ -1,0 +1,1 @@
+A verification email was requested for this address. If you need to create an account, visit {{ request.scheme }}://{{ request.get_host }}/accounts/signup/. Otherwise you can ignore this message.

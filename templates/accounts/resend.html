@@ -1,0 +1,1 @@
+{% extends "base.html" %}{% block content %}<h1>Resend verification email</h1>{% if sent %}<p>If verification is needed, you’ll receive a new link. Check your email.</p>{% else %}<form method="post">{% csrf_token %}{{ form.as_p }}<button type="submit">Send verification email</button></form>{% endif %}{% endblock %}

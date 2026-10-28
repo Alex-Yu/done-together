@@ -1,6 +1,6 @@
 # 001: Account registration, verification, sign-in, recovery, and safeguards
 
-Status: Ready
+Status: In review
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/1
 Local task: `_docs/tasks/001-accounts.md`
@@ -43,12 +43,12 @@ Product scope and architecture are confirmed; no consequential product question 
 
 - PM readiness: Ready on 2026-10-28 after skeleton integration; four ACs preserved and mapped to concrete account checks and named later integration owners. Full grooming commit recorded in backlog checkpoint.
 
-- Implementation summary: Not started
-- Task branch / verified implementation commit: Pending
-- Changed files / revision: Initial delivery grooming on `develop`; full grooming commit recorded in backlog checkpoint
+- Implementation summary: allauth verified email/password registration/sign-in/recovery, nonce-bound private link handling, atomic PostgreSQL identity/source limits, reusable verified guard, protected logs/headers, recoverable mail/DB errors and accessible account pages. Household/PIN features remain later tasks.
+- Task branch / verified implementation commit: `task/001-accounts`; exact hash recorded after implementation commit; QA pending.
+- Changed files / revision: accounts models/migration/services/adapter/views/access/privacy; settings/URLs/templates/styles; request/browser tests and tracked stable/SMTP helpers; architecture/commands/evidence. Lock unchanged.
 - Final branch tip / delivery commit / integration results: Pending
 - Push status / authorized remote and branch targets: No pushes authorized
-- Checks and results: Scope/architecture reviewed against confirmed requirements on 2026-10-28; issue reconciliation recorded in backlog checkpoint; implementation verification not run
-- Verification record: Pending
-- Orchestrator requirements re-check / evidence / outcome: Pending
-- Remaining risks or blockers: None at readiness; specific access failures route through orchestrator; no pushes authorized
+- Checks and results: Required gates pass;32 server tests,4 browser tests; affected final failure/SMTP cases1 each pass. Stable Chrome/Firefox keyboard/native100/200% checks, actual Mailpit capture and post-restart account revisit PASS.
+- Verification record: [developer account evidence](../verification/001-accounts-developer.md); independent QA pending.
+- Completion/integration record: Pending independent QA; per-task orchestrator requirements re-check removed by user. Final release review remains required.
+- Remaining risks or blockers: No implementation blocker; independent QA required. Actual household/PIN integration remains subsequent tasks. Own local DB credential rotated after verbose failing fixture trace; no committed secret. No pushes authorized.

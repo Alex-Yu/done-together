@@ -22,7 +22,7 @@ dev = [
 DJANGO_SETTINGS_MODULE = "config.settings.test"
 python_files = ["test_*.py"]
 testpaths = ["tests"]
-addopts = "--liveserver=127.0.0.1:0"
+addopts = "--liveserver=127.0.0.1:0 --tb=short"
 
 [tool.ruff]
 exclude = [".local", ".venv", "staticfiles"]

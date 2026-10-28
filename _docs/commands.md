@@ -1,6 +1,6 @@
 # Project commands
 
-Status: Environment setup independently verified/integrated on2026-10-28 (see task evidence). Skeleton commands are developer-validated below; independent skeleton QA pending. Feature/scheduler commands remain UNVERIFIED.
+Status: Environment and skeleton independently verified/integrated. Task001 accounts developer-validated on2026-10-28; independent account QA pending. Remaining feature/scheduler commands remain UNVERIFIED.
 
 The developer executes [environment-setup](tasks/environment-setup.md) before [application-skeleton](tasks/application-skeleton.md). Each task replaces intended entries with exact observed versions, working directory, environment, expected/observed results and evidence. Feature commands remain unverified until their owning tasks implement and validate them. QA checks independently under [testing-guidelines.md](testing-guidelines.md).
 
@@ -264,6 +264,55 @@ Independent QA must replay checks and bind its verdict to the implementation com
 
 
 Custom command names and flags are intended contracts to implement in task 006, not existing Django commands. Production scheduling must use a supervised process or equivalent platform scheduler chosen in an explicit operational task.
+
+### Validated account procedures — task001, 2026-10-28
+
+Account-specific implementation now uses the locked django-allauth65.21.0. Verified email is mandatory, sign-in is email/password only, and the existing custom user is retained. No household/PIN/board workflows are implemented by this task. The reusable verified-account guard is exercised through a test-only protected endpoint; its later household/PIN integration remains tasks002–004/007.
+
+```sh
+uv run python manage.py migrate
+uv run python manage.py check
+uv run python manage.py makemigrations --check --dry-run
+uv run ruff format --check .
+uv run ruff check .
+uv run pytest tests/integration/test_accounts.py -q
+uv run pytest tests/unit tests/integration -q
+uv run pytest tests/e2e --browser chromium --browser firefox -q
+uv run python manage.py collectstatic --noinput
+uv sync --locked
+```
+
+Developer final required regression:32 server/config tests passed (21 account cases plus11 bootstrap cases),4 bundled browser tests passed (account lifecycle and skeleton in each engine), checks/drift/lint/format/locked sync exit0. Account-targeted runs passed19 then20 cases while coverage was added; the full32-case run covers the final21 account cases. After two final narrow safeguards, only their affected checks were repeated: database-independent failure rendering1 pass/20 deselected, and SMTP registration/unsent-link retry1 pass/20 deselected. No empty selector is treated as success. Static collection copied7 files for account/static changes and includes local HTMX. All PostgreSQL test commands must run sequentially against the single disposable test database; independent simultaneous suites require separately named test databases.
+
+Account links expire at one hour, including exact boundary tests3599/3600/3601 seconds. Allauth database confirmation links use1/24day plus explicit boundary/unsent-key checks. Verification GET exchanges the private key into a server-side, nonce-bound confirmation flow and redirects to a URL containing no original email key; GET never verifies. An older tab cannot consume a subsequently opened link. The CSRF-protected POST rechecks unexpired/unconsumed state under a PostgreSQL row lock. Recovery uses the supported custom token-generator hook to reject at3600 seconds (Django's default accepts the exact timeout); password changes invalidate old tokens and credentials. Reset POST locks/rechecks the current user before replacing the password.
+
+Security headers: every account response/redirect is no-store. Original private verification/recovery token URLs use `Referrer-Policy:no-referrer`; ordinary account pages and token-free forms use `same-origin`, suppressing cross-origin referrers while permitting native browser CSRF Origin checks. A blanket no-referrer policy caused real browser POST Origin:null/403 and was corrected without relaxing CSRF. Request/CSRF-security log handlers redact private path segments and all account query strings, including encoded redirect parameters. Exception filtering also hides the PIN pepper. Password inputs never re-render their values.
+
+The PostgreSQL identity limiter serializes five consecutive incorrect passwords into five minutes of restriction across sessions/processes. Restricted requests never extend the deadline; correct credentials are denied until expiry, then permitted success clears failures. Supplemental source throttling is a separate atomic60 account POSTs per60-second window, using REMOTE_ADDR (no untrusted forwarded headers). Allauth cache limits are replaced by these DB limits. Source/identity keys are HMAC-derived and contain no plaintext email/IP. The shared identity helper is prepared for task003 PIN integration, which is not yet claimed verified.
+
+Known/unknown recovery and resend requests use equal generic responses and delivery attempts. SMTP errors return a recoverable503 without provider details or false success; a retained unverified registration can request another link without duplicating its account. Unsent confirmation records deny access safely. Account database failures render a generic503 independent of session/database-backed template context. Base settings use secure/HttpOnly sessions; local loopback HTTP/test settings alone disable Secure for local execution.
+
+#### Installed browsers, real SMTP capture and persistence
+
+Start the loopback webserver, Mailpit and geckodriver with the previously documented foreground commands. Then:
+
+```sh
+uv run python tools/verify_account_browsers.py
+uv run python tools/verify_account_mail.py
+# Stop/restart only the local webserver, then:
+uv run python tools/verify_account_mail.py --revisit
+# Retained skeleton installed-browser regression helper:
+uv run python tools/verify_skeleton_browsers.py
+```
+
+The installed-browser account helper passed Chrome156.0.8078.48/Firefox159.0 at native100% (1280×720,DPR1) and200% (640×360,DPR2): keyboard navigation through labeled email/password/button, visible focus, generic failed-login message, empty password on re-render and no horizontal overflow. The `.local/account-{chrome,firefox}-{100,200}.png` screenshots were visually inspected. These are private ignored artifacts. Bundled-browser tests complete register→email capture→verify→sign in→reload→sign out→recover→old password denial/new password sign-in in isolated PostgreSQL/in-memory mail.
+
+`verify_account_mail.py` passed using installed Chrome and actual loopback SMTP/Mailpit: synthetic registration, captured verification link, verification/sign-in/sign-out, captured recovery email and password replacement. Mailpit UI screenshot `.local/account-mailpit-capture.png` visually confirms both email types. The helper retains only generated synthetic credentials in ignored0600 `.local/account-mailpit-fixture.json`; it never prints credentials or links, including on failure. After webserver restart, `--revisit` passed sign-in/reload with the stored account, demonstrating persistence. The helper creates isolated synthetic local accounts; no real family data or external email is used.
+
+Developer services started only for verification are stopped before handoff. PostgreSQL17 remains running on55432; unrelated PostgreSQL13 on5432 is preserved. A mistakenly overlapping pair of disposable test suites caused teardown failures; those results were discarded and suites rerun sequentially. A framework long traceback included local connection parameters during that failure; the project-only database credential was immediately rotated in ignored `.env`/pgpass, parity/authenticated SELECT1 rechecked, and pytest short tracebacks configured. No credential value is included in source/evidence. Do not print fixture files or raw verbose connection traces.
+
+Independent QA must verify task001 at its exact implementation commit. Remaining feature/scheduler commands remain UNVERIFIED.
+
 
 ## Acceptance and verification procedures — bootstrap executed; features UNVERIFIED
 

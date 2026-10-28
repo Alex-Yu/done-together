@@ -12,5 +12,7 @@ def page(live_server, transactional_db, browser_name, pytestconfig):
             headless=not pytestconfig.getoption("headed")
         ) as browser:
             context = browser.new_context(viewport={"width": 1280, "height": 720})
-            yield context.new_page()
+            page = context.new_page()
+            page.set_default_timeout(5000)
+            yield page
             context.close()

@@ -13,7 +13,7 @@ Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature 
 | --- | --- | --- | --- | --- |
 | `environment-setup` | [Set up the development environment](tasks/environment-setup.md) | Done | None; PM readiness passed | [#11](https://github.com/Alex-Yu/done-together/issues/11) |
 | application-skeleton | [Create a runnable application skeleton](tasks/application-skeleton.md) | Done | environment-setup Done/integrated | [#12](https://github.com/Alex-Yu/done-together/issues/12) |
-| 001 | [Account registration, verification, sign-in, recovery, and safeguards](tasks/001-accounts.md) | Ready | application-skeleton Done/integrated | [#1](https://github.com/Alex-Yu/done-together/issues/1) |
+| 001 | [Account registration, verification, sign-in, recovery, and safeguards](tasks/001-accounts.md) | In review | application-skeleton Done/integrated | [#1](https://github.com/Alex-Yu/done-together/issues/1) |
 | 002 | [Household creation, timezone setup, and second-parent invitation](tasks/002-households.md) | Draft | 001 | [#2](https://github.com/Alex-Yu/done-together/issues/2) |
 | 003 | [Child profiles, parent/child PIN management, and protected shared access](tasks/003-pins.md) | Draft | 002 | [#3](https://github.com/Alex-Yu/done-together/issues/3) |
 | 004 | [Shared board, empty states, and settings navigation](tasks/004-board.md) | Draft | 003 | [#4](https://github.com/Alex-Yu/done-together/issues/4) |
@@ -156,3 +156,24 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Authoritative issue1 Ready/open reconciled and body readback verified; no pending synchronization. Grooming branch `develop`; full grooming commit `0be3570381f86976bd0fbdfe214d4cfa06025c75`. Subsequent checkpoint-only commit records this hash without changing task scope.
 - Counters: batch1 completions2/10; setup2/3, skeleton1/3, 001–010 each0/3. No push authorization.
 - Next: developer creates task/001-accounts from committed grooming, implements account scope, commits exact implementation, hands to independent QA (attempt1).
+
+## User limit reset — 2026-10-28
+
+- User explicitly reset limits and requested goal continuation during task001 implementation. Start batch2 with default ten completions, now0/10; remaining001–010 fit this batch. Batch1 ended with setup and skeleton Done (2 completions).
+- Preserve task attempt history: setup2/3, skeleton1/3, accounts0/3 before QA dispatch; all later tasks0/3.
+- Current role/task: developer implementing001 on task/001-accounts from PM checkpoint c7a085d3d1604951e49c1b9847ecb4d5dc94693e; uncommitted source/tests are incomplete until exact implementation handoff.
+- Last developer results: account integration20 and bundled browser4 passed; installed Chrome/Firefox native100/200 account checks and actual Mailpit account lifecycle passed. Final regression, persistence and commit/handoff pending; no QA verdict for001 yet.
+- Next routing: developer finishes and commits, independent QA attempt1, orchestrator requirements re-check and integration, then PM002. No pushes authorized.
+
+## Developer handoff —001 accounts, 2026-10-28
+
+- Current role/task: Account implementation complete/In review; route independent QA. User removed separate per-task orchestrator requirements re-check; QA PASS proceeds to completion/integration, final release review retained.
+- Branch: `task/001-accounts`, from PM checkpoint c7a085d3d1604951e49c1b9847ecb4d5dc94693e including grooming0be3570381f86976bd0fbdfe214d4cfa06025c75.
+- Exact implementation commit: Recorded after implementation commit; later handoff/workflow-only commits contain no source changes.
+- Evidence: [developer account record](verification/001-accounts-developer.md), [validated commands](commands.md), tracked stable-browser and real-SMTP helpers.
+- Results:32 server/config tests and4 browser tests passed; final narrow DB-failure/unsent-SMTP-link cases1 each passed; migrate/check/drift/lint/format/static/locked sync pass. Native stable Chrome156/Firefox159 keyboard100/200% account checks, actual Mailpit verification/recovery capture, and stored synthetic account post-webserver-restart revisit PASS.
+- Services: ProjectPG17 remains127.0.0.1:55432; unrelatedPG13:5432 preserved. App/Mailpit/geckodriver cleanly stopped (exit0; endpoints refuse).
+- Privacy correction: private link GET exchanges into nonce-bound server session; token-free native forms retain CSRF and same-origin referrer policy, original private redirects no-referrer; all no-store. Local-only DB credential rotated after verbose failing fixture trace; ignored.env/pgpass parity and SELECT1 verified, no value in source/evidence.
+- Active batch2:0/10 completions, explicitly renewed by user during001. Historical batch1 completed setup/skeleton2 tasks. Attempts:setup2/3,skeleton1/3,0010/3 before QA dispatch;002–010 all0/3.
+- Issue1 In review exact-body/hash readback verified at handoff; no pushes authorized or performed.
+- Next: PM commits/synchronizes user-requested workflow documents on this branch; independent QA001 attempt1 at exact implementation, then completion/integration on PASS. Actual household/PIN rights remain later tasks.

@@ -18,6 +18,8 @@ def test_landing_local_htmx_and_keyboard_interaction(page, live_server):
     page.wait_for_function("window.htmx !== undefined")
     assert page.locator("script[src]").get_attribute("src").startswith("/static/")
     page.keyboard.press("Tab")
+    page.keyboard.press("Tab")
+    page.keyboard.press("Tab")
     button = page.get_by_role("button", name="Check connection")
     expect(button).to_be_focused()
     assert button.evaluate("el => getComputedStyle(el).outlineStyle") != "none"
