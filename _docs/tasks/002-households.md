@@ -46,7 +46,7 @@ Product scope and architecture are confirmed; no consequential product question 
 - PM readiness: Ready on 2026-10-28 after account integration; five ACs preserved, selected architecture and dependency confirmed, no consequential question. Full grooming commit recorded in backlog checkpoint.
 
 - Implementation summary: Transactional household/membership/invitation services with DB parent-slot constraints, scoped equal rights, immutable browser-suggested IANA timezone, hashed private invitations/session join flow, recoverable SMTP/validation/conflicts and accessible settings. Parent PIN integration remains003.
-- Task branch / verified implementation commit: `task/002-households`; exact hash recorded after implementation commit; independent QA pending.
+- Task branch / verified implementation commit: `task/002-households` / `1b01711d3fd9962825e38ba87297a22c976d0a09`; independent QA pending.
 - Changed files / revision: households models/migration/services/views/forms/URLs/templates; account redirect/privacy middleware; timezone JS/styles/navigation; request/browser tests and tracked stable SMTP helper; commands/architecture/evidence.
 - Final branch tip / delivery commit / integration results: Pending
 - Push status / authorized remote and branch targets: No pushes authorized

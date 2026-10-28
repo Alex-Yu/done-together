@@ -221,10 +221,10 @@ Source publication: Issue bodies contain complete specifications; local source i
 
 - Current role/task: Household implementation complete/In review; independent QA next. QA PASS proceeds to completion/integration; separate orchestrator per-task re-check remains removed by user, final release review retained.
 - Branch: `task/002-households` from24b5ca3df6d882a85a38ff42bccb1731a6fb2805 including PM grooming44aff04469c91a50f16fbf89a129d963d662ad04.
-- Exact implementation commit: Recorded after implementation commit; later handoff records contain no source changes.
+- Exact implementation commit: `1b01711d3fd9962825e38ba87297a22c976d0a09`; later handoff records contain no source changes.
 - Results/evidence: [developer household record](verification/002-households-developer.md), [commands](commands.md). Household17/server49/browser6 passed; final affected wrong-recipient recovery1 passed/16 deselected. Standard gates pass; native stable100/200 realSMTP/create/invite/join/error checks and post-app-restart stored-state revisit all PASS.
 - Services: App/Mailpit/geckodriver stopped exit0/endpoints refuse; projectPG17 running127.0.0.1:55432; unrelatedPG13 preserved. Private synthetic fixtures/screenshots ignored.
 - Preparation already integrated separately onto develop96e7018af88d67b24d0ff63b924f8ebec4f1e906: PM8feda09 future Draft grooming and QA29bdf2e plans. Root task002 remains based on24b5ca3; do not rebase/merge before exact-code QA. Normal non-fast-forward task integration may be needed.
 - Counters: Active batch2 completions1/10 (001 Done); historical setup2/3,skeleton1/3,0011/3;0020/3 before QA dispatch;003–010 all0/3.
-- Issue2 In review/exact body/hash readback verified at handoff. No source push authorization; no pushes/merge performed by developer.
+- Issue2 final In review/hash synchronization pending: automatic approval review rejected the external issue write as unverified/sensitive; no write executed. Prior In progress synchronization was verified. Read-only origin/destination/payload authorization checks next. No source push authorization; no pushes/merge performed by developer.
 - Next: QA002 at exact implementation, then completion/integration on PASS, PM fresh003 readiness. Parent PIN/child/board/scheduling remain subsequent tasks.

@@ -2,7 +2,7 @@
 
 Overall verdict:PENDING — independent QA required.
 Task/specification:[002](../tasks/002-households.md), [plan](../plan.md), [architecture](../architecture.md), [commands](../commands.md).
-Revision:Implementation hash recorded after commit in task/backlog.
+Revision:`1b01711d3fd9962825e38ba87297a22c976d0a09` on `task/002-households`; subsequent record-only handoff commit changes no implementation.
 Reviewer/independence:Developer self-check, not independent QA.
 Environment:macOS x86_64/Python3.13.15/Django5.2.18/PostgreSQL17.11; bundled Chromium156/Firefox157; installed Chrome156.0.8078.48/Firefox159.0; isolated synthetic fixtures.
 Date:2026-10-28
