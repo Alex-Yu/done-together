@@ -14,7 +14,7 @@ Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature 
 | `environment-setup` | [Set up the development environment](tasks/environment-setup.md) | Done | None; PM readiness passed | [#11](https://github.com/Alex-Yu/done-together/issues/11) |
 | application-skeleton | [Create a runnable application skeleton](tasks/application-skeleton.md) | Done | environment-setup Done/integrated | [#12](https://github.com/Alex-Yu/done-together/issues/12) |
 | 001 | [Account registration, verification, sign-in, recovery, and safeguards](tasks/001-accounts.md) | In review | application-skeleton Done/integrated | [#1](https://github.com/Alex-Yu/done-together/issues/1) |
-| 002 | [Household creation, timezone setup, and second-parent invitation](tasks/002-households.md) | Draft | 001 | [#2](https://github.com/Alex-Yu/done-together/issues/2) |
+| 002 | [Household creation, timezone setup, and second-parent invitation](tasks/002-households.md) | Ready | 001 Done/integrated | [#2](https://github.com/Alex-Yu/done-together/issues/2) |
 | 003 | [Child profiles, parent/child PIN management, and protected shared access](tasks/003-pins.md) | Draft | 002 | [#3](https://github.com/Alex-Yu/done-together/issues/3) |
 | 004 | [Shared board, empty states, and settings navigation](tasks/004-board.md) | Draft | 003 | [#4](https://github.com/Alex-Yu/done-together/issues/4) |
 | 005 | [One-off chore assignment and maintenance](tasks/005-one-off-chores.md) | Draft | 004 | [#5](https://github.com/Alex-Yu/done-together/issues/5) |
@@ -28,18 +28,18 @@ Bootstrap criteria preserve environment-before-skeleton separation. PM reconcile
 
 ## Checkpoint — 2026-10-28
 
-- Phase/current routing: Setup, skeleton and001 accounts Done/integrated; PM002 household grooming next.
+- Phase/current routing: Setup, skeleton and001 Done/integrated; PM hands Ready002 household task to developer.
 - Agreed scope: environment-setup, application-skeleton,001–010; REQ-001–027 and confirmed defaults unchanged.
 - Delivery: `develop` at account task final tip/fast-forward delivery `3afacd6e58d61f727f5aa2760a7ab0bbff445043`; verified implementation `5f471f53c8b17128b9bd63c69af8fefa2028c6ab`, independent QA1 PASS. No implementation change during merge.
 - Integration: migrate/check/drift,32 server/config tests, Ruff lint/format and diff check PASS. [Account QA](verification/001-accounts-qa.md) covers all four criteria plus browser/concurrency/privacy/email/persistence checks.
 - Current workflow/user override: independent per-task QA→completion records→integration checks; no per-task orchestrator verification. Final release requires integrated QA and orchestrator requirements review. Workflow commit `c4c4233d9cc670ae68d06f03efc77d0dad707cf0` preserved historical evidence.
-- Readiness:002–010 Draft pending current grooming and integrated dependencies. Full release incomplete.
+- Readiness:002 Ready after current PM review/account integration;003–010 Draft pending grooming/dependency integration. Full release incomplete.
 - Attempts: setup2/3; skeleton1/3;0011/3;002–010 each0/3. Preserve history across sessions/batches.
 - Active batch2 completions1/10 after user limit reset; historical batch1 completed bootstrap2 tasks. Remaining002–010 fit batch2.
 - Environment: PG17.11 loopback55432 running, unrelated PG13:5432 preserved; app/Mailpit/geckodriver stopped. Synthetic data only.
 - GitHub:11/12 closed; issue1 Done/closed, exact body and state readback verified; Draft issues2–10 current workflow fields synchronized.
-- Blockers: None for PM002 grooming. No pushes authorized; issue writes separately authorized.
-- Next: PM002 grooming on develop→developer→QA. All completed issue synchronization verified.
+- Blockers: None for002 implementation. No pushes authorized; issue writes separately authorized.
+- Next: Developer creates task/002-households from committed develop grooming, implements and commits exact revision→independent QA attempt1. Issue2 Ready/open exactbody readback verified; no pending synchronization.
 
 Source publication: Issue bodies contain complete specifications; local source is unpushed. Issue links to develop source may not resolve until separately authorized source publication.
 
@@ -207,3 +207,12 @@ Source publication: Issue bodies contain complete specifications; local source i
 
 - Delivery/final task tip `3afacd6e58d61f727f5aa2760a7ab0bbff445043` on develop; all required integration checks PASS (32 server/config tests), no code delta from QA-verified implementation.
 - Batch2 1/10,001 attempts1/3; bootstrap histories retained. Issue1 Done/closed, exact body and state readback verified; PM002 next. No push.
+
+## PM Ready handoff —002 households, 2026-10-28
+
+- Dependency:001 integrated at `3afacd6e58d61f727f5aa2760a7ab0bbff445043`, independent QA1 PASS at `5f471f53c8b17128b9bd63c69af8fefa2028c6ab`; postmerge checks passed.
+- Five ACs retained: verified account creation/join, recipient-bound seven-day single-use invitations, atomic P-01 membership limits, equal rights/actual two-household isolation, immutable browser-suggested timezone, recoverable SMTP and private/accessible persistent workflows.
+- Staged authority: verified account/membership protects available household workflows now;003 integrates PIN protection into existing management/settings. Bootstrap creation/join stays account-authorized; no later PIN/child/chore requirement claimed complete.
+- Issue2 Ready/open synchronized and exactbody readback verified; grooming branch develop, full grooming commit recorded after commit.
+- Counters: active batch2 completions1/10; setup2/3,skeleton1/3,0011/3,002–010 each0/3. No push authorization; workflow-only grooming does not count as completion.
+- Next: Developer task/002-households from committed grooming, implementation→independent QA attempt1→completion/integration on PASS; no per-task orchestrator verification.
