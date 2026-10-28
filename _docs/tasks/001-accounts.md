@@ -1,6 +1,6 @@
 # 001: Account registration, verification, sign-in, recovery, and safeguards
 
-Status: In review
+Status: Done
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/1
 Local task: `_docs/tasks/001-accounts.md`
@@ -13,10 +13,10 @@ Parents can access and recover verified accounts with protected credentials.
 
 ## Acceptance criteria
 
-- [ ] AC-001: REQ-001: Verified parents can sign in; unverified accounts cannot access household data; password recovery invalidates the old password; invalid/expired links deny access.
-- [ ] AC-002: REQ-007: Repeated failures trigger a temporary restriction, including direct requests; retry is possible after the restriction. Apply P-05 limits.
-- [ ] AC-003: REQ-027: Passwords/PINs cannot be read back or exposed in ordinary responses/logs; access links are private; unauthorized direct requests fail. Mechanisms are architecture decisions.
-- [ ] AC-004: Affected changes enforce household isolation, protected parent/child permissions, persistent data, accessible keyboard interaction, and recoverable validation/failure states under REQ-003/023/025/026/027; no credential exposure or false success.
+- [x] AC-001: REQ-001: Verified parents can sign in; unverified accounts cannot access household data; password recovery invalidates the old password; invalid/expired links deny access.
+- [x] AC-002: REQ-007: Repeated failures trigger a temporary restriction, including direct requests; retry is possible after the restriction. Apply P-05 limits.
+- [x] AC-003: REQ-027: Passwords/PINs cannot be read back or exposed in ordinary responses/logs; access links are private; unauthorized direct requests fail. Mechanisms are architecture decisions.
+- [x] AC-004: Affected changes enforce household isolation, protected parent/child permissions, persistent data, accessible keyboard interaction, and recoverable validation/failure states under REQ-003/023/025/026/027; no credential exposure or false success.
 
 ## Out of scope
 

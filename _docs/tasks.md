@@ -195,3 +195,10 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Services: only dedicated PG17 remains running55432; unrelated PG13PID858 preserved5432. QA app/Mailpit/geckodriver stopped cleanly, their four ports closed. Private values never printed.
 - Synchronization: issue1 QA PASS handoff updated/readback; no closure/merge/push. No push authorization.
 - Next routing: administratively markDone/commit completion after QA PASS, integrate/check exact delivery state, close issue1 only after successful integration; PM grooms002.
+
+## Accounts completion — current routing
+
+- Independent QA1 PASS all four criteria at implementation `5f471f53c8b17128b9bd63c69af8fefa2028c6ab`; evidence/status tip `8a346c1756c3268c8639021042419cf17373e61b`. See [QA evidence](verification/001-accounts-qa.md).
+- Administrative Done/integration follows QA PASS; no per-task orchestrator verification under user workflow override.
+- Next: commit completion, fast-forward task/001-accounts to develop, run required integration gates, record delivery and synchronize/close issue1.
+- Batch2 completion1/10 on successful integration; accounts1/3 QA attempts, setup2/skeleton1 retained, later tasks0. No push.
