@@ -66,3 +66,14 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Services: project PG17 restarted/left running on127.0.0.1:55432; unrelated PG13PID858 unchanged on5432; QA Mailpit stopped cleanly. Secrets never printed.
 - Synchronization: issue11 updated/readback during QA handoff; no issue closure, merge or push. Push authorization remains None.
 - Next routing: Developer documentation correction on same branch; QA affected re-verification at new full commit, then orchestrator re-check only after PASS.
+
+## Developer fix handoff — environment-setup, 2026-10-28
+
+- Current role/task: Developer correction complete; In review for fresh affected QA.
+- Branch / exact implementation commit: `task/environment-setup` / `1dc5e2406abd49d3cb20e2a20c4f5e191f577274`. This changes only three commands.md lines from QA attempt1 implementation; subsequent handoff commits are records only.
+- Findings addressed: F001 Homebrew stop row replaced with dedicated project `pg_ctl -D .local/pgdata stop -m fast` and preservation warning; version probe now `mailpit version --no-release-check`.
+- Checks: Offline-safe Mailpit probe exit0 (v1.32.0); `git diff --check` exit0; scoped diff confirms docs-only changes. QA1 AC001–006 evidence remains linked; no new runtime behavior.
+- Counters: environment-setup1/3 attempts until next QA dispatch; all others0; batch completions0/10.
+- Services: PG17 remains127.0.0.1:55432, unrelated PG13 preserved, Mailpit stopped.
+- Issue11 synchronization: In review with exact fix hash, readback checked at handoff. No pushes/merge authorized or performed.
+- Next action: QA verifies new implementation revision for F001/AC007 plus affected checks, then orchestrator re-check on PASS.

@@ -1,6 +1,6 @@
 # environment-setup: Set up the Django development environment
 
-Status: In progress
+Status: In review
 Labels: `environment-setup`
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/11
 Local task: `_docs/tasks/environment-setup.md`
@@ -50,11 +50,11 @@ Follow [architecture](../architecture.md) and [commands](../commands.md). Native
 - PM readiness: Ready on 2026-10-28; full grooming commit recorded in backlog checkpoint.
 
 - Implementation summary: Reproducible Python3.13/Django5.2 runtime/dev lockfiles, project-local PostgreSQL17.11 cluster on55432, loopback Mailpit1.32.0 synthetic capture, Playwright browsers, secret-safe ignored local configuration and validated setup commands. No application source introduced.
-- Task branch / verified implementation commit: `task/environment-setup` / `f31e725ed4356ee142370cf8323e36f9ea43d8d5`; independent QA attempt1 FAIL (AC007 documentation inconsistency).
+- Task branch / verified implementation commit: `task/environment-setup` / `1dc5e2406abd49d3cb20e2a20c4f5e191f577274`; AC007 documentation fix committed; fresh affected QA pending. Original attempt1 failure retained in evidence.
 - Changed files / revision: `.gitignore`, `.env.example`, `.python-version`, `pyproject.toml`, `uv.lock`, commands, setup task, backlog and developer evidence. Ignored local services/config are not committed.
 - Final branch tip / delivery commit / integration results: Pending
 - Push status / authorized remote and branch targets: None authorized
 - Checks and results: `uv sync --locked`, runtime imports, pytest/Ruff version probes, authenticated PostgreSQL SELECT1/role privileges/disposable test database rights, project cluster restart, browser executable availability, synthetic Mailpit SMTP/API/UI capture, loopback bindings, graceful Mailpit stop, config/ignore checks and `git diff --check` passed. Application commands remain UNVERIFIED.
 - Verification record: [developer setup evidence](../verification/environment-setup-developer.md); [independent QA attempt1 FAIL](../verification/environment-setup-qa.md).
 - Orchestrator requirements re-check / evidence / outcome: Pending
-- Remaining risks or blockers: QA attempt1/3 FAIL: commands.md line189 incorrectly uses Homebrew to stop the delivered project-local PostgreSQL cluster. Developer must correct it to the verified pg_ctl command, add offline-safe Mailpit version probe, commit, and return for fresh affected QA. AC001–006 passed. PostgreSQL17 left running; Mailpit stopped. Existing PostgreSQL13 unchanged. No push authorization.
+- Remaining risks or blockers: QA attempt1/3 failed AC007; committed fix now uses dedicated `.local/pgdata` pg_ctl shutdown and offline-safe Mailpit version probe. `mailpit version --no-release-check` and `git diff --check` exit0. Fresh affected QA required before completion; AC001–006 prior runtime PASS retained for unchanged environment. PostgreSQL17 left running; Mailpit stopped; existing PostgreSQL13 unchanged. No push authorization.
