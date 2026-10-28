@@ -259,3 +259,22 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Develop remains docs-preparation divergence96e7018af88d67b24d0ff63b924f8ebec4f1e906; no merge/rebase/push.
 - Issue2 In review/exact fix-hash/task body synchronized and readback verified; no pending synchronization.
 - Next: QA2 on exact fix; completion/integration on PASS then PM003 readiness.
+
+
+## QA in progress —002 households attempt2,2026-10-28
+
+- Current role/task: Independent QA002 fix verification; task In review, no fresh verdict yet.
+- Exact fix implementation: `8269f5a6f5bd6fb71468a93e1a2c405f0aea519a`; reviewed records-only tip `49cd31869dc82b85b5361302caa92a2c79d86ee4`.
+- Counters:002 attempt2/3 dispatched; active renewed batch2 completions1/10; setup2/3/skeleton1/3/accounts1/3 retained;003–010 each0/3. User final-only orchestrator requirements review remains.
+- Next: inspect exact delta, independently repeat original F001/four affected failure paths/privacy/rollback/retry; retain unaffected prior runtime evidence explicitly; commit fresh evidence/status and direct issue2 readback.
+
+
+## QA handoff —002 households attempt2,2026-10-28
+
+- Current role/task: Independent QA PASS → administrative completion/integration;002 remains In review. Final-only orchestrator requirements review override preserved.
+- Exact verified implementation: `8269f5a6f5bd6fb71468a93e1a2c405f0aea519a`; reviewed records-only tip `49cd31869dc82b85b5361302caa92a2c79d86ee4`.
+- Evidence: [002 QA attempt2 PASS](verification/002-households-qa-attempt-2.md); attempt1 FAIL retained. F001 resolved: affected4/originalQAprobe1/fullserver53/checks/drift/lint/format pass, generic503/private response+log protection/rollback+retry verified. Exact delta supports retained unchanged normal browser/native/SMTP/restart evidence.
+- Counters:0022/3; active renewed batch2 completions1/10 before integration; setup2/3/skeleton1/3/accounts1/3 retained;003–0100/3.
+- Services: no new owned services for scoped fix; dedicatedPG17 remains55432. No secret values printed.
+- Synchronization: issue2 PASS handoff updated/readback; no closure/merge/push. No push authorization.
+- Next: administratively complete002, integrate with docs-only develop divergence and run applicable integration gates; then PM current readiness for003.

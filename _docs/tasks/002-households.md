@@ -46,11 +46,11 @@ Product scope and architecture are confirmed; no consequential product question 
 - PM readiness: Ready on 2026-10-28 after account integration; five ACs preserved, selected architecture and dependency confirmed, no consequential question. Full grooming commit recorded in backlog checkpoint.
 
 - Implementation summary: Transactional household/membership/invitation services with DB parent-slot constraints, scoped equal rights, immutable browser-suggested IANA timezone, hashed private invitations/session join flow, recoverable SMTP/validation/conflicts and accessible settings. Parent PIN integration remains003.
-- Task branch / verified implementation commit: `task/002-households` / `8269f5a6f5bd6fb71468a93e1a2c405f0aea519a`; independent QA2 pending. Original implementation1b01711d3fd9962825e38ba87297a22c976d0a09/attempt1 evidence retained.
+- Task branch / verified implementation commit: `task/002-households` / `8269f5a6f5bd6fb71468a93e1a2c405f0aea519a`; independent QA attempt2 PASS all fiveAC. Original implementation1b01711d3fd9962825e38ba87297a22c976d0a09/attempt1 FAIL evidence retained.
 - Changed files / revision: households models/migration/services/views/forms/URLs/templates; account redirect/privacy middleware; timezone JS/styles/navigation; request/browser tests and tracked stable SMTP helper; commands/architecture/evidence.
 - Final branch tip / delivery commit / integration results: Pending
 - Push status / authorized remote and branch targets: No pushes authorized
 - Checks and results: F001 affected4 plus original QA probe1 PASS; fresh full server53 PASS; system/drift/lint/format/diff PASS. Prior normal-path49server/6browser/native100/200/actualSMTP/restart positive evidence retained for unchanged code.
-- Verification record: [developer household evidence](../verification/002-households-developer.md); [independent QA attempt1 FAIL](../verification/002-households-qa.md); [developer F001 correction](../verification/002-households-fix-developer.md).
-- Completion / integration evidence / outcome: Pending
-- Remaining risks or blockers: F001 source correction and four service/render/privacy/retry regressions pass; fresh affected QA required before completion. Prior positive evidence retained. Task003 PIN integration remains later. No new owned services; onlyPG17 running, no pushes authorized.
+- Verification record: [developer household evidence](../verification/002-households-developer.md); [independent QA attempt1 FAIL](../verification/002-households-qa.md); [developer F001 correction](../verification/002-households-fix-developer.md); [independent QA attempt2 PASS](../verification/002-households-qa-attempt-2.md).
+- Completion / integration evidence / outcome: Independent QA2 PASS; administrative completion/integration pending. Final release requirements review remains required.
+- Remaining risks or blockers: No QA blocker; F001 resolved by independent affected4/original1/fullserver53 PASS. Unchanged browser/native/SMTP/restart positives explicitly retained. Task003 PIN integration remains later. No new owned services; onlyPG17 running, no pushes authorized.
