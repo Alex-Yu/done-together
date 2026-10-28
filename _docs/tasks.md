@@ -135,3 +135,10 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Services: PG17 remains running127.0.0.1:55432; QA loopback webserver/geckodriver stopped exit0 and endpoints refused. No private values logged.
 - Synchronization: issue12 QA PASS handoff updated/readback; no closure, merge or push. Push authorization None.
 - Next routing: Orchestrator re-check same implementation/evidence; if gate passes, complete/merge/integration-check skeleton, then PM grooms001 accounts.
+
+## Orchestrator skeleton completion checkpoint
+
+- QA attempt1 PASS and orchestrator PASS at implementation `f663bfe2149500d13516c1d82d924c3fb0a87185`; reviewed records tip `00d85a9c8657758201beb65d030ec21140027422`.
+- Evidence: [QA](verification/application-skeleton-qa.md), [requirements re-check](verification/application-skeleton-orchestrator.md).
+- Next: commit Done records, integrate task/application-skeleton into develop, run integration server/check/drift/lint commands, record delivery hash and close issue12 after readback.
+- Attempts setup2/3, skeleton1/3, others0/3. Batch completions2/10 after successful integration. No push.

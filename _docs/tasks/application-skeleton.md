@@ -1,6 +1,6 @@
 # application-skeleton: Create a runnable Django application skeleton
 
-Status: In review
+Status: Done
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/12
 Local task: `_docs/tasks/application-skeleton.md`
@@ -13,11 +13,11 @@ The developer creates a minimal Django application using the validated environme
 
 ## Acceptance criteria
 
-- [ ] AC-001: Create `manage.py`, `config/` settings/URLs/server entry points, templates/static directories and test directories following architecture.md. Use the setup task's locked dependencies. Load ignored local configuration via documented settings; tests use separate PostgreSQL and in-memory email. Configure custom parent user model before initial migrations so task 001 can implement accounts without changing an already-migrated user model. No account workflow is required here.
-- [ ] AC-002: Configure PostgreSQL and apply initial migrations to the dedicated local database. Start loopback development server at `127.0.0.1:8000`; `GET /health/` returns HTTP 200 with only `{"status":"ok"}` when a database query succeeds. Database unavailability returns HTTP 503 with a generic body and no credentials or internal details. Health exposes no household information and does not mutate data.
-- [ ] AC-003: `GET /` renders a provisional Done Together landing page with a heading, keyboard-accessible labeled smoke interaction and visible focus. Pinned HTMX is served locally with version/source/license recorded, loads without browser errors and successfully updates a smoke fragment. No product household/account screens or data are introduced.
-- [ ] AC-004: Django system checks, migration-drift check, Ruff lint/format checks, targeted health tests, full initial server suite and Playwright Chromium/Firefox smoke tests pass using the intended commands in commands.md. Include readiness success/failure behavior and the browser interaction; no empty test selection is treated as a pass. Static collection includes HTMX. Test fixtures start/stop the live server and use isolated PostgreSQL data.
-- [ ] AC-005: Start and stop web server cleanly with documented readiness/shutdown signals. commands.md records exact validated migrations, start/stop, health/landing-page smoke, asset collection, lint and test commands and observed results. Recurrence/feature commands remain UNVERIFIED. Stable Chrome/Firefox smoke plus keyboard/200% zoom observations are recorded; full feature accessibility remains task 010.
+- [x] AC-001: Create `manage.py`, `config/` settings/URLs/server entry points, templates/static directories and test directories following architecture.md. Use the setup task's locked dependencies. Load ignored local configuration via documented settings; tests use separate PostgreSQL and in-memory email. Configure custom parent user model before initial migrations so task 001 can implement accounts without changing an already-migrated user model. No account workflow is required here.
+- [x] AC-002: Configure PostgreSQL and apply initial migrations to the dedicated local database. Start loopback development server at `127.0.0.1:8000`; `GET /health/` returns HTTP 200 with only `{"status":"ok"}` when a database query succeeds. Database unavailability returns HTTP 503 with a generic body and no credentials or internal details. Health exposes no household information and does not mutate data.
+- [x] AC-003: `GET /` renders a provisional Done Together landing page with a heading, keyboard-accessible labeled smoke interaction and visible focus. Pinned HTMX is served locally with version/source/license recorded, loads without browser errors and successfully updates a smoke fragment. No product household/account screens or data are introduced.
+- [x] AC-004: Django system checks, migration-drift check, Ruff lint/format checks, targeted health tests, full initial server suite and Playwright Chromium/Firefox smoke tests pass using the intended commands in commands.md. Include readiness success/failure behavior and the browser interaction; no empty test selection is treated as a pass. Static collection includes HTMX. Test fixtures start/stop the live server and use isolated PostgreSQL data.
+- [x] AC-005: Start and stop web server cleanly with documented readiness/shutdown signals. commands.md records exact validated migrations, start/stop, health/landing-page smoke, asset collection, lint and test commands and observed results. Recurrence/feature commands remain UNVERIFIED. Stable Chrome/Firefox smoke plus keyboard/200% zoom observations are recorded; full feature accessibility remains task 010.
 
 ## Out of scope
 
@@ -52,5 +52,5 @@ Use the integrated environment-setup result and agreed architecture. Setup is Do
 - Push status / authorized remote and branch targets: None authorized
 - Checks and results: Migrations, Django checks/drift, Ruff lint/format, locked sync and static collection passed; targeted health4, server11 and dual bundled-browser2 tests passed. Installed Chrome156/Firefox159 native100/200% keyboard/focus/HTMX checks passed with inspected screenshots. Feature/scheduler commands remain UNVERIFIED.
 - Verification record: [developer evidence](../verification/application-skeleton-developer.md); [independent QA PASS](../verification/application-skeleton-qa.md).
-- Orchestrator requirements re-check / evidence / outcome: Pending
-- Remaining risks or blockers: No QA blocker; orchestrator requirements re-check/integration pending. Independent health4/server11/bundled2 and installed stable100/200% keyboard/HTMX/screenshot checks passed. PG17 left running; QA web server/geckodriver stopped. Installed Firefox159. No source pushes authorized.
+- Orchestrator requirements re-check / evidence / outcome: PASS at `f663bfe2149500d13516c1d82d924c3fb0a87185`; [criterion-by-criterion re-check](../verification/application-skeleton-orchestrator.md), including independent Django check and four health/CSRF tests.
+- Remaining risks or blockers: No skeleton blocker; QA and orchestrator PASS, local integration follows completion records. Independent health4/server11/bundled2 and installed stable100/200% keyboard/HTMX/screenshot checks passed. PG17 left running; QA web server/geckodriver stopped. Installed Firefox159. No source pushes authorized.
