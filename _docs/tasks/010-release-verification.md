@@ -43,32 +43,39 @@ Verify all agreed release requirements on the integrated delivery revision.
 
 ## Out of scope
 
-Technology selection, unrelated release features, public launch, deployment, paid service provisioning, and scope excluded by the confirmed product plan. Where a criterion depends on another task, verify it after that dependency is integrated; do not mark unverified behavior complete.
+Technology selection, unrelated release features, public launch, deployment, paid service provisioning and excluded product scope. Later workflow ownership and synthetic-fixture boundaries are explicit in the verification plan; do not claim later integrated behavior complete based on fixtures.
 
 ## Constraints
 
-Follow the confirmed first-release scope and P-01–P-07 in [plan.md](../plan.md). Use the selected Django 5.2/Python 3.13/PostgreSQL 17/HTMX approach in [architecture.md](../architecture.md), ADR-001–003 and the locked setup dependencies. No SQLite substitute, frontend build stack, external email provider or deployment is authorized. Follow [process.md](../process.md) and [testing-guidelines.md](../testing-guidelines.md). The user handed over delivery on 2026-10-28. PM reviewed release scope and architecture during initial grooming; this task remains Draft until its dependency is Done/integrated and its current readiness review is recorded.
+Follow the confirmed first-release scope and P-01–P-07 in [plan.md](../plan.md). Use the selected Django 5.2/Python 3.13/PostgreSQL 17/HTMX approach in [architecture.md](../architecture.md), ADR-001–003 and the locked setup dependencies. No SQLite substitute, frontend build stack, external email provider or deployment is authorized. Follow [process.md](../process.md) and [testing-guidelines.md](../testing-guidelines.md). The user handed over delivery on 2026-10-28. PM refined scope/verification in parallel on an isolated grooming branch; acceptance IDs and release behavior are unchanged. This task remains Draft until its dependency is Done/integrated, this grooming is integrated onto `develop`, and current PM readiness is recorded. Independent task QA leads to completion/integration; orchestrator requirements review is final-release-only.
 
 ## Verification plan
 
-QA verifies the exact integrated develop implementation revision against all AC-001–027, J-01–J-05 and P-01–P-07, including account email capture, two-parent/child journeys, recurrence with no browsers, transaction races, weekly rollover, five-second synchronization, failed requests and offline recovery. Execute all required commands in commands.md: Django checks, migration drift, Ruff lint/format, full PostgreSQL server suite, both Playwright browsers, static collection and scheduler checks. Separately inspect current stable Chrome and Firefox at 1280×720 and 200% zoom, keyboard-only navigation, visible focus/labeled inputs/text status. Map each criterion to executable or manual evidence with actual observations; unavailable checks remain BLOCKED. Report defects as task findings for engineer remediation and fresh QA; no public launch/deployment.
+QA verifies the exact integrated delivery revision against every AC-001–027, not only prior task verdicts. Record a requirement→journey→test/manual evidence matrix, actual commands/results, stable browser versions and unverified limitations. Use synthetic households and separate test PostgreSQL/in-memory mail; local Mailpit account/invitation capture is explicit and no external provider/deployment is authorized.
+
+- AC-001–007/027, J-01/J-05: Fresh registration/verification/recovery/invitation through captured email; one-hour/seven-day expiry/single use/wrong recipient, one-household/two-parent concurrent limits, actual household isolation, selected-parent password reset, either-parent unlock, five-failure/five-minute identity limits across contexts, 60-second parent-only inactivity and CSRF/private-log checks.
+- AC-008–018/024, J-02/J-03/J-04: Keyboard board/settings setup and each real one-off/daily/weekday workflow; exact P-03 edit/delete restrictions, returned notes/resubmission, browser-local timeliness across zones, late/unscheduled recurrence, no-browser scheduler recovery/overlap, future-only edits/deletion retaining earned records. No synthetic service-only fixture substitutes for final integrated HTTP/browser behavior.
+- AC-019/020/025, J-03/J-04: Competing approvals award one durable star; approval-time household Monday boundaries/DST rollover, visible current-week completions/all active work and all-time persistence after reload/sign-out/server/scheduler restart and recurrence deletion.
+- AC-021–023/026, J-05: Measured ≤5-second two-context synchronization across change classes, preserve unsaved focus/forms, failed/lost responses, stale conflicts, offline preserved view with disabled writes and fresh authorized reconnect; installed stable Chrome/Firefox at1280×720 and native200% zoom, keyboard/focus/labels/status equivalents. Bundled Playwright Firefox does not certify installed stable Firefox.
+- Execute validated commands.md Django checks, drift, Ruff lint/format, full PostgreSQL server/concurrency suite, both bundled browser suites, static collection and scheduler once/loop checks. Document startup/readiness/clean shutdown and services left running; unavailable required check is BLOCKED.
+- Orchestrator requirements review occurs at this release stage only and records outcome/evidence at the same final code revision. Final delivery needs independent integrated QA PASS plus this release review PASS. Defects become scoped tasks/fixes with fresh QA and repeat affected release evidence; do not weaken requirements. This task is release verification, not deployment or a second implementation of features.
 
 For each named AC, record expected and actual observations at the exact implementation commit using [verification template](../templates/verification.md). Run targeted PostgreSQL integration/browser checks and required regression commands in [commands.md](../commands.md); developer records exact selectors before handoff, and empty selections do not pass. Use synthetic data and isolated test settings/in-memory mail. Missing environment or evidence is BLOCKED.
 
 ## Questions and assumptions
 
-Product scope and architecture are confirmed; no consequential product question identified. Commands remain UNVERIFIED until their owning tasks execute them; dependency completion and current PM readiness review remain pending. GitHub issues are authoritative. Existing issues were inspected before initial creation; match by local task ID/path at each synchronization to avoid duplicates.
+Product scope and architecture are confirmed; no consequential product question identified. Existing setup/skeleton/account commands are verified; new feature commands remain UNVERIFIED until their owning task executes them. Parallel preparation is not readiness: dependency integration, grooming integration onto develop and current PM review remain pending. No material question found; minor sequencing assumptions are explicit in verification plan. GitHub issues are authoritative. Existing issues were inspected before initial creation; match by local task ID/path at each synchronization to avoid duplicates.
 
 ## Handoff
 
-- PM scope review: 2026-10-28; requirements retained, selected architecture applied; Draft until dependency integration and current readiness review.
+- PM parallel scope review: 2026-10-28; acceptance IDs/behavior retained, concrete per-criterion checks and later integration ownership recorded. Draft until dependency/grooming integration and current readiness review; isolated grooming commit supplied to orchestrator for develop integration.
 
 - Implementation summary: Not started
 - Task branch / verified implementation commit: Pending
-- Changed files / revision: Initial delivery grooming on `develop`; full grooming commit recorded in backlog checkpoint
+- Changed files / revision: Parallel grooming in isolated `grooming/future-release`; full commit supplied to orchestrator for integration onto develop before readiness
 - Final branch tip / delivery commit / integration results: Pending
 - Push status / authorized remote and branch targets: No pushes authorized
-- Checks and results: Scope/architecture reviewed against confirmed requirements on 2026-10-28; issue reconciliation recorded in backlog checkpoint; implementation verification not run
+- Checks and results: PM scope/architecture/AC-link consistency checked; issue3–10 Draft bodies synchronized/readback during parallel grooming. No implementation verification run or claimed
 - Verification record: Pending
 - Completion / integration evidence / outcome: Pending
 - Orchestrator final release requirements review / evidence / outcome: Pending

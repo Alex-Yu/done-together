@@ -22,32 +22,36 @@ Children submit assigned work and parents approve or return it without duplicate
 
 ## Out of scope
 
-Technology selection, unrelated release features, public launch, deployment, paid service provisioning, and scope excluded by the confirmed product plan. Where a criterion depends on another task, verify it after that dependency is integrated; do not mark unverified behavior complete.
+Technology selection, unrelated release features, public launch, deployment, paid service provisioning and excluded product scope. Later workflow ownership and synthetic-fixture boundaries are explicit in the verification plan; do not claim later integrated behavior complete based on fixtures.
 
 ## Constraints
 
-Follow the confirmed first-release scope and P-01–P-07 in [plan.md](../plan.md). Use the selected Django 5.2/Python 3.13/PostgreSQL 17/HTMX approach in [architecture.md](../architecture.md), ADR-001–003 and the locked setup dependencies. No SQLite substitute, frontend build stack, external email provider or deployment is authorized. Follow [process.md](../process.md) and [testing-guidelines.md](../testing-guidelines.md). The user handed over delivery on 2026-10-28. PM reviewed release scope and architecture during initial grooming; this task remains Draft until its dependency is Done/integrated and its current readiness review is recorded.
+Follow the confirmed first-release scope and P-01–P-07 in [plan.md](../plan.md). Use the selected Django 5.2/Python 3.13/PostgreSQL 17/HTMX approach in [architecture.md](../architecture.md), ADR-001–003 and the locked setup dependencies. No SQLite substitute, frontend build stack, external email provider or deployment is authorized. Follow [process.md](../process.md) and [testing-guidelines.md](../testing-guidelines.md). The user handed over delivery on 2026-10-28. PM refined scope/verification in parallel on an isolated grooming branch; acceptance IDs and release behavior are unchanged. This task remains Draft until its dependency is Done/integrated, this grooming is integrated onto `develop`, and current PM readiness is recorded. Independent task QA leads to completion/integration; orchestrator requirements review is final-release-only.
 
 ## Verification plan
 
-PostgreSQL and browser tests exercise child-only submission, wrong/other-child PIN, duplicate submission, return notes including whitespace rejection, resubmission, expired unlock, and CSRF/outsider denial. Verify P-04 from validated browser timezone plus server receipt instant, invalid timezone, on-time/late pending classification and late return. Competing independent transactions exercise approval/approval, approval/return and deletion races with explicit stale conflicts. One atomic approval record/star is durable; same-day/late/unscheduled recurrence reconciliation uses task 006 services.
+- AC-001: Actual eligible assigned chore submission accepts only that child's valid PIN; wrong/another-child/outsider/duplicate/stale requests cannot authorize transition or management. Reuse003 identity lockout and test submission endpoint five-failure/five-minute behavior across sessions. No star on submission; no parent-unlock extension from child actions.
+- AC-002: Either unlocked parent approves pending work or returns it with a nonblank explanation; whitespace-only/missing note rejected atomically. Return restores to-do and visible note; same child can resubmit. Expired/locked/wrong-household direct requests deny. Parent controls remain on board, with keyboard-accessible labeled forms and honest recoverable errors.
+- AC-003: Compute submission classification using server receipt instant and validated submitting-browser timezone; reject invalid context without trusting a submitted clock. Test on-time awaiting work remains non-overdue across later local midnights/different viewers, late submission stays visibly overdue, late return restores overdue and resubmission recalculates classification. Household schedules stay independent of viewer timezone; test midnight/DST boundaries.
+- AC-004/005: Atomic approval creates one durable approval/star record and completes the occurrence; repeated/retried/competing independent transactions award exactly one. Test approval-vs-return/delete and stale versions explicitly, compatible outcome or conflict with refreshed state, never lost incompatible edits. Same transaction invokes006 recurrence hook: late scheduled/unscheduled/same-day cases, scheduler overlap and no backlog. Rerun P-03 one-off edit/delete restrictions after real return and recurring deletion preserving actual completions/stars. Visible aggregate UI remains008.
+- AC-006: Real two-household unauthorized routes, CSRF, child/parent role separation, sanitized logs/responses, persistence after restart, and DB/request/lost-response failures with no false success. Stable Chrome/Firefox at1280×720/200% cover keyboard/focus, submit/approve/return/resubmit and explanatory notes; required server/concurrency/regression checks remain nonempty. Full reconnect transport behavior is009.
 
 For each named AC, record expected and actual observations at the exact implementation commit using [verification template](../templates/verification.md). Run targeted PostgreSQL integration/browser checks and required regression commands in [commands.md](../commands.md); developer records exact selectors before handoff, and empty selections do not pass. Use synthetic data and isolated test settings/in-memory mail. Missing environment or evidence is BLOCKED.
 
 ## Questions and assumptions
 
-Product scope and architecture are confirmed; no consequential product question identified. Commands remain UNVERIFIED until their owning tasks execute them; dependency completion and current PM readiness review remain pending. GitHub issues are authoritative. Existing issues were inspected before initial creation; match by local task ID/path at each synchronization to avoid duplicates.
+Product scope and architecture are confirmed; no consequential product question identified. Existing setup/skeleton/account commands are verified; new feature commands remain UNVERIFIED until their owning task executes them. Parallel preparation is not readiness: dependency integration, grooming integration onto develop and current PM review remain pending. No material question found; minor sequencing assumptions are explicit in verification plan. GitHub issues are authoritative. Existing issues were inspected before initial creation; match by local task ID/path at each synchronization to avoid duplicates.
 
 ## Handoff
 
-- PM scope review: 2026-10-28; requirements retained, selected architecture applied; Draft until dependency integration and current readiness review.
+- PM parallel scope review: 2026-10-28; acceptance IDs/behavior retained, concrete per-criterion checks and later integration ownership recorded. Draft until dependency/grooming integration and current readiness review; isolated grooming commit supplied to orchestrator for develop integration.
 
 - Implementation summary: Not started
 - Task branch / verified implementation commit: Pending
-- Changed files / revision: Initial delivery grooming on `develop`; full grooming commit recorded in backlog checkpoint
+- Changed files / revision: Parallel grooming in isolated `grooming/future-release`; full commit supplied to orchestrator for integration onto develop before readiness
 - Final branch tip / delivery commit / integration results: Pending
 - Push status / authorized remote and branch targets: No pushes authorized
-- Checks and results: Scope/architecture reviewed against confirmed requirements on 2026-10-28; issue reconciliation recorded in backlog checkpoint; implementation verification not run
+- Checks and results: PM scope/architecture/AC-link consistency checked; issue3–10 Draft bodies synchronized/readback during parallel grooming. No implementation verification run or claimed
 - Verification record: Pending
 - Completion / integration evidence / outcome: Pending
 - Remaining risks or blockers: Dependency integration and current readiness review; no material scope blocker found

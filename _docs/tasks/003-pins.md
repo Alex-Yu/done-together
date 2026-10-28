@@ -22,32 +22,38 @@ Children have submission identities and either parent can securely unlock manage
 
 ## Out of scope
 
-Technology selection, unrelated release features, public launch, deployment, paid service provisioning, and scope excluded by the confirmed product plan. Where a criterion depends on another task, verify it after that dependency is integrated; do not mark unverified behavior complete.
+Technology selection, unrelated release features, public launch, deployment, paid service provisioning and excluded product scope. Later workflow ownership and synthetic-fixture boundaries are explicit in the verification plan; do not claim later integrated behavior complete based on fixtures.
 
 ## Constraints
 
-Follow the confirmed first-release scope and P-01–P-07 in [plan.md](../plan.md). Use the selected Django 5.2/Python 3.13/PostgreSQL 17/HTMX approach in [architecture.md](../architecture.md), ADR-001–003 and the locked setup dependencies. No SQLite substitute, frontend build stack, external email provider or deployment is authorized. Follow [process.md](../process.md) and [testing-guidelines.md](../testing-guidelines.md). The user handed over delivery on 2026-10-28. PM reviewed release scope and architecture during initial grooming; this task remains Draft until its dependency is Done/integrated and its current readiness review is recorded.
+First/own parent PIN setup/reset verifies the selected member’s own account password and remains reachable when locked. Existing household management/invitations from002 acquire parent-unlock protection here; verified-account initial household creation/join remain bootstrap actions. Child submission authority is integrated in007; full board columns in004.
+
+Follow the confirmed first-release scope and P-01–P-07 in [plan.md](../plan.md). Use the selected Django 5.2/Python 3.13/PostgreSQL 17/HTMX approach in [architecture.md](../architecture.md), ADR-001–003 and the locked setup dependencies. No SQLite substitute, frontend build stack, external email provider or deployment is authorized. Follow [process.md](../process.md) and [testing-guidelines.md](../testing-guidelines.md). The user handed over delivery on 2026-10-28. PM refined scope/verification in parallel on an isolated grooming branch; acceptance IDs and release behavior are unchanged. This task remains Draft until its dependency is Done/integrated, this grooming is integrated onto `develop`, and current PM readiness is recorded. Independent task QA leads to completion/integration; orchestrator requirements review is final-release-only.
 
 ## Verification plan
 
-Use server-side board-session unlocks with selected member identity, even when another parent opened the board. Test leading-zero four-digit PINs, invalid format, PIN replacement, wrong own password, selecting the other parent, outsider/child/direct-request denial and CSRF. Verify 60-second expiry at the boundary; only accepted explicit parent activity extends it, while viewing/polling/child requests do not. PostgreSQL integration checks five failures/five minutes across independent sessions and no deadline extension. Inspect hashes/pepper separation and sanitized responses/logs.
+- AC-001: Browser and direct-request tests add/edit a child's display name and set/reset child PIN in protected settings. Use exact strings `0007`/`0123`, reject non-four-digit/non-ASCII-digit/blank input without partial data, and prove replaced PINs fail using the credential verifier. Selected member's own account password authorizes first/own parent PIN setup/reset; wrong password, another parent's password and outsider identity fail. Verify password lockout safeguards on this path. No PIN can be read back.
+- AC-002: The board-opening account may differ from selected unlocking parent; either member's valid PIN grants equal authority for that board session only. Apply the server-side parent guard to existing task002 household management/invitation settings as well as children/PIN settings. Anonymous/unverified/outsider/child/incorrect PIN and locked direct requests cannot manage. Verified-account initial household creation/join remain bootstrap actions; password-authorized own PIN setup/reset must stay reachable when locked. Test separate browser sessions and forged parent/child/household IDs; no Django admin bypass.
+- AC-003: Test just before and at60 seconds using deterministic server instants and a real-browser idle check. Every protected request enforces expiry; accepted explicit parent activity extends it, failed activity/viewing/polling/child activity does not. Visible read-only household board surface stays present on lock (full columns arrive004). Client timer gives matching feedback, while direct requests after expiry still deny. Actual child-submission interaction is integrated in007; use a non-authorizing child credential-check fixture now, never a child session granting management.
+- AC-004: Reuse atomic PostgreSQL identity limiter and supplementary request throttles. Across independent sessions/transactions, five consecutive failures for each parent/child PIN identity trigger exactly five minutes; correct PIN while blocked denies, blocked attempts do not extend deadline, permitted success clears failures. PIN checks require household board access. Test concurrent failures and expiry retry; actual submission endpoint inherits this in007.
+- AC-005/006: Inspect salted maintained hashes plus outside-database pepper use, no plaintext/hash/PIN in ordinary responses/logs, no-store sensitive pages and CSRF-protected mutations. Test actual two-household isolation, persistent settings after sign-out/restart and no false success on DB/request failure. Stable Chrome/Firefox at1280×720 and200% zoom cover keyboard/focus/labeled inputs, lock/unlock, child/PIN management and recoverable errors.
 
 For each named AC, record expected and actual observations at the exact implementation commit using [verification template](../templates/verification.md). Run targeted PostgreSQL integration/browser checks and required regression commands in [commands.md](../commands.md); developer records exact selectors before handoff, and empty selections do not pass. Use synthetic data and isolated test settings/in-memory mail. Missing environment or evidence is BLOCKED.
 
 ## Questions and assumptions
 
-Product scope and architecture are confirmed; no consequential product question identified. Commands remain UNVERIFIED until their owning tasks execute them; dependency completion and current PM readiness review remain pending. GitHub issues are authoritative. Existing issues were inspected before initial creation; match by local task ID/path at each synchronization to avoid duplicates.
+Product scope and architecture are confirmed; no consequential product question identified. Existing setup/skeleton/account commands are verified; new feature commands remain UNVERIFIED until their owning task executes them. Parallel preparation is not readiness: dependency integration, grooming integration onto develop and current PM review remain pending. No material question found; minor sequencing assumptions are explicit in verification plan. GitHub issues are authoritative. Existing issues were inspected before initial creation; match by local task ID/path at each synchronization to avoid duplicates.
 
 ## Handoff
 
-- PM scope review: 2026-10-28; requirements retained, selected architecture applied; Draft until dependency integration and current readiness review.
+- PM parallel scope review: 2026-10-28; acceptance IDs/behavior retained, concrete per-criterion checks and later integration ownership recorded. Draft until dependency/grooming integration and current readiness review; isolated grooming commit supplied to orchestrator for develop integration.
 
 - Implementation summary: Not started
 - Task branch / verified implementation commit: Pending
-- Changed files / revision: Initial delivery grooming on `develop`; full grooming commit recorded in backlog checkpoint
+- Changed files / revision: Parallel grooming in isolated `grooming/future-release`; full commit supplied to orchestrator for integration onto develop before readiness
 - Final branch tip / delivery commit / integration results: Pending
 - Push status / authorized remote and branch targets: No pushes authorized
-- Checks and results: Scope/architecture reviewed against confirmed requirements on 2026-10-28; issue reconciliation recorded in backlog checkpoint; implementation verification not run
+- Checks and results: PM scope/architecture/AC-link consistency checked; issue3–10 Draft bodies synchronized/readback during parallel grooming. No implementation verification run or claimed
 - Verification record: Pending
 - Completion / integration evidence / outcome: Pending
 - Remaining risks or blockers: Dependency integration and current readiness review; no material scope blocker found
