@@ -14,7 +14,7 @@ Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature 
 | `environment-setup` | [Set up the development environment](tasks/environment-setup.md) | Done | None; PM readiness passed | [#11](https://github.com/Alex-Yu/done-together/issues/11) |
 | application-skeleton | [Create a runnable application skeleton](tasks/application-skeleton.md) | Done | environment-setup Done/integrated | [#12](https://github.com/Alex-Yu/done-together/issues/12) |
 | 001 | [Account registration, verification, sign-in, recovery, and safeguards](tasks/001-accounts.md) | In review | application-skeleton Done/integrated | [#1](https://github.com/Alex-Yu/done-together/issues/1) |
-| 002 | [Household creation, timezone setup, and second-parent invitation](tasks/002-households.md) | Ready | 001 Done/integrated | [#2](https://github.com/Alex-Yu/done-together/issues/2) |
+| 002 | [Household creation, timezone setup, and second-parent invitation](tasks/002-households.md) | In review | 001 Done/integrated | [#2](https://github.com/Alex-Yu/done-together/issues/2) |
 | 003 | [Child profiles, parent/child PIN management, and protected shared access](tasks/003-pins.md) | Draft | 002 | [#3](https://github.com/Alex-Yu/done-together/issues/3) |
 | 004 | [Shared board, empty states, and settings navigation](tasks/004-board.md) | Draft | 003 | [#4](https://github.com/Alex-Yu/done-together/issues/4) |
 | 005 | [One-off chore assignment and maintenance](tasks/005-one-off-chores.md) | Draft | 004 | [#5](https://github.com/Alex-Yu/done-together/issues/5) |
@@ -216,3 +216,72 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Issue2 Ready/open synchronized and exactbody readback verified; grooming branch `develop`, full grooming commit `44aff04469c91a50f16fbf89a129d963d662ad04`; subsequent checkpoint-only commit records this hash.
 - Counters: active batch2 completions1/10; setup2/3,skeleton1/3,0011/3,002–010 each0/3. No push authorization; workflow-only grooming does not count as completion.
 - Next: Developer task/002-households from committed grooming, implementation→independent QA attempt1→completion/integration on PASS; no per-task orchestrator verification.
+
+## Developer handoff —002 households, 2026-10-28
+
+- Current role/task: Household implementation complete/In review; independent QA next. QA PASS proceeds to completion/integration; separate orchestrator per-task re-check remains removed by user, final release review retained.
+- Branch: `task/002-households` from24b5ca3df6d882a85a38ff42bccb1731a6fb2805 including PM grooming44aff04469c91a50f16fbf89a129d963d662ad04.
+- Exact implementation commit: `1b01711d3fd9962825e38ba87297a22c976d0a09`; later handoff records contain no source changes.
+- Results/evidence: [developer household record](verification/002-households-developer.md), [commands](commands.md). Household17/server49/browser6 passed; final affected wrong-recipient recovery1 passed/16 deselected. Standard gates pass; native stable100/200 realSMTP/create/invite/join/error checks and post-app-restart stored-state revisit all PASS.
+- Services: App/Mailpit/geckodriver stopped exit0/endpoints refuse; projectPG17 running127.0.0.1:55432; unrelatedPG13 preserved. Private synthetic fixtures/screenshots ignored.
+- Preparation already integrated separately onto develop96e7018af88d67b24d0ff63b924f8ebec4f1e906: PM8feda09 future Draft grooming and QA29bdf2e plans. Root task002 remains based on24b5ca3; do not rebase/merge before exact-code QA. Normal non-fast-forward task integration may be needed.
+- Counters: Active batch2 completions1/10 (001 Done); historical setup2/3,skeleton1/3,0011/3;0020/3 before QA dispatch;003–010 all0/3.
+- Issue2 In review/exact body/hash readback verified. Initial combined command was rejected by automatic approval review over destination/payload authorization; local records were completed first, read-only origin/repo/issue checks and private-value scans confirmed the authorized task-only payload, then a single direct exact issue edit succeeded with review. No pending synchronization. No source push authorization; no pushes/merge performed by developer.
+- Next: QA002 at exact implementation, then completion/integration on PASS, PM fresh003 readiness. Parent PIN/child/board/scheduling remain subsequent tasks.
+
+
+## QA in progress —002 households attempt1,2026-10-28
+
+- Current role/task: Independent QA002 running; task In review, no verdict yet.
+- Exact implementation: `1b01711d3fd9962825e38ba87297a22c976d0a09`; reviewed records-only tip `114b8f23086fd9784f296bcf0aa06cac3e34f66c`.
+- Counters:002 attempt1/3 dispatched; active renewed batch2 completions1/10; setup2/3/skeleton1/3/accounts1/3 retained;003–010 each0/3. Per-task orchestrator re-check removed by user; final release review remains.
+- Progress: locked sync/lint/format/migrate/system/drift/static and49server tests passed; bundled browser regression running. No completion verdict; remaining privacy/failure, installed-browser/SMTP/persistence checks pending.
+- Next: complete all fiveAC independently, record exact observations/verdict, synchronize issue2 and evidence-only commit. Technical findings route developer for fixes, never alter implementation during QA.
+
+
+## QA handoff —002 households attempt1,2026-10-28
+
+- Current role/task: Independent QA FAIL → developer fix;002 In progress on existing task/002-households.
+- Exact verified implementation: `1b01711d3fd9962825e38ba87297a22c976d0a09`; records-only reviewed tip `114b8f23086fd9784f296bcf0aa06cac3e34f66c`; no app fixes by QA.
+- Evidence: [002 QA attempt1](verification/002-households-qa.md). F001 AC004/005 FAIL: household DB errors after initial source limiter bypass account-only exception recovery and expose synthetic private detail in technical500/logs under local DEBUG. AC001–003 PASS;49server/6bundled and installed stable native100/200% actualSMTP/join/error/screenshots plus restart persistence pass. Independent narrow probe1FAIL.
+- Counters:0021/3; active renewed batch2 completions1/10; setup2/3/skeleton1/3/accounts1/3 retained;003–010 each0/3. User final-only orchestrator requirements review override remains.
+- Services: QA app/driver/Mailpit stopped exit0 and fourports closed; projectPG17 remains55432, unrelatedPG13 preserved.
+- Synchronization: issue2 In progress/findings/evidence updated and exact readback; no closure/merge/push. No push authorization.
+- Next: developer generic household DB-error/privacy correction and regression on same branch, new implementation commit then QA attempt2. Preserve prior positive evidence for unchanged code where valid.
+
+## Developer correction handoff —002 F001,2026-10-28
+
+- Current role/task: F001 source correction complete/In review; fresh affected QA next on same task/002-households.
+- Exact fix implementation commit: `8269f5a6f5bd6fb71468a93e1a2c405f0aea519a`. One-line middleware recovery-prefix extension plus four regression cases; prior normal-path implementation unchanged.
+- Evidence: [F001 developer correction](verification/002-households-fix-developer.md), original [QA attempt1 FAIL](verification/002-households-qa.md). Affected4 and original independent QA probe1 pass; fresh server53 plus checks/drift/lint/format/diff pass. Prior6-browser/native100/200/SMTP/restart positive evidence retained, no unchanged reruns.
+- Counters unchanged until QA dispatch:0021/3; batch2 completions1/10; setup2/skeleton1/accounts1 historical attempts,003–010 zero. Final-only orchestrator requirements review remains.
+- No owned app/mail/driver service started; projectPG17 remains55432 and unrelatedPG13 preserved.
+- Develop remains docs-preparation divergence96e7018af88d67b24d0ff63b924f8ebec4f1e906; no merge/rebase/push.
+- Issue2 In review/exact fix-hash/task body synchronized and readback verified; no pending synchronization.
+- Next: QA2 on exact fix; completion/integration on PASS then PM003 readiness.
+
+
+## QA in progress —002 households attempt2,2026-10-28
+
+- Current role/task: Independent QA002 fix verification; task In review, no fresh verdict yet.
+- Exact fix implementation: `8269f5a6f5bd6fb71468a93e1a2c405f0aea519a`; reviewed records-only tip `49cd31869dc82b85b5361302caa92a2c79d86ee4`.
+- Counters:002 attempt2/3 dispatched; active renewed batch2 completions1/10; setup2/3/skeleton1/3/accounts1/3 retained;003–010 each0/3. User final-only orchestrator requirements review remains.
+- Next: inspect exact delta, independently repeat original F001/four affected failure paths/privacy/rollback/retry; retain unaffected prior runtime evidence explicitly; commit fresh evidence/status and direct issue2 readback.
+
+
+## QA handoff —002 households attempt2,2026-10-28
+
+- Current role/task: Independent QA PASS → administrative completion/integration;002 remains In review. Final-only orchestrator requirements review override preserved.
+- Exact verified implementation: `8269f5a6f5bd6fb71468a93e1a2c405f0aea519a`; reviewed records-only tip `49cd31869dc82b85b5361302caa92a2c79d86ee4`.
+- Evidence: [002 QA attempt2 PASS](verification/002-households-qa-attempt-2.md); attempt1 FAIL retained. F001 resolved: affected4/originalQAprobe1/fullserver53/checks/drift/lint/format pass, generic503/private response+log protection/rollback+retry verified. Exact delta supports retained unchanged normal browser/native/SMTP/restart evidence.
+- Counters:0022/3; active renewed batch2 completions1/10 before integration; setup2/3/skeleton1/3/accounts1/3 retained;003–0100/3.
+- Services: no new owned services for scoped fix; dedicatedPG17 remains55432. No secret values printed.
+- Synchronization: issue2 PASS handoff updated/readback; no closure/merge/push. No push authorization.
+- Next: administratively complete002, integrate with docs-only develop divergence and run applicable integration gates; then PM current readiness for003.
+
+## Household completion — current routing
+
+- Independent QA attempt2 PASS at implementation `8269f5a6f5bd6fb71468a93e1a2c405f0aea519a`; evidence/status tip `53d4e47f5e998e6b2e36d6837f50538fbacb5daf`. [Evidence](verification/002-households-qa-attempt-2.md); attempt1 FAIL retained, F001 resolved.
+- Administrative Done/integration follows QA PASS. Develop already includes docs-only PM/QA preparation at `96e7018af88d67b24d0ff63b924f8ebec4f1e906`; merge preserves both histories without changing implementation.
+- Next: integration checks, delivery hash and issue2 completion synchronization, then PM marks003 Ready after dependency integration.
+- Active batch2 completion2/10 on successful integration;002 attempts2/3,0011/3,setup2/skeleton1,003–010 each0. No push.

@@ -1,0 +1,1 @@
+{% extends "base.html" %}{% block content %}<h1>Invitation unavailable</h1><p>{% if error %}{{ error }}{% else %}This invitation is invalid, expired, already used, or replaced.{% endif %}</p><p>Sign in using the invited email address and reopen the invitation. Ask a household parent for a new link if needed.</p><a href="{% url 'account_login' %}">Sign in</a>{% endblock %}

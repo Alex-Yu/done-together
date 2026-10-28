@@ -7,6 +7,11 @@ from django.views.debug import SafeExceptionReporterFilter
 class AccountLogFilter(logging.Filter):
     patterns = (
         (
+            re.compile(r"/households/(invitations|join)/[^/\s?]+/"),
+            r"/households/\1/[redacted]/",
+        ),
+        (re.compile(r"(/households/[^?\s]*)\?[^\s]*"), r"\1?[redacted]"),
+        (
             re.compile(r"/accounts/verification/confirm/[^/\s?]+/"),
             "/accounts/verification/confirm/[redacted]/",
         ),

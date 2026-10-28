@@ -3,6 +3,7 @@ from django.urls import include, path
 from board import views
 
 urlpatterns = [
+    path("households/", include("households.urls")),
     path("accounts/", include("accounts.urls")),
     path("", views.landing, name="landing"),
     path("health/", views.health, name="health"),

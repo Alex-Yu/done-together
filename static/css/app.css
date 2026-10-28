@@ -15,3 +15,5 @@ input[type=checkbox] { display: inline; width: auto; }
 label { display: block; font-weight: 600; }
 .errorlist { color: #8c251b; }
 .helptext { display: block; max-width: 38rem; }
+
+select { display: block; max-width: 100%; padding: .6rem; font: inherit; border: 1px solid #596e61; border-radius: .35rem; }

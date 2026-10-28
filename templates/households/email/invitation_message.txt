@@ -1,0 +1,5 @@
+You’ve been invited to join a household on Done Together. Sign in or create and verify an account using this email address, then open your private invitation:
+
+{{ invitation_url }}
+
+This single-use link expires in seven days. If you did not expect it, ignore this message.

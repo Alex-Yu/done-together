@@ -1,6 +1,6 @@
 # Project commands
 
-Status: Environment and skeleton independently verified/integrated. Task001 accounts developer-validated on2026-10-28; independent account QA pending. Remaining feature/scheduler commands remain UNVERIFIED.
+Status: Environment, skeleton and accounts independently verified/integrated. Task002 households developer-validated on2026-10-28; independent household QA pending. Remaining feature/scheduler commands remain UNVERIFIED.
 
 The developer executes [environment-setup](tasks/environment-setup.md) before [application-skeleton](tasks/application-skeleton.md). Each task replaces intended entries with exact observed versions, working directory, environment, expected/observed results and evidence. Feature commands remain unverified until their owning tasks implement and validate them. QA checks independently under [testing-guidelines.md](testing-guidelines.md).
 
@@ -312,6 +312,52 @@ The installed-browser account helper passed Chrome156.0.8078.48/Firefox159.0 at 
 Developer services started only for verification are stopped before handoff. PostgreSQL17 remains running on55432; unrelated PostgreSQL13 on5432 is preserved. A mistakenly overlapping pair of disposable test suites caused teardown failures; those results were discarded and suites rerun sequentially. A framework long traceback included local connection parameters during that failure; the project-only database credential was immediately rotated in ignored `.env`/pgpass, parity/authenticated SELECT1 rechecked, and pytest short tracebacks configured. No credential value is included in source/evidence. Do not print fixture files or raw verbose connection traces.
 
 Independent QA must verify task001 at its exact implementation commit. Remaining feature/scheduler commands remain UNVERIFIED.
+
+
+### Validated household procedures — task002, 2026-10-28
+
+Household creation/settings are reached from the signed-in landing page’s Household settings link (`/households/`). Until task003 adds parent PIN authority, verified account membership authorizes the bootstrap create/join/invite/settings actions. No child/PIN/chore workflows are implemented or claimed here.
+
+```sh
+uv run python manage.py migrate
+uv run python manage.py check
+uv run python manage.py makemigrations --check --dry-run
+uv run ruff check .
+uv run ruff format --check .
+uv run pytest tests/integration/test_households.py -q
+uv run pytest tests/unit tests/integration -q
+uv run pytest tests/e2e --browser chromium --browser firefox -q
+uv run python manage.py collectstatic --noinput
+uv sync --locked
+```
+
+Developer observed: targeted household17 passed; full server/config49 passed; full bundled-browser6 passed. Django checks/drift/lint/format/static/locked sync exit0. Static collection copied2 changed/new assets with6 unmodified. A final narrow recovery correction cleared a rejected invitation flow so the wrong recipient can return to their own household; its affected access test passed1/16 deselected. No unchanged suites were rerun after passing.
+
+The two-browser household journey uses independent contexts/computers: creator timezone Europe/Warsaw is suggested, creation/invitation succeeds, intended recipient opens the invitation before registration, registers/verifies/signs in, joins, and sees the same immutable household timezone while their browser uses America/New_York. Reload preserves membership; reused invitation denies access. Successful invitation POST redirects to GET so reload cannot resend/supersede an invitation.
+
+PostgreSQL constraints enforce one membership per parent and only household slots1/2, with unique household/slot. User→household→invitation locks serialize acceptance/create races. Tests cover simultaneous acceptance of one token, competing recipients for the last parent slot, competing household joins and creation versus joining; exactly one succeeds, with no double consumption/third parent/second household. Both members have the same scoped settings/management rights. Two actual households, outsiders, unverified users and forged IDs are tested for denied reads/mutations without foreign data exposure.
+
+Invitation raw tokens are32 random bytes, emailed only through existing allauth local SMTP handling; only SHA256 digests are stored. Expiry is exactly seven days and tested just before/at/after the boundary. GET exchanges the private token into a session/nonce-bound flow, without joining; authenticated intended-recipient POST rechecks and consumes under lock. Anonymous users are directed to sign in while their pending flow survives registration. Wrong/expired/reused links cannot change membership; invalid state has a recoverable explanation. Rejected pending flows are cleared. Original private URLs use no-referrer; safe forms same-origin; all household responses no-store. Request/security logs redact invite/join path keys and all household queries. CSRF remains required. Invitation creation/replacement and SMTP delivery share a transaction; delivery failure rolls back the new/superseding state, displays503 and permits retry.
+
+Timezone is a validated IANA selection, initially suggested with browser Intl; UTC remains the visible fallback if Intl cannot supply a supported zone. Invalid/missing selections create no partial household. No timezone-change controls exist; direct settings input cannot change it, and model saves reject a changed existing timezone. Chore/local-overdue semantics remain tasks005–007.
+
+#### Installed stable browsers, real invitations and restart persistence
+
+With documented loopback app/Mailpit/geckodriver running:
+
+```sh
+uv run python tools/verify_household_browsers.py
+# Stop/restart only the loopback app, then:
+uv run python tools/verify_household_browsers.py --revisit
+```
+
+The tracked helper seeds explicitly synthetic verified local parent fixtures, leaving registration verification to the real bundled-browser journey/task001. Generated credentials remain ignored0600 `.local/household-browser-fixtures.json`, never printed. It drives installed Chrome156.0.8078.48/Firefox159.0 at actual native100% (1280×720,DPR1) and200% (640×360,DPR2), covering creation, browser timezone suggestion, keyboard/labeled controls/focus, actual SMTP invitation capture, recipient sign-in/join and recoverable full-household/reused-link errors. All four cases passed with no horizontal overflow. Viewport screenshots `.local/household-{chrome,firefox}-{100,200}.png` and `-invalid.png` were visually inspected: readable text, ordinary vertical scrolling, no horizontal clipping. The helper closes its browser sessions/profiles; errors redact fixture passwords/private paths.
+
+Mailpit API confirmed invitation email receipt and the UI visibly showed actual synthetic invitation emails; screenshot `.local/household-mailpit-capture.png` was inspected. No external SMTP provider or delivery is configured. After app restart, the helper’s `--revisit` passed all four stored households, confirming membership/timezone persistence across sign-out/reload/restart and computers. App/Mailpit/geckodriver were then stopped cleanly (exit0; endpoints refused/HTTP000). ProjectPG17 remains55432; unrelatedPG13:5432 is preserved.
+
+Task002 F001 correction: generic DatabaseError recovery now covers household endpoints as well as accounts after source/authorization checks. With DEBUGTrue, committed regressions inject controlled failures at create-service, settings-render, invitation-send transaction and join-service boundaries; each returns generic503/no-store/same-origin, omits private detail/traceback from response and actual request-handler logs, leaves household/membership/invitation state unchanged and permits retry. Run `uv run pytest tests/integration/test_households.py -k domain_database_failures -q`:4 passed/17 deselected. Original independent QA probe `.local/qa_households_extra.py` also passed1. Fresh full server regression53 passed; Django check/drift/lint/format/diff pass. Normal UI/browser/SMTP/scheduling code is unchanged by this one-line recovery-prefix fix, so prior QA positive6-browser/native/SMTP/restart evidence is retained; no unchanged browser suites repeated.
+
+Independent QA must verify the exact task002 implementation. Task003 must add parent PIN management protection while preserving verified-account creation/join bootstrap. Remaining feature/scheduler commands remain UNVERIFIED.
 
 
 ## Acceptance and verification procedures — bootstrap executed; features UNVERIFIED
