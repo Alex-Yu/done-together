@@ -44,11 +44,11 @@ Product scope and architecture are confirmed; no consequential product question 
 - PM readiness: Ready on 2026-10-28 after skeleton integration; four ACs preserved and mapped to concrete account checks and named later integration owners. Full grooming commit recorded in backlog checkpoint.
 
 - Implementation summary: allauth verified email/password registration/sign-in/recovery, nonce-bound private link handling, atomic PostgreSQL identity/source limits, reusable verified guard, protected logs/headers, recoverable mail/DB errors and accessible account pages. Household/PIN features remain later tasks.
-- Task branch / verified implementation commit: `task/001-accounts` / `5f471f53c8b17128b9bd63c69af8fefa2028c6ab`; independent QA pending.
+- Task branch / verified implementation commit: `task/001-accounts` / `5f471f53c8b17128b9bd63c69af8fefa2028c6ab`; independent QA attempt1 PASS all fourAC.
 - Changed files / revision: accounts models/migration/services/adapter/views/access/privacy; settings/URLs/templates/styles; request/browser tests and tracked stable/SMTP helpers; architecture/commands/evidence. Lock unchanged.
 - Final branch tip / delivery commit / integration results: Pending
 - Push status / authorized remote and branch targets: No pushes authorized
 - Checks and results: Required gates pass;32 server tests,4 browser tests; affected final failure/SMTP cases1 each pass. Stable Chrome/Firefox keyboard/native100/200% checks, actual Mailpit capture and post-restart account revisit PASS.
-- Verification record: [developer account evidence](../verification/001-accounts-developer.md); independent QA pending.
-- Completion/integration record: Pending independent QA; per-task orchestrator requirements re-check removed by user. Final release review remains required.
-- Remaining risks or blockers: No implementation blocker; independent QA required. Actual household/PIN integration remains subsequent tasks. Own local DB credential rotated after verbose failing fixture trace; no committed secret. No pushes authorized.
+- Verification record: [developer account evidence](../verification/001-accounts-developer.md); [independent QA PASS](../verification/001-accounts-qa.md).
+- Completion/integration record: Independent QA PASS; administrative completion/integration pending. Per-task orchestrator requirements re-check removed by user; final release review remains required.
+- Remaining risks or blockers: No QA blocker; independent32server/4bundled/4additional probes and stable keyboard/nativezoom/actual Mailpit/post-restart/privacy checks PASS. Actual household/PIN integration remains subsequent tasks. QA app/mail/driver stopped; PG17 running. No pushes authorized.

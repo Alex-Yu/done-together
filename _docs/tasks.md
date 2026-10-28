@@ -184,3 +184,14 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Updated AGENTS, README graph/prose, process, orchestrator role, reusable prompt, task template and unstarted002–010 completion handoff fields. Historic setup/skeleton verification records and account implementation are unchanged.
 - Checks: git diff --check passed; local Markdown targets in15 changed workflow/task documents resolve; current-instruction assertions confirm no obsolete extra per-task gate. GitHub Draft issue2–10 mirror fields updated and exact readback verified.
 - Workflow-only commit: `c4c4233d9cc670ae68d06f03efc77d0dad707cf0` on `task/001-accounts`; no application code changes, no feature completion/attempt increment, no push. Subsequent checkpoint-only commit records this hash.
+
+
+## QA handoff —001 accounts attempt1,2026-10-28
+
+- Current role/task: Independent QA PASS → administrative completion/integration;001 remains In review. User removed per-task orchestrator requirements re-check; final release review still required.
+- Exact verified implementation: `5f471f53c8b17128b9bd63c69af8fefa2028c6ab`; reviewed at records/workflow-only tip `b5eb43ea7abe2d1c6539085023840b4565878a9c`; no implementation changes by QA.
+- Evidence: [001 independent QA PASS](verification/001-accounts-qa.md). All fourAC pass;32server/4bundled/4additional concurrency-session probes; stable Chrome156/Firefox159 keyboard/native100/200%; actual Mailpit signup/verify/recovery and post-restart persistence; actual log privacy assertions.
+- Counters: renewed batch2 completions0/10 before001 integration;001 attempt1/3; setup2/3/skeleton1/3 preserved;002–010 each0/3.
+- Services: only dedicated PG17 remains running55432; unrelated PG13PID858 preserved5432. QA app/Mailpit/geckodriver stopped cleanly, their four ports closed. Private values never printed.
+- Synchronization: issue1 QA PASS handoff updated/readback; no closure/merge/push. No push authorization.
+- Next routing: administratively markDone/commit completion after QA PASS, integrate/check exact delivery state, close issue1 only after successful integration; PM grooms002.
