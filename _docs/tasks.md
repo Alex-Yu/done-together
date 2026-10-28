@@ -108,6 +108,6 @@ Source publication: Issue bodies contain complete specifications; local source i
 
 - Current role/task: PM → developer / application-skeleton Ready. Dependency integrated at `e1d8b42d520abe8acf6bae470568ca0e0d67757e`, QA2/orchestrator PASS; integration checks passed.
 - Scope/readiness: five ACs preserved; selected architecture and validated environment confirmed. Explicit test-DB guard, safe settings, custom user before migrations, local pinned HTMX provenance/license, full skeleton checks and stable Chrome/Firefox keyboard/200% observations remain required. No account workflow.
-- Issue #12 Ready/open reconciled/readback verified; no pending sync. Grooming branch develop; full grooming commit recorded after commit.
+- Issue #12 Ready/open reconciled/readback verified; no pending sync. Grooming branch `develop`; full grooming commit `87b54c097f99613a23972b6b08efc194f1088f91`. Subsequent checkpoint-only commit records this hash without changing scope.
 - Counters: batch1 completions1/10; setup2/3 attempts; skeleton/001–010 each0/3. No push authorization.
 - Next: developer creates task/application-skeleton from committed grooming, implements, then exact commit to independent QA.
