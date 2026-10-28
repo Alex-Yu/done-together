@@ -50,7 +50,7 @@ Follow [architecture](../architecture.md) and [commands](../commands.md). Native
 - PM readiness: Ready on 2026-10-28; full grooming commit recorded in backlog checkpoint.
 
 - Implementation summary: Reproducible Python3.13/Django5.2 runtime/dev lockfiles, project-local PostgreSQL17.11 cluster on55432, loopback Mailpit1.32.0 synthetic capture, Playwright browsers, secret-safe ignored local configuration and validated setup commands. No application source introduced.
-- Task branch / verified implementation commit: `task/environment-setup`; implementation commit recorded after commit in checkpoint. QA pending.
+- Task branch / verified implementation commit: `task/environment-setup` / `f31e725ed4356ee142370cf8323e36f9ea43d8d5`; QA pending.
 - Changed files / revision: `.gitignore`, `.env.example`, `.python-version`, `pyproject.toml`, `uv.lock`, commands, setup task, backlog and developer evidence. Ignored local services/config are not committed.
 - Final branch tip / delivery commit / integration results: Pending
 - Push status / authorized remote and branch targets: None authorized

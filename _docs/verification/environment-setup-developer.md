@@ -2,7 +2,7 @@
 
 Overall verdict: PENDING — independent QA required; this is implementation evidence.
 Task / specification: [environment-setup](../tasks/environment-setup.md), [commands](../commands.md)
-Revision: Task implementation commit recorded in backlog/handoff after commit.
+Revision: `f31e725ed4356ee142370cf8323e36f9ea43d8d5` on `task/environment-setup`; subsequent record-only handoff commit does not change implementation.
 Reviewer / independence: Developer self-check, not independent QA.
 Environment: macOS x86_64; versions and command details in commands.md.
 Date:2026-10-28
