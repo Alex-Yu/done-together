@@ -213,6 +213,6 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Dependency:001 integrated at `3afacd6e58d61f727f5aa2760a7ab0bbff445043`, independent QA1 PASS at `5f471f53c8b17128b9bd63c69af8fefa2028c6ab`; postmerge checks passed.
 - Five ACs retained: verified account creation/join, recipient-bound seven-day single-use invitations, atomic P-01 membership limits, equal rights/actual two-household isolation, immutable browser-suggested timezone, recoverable SMTP and private/accessible persistent workflows.
 - Staged authority: verified account/membership protects available household workflows now;003 integrates PIN protection into existing management/settings. Bootstrap creation/join stays account-authorized; no later PIN/child/chore requirement claimed complete.
-- Issue2 Ready/open synchronized and exactbody readback verified; grooming branch develop, full grooming commit recorded after commit.
+- Issue2 Ready/open synchronized and exactbody readback verified; grooming branch `develop`, full grooming commit `44aff04469c91a50f16fbf89a129d963d662ad04`; subsequent checkpoint-only commit records this hash.
 - Counters: active batch2 completions1/10; setup2/3,skeleton1/3,0011/3,002–010 each0/3. No push authorization; workflow-only grooming does not count as completion.
 - Next: Developer task/002-households from committed grooming, implementation→independent QA attempt1→completion/integration on PASS; no per-task orchestrator verification.
