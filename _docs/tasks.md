@@ -28,18 +28,18 @@ Bootstrap criteria preserve environment-before-skeleton separation. PM reconcile
 
 ## Checkpoint — 2026-10-28
 
-- Phase/current routing: Setup, skeleton and001 Done/integrated; PM hands Ready002 household task to developer.
-- Agreed scope: environment-setup, application-skeleton,001–010; REQ-001–027 and confirmed defaults unchanged.
-- Delivery: `develop` at account task final tip/fast-forward delivery `3afacd6e58d61f727f5aa2760a7ab0bbff445043`; verified implementation `5f471f53c8b17128b9bd63c69af8fefa2028c6ab`, independent QA1 PASS. No implementation change during merge.
-- Integration: migrate/check/drift,32 server/config tests, Ruff lint/format and diff check PASS. [Account QA](verification/001-accounts-qa.md) covers all four criteria plus browser/concurrency/privacy/email/persistence checks.
-- Current workflow/user override: independent per-task QA→completion records→integration checks; no per-task orchestrator verification. Final release requires integrated QA and orchestrator requirements review. Workflow commit `c4c4233d9cc670ae68d06f03efc77d0dad707cf0` preserved historical evidence.
-- Readiness:002 Ready after current PM review/account integration;003–010 Draft pending grooming/dependency integration. Full release incomplete.
-- Attempts: setup2/3; skeleton1/3;0011/3;002–010 each0/3. Preserve history across sessions/batches.
-- Active batch2 completions1/10 after user limit reset; historical batch1 completed bootstrap2 tasks. Remaining002–010 fit batch2.
-- Environment: PG17.11 loopback55432 running, unrelated PG13:5432 preserved; app/Mailpit/geckodriver stopped. Synthetic data only.
-- GitHub:11/12 closed; issue1 Done/closed, exact body and state readback verified; Draft issues2–10 current workflow fields synchronized.
-- Blockers: None for002 implementation. No pushes authorized; issue writes separately authorized.
-- Next: Developer creates task/002-households from committed develop grooming, implements and commits exact revision→independent QA attempt1. Issue2 Ready/open exactbody readback verified; no pending synchronization.
+- Phase/current routing: Setup, skeleton,001 accounts and002 households Done/integrated; PM003 PIN readiness next.
+- Agreed scope: bootstrap plus001–010; REQ-001–027 and confirmed defaults unchanged. Full release incomplete.
+- Delivery: develop at `f98ba7ba2a46b875bb3a2c0c643d8a3bbe5a1cad`; household task tip `39297ba6903bfe1c7e96c9b85fb8d7dd8892f877`, verified implementation `8269f5a6f5bd6fb71468a93e1a2c405f0aea519a`, independent QA2 PASS. F001 resolved; attempt1 evidence retained.
+- Integration: non-FF merge preserves parallel PM/QA documentation at96e7018; implementation unchanged. Migrate/check/drift,53 server/config tests, Ruff lint/format and diff check all PASS.
+- Preparation integrated: PM Draft003–010 grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d`; QA plans `29bdf2e2b576592ab2654456b5bb42e863874333` under verification/plans. Issues3–10 synchronized Draft/open; dependencies still gate Ready.
+- Workflow override: independent per-task QA→completion/integration; no per-task orchestrator verification. Final release requires integrated QA and orchestrator requirements review.
+- Evidence: [household QA2 PASS](verification/002-households-qa-attempt-2.md), [QA1 FAIL](verification/002-households-qa.md), [commands](commands.md).
+- Attempts: setup2/3;skeleton1/3;0011/3;0022/3;003–010 each0/3. Preserve histories.
+- Active batch2 completions2/10 after user reset; historical batch1 bootstrap2. Remaining003–010 fit renewed batch.
+- Environment: PG17.11 loopback55432 running; unrelated PG13:5432 preserved; app/Mailpit/geckodriver stopped. Synthetic data only.
+- GitHub:11/12/1 closed; issue2 Done/closed; exact completion body and state readback verified. No push authorization; issue writes separately authorized.
+- Blockers: None for PM003 readiness. Next: PM marks003 Ready on develop, developer implementation→QA.
 
 Source publication: Issue bodies contain complete specifications; local source is unpushed. Issue links to develop source may not resolve until separately authorized source publication.
 
@@ -285,3 +285,8 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Administrative Done/integration follows QA PASS. Develop already includes docs-only PM/QA preparation at `96e7018af88d67b24d0ff63b924f8ebec4f1e906`; merge preserves both histories without changing implementation.
 - Next: integration checks, delivery hash and issue2 completion synchronization, then PM marks003 Ready after dependency integration.
 - Active batch2 completion2/10 on successful integration;002 attempts2/3,0011/3,setup2/skeleton1,003–010 each0. No push.
+
+## Household integration result
+
+- Delivery `f98ba7ba2a46b875bb3a2c0c643d8a3bbe5a1cad`, task tip `39297ba6903bfe1c7e96c9b85fb8d7dd8892f877`. Normal merge with parallel future-task grooming/QA plans; diff from task branch contains only those preparation documents, no implementation change.
+- Post-merge migrate/check/drift,53 server/config tests, Ruff lint/format and diff check PASS. Batch2 2/10,002 attempts2/3; issue2 Done/closed, exact body and state readback verified. PM003 next; no push.
