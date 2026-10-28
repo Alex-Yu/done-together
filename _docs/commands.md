@@ -1,6 +1,6 @@
 # Project commands
 
-Status: Environment setup executed by developer on 2026-10-28; independent QA pending. Application skeleton and feature commands remain UNVERIFIED. Environment metadata/configuration exists; application source and tests do not yet exist.
+Status: Environment setup independently verified/integrated on2026-10-28 (see task evidence). Skeleton commands are developer-validated below; independent skeleton QA pending. Feature/scheduler commands remain UNVERIFIED.
 
 The developer executes [environment-setup](tasks/environment-setup.md) before [application-skeleton](tasks/application-skeleton.md). Each task replaces intended entries with exact observed versions, working directory, environment, expected/observed results and evidence. Feature commands remain unverified until their owning tasks implement and validate them. QA checks independently under [testing-guidelines.md](testing-guidelines.md).
 
@@ -29,7 +29,7 @@ Create an ignored `.env` locally and a committed `.env.example` containing place
 
 The local database role may create its isolated test database; it must not be a database superuser. Production roles/privileges are a separate operational decision. PostgreSQL clients use a protected local password file or interactive prompt, never passwords in shell arguments. Keep Mailpit UI/SMTP and PostgreSQL bound to loopback. Ignore `.env`, `.venv/`, local database/mail data, browser traces and generated private artifacts; never ignore `.env.example` or the dependency lockfile. Synthetic automated email tests use Django's in-memory backend; only local capture checks use Mailpit.
 
-## Environment setup commands — developer validated, independent QA pending
+## Environment setup commands — independently verified/integrated
 
 Validated on 2026-10-28 on macOS x86_64 using Apple clang 21.0.0/GNU Make 3.81. Existing PostgreSQL 13.23 (Postgres.app, PID 858 at inventory) on 5432 is unrelated and remains untouched. Homebrew 7.0.11 has no Intel bottles for the selected PostgreSQL/Mailpit; its Mailpit source build would add Node. The supported project-local source/static-binary methods below avoid global installation and new build dependencies. All `.local/` contents are ignored.
 
@@ -171,18 +171,18 @@ curl --fail http://127.0.0.1:8025/api/v1/messages
 
 Open `http://127.0.0.1:8025/`; verify the synthetic subject/sender/recipient and body. Developer SMTP send/API assertion returned0 and Chromium UI displayed the message at1280×720; inspected screenshot is ignored `.local/mailpit-capture.png`. `lsof -nP -iTCP:1025 -iTCP:8025 -sTCP:LISTEN` confirmed127.0.0.1 only. Ctrl-C produced graceful shutdown exit0; subsequent curl failed with HTTP000, proving service stopped. QA repeats these observations; SMTP capture is unrelated to application browser tests.
 
-`.env`, `.local/`, `.venv/`, generated caches/data/screenshots are ignored. `.env.example`, `.python-version`, `pyproject.toml`, `uv.lock` remain tracked. Git ignore probes and local example inspection passed without printing secrets. No Django source, settings, templates, migrations, startup, health endpoint or application tests exist yet.
+`.env`, `.local/`, `.venv/`, generated caches/data/screenshots are ignored. `.env.example`, `.python-version`, `pyproject.toml`, `uv.lock` remain tracked. Git ignore probes and local example inspection passed without printing secrets. The setup task ended without application source; the dependent skeleton now supplies the source/checks recorded below.
 
 
-## Application commands — all UNVERIFIED
+## Application commands — skeleton developer-validated; features UNVERIFIED
 
-These commands become available only after the owning tasks create their referenced files. The developer must document actual exit codes, URLs, readiness signals and shutdown observations.
+Skeleton commands below now exist and were executed successfully; feature examples/scheduler commands remain UNVERIFIED. Detailed reproduction and observations follow the table.
 
 | Operation | Intended command | Expected behavior / validation owner |
 | --- | --- | --- |
 | Install from committed lockfile | `uv sync --locked` | Reproduce environment without changing lock; environment-setup, then skeleton |
 | Migrate local database | `uv run python manage.py migrate` | Migrations apply to dedicated local PostgreSQL; application-skeleton initially, affected feature tasks later |
-| Start local web server | `uv run python manage.py runserver 127.0.0.1:8000` | Loopback HTTP server, no startup errors; keep foreground; application-skeleton |
+| Start local web server | `uv run python manage.py runserver 127.0.0.1:8000 --noreload` | Loopback HTTP server, no startup errors; keep foreground; application-skeleton |
 | HTTP/database smoke | `curl --fail http://127.0.0.1:8000/health/` | HTTP 200 and minimal `{"status":"ok"}` only when a database query succeeds; database failure returns 503 without internals; application-skeleton |
 | Browser smoke | Open `http://127.0.0.1:8000/` | Accessible provisional Done Together landing page, local HTMX asset loads, no household data or browser errors; application-skeleton |
 | Stop web server | Ctrl-C in its terminal | Process exits cleanly, endpoint no longer responds; application-skeleton |
@@ -194,15 +194,78 @@ These commands become available only after the owning tasks create their referen
 | Formatting | `uv run ruff format --check .` | No formatting changes required; application-skeleton onward |
 | Static analysis | `uv run ruff check .` | No configured lint errors; application-skeleton onward |
 | Targeted tests | `uv run pytest tests/integration/test_health.py -q` | Positive readiness and database-failure behavior; application-skeleton creates this test |
-| Select feature tests | `uv run pytest tests/integration/ -k approval -q` | Example future selector; task 007 must supply real approval tests, not an empty passing selection |
+| Select feature tests | `uv run pytest tests/integration/ -k approval -q` | UNVERIFIED future selector; task007 must supply real approval tests, not an empty passing selection |
 | Full server tests | `uv run pytest tests/unit tests/integration -q` | Isolated PostgreSQL test database; in-memory mail; concurrency tests use independent transactions; skeleton initializes suite, features extend it |
 | Browser tests | `uv run pytest tests/e2e --browser chromium --browser firefox -q` | Live test server with synthetic fixtures and isolated database; skeleton configures fixture and smoke journey, features extend it |
-| Recurrence once | `uv run python manage.py reconcile_recurrence --once` | Idempotent catch-up; implemented/validated by task 006, not bootstrap |
-| Local independent scheduler | `uv run python manage.py reconcile_recurrence --loop --interval 60` | Separate foreground process; no browser needed; Ctrl-C stops it; task 006 defines safe loop/retry behavior |
+| Recurrence once | `uv run python manage.py reconcile_recurrence --once` | UNVERIFIED: idempotent catch-up; implemented/validated by task 006, not bootstrap |
+| Local independent scheduler | `uv run python manage.py reconcile_recurrence --loop --interval 60` | UNVERIFIED: separate foreground process; no browser needed; Ctrl-C stops it; task 006 defines safe loop/retry behavior |
+
+### Validated skeleton procedures — 2026-10-28
+
+Run from repository root after the setup exports above and start the project-owned PostgreSQL17 cluster if not running. `.env` is loaded by settings; `config.settings.local` requires generated Django/PIN/database secrets even with DEBUG enabled. Tests explicitly select `config.settings.test`, PostgreSQL `test_done_together` and in-memory email. Before any test DB operation, settings reject missing/non-`test_` names or a test name equal to the application database. No SQLite fallback exists. `accounts.User` and its initial migration are installed before feature account workflows.
+
+```sh
+uv sync --locked
+uv run python manage.py migrate
+uv run python manage.py check
+uv run python manage.py makemigrations --check --dry-run
+uv run ruff format --check .
+uv run ruff check .
+uv run pytest tests/integration/test_health.py -q
+uv run pytest tests/unit tests/integration -q
+uv run pytest tests/e2e --browser chromium --browser firefox -q
+uv run python manage.py collectstatic --noinput
+```
+
+Developer observed: every command exit0; targeted tests4 passed, full server/config tests11 passed, browser tests2 passed (one each bundled Chromium/Firefox); system checks0 issues, no migration drift, lint/format clean. Asset collection includes5 files (CSS, favicon and three HTMX vendor/provenance files), including local HTMX. Initial migration applied accounts/auth/contenttypes/sessions; replay is idempotent. Health tests execute a real SELECT1, a controlled real closed-port PostgreSQL connection failure and a deterministic DB exception, verifying minimal200/generic503 and no internal details; smoke checks POST/CSRF. The server suite includes equal normal/test DB name rejection even when both start `test_`, and missing-secret rejection in DEBUG.
+
+Browser fixtures start Django's static live server on loopback with disposable PostgreSQL, start/stop Playwright inside the transactional DB fixture lifetime, then tear down the server/database. This prevents Playwright's sync event loop from surrounding Django DB setup/teardown. No async-safety bypass setting is used. Browser tests exercise Tab, visible focus, Enter, successful HTMX fragment response, local asset loading and no script/console errors. The small placeholder interaction is temporary skeleton UI, not a chore/account workflow.
+
+Startup in a foreground terminal:
+
+```sh
+PYTHONUNBUFFERED=1 uv run python manage.py runserver 127.0.0.1:8000 --noreload
+```
+
+Readiness logs identify settings `config.settings.local`, Django5.2.18, no system errors and `Starting development server at http://127.0.0.1:8000/`. In another terminal, `curl --fail http://127.0.0.1:8000/health/` returned200 with only `{"status":"ok"}` (JSON spacing is insignificant). Open `/` for the Done Together heading and labeled Check connection button; Tab/Enter updates the status without navigating. Ctrl-C exited0; subsequent curl returned connection refusal/HTTP000. `--noreload` makes process ownership/shutdown explicit. This is local development only; no deployment/provisioning is performed.
+
+HTMX2.0.11 provenance/license/SHA384 are in [vendor README](../static/vendor/htmx/README.md); the file is served from `/static/vendor/htmx/htmx.min.js` with no CDN runtime request. The developer verified its SHA384 against official documentation before use.
+
+#### Installed stable Chrome/Firefox, keyboard and actual200% zoom
+
+This supplements the bundled browser tests. Stable Chrome156.0.8078.48 was driven through its installed `chrome` channel in an isolated temporary project profile. Stable Firefox initially reported158.0 during setup; the existing installation applied a pending update on first launch, and the completed checks observed159.0 (confirmed by binary/version capability). Its initial WebDriver launch failed500 during that update; retry with the installed browser succeeded. Browser-internal Firefox experiment/compositor warnings were observed in driver stderr; no application stack was implicated. Bundled Firefox157 remains separate.
+
+Official project-local geckodriver0.37.1 was downloaded from Mozilla's release (no Selenium dependency). Install only if missing, verify checksum before extraction:
+
+```sh
+curl --fail --location --output .local/downloads/geckodriver-v0.37.1-macos.tar.gz https://github.com/mozilla/geckodriver/releases/download/v0.37.1/geckodriver-v0.37.1-macos.tar.gz
+shasum -a 256 .local/downloads/geckodriver-v0.37.1-macos.tar.gz
+# Expected d02b3f7003f999caf90974a2ef5da0286c05d01cee19112c86846d759fdba4f5; stop on mismatch.
+tar -xzf .local/downloads/geckodriver-v0.37.1-macos.tar.gz -C .local/bin
+```
+
+With the loopback app running, start the isolated driver foreground in another terminal:
+
+```sh
+.local/bin/geckodriver --host 127.0.0.1 --port 4445 --allow-system-access --log error
+```
+
+Then run the tracked reproducible observation helper:
+
+```sh
+uv run python tools/verify_skeleton_browsers.py
+```
+
+The helper opens installed Chrome/Firefox in dedicated temporary profiles and uses real browser zoom: Chrome's native `chrome://settings/appearance` Page zoom selector and Firefox's privileged `browsingContext.fullZoom` via WebDriver. It applies Firefox zoom after navigation to avoid a navigation reset. At100%, both reported1280×720 CSS viewport and DPR1; at200%, both reported640×360 and DPR2. The helper asserts those dimensions, no horizontal overflow, Tab focus outline and Enter-triggered HTMX status. Chrome script/console errors are rejected; bundled-browser tests independently reject application script/console errors in both engines.
+
+Developer helper exit0 and screenshots `.local/skeleton-{chrome,firefox}-{100,200}.png` were visually inspected: text remains readable, the button/status are accessible after normal focus scrolling, no overlapping/clipped horizontal content, visible focus outline. Screenshots are ignored private artifacts. Ctrl-C stops only the project geckodriver, exit0; its status endpoint then refuses connections. WebDriver sessions/profiles are closed by the helper. No user browser profile is reused.
+
+Independent QA must replay checks and bind its verdict to the implementation commit. Feature and scheduler commands remain UNVERIFIED until their tasks implement them.
+
 
 Custom command names and flags are intended contracts to implement in task 006, not existing Django commands. Production scheduling must use a supervised process or equivalent platform scheduler chosen in an explicit operational task.
 
-## Acceptance and verification procedures — setup executed; application UNVERIFIED
+## Acceptance and verification procedures — bootstrap executed; features UNVERIFIED
 
 - Environment setup: record exact tools, import success, application-role PostgreSQL query and synthetic SMTP capture; inspect ignored files and staged examples for secrets. No Django startup result is expected yet.
 - Skeleton: start from documented prerequisites, migrate, start web server, verify health and landing page, load local HTMX, run checks/lint/tests/static collection, stop cleanly. Exercise health failure on an isolated test database/connection, not by disrupting an unrelated server.
@@ -211,7 +274,7 @@ Custom command names and flags are intended contracts to implement in task 006, 
 - Synchronization/offline: two independent browser contexts/computers observe accepted changes within five seconds under normal connectivity. Disconnect one, preserve displayed data, disable mutations, reconnect and refresh before enabling them; test lost mutation responses and stale revisions. Polling must not extend parent authority or discard form input/focus.
 - Accessibility/browser release gate: current stable Chrome and Firefox, 1280×720 minimum, keyboard navigation, visible focus, labeled inputs, status text and 200% zoom. Record versions and manual observations; automated bundled Firefox does not certify stable Firefox.
 
-Record procedures, actual results and exact revision in `_docs/verification/` using the verification template. A missing command/service/test or unavailable browser yields BLOCKED for its affected criterion, never PASS. No application checks have run; setup is recorded above and awaits independent QA.
+Record procedures, actual results and exact revision in `_docs/verification/` using the verification template. A missing command/service/test or unavailable browser yields BLOCKED for its affected criterion, never PASS. Setup has independent PASS; skeleton developer checks are recorded above and await independent QA. Feature checks have not run.
 
 ## Upstream references
 

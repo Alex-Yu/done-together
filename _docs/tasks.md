@@ -12,7 +12,7 @@ Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature 
 | ID / labels | Task | Status | Dependencies | GitHub issue |
 | --- | --- | --- | --- | --- |
 | `environment-setup` | [Set up the development environment](tasks/environment-setup.md) | Done | None; PM readiness passed | [#11](https://github.com/Alex-Yu/done-together/issues/11) |
-| application-skeleton | [Create a runnable application skeleton](tasks/application-skeleton.md) | Ready | environment-setup Done/integrated | [#12](https://github.com/Alex-Yu/done-together/issues/12) |
+| application-skeleton | [Create a runnable application skeleton](tasks/application-skeleton.md) | In review | environment-setup Done/integrated | [#12](https://github.com/Alex-Yu/done-together/issues/12) |
 | 001 | [Account registration, verification, sign-in, recovery, and safeguards](tasks/001-accounts.md) | Draft | application-skeleton | [#1](https://github.com/Alex-Yu/done-together/issues/1) |
 | 002 | [Household creation, timezone setup, and second-parent invitation](tasks/002-households.md) | Draft | 001 | [#2](https://github.com/Alex-Yu/done-together/issues/2) |
 | 003 | [Child profiles, parent/child PIN management, and protected shared access](tasks/003-pins.md) | Draft | 002 | [#3](https://github.com/Alex-Yu/done-together/issues/3) |
@@ -111,3 +111,16 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Issue #12 Ready/open reconciled/readback verified; no pending sync. Grooming branch `develop`; full grooming commit `87b54c097f99613a23972b6b08efc194f1088f91`. Subsequent checkpoint-only commit records this hash without changing scope.
 - Counters: batch1 completions1/10; setup2/3 attempts; skeleton/001–010 each0/3. No push authorization.
 - Next: developer creates task/application-skeleton from committed grooming, implements, then exact commit to independent QA.
+
+## Developer handoff — application-skeleton, 2026-10-28
+
+- Current role/task: Skeleton implementation complete, In review; route independent QA.
+- Branch: `task/application-skeleton`, from PM tip e1e23a8a05dad5075cd997298f7e2e76a9c51add including grooming87b54c097f99613a23972b6b08efc194f1088f91.
+- Exact implementation commit: Recorded after implementation commit; later handoff records do not change code.
+- Evidence: [developer record](verification/application-skeleton-developer.md), [validated commands](commands.md), tracked installed-browser helper.
+- Checks: migrations/system/drift/lint/format/static/locked sync pass; targeted health4/server11/bundled browsers2 pass; installed Chrome156/Firefox159 native100/200% keyboard/focus/HTMX screenshots inspected.
+- Services: PG17 running127.0.0.1:55432; existing PG13:5432 preserved. Webserver/geckodriver stopped after verification.
+- Counters before QA dispatch: Setup2/3, skeleton0/3, features001–010 zero. Batch1/10 complete.
+- Blockers: None for skeleton; feature001 awaits skeleton QA/re-check/integration/PM readiness.
+- Issue12 In review synchronized/readback at handoff. No merge/push; no push authorization.
+- Next routing: QA every skeletonAC on exact implementation, then orchestrator re-check/integration if PASS.

@@ -1,6 +1,6 @@
 # application-skeleton: Create a runnable Django application skeleton
 
-Status: Ready
+Status: In review
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/12
 Local task: `_docs/tasks/application-skeleton.md`
@@ -45,12 +45,12 @@ Use the integrated environment-setup result and agreed architecture. Setup is Do
 
 - PM scope review: 2026-10-28; five criteria complete and architecture aligned; Ready after setup integration/current PM review. Full grooming commit recorded in backlog checkpoint.
 
-- Implementation summary: Not started; PM Ready handoff after validated setup integration.
-- Task branch / verified implementation commit: Pending
-- Changed files / revision: Pending implementation
+- Implementation summary: Django settings/entrypoints, custom parent initial migration, PostgreSQL-backed health, provisional accessible landing/CSRF HTMX smoke, locally pinned HTMX, meaningful isolated server/browser tests, and reproducible installed stable-browser nativezoom helper.
+- Task branch / verified implementation commit: `task/application-skeleton`; full implementation hash recorded after commit; independent QA pending.
+- Changed files / revision: manage.py, config/, accounts/, board/, templates/, static/, tests/, tools/verify_skeleton_browsers.py, pyproject tooling, commands and delivery records; dependencies unchanged.
 - Final branch tip / delivery commit / integration results: Pending
 - Push status / authorized remote and branch targets: None authorized
-- Checks and results: Setup independently verified; application commands remain UNVERIFIED until executed. Scope/issue readback and diff checks recorded in checkpoint.
-- Verification record: Pending
+- Checks and results: Migrations, Django checks/drift, Ruff lint/format, locked sync and static collection passed; targeted health4, server11 and dual bundled-browser2 tests passed. Installed Chrome156/Firefox159 native100/200% keyboard/focus/HTMX checks passed with inspected screenshots. Feature/scheduler commands remain UNVERIFIED.
+- Verification record: [developer evidence](../verification/application-skeleton-developer.md); independent QA pending.
 - Orchestrator requirements re-check / evidence / outcome: Pending
-- Remaining risks or blockers: None at readiness; developer reports specific missing access if encountered. No source pushes authorized.
+- Remaining risks or blockers: No implementation blocker; independent QA required. PG17 left running; developer web server/geckodriver stopped. Installed Firefox now159 after existing pending update on launch. No source pushes authorized.

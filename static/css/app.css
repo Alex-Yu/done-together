@@ -1,0 +1,10 @@
+* { box-sizing: border-box; }
+body { margin: 0; background: #f6f5ef; color: #20352d; font-family: system-ui, sans-serif; line-height: 1.6; }
+main { width: min(100% - 3rem, 52rem); margin: 3rem auto; }
+.eyebrow { font-size: .9rem; font-weight: 650; letter-spacing: .04em; }
+h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.15; margin: .7rem 0 1rem; }
+h2 { font-size: 1.4rem; }
+section { margin-top: 2rem; padding: 1.5rem; background: white; border: 1px solid #cbd6ce; border-radius: 1rem; }
+button { font: inherit; font-weight: 650; background: #235b43; color: white; border: 2px solid #235b43; border-radius: .5rem; padding: .7rem 1rem; cursor: pointer; }
+:focus-visible { outline: 3px solid #a34a16; outline-offset: 4px; }
+#smoke-status { min-height: 1.6em; }
