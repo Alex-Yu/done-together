@@ -5,7 +5,7 @@ Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/3
 Local task: `_docs/tasks/003-pins.md`
 Requirement links: [REQ-004](../plan.md), [REQ-005](../plan.md), [REQ-006](../plan.md), [REQ-007](../plan.md), [REQ-027](../plan.md)
-Dependencies: [002](002-households.md) Done; architecture selection and applicable grooming complete.
+Dependencies: [002](002-households.md) Done and integrated into `develop`; PM readiness review after that dependency.
 
 ## Goal
 
@@ -26,24 +26,28 @@ Technology selection, unrelated release features, public launch, deployment, pai
 
 ## Constraints
 
-Follow the confirmed first-release scope and P-01–P-07 in [plan.md](../plan.md). Architecture is undecided: do not scaffold or choose dependencies from this task. Follow [process.md](../process.md) and [testing-guidelines.md](../testing-guidelines.md). The user confirmed scope on 2026-10-28; this task is not yet groomed or Ready.
+Follow the confirmed first-release scope and P-01–P-07 in [plan.md](../plan.md). Use the selected Django 5.2/Python 3.13/PostgreSQL 17/HTMX approach in [architecture.md](../architecture.md), ADR-001–003 and the locked setup dependencies. No SQLite substitute, frontend build stack, external email provider or deployment is authorized. Follow [process.md](../process.md) and [testing-guidelines.md](../testing-guidelines.md). The user handed over delivery on 2026-10-28. PM reviewed release scope and architecture during initial grooming; this task remains Draft until its dependency is Done/integrated and its current readiness review is recorded.
 
 ## Verification plan
 
-Map each AC to its named requirement's observable outcome using deterministic synthetic fixtures. Cover success, invalid input, unauthorized access, boundaries, and relevant failure/concurrency cases. Record reproducible procedures, actual observations, and exact implementation revision. Define architecture-specific commands and environments during grooming before Ready; unavailable checks remain BLOCKED. Final release verification must cover all journeys J-01–J-05 and P-01–P-07 on the integrated delivery revision.
+Use server-side board-session unlocks with selected member identity, even when another parent opened the board. Test leading-zero four-digit PINs, invalid format, PIN replacement, wrong own password, selecting the other parent, outsider/child/direct-request denial and CSRF. Verify 60-second expiry at the boundary; only accepted explicit parent activity extends it, while viewing/polling/child requests do not. PostgreSQL integration checks five failures/five minutes across independent sessions and no deadline extension. Inspect hashes/pepper separation and sanitized responses/logs.
+
+For each named AC, record expected and actual observations at the exact implementation commit using [verification template](../templates/verification.md). Run targeted PostgreSQL integration/browser checks and required regression commands in [commands.md](../commands.md); developer records exact selectors before handoff, and empty selections do not pass. Use synthetic data and isolated test settings/in-memory mail. Missing environment or evidence is BLOCKED.
 
 ## Questions and assumptions
 
-Product scope confirmed; no remaining product questions. Architecture, concrete commands, test environment, and PM readiness review remain pending. GitHub issues are authoritative. Existing issues were inspected before initial creation; match by local task ID/path at each synchronization to avoid duplicates.
+Product scope and architecture are confirmed; no consequential product question identified. Commands remain UNVERIFIED until their owning tasks execute them; dependency completion and current PM readiness review remain pending. GitHub issues are authoritative. Existing issues were inspected before initial creation; match by local task ID/path at each synchronization to avoid duplicates.
 
 ## Handoff
 
+- PM scope review: 2026-10-28; requirements retained, selected architecture applied; Draft until dependency integration and current readiness review.
+
 - Implementation summary: Not started
 - Task branch / verified implementation commit: Pending
-- Changed files / revision: Specification only; uncommitted
+- Changed files / revision: Initial delivery grooming on `develop`; full grooming commit recorded in backlog checkpoint
 - Final branch tip / delivery commit / integration results: Pending
 - Push status / authorized remote and branch targets: No pushes authorized
-- Checks and results: Task criteria drafted from confirmed requirements; GitHub issue synchronization verified by readback on 2026-10-28; implementation verification not run
+- Checks and results: Scope/architecture reviewed against confirmed requirements on 2026-10-28; issue reconciliation recorded in backlog checkpoint; implementation verification not run
 - Verification record: Pending
 - Orchestrator requirements re-check / evidence / outcome: Pending
-- Remaining risks or blockers: Architecture selection, grooming, and dependencies
+- Remaining risks or blockers: Dependency integration and current readiness review; no material scope blocker found

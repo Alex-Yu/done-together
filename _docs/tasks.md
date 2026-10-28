@@ -3,16 +3,16 @@
 Authoritative backlog: GitHub issues in [Alex-Yu/done-together](https://github.com/Alex-Yu/done-together/issues), selected after user scope confirmation under [process.md](process.md). Local task documents mirror the mapped GitHub issues; this file is the index/checkpoint.
 
 Backlog mode / origin repository: GitHub — `git@github.com:Alex-Yu/done-together.git`, checked 2026-10-28.
-Pending issue synchronization: Bootstrap issue publication/reconciliation. Tasks 001–010 are mapped to GitHub issues #1–#10; issue content/status and local mirrors verified by readback on 2026-10-28. Authentication works through GitHub CLI. Bootstrap tasks have now been refined locally for the selected architecture; issue publication/reconciliation is pending authorized delivery/backlog synchronization. No GitHub writes or readback occurred during this architecture-recording turn.
+Pending issue synchronization: None after initial delivery grooming; bootstrap issues #11/#12 and existing feature issues #1–#10 updated and exact-body readback verified on 2026-10-28 (source link formatting normalized). Local commits remain unpushed.
 
 ## Task index
 
-Architecture was selected on 2026-10-28. All feature tasks remain Draft until dependency completion, PM grooming, and issue reconciliation. Scope was confirmed by the user on 2026-10-28, including P-01–P-07.
+Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature roadmap against the selected architecture. Only environment-setup is Ready; dependent tasks remain Draft until their dependency integrates and current readiness is reviewed. Scope was confirmed by the user on 2026-10-28, including P-01–P-07.
 
 | ID / labels | Task | Status | Dependencies | GitHub issue |
 | --- | --- | --- | --- | --- |
-| `environment-setup` | [Set up the development environment](tasks/environment-setup.md) | Draft | Selected architecture; PM readiness review | Pending publication |
-| application-skeleton | [Create a runnable application skeleton](tasks/application-skeleton.md) | Draft | environment-setup | Pending publication |
+| `environment-setup` | [Set up the development environment](tasks/environment-setup.md) | Ready | None; PM readiness passed | [#11](https://github.com/Alex-Yu/done-together/issues/11) |
+| application-skeleton | [Create a runnable application skeleton](tasks/application-skeleton.md) | Draft | environment-setup | [#12](https://github.com/Alex-Yu/done-together/issues/12) |
 | 001 | [Account registration, verification, sign-in, recovery, and safeguards](tasks/001-accounts.md) | Draft | application-skeleton | [#1](https://github.com/Alex-Yu/done-together/issues/1) |
 | 002 | [Household creation, timezone setup, and second-parent invitation](tasks/002-households.md) | Draft | 001 | [#2](https://github.com/Alex-Yu/done-together/issues/2) |
 | 003 | [Child profiles, parent/child PIN management, and protected shared access](tasks/003-pins.md) | Draft | 002 | [#3](https://github.com/Alex-Yu/done-together/issues/3) |
@@ -24,21 +24,22 @@ Architecture was selected on 2026-10-28. All feature tasks remain Draft until de
 | 009 | [Synchronization, concurrent-action handling, and offline recovery](tasks/009-synchronization.md) | Draft | 008 | [#9](https://github.com/Alex-Yu/done-together/issues/9) |
 | 010 | [Integrated release verification and browser/accessibility checks](tasks/010-release-verification.md) | Draft | 009 | [#10](https://github.com/Alex-Yu/done-together/issues/10) |
 
-Preserve the `environment-setup` label and the skeleton dependency when those tasks are refined after architecture selection. Their local documents now contain concrete architecture-specific criteria; publish/reconcile them only within authorized backlog coordination before implementation. Feature requirement links, acceptance criteria, exclusions, and verification plans are in each task file.
+Bootstrap criteria preserve environment-before-skeleton separation. PM reconciled all feature tasks to the selected architecture, retained stable acceptance IDs, and made later integration ownership explicit where features depend on later workflows. No requirement is claimed complete by grooming.
 
 ## Checkpoint — 2026-10-28
 
-- Phase: Architecture recorded after user stack selection; delivery has not been handed to an orchestrator.
-- Agreed release: [plan.md](plan.md), REQ-001–REQ-027, D-01–D-07, P-01–P-07; product behavior unchanged.
-- Current work: [architecture.md](architecture.md), ADR-001–003, [commands.md](commands.md) and local bootstrap tasks refined. Feature issues #1–#10 were synchronized in the prior specification phase; no remote issue state was rechecked in this turn.
-- Implementation state: Documentation only, prepared for the user-requested architecture commit. No installs, scaffolding, application execution, task delivery branches, merges or pushes.
-- Architecture / commands: Django + PostgreSQL + HTMX selected. Intended setup/run/verification commands explicitly UNVERIFIED. Runtime/patch compatibility and local services must be validated by bootstrap tasks.
-- Per-task developer-to-QA attempts: Zero for every task, including bootstrap tasks.
-- Delivery batch completions: Zero; no delivery batch started.
-- Verification: `git diff --check` passed; local Markdown links checked across all nine changed/new documents with zero broken links; bootstrap acceptance IDs checked for uniqueness (7 setup, 5 skeleton), both tasks remain Draft, and explicit command UNVERIFIED status confirmed. No environment/application checks claimed.
-- Push authorization: None.
-- Pending synchronization: Publish/reconcile environment-setup and application-skeleton issues during authorized backlog coordination; read mapped issue updates before grooming features. No external write attempted in this documentation-only turn.
-- Remaining decisions: Hosting, external email provider, budget, backups/recovery, distribution and production operations. These gate affected operational work, not isolated local bootstrap.
-- Next action: User delivery handover under README step 4; then PM reads the role guide, reconciles authoritative issues, reviews bootstrap readiness and routes environment-setup to the developer. Do not start scaffolding before that handover and setup completion.
+- Phase: Delegated delivery started; PM grooming complete; route Ready environment-setup to developer.
+- Agreed task set: environment-setup, application-skeleton, 001–010 (12 tasks); [plan.md](plan.md) REQ-001–027, D-01–07, P-01–07 unchanged.
+- Delivery branch / starting state: `develop` created from `main` at `b8ea110`; no implementation exists yet. Full grooming commit recorded below after commit.
+- Current role/task: PM handoff → developer / [environment-setup](tasks/environment-setup.md); create `task/environment-setup` from committed grooming on develop.
+- Readiness: environment-setup Ready; skeleton scope refined but Draft until setup Done/integrated; features Draft pending integrated dependencies/current PM review.
+- Architecture / commands: Django + PostgreSQL + HTMX; commands remain UNVERIFIED until executed. Preserve unrelated PostgreSQL 13 on 5432; developer uses isolated project-owned PostgreSQL 17 on loopback 55432 and project-local tooling/cache where needed.
+- Per-task developer-to-QA attempts: environment-setup 0/3; application-skeleton 0/3; 001 0/3; 002 0/3; 003 0/3; 004 0/3; 005 0/3; 006 0/3; 007 0/3; 008 0/3; 009 0/3; 010 0/3. Attempts persist across sessions/batches.
+- Delivery batch: 1; completions 0/10. Default limit stops after ten completed tasks (through 008 if sequential); 009/010 require explicit batch renewal before continuation. Do not claim full release then.
+- Verification evidence: PM scope/architecture review and exact issue-body readback only; no environment/application checks or QA verdict claimed. Developer and independent QA must verify every setup criterion before completion.
+- GitHub: origin `git@github.com:Alex-Yu/done-together.git` confirmed. Issues #1–#12 read/reconciled; #11 environment-setup with preserved label, #12 skeleton newly created; all open. No pending synchronization.
+- Push authorization: None; do not push local develop/task branches. Issue updates are authorized separately.
+- Remaining decisions: Production hosting/provider/budget/operations remain out of local release scope; no consequential local product question identified. Tool/access failures route to developer, then request only specific missing access if necessary.
+- Next routing action: Developer implements one Ready setup task from full grooming commit; commit and submit exact revision to QA (consumes attempt 1); orchestrator re-check follows QA PASS before Done/merge.
 
-Source publication: The user authorized a local architecture documentation commit; no push is authorized or performed. Bootstrap issue publication is pending; existing feature issue source links may not reflect these local documents until an authorized push. Issue synchronization does not authorize source publication.
+Source publication: Issue bodies contain complete specifications; local source is unpushed. Issue links to develop source may not resolve until separately authorized source publication.

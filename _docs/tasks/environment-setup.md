@@ -1,10 +1,11 @@
 # environment-setup: Set up the Django development environment
 
-Status: Draft
+Status: Ready
 Labels: `environment-setup`
-GitHub issue: Not yet published; pending authorized backlog synchronization before delivery.
+GitHub issue: https://github.com/Alex-Yu/done-together/issues/11
+Local task: `_docs/tasks/environment-setup.md`
 Requirement links: [plan](../plan.md), REQ-001/007/021/025–027 (enabling infrastructure, not feature completion); [architecture](../architecture.md); ADR-001–003.
-Dependencies: User selected Django + PostgreSQL + HTMX on 2026-10-28; PM readiness review and backlog synchronization still required.
+Dependencies: None; architecture selected and delivery handed over on 2026-10-28; PM readiness review recorded below.
 
 ## Goal
 
@@ -22,7 +23,7 @@ The developer installs and configures a reproducible local Python/Django toolcha
 
 ## Out of scope
 
-Django scaffolding, application settings implementation, server startup and HTTP smoke checks belong to [application-skeleton](application-skeleton.md). Product features, external email, production hosting, deployment, backups and paid provisioning are excluded. No application code is requested at architecture-recording time.
+Django scaffolding, application settings implementation, server startup and HTTP smoke checks belong to [application-skeleton](application-skeleton.md). Product features, external email, production hosting, deployment, backups and paid provisioning are excluded. Application code is deferred to the dependent skeleton after setup is Done and integrated.
 
 ## Constraints
 
@@ -40,11 +41,13 @@ Follow [architecture](../architecture.md) and [commands](../commands.md). Native
 
 ## Questions and assumptions
 
-- Architecture is selected; implementation has not begun. This refined task stays Draft until PM readiness review, authorized issue publication/reconciliation and delivery handover.
-- Python 3.13/PostgreSQL 17 and native macOS tools are intended implementation defaults, not verified installations. Installation permissions are determined during execution.
+- PM readiness review on 2026-10-28: goal, seven stable acceptance criteria, exclusions, constraints and verification plan are complete and consistent with selected architecture. No dependency or product question blocks setup; delivery and issue synchronization are authorized. Tool/access availability is determined by developer execution.
+- Python 3.13/PostgreSQL 17 remain required. Developer inventory found an unrelated PostgreSQL 13 service on loopback 5432; preserve it and configure a project-owned PostgreSQL 17 cluster on loopback 55432 with project-local data/tooling/cache as needed. This supported isolation choice changes no product behavior. Exact installation and service evidence belongs to developer setup.
 - No production credentials or hosting choice is needed for isolated local setup. Production decisions remain open for later affected work.
 
 ## Handoff
+
+- PM readiness: Ready on 2026-10-28; full grooming commit recorded in backlog checkpoint.
 
 - Implementation summary: Not started; architecture-stage task refinement only.
 - Task branch / verified implementation commit: Pending
@@ -54,4 +57,4 @@ Follow [architecture](../architecture.md) and [commands](../commands.md). Native
 - Checks and results: Commands intended and UNVERIFIED; no environment/application execution
 - Verification record: Pending
 - Orchestrator requirements re-check / evidence / outcome: Pending
-- Remaining risks or blockers: PM readiness review and authorized backlog publication pending; delivery not handed over.
+- Remaining risks or blockers: No consequential scope blocker; developer must inspect tools/access and report specific missing access if encountered.

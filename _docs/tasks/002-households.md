@@ -5,7 +5,7 @@ Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/2
 Local task: `_docs/tasks/002-households.md`
 Requirement links: [REQ-002](../plan.md), [REQ-003](../plan.md), [REQ-011](../plan.md), [REQ-027](../plan.md)
-Dependencies: [001](001-accounts.md) Done; architecture selection and applicable grooming complete.
+Dependencies: [001](001-accounts.md) Done and integrated into `develop`; PM readiness review after that dependency.
 
 ## Goal
 
@@ -15,7 +15,7 @@ Parents can create a private household and invite the second parent.
 
 - [ ] AC-001: REQ-002: Intended verified recipient joins once; wrong-address, reused, and expired invitations fail; an expired invitation can be replaced.
 - [ ] AC-002: REQ-003: Either member parent can manage the household; outsiders cannot read or change it through UI or direct requests.
-- [ ] AC-003: REQ-011: Different-timezone computers agree on occurrence identity and dates but may show different overdue labels at the same instant.
+- [ ] AC-003: REQ-011/P-02: Creation suggests the creating browser timezone, validates and stores the household IANA timezone, and provides no timezone-change controls. Occurrence identity/scheduling and browser-local overdue interpretation remain linked to tasks 005–007 and release AC-011.
 - [ ] AC-004: REQ-027: Passwords/PINs cannot be read back or exposed in ordinary responses/logs; access links are private; unauthorized direct requests fail. Mechanisms are architecture decisions.
 - [ ] AC-005: Affected changes enforce household isolation, protected parent/child permissions, persistent data, accessible keyboard interaction, and recoverable validation/failure states under REQ-003/023/025/026/027; no credential exposure or false success.
 
@@ -25,24 +25,28 @@ Technology selection, unrelated release features, public launch, deployment, pai
 
 ## Constraints
 
-Follow the confirmed first-release scope and P-01–P-07 in [plan.md](../plan.md). Architecture is undecided: do not scaffold or choose dependencies from this task. Follow [process.md](../process.md) and [testing-guidelines.md](../testing-guidelines.md). The user confirmed scope on 2026-10-28; this task is not yet groomed or Ready.
+Follow the confirmed first-release scope and P-01–P-07 in [plan.md](../plan.md). Use the selected Django 5.2/Python 3.13/PostgreSQL 17/HTMX approach in [architecture.md](../architecture.md), ADR-001–003 and the locked setup dependencies. No SQLite substitute, frontend build stack, external email provider or deployment is authorized. Follow [process.md](../process.md) and [testing-guidelines.md](../testing-guidelines.md). The user handed over delivery on 2026-10-28. PM reviewed release scope and architecture during initial grooming; this task remains Draft until its dependency is Done/integrated and its current readiness review is recorded.
 
 ## Verification plan
 
-Map each AC to its named requirement's observable outcome using deterministic synthetic fixtures. Cover success, invalid input, unauthorized access, boundaries, and relevant failure/concurrency cases. Record reproducible procedures, actual observations, and exact implementation revision. Define architecture-specific commands and environments during grooming before Ready; unavailable checks remain BLOCKED. Final release verification must cover all journeys J-01–J-05 and P-01–P-07 on the integrated delivery revision.
+Test registration/sign-in to household creation and intended-recipient invitation joining in two independent accounts; use PostgreSQL transactions for simultaneous joins and enforce one household/account and two parents/household. Verify seven-day expiry boundaries, single use, wrong address, replacement after expiry and recoverable SMTP failure. Validate IANA timezone and immutable persistence, with browser timezone suggestion. Chore calendar interpretation is verified in tasks 005/006/007; no chore data or PIN management is required here.
+
+For each named AC, record expected and actual observations at the exact implementation commit using [verification template](../templates/verification.md). Run targeted PostgreSQL integration/browser checks and required regression commands in [commands.md](../commands.md); developer records exact selectors before handoff, and empty selections do not pass. Use synthetic data and isolated test settings/in-memory mail. Missing environment or evidence is BLOCKED.
 
 ## Questions and assumptions
 
-Product scope confirmed; no remaining product questions. Architecture, concrete commands, test environment, and PM readiness review remain pending. GitHub issues are authoritative. Existing issues were inspected before initial creation; match by local task ID/path at each synchronization to avoid duplicates.
+Product scope and architecture are confirmed; no consequential product question identified. Commands remain UNVERIFIED until their owning tasks execute them; dependency completion and current PM readiness review remain pending. GitHub issues are authoritative. Existing issues were inspected before initial creation; match by local task ID/path at each synchronization to avoid duplicates.
 
 ## Handoff
 
+- PM scope review: 2026-10-28; requirements retained, selected architecture applied; Draft until dependency integration and current readiness review.
+
 - Implementation summary: Not started
 - Task branch / verified implementation commit: Pending
-- Changed files / revision: Specification only; uncommitted
+- Changed files / revision: Initial delivery grooming on `develop`; full grooming commit recorded in backlog checkpoint
 - Final branch tip / delivery commit / integration results: Pending
 - Push status / authorized remote and branch targets: No pushes authorized
-- Checks and results: Task criteria drafted from confirmed requirements; GitHub issue synchronization verified by readback on 2026-10-28; implementation verification not run
+- Checks and results: Scope/architecture reviewed against confirmed requirements on 2026-10-28; issue reconciliation recorded in backlog checkpoint; implementation verification not run
 - Verification record: Pending
 - Orchestrator requirements re-check / evidence / outcome: Pending
-- Remaining risks or blockers: Architecture selection, grooming, and dependencies
+- Remaining risks or blockers: Dependency integration and current readiness review; no material scope blocker found

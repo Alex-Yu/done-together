@@ -2,9 +2,10 @@
 
 Status: Draft
 Labels: None
-GitHub issue: Not yet published; pending authorized backlog synchronization before delivery.
+GitHub issue: https://github.com/Alex-Yu/done-together/issues/12
+Local task: `_docs/tasks/application-skeleton.md`
 Requirement links: [plan](../plan.md), REQ-021/025–027 (enabling structure, not feature completion); [architecture](../architecture.md); ADR-001–003.
-Dependencies: [environment-setup](environment-setup.md) Done and integrated; PM readiness review and backlog synchronization.
+Dependencies: [environment-setup](environment-setup.md) Done and integrated; current PM readiness review.
 
 ## Goal
 
@@ -24,7 +25,7 @@ Accounts/verification/invitations, shared parent/child PIN behavior, household b
 
 ## Constraints
 
-Use the integrated environment-setup result and agreed architecture. Scaffolding begins only when this task becomes Ready after delivery handover; this task document is not permission to execute it now. Keep the smoke interface minimal and removable as features arrive. Bind development services to loopback. Never use live household data or SQLite for database verification. No frontend build system is required.
+Use the integrated environment-setup result and agreed architecture. Delivery is handed over; scaffolding begins only when setup is Done/integrated and the PM marks this task Ready. Keep the smoke interface minimal and removable as features arrive. Bind development services to loopback. Never use live household data or SQLite for database verification. No frontend build system is required.
 
 ## Verification plan
 
@@ -36,11 +37,13 @@ Use the integrated environment-setup result and agreed architecture. Scaffolding
 
 ## Questions and assumptions
 
-- Remains Draft until environment-setup is Done/integrated, PM review and authorized issue synchronization. No requirement has been marked complete by this design document.
+- PM reviewed the five criteria against selected architecture on 2026-10-28. Remains Draft until environment-setup is Done/integrated and current readiness review confirms validated prerequisites. No requirement has been marked complete by this design document.
 - A minimal custom user model extends Django's supported user mechanism; account workflows and exact verification/recovery rules remain task 001.
 - Hosting and production operations remain unselected and do not block this loopback skeleton.
 
 ## Handoff
+
+- PM scope review: 2026-10-28; five criteria complete and architecture aligned; Draft pending setup integration. Full grooming commit recorded in backlog checkpoint.
 
 - Implementation summary: Not started; architecture-stage task refinement only.
 - Task branch / verified implementation commit: Pending
@@ -50,4 +53,4 @@ Use the integrated environment-setup result and agreed architecture. Scaffolding
 - Checks and results: Commands intended and UNVERIFIED; no environment/application execution
 - Verification record: Pending
 - Orchestrator requirements re-check / evidence / outcome: Pending
-- Remaining risks or blockers: PM readiness review and authorized backlog publication pending; delivery not handed over.
+- Remaining risks or blockers: Environment-setup must be Done/integrated; current PM readiness review pending.
