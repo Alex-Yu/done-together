@@ -28,19 +28,19 @@ Bootstrap criteria preserve environment-before-skeleton separation. PM reconcile
 
 ## Checkpoint — 2026-10-28
 
-- Phase: Setup completion gate passed; local integration pending, then PM skeleton grooming.
+- Phase: Setup integrated and checks PASS; PM skeleton grooming next.
 - Agreed task set: environment-setup, application-skeleton, 001–010 (12 tasks); plan REQ-001–027 and D/P defaults unchanged.
 - Delivery branch: `develop`, created from `main` at `b8ea110`; grooming `66245f5fcde8bce1e189b7ff86885a3d232b8d7d`, PM checkpoint `18e9ab25fb08609d6709ce8af5e866486bee4fe3`.
 - Current task: environment-setup Done after QA PASS and orchestrator PASS at `1dc5e2406abd49d3cb20e2a20c4f5e191f577274`; evidence/status tip `156e10f6b1a8de15b2814c0b86480fe8cb05b2ef`; integrate before dependent work. Detailed handoff history follows.
 - Readiness: Skeleton and features remain Draft; PM grooms skeleton after successful setup integration.
 - Environment: Project-owned PostgreSQL17.11 loopback55432 running, unrelated PostgreSQL13:5432 preserved; Mailpit stopped. Setup commands validated; application/feature commands UNVERIFIED.
 - Per-task developer-to-QA attempts: environment-setup 2/3; application-skeleton 0/3; 001 0/3; 002 0/3; 003 0/3; 004 0/3; 005 0/3; 006 0/3; 007 0/3; 008 0/3; 009 0/3; 010 0/3. Counts persist across sessions/batches.
-- Delivery batch: 1; completions 1/10 after successful integration. Default limit stops after ten completions; 009/010 then need batch renewal.
+- Delivery batch: 1; completions 1/10; setup integration successful. Default limit stops after ten completions; 009/010 then need batch renewal.
 - Evidence: [QA PASS](verification/environment-setup-qa-attempt-2.md), [orchestrator PASS](verification/environment-setup-orchestrator.md); no application tests or feature completion claimed.
-- GitHub: origin Alex-Yu/done-together, issues #1–#12 reconciled; issue #11 completion update/closure pending successful integration. Other issues remain Draft/open.
+- GitHub: origin Alex-Yu/done-together, issues #1–#12 reconciled; issue #11 Done/closed after successful integration, body/state readback verified. Other issues remain Draft/open.
 - Push authorization: None; local commits only. Issue synchronization authorized separately.
 - Blockers: None for local setup. Production decisions remain outside local scope.
-- Next routing: Commit completion, merge setup into develop, integration checks, record delivery hash and close synchronized issue #11; PM skeleton grooming.
+- Next routing: PM grooms application-skeleton on develop from setup delivery e1d8b42; then developer implementation and QA.
 
 Source publication: Issue bodies contain complete specifications; local source is unpushed. Issue links to develop source may not resolve until separately authorized source publication.
 
@@ -96,3 +96,10 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Current routing: commit Done records on `task/environment-setup`, integrate into `develop`, run locked sync/database integration checks, record delivery hash, reconcile/close issue #11, then PM grooms skeleton.
 - Attempts: setup 2/3; all other tasks 0/3. Batch 1 completions 1/10 upon successful integration.
 - Push authorization: None; local delivery only.
+
+## Setup integration result
+
+- Fast-forward delivery commit / task final tip: `e1d8b42d520abe8acf6bae470568ca0e0d67757e` on `develop`.
+- Post-merge `uv sync --locked`, runtime imports (Django 5.2.18), authenticated PostgreSQL `SELECT 1`, and `git diff --check`: all exit 0. Clean tree before records update.
+- Batch completions 1/10; setup attempts 2/3, all others 0/3. Next: PM grooms application-skeleton.
+- Issue #11 Done/closed; exact body and CLOSED state readback verified. No push.
