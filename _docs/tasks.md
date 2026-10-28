@@ -7,12 +7,12 @@ Pending issue synchronization: None after initial delivery grooming; bootstrap i
 
 ## Task index
 
-Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature roadmap against the selected architecture. Only environment-setup is Ready; dependent tasks remain Draft until their dependency integrates and current readiness is reviewed. Scope was confirmed by the user on 2026-10-28, including P-01–P-07.
+Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature roadmap against the selected architecture. Environment-setup is Done/integrated; skeleton is Ready after PM review; feature tasks remain Draft pending dependency integration and current readiness review. Scope was confirmed by the user on 2026-10-28, including P-01–P-07.
 
 | ID / labels | Task | Status | Dependencies | GitHub issue |
 | --- | --- | --- | --- | --- |
-| `environment-setup` | [Set up the development environment](tasks/environment-setup.md) | In review | None; PM readiness passed | [#11](https://github.com/Alex-Yu/done-together/issues/11) |
-| application-skeleton | [Create a runnable application skeleton](tasks/application-skeleton.md) | Draft | environment-setup | [#12](https://github.com/Alex-Yu/done-together/issues/12) |
+| `environment-setup` | [Set up the development environment](tasks/environment-setup.md) | Done | None; PM readiness passed | [#11](https://github.com/Alex-Yu/done-together/issues/11) |
+| application-skeleton | [Create a runnable application skeleton](tasks/application-skeleton.md) | Ready | environment-setup Done/integrated | [#12](https://github.com/Alex-Yu/done-together/issues/12) |
 | 001 | [Account registration, verification, sign-in, recovery, and safeguards](tasks/001-accounts.md) | Draft | application-skeleton | [#1](https://github.com/Alex-Yu/done-together/issues/1) |
 | 002 | [Household creation, timezone setup, and second-parent invitation](tasks/002-households.md) | Draft | 001 | [#2](https://github.com/Alex-Yu/done-together/issues/2) |
 | 003 | [Child profiles, parent/child PIN management, and protected shared access](tasks/003-pins.md) | Draft | 002 | [#3](https://github.com/Alex-Yu/done-together/issues/3) |
@@ -28,19 +28,19 @@ Bootstrap criteria preserve environment-before-skeleton separation. PM reconcile
 
 ## Checkpoint — 2026-10-28
 
-- Phase: Setup integrated and checks PASS; PM skeleton grooming next.
+- Phase: Setup integrated and checks PASS; PM skeleton Ready handoff.
 - Agreed task set: environment-setup, application-skeleton, 001–010 (12 tasks); plan REQ-001–027 and D/P defaults unchanged.
 - Delivery branch: `develop`, created from `main` at `b8ea110`; grooming `66245f5fcde8bce1e189b7ff86885a3d232b8d7d`, PM checkpoint `18e9ab25fb08609d6709ce8af5e866486bee4fe3`.
 - Current task: environment-setup Done after QA PASS and orchestrator PASS at `1dc5e2406abd49d3cb20e2a20c4f5e191f577274`; evidence/status tip `156e10f6b1a8de15b2814c0b86480fe8cb05b2ef`; integrate before dependent work. Detailed handoff history follows.
-- Readiness: Skeleton and features remain Draft; PM grooms skeleton after successful setup integration.
+- Readiness: Skeleton Ready after PM review and issue reconciliation; features remain Draft.
 - Environment: Project-owned PostgreSQL17.11 loopback55432 running, unrelated PostgreSQL13:5432 preserved; Mailpit stopped. Setup commands validated; application/feature commands UNVERIFIED.
 - Per-task developer-to-QA attempts: environment-setup 2/3; application-skeleton 0/3; 001 0/3; 002 0/3; 003 0/3; 004 0/3; 005 0/3; 006 0/3; 007 0/3; 008 0/3; 009 0/3; 010 0/3. Counts persist across sessions/batches.
 - Delivery batch: 1; completions 1/10; setup integration successful. Default limit stops after ten completions; 009/010 then need batch renewal.
 - Evidence: [QA PASS](verification/environment-setup-qa-attempt-2.md), [orchestrator PASS](verification/environment-setup-orchestrator.md); no application tests or feature completion claimed.
-- GitHub: origin Alex-Yu/done-together, issues #1–#12 reconciled; issue #11 Done/closed after successful integration, body/state readback verified. Other issues remain Draft/open.
+- GitHub: origin Alex-Yu/done-together, issues #1–#12 reconciled; issue #11 Done/closed after successful integration, body/state readback verified. Issue #12 Ready/open; feature issues #1–#10 remain Draft/open.
 - Push authorization: None; local commits only. Issue synchronization authorized separately.
 - Blockers: None for local setup. Production decisions remain outside local scope.
-- Next routing: PM grooms application-skeleton on develop from setup delivery e1d8b42; then developer implementation and QA.
+- Next routing: Developer creates `task/application-skeleton` from current committed develop grooming; implement, commit exact implementation, submit to independent QA (attempt1).
 
 Source publication: Issue bodies contain complete specifications; local source is unpushed. Issue links to develop source may not resolve until separately authorized source publication.
 
@@ -103,3 +103,11 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Post-merge `uv sync --locked`, runtime imports (Django 5.2.18), authenticated PostgreSQL `SELECT 1`, and `git diff --check`: all exit 0. Clean tree before records update.
 - Batch completions 1/10; setup attempts 2/3, all others 0/3. Next: PM grooms application-skeleton.
 - Issue #11 Done/closed; exact body and CLOSED state readback verified. No push.
+
+## PM Ready handoff — application-skeleton, 2026-10-28
+
+- Current role/task: PM → developer / application-skeleton Ready. Dependency integrated at `e1d8b42d520abe8acf6bae470568ca0e0d67757e`, QA2/orchestrator PASS; integration checks passed.
+- Scope/readiness: five ACs preserved; selected architecture and validated environment confirmed. Explicit test-DB guard, safe settings, custom user before migrations, local pinned HTMX provenance/license, full skeleton checks and stable Chrome/Firefox keyboard/200% observations remain required. No account workflow.
+- Issue #12 Ready/open reconciled/readback verified; no pending sync. Grooming branch develop; full grooming commit recorded after commit.
+- Counters: batch1 completions1/10; setup2/3 attempts; skeleton/001–010 each0/3. No push authorization.
+- Next: developer creates task/application-skeleton from committed grooming, implements, then exact commit to independent QA.
