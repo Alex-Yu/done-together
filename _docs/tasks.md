@@ -295,6 +295,6 @@ Source publication: Issue bodies contain complete specifications; local source i
 
 - Dependency002 Done/integrated `f98ba7ba2a46b875bb3a2c0c643d8a3bbe5a1cad`, QA2 PASS `8269f5a6f5bd6fb71468a93e1a2c405f0aea519a`; postmerge53 server/check/migrate/drift/Ruff PASS.
 - Six ACs unchanged; parallel grooming8feda09 and QA plan29bdf2e integrated, current readiness complete. Selected parent's own password for first/reset PIN; exact four digits/leading zeros; either-parent unlock; PostgreSQL shared identity5/5; server60-second parent-only activity and protected existing002 management. Verified-account creation/join and own-password recovery remain bootstrap paths. Full board004/submission007 remain later owners.
-- Issue3 Ready/open body readback verified. Grooming on develop; full readiness commit recorded after creation. No implementation/QA claim from readiness.
+- Issue3 Ready/open body readback verified. Grooming on develop; full readiness commit `0eb69675a07941132674a4e549bbf81e4da1e6c7`; following checkpoint-only commit records this hash. No implementation/QA claim from readiness.
 - Counters unchanged: batch2 completions2/10; setup2/3,skeleton1/3,0011/3,0022/3,003–010 each0/3. No pushes.
 - Next: developer branch task/003-pins includes readiness commit; exact implementation to independent QA attempt1, then completion/integration on PASS.
