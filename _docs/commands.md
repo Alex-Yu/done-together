@@ -148,11 +148,11 @@ curl --fail --location --output .local/downloads/mailpit-darwin-amd64.tar.gz htt
 shasum -a 256 .local/downloads/mailpit-darwin-amd64.tar.gz
 # Expected d7f3d0964cd2ea4c2a7d10660a12e02876718e67d88ced390d9cd90350a453da; stop on mismatch.
 tar -xzf .local/downloads/mailpit-darwin-amd64.tar.gz -C .local/bin
-mailpit version
+mailpit version --no-release-check
 mailpit --listen 127.0.0.1:8025 --smtp 127.0.0.1:1025 --database .local/mailpit.db --disable-version-check --smtp-disable-rdns --block-remote-css-and-fonts
 ```
 
-Version output isv1.32.0 compiled with go1.27.3, darwin/amd64. `mailpit --version` is unsupported (exit1); use `mailpit version` (exit0). Leave capture foreground in separate terminal; readiness logs show both loopback listeners. In another terminal with exports above:
+Version output isv1.32.0 compiled with go1.27.3, darwin/amd64. `mailpit --version` is unsupported (exit1); use `mailpit version --no-release-check` (exit0 without network; suppresses the online release lookup). Leave capture foreground in separate terminal; readiness logs show both loopback listeners. In another terminal with exports above:
 
 ```sh
 uv run python - <<'PY'
@@ -186,7 +186,7 @@ These commands become available only after the owning tasks create their referen
 | HTTP/database smoke | `curl --fail http://127.0.0.1:8000/health/` | HTTP 200 and minimal `{"status":"ok"}` only when a database query succeeds; database failure returns 503 without internals; application-skeleton |
 | Browser smoke | Open `http://127.0.0.1:8000/` | Accessible provisional Done Together landing page, local HTMX asset loads, no household data or browser errors; application-skeleton |
 | Stop web server | Ctrl-C in its terminal | Process exits cleanly, endpoint no longer responds; application-skeleton |
-| Stop database started for this project | `brew services stop postgresql@17` | Only when not shared with other work; environment-setup |
+| Stop project-owned database | `pg_ctl -D .local/pgdata stop -m fast` | Stops only this repository’s dedicated cluster on55432; preserves unrelated PostgreSQL13 on5432; environment-setup validated. Requires documented project bin PATH |
 | Static assets | `uv run python manage.py collectstatic --noinput` | Builds local collected static directory including pinned HTMX; application-skeleton. Output directory is ignored |
 | Package / frontend build | Not applicable to initial local delivery | Run application source with locked dependencies; no distributable package, Node build or deployment artifact selected |
 | Django checks | `uv run python manage.py check` | No system-check errors; application-skeleton onward |
