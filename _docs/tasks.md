@@ -11,7 +11,7 @@ Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature 
 
 | ID / labels | Task | Status | Dependencies | GitHub issue |
 | --- | --- | --- | --- | --- |
-| `environment-setup` | [Set up the development environment](tasks/environment-setup.md) | Ready | None; PM readiness passed | [#11](https://github.com/Alex-Yu/done-together/issues/11) |
+| `environment-setup` | [Set up the development environment](tasks/environment-setup.md) | In review | None; PM readiness passed | [#11](https://github.com/Alex-Yu/done-together/issues/11) |
 | application-skeleton | [Create a runnable application skeleton](tasks/application-skeleton.md) | Draft | environment-setup | [#12](https://github.com/Alex-Yu/done-together/issues/12) |
 | 001 | [Account registration, verification, sign-in, recovery, and safeguards](tasks/001-accounts.md) | Draft | application-skeleton | [#1](https://github.com/Alex-Yu/done-together/issues/1) |
 | 002 | [Household creation, timezone setup, and second-parent invitation](tasks/002-households.md) | Draft | 001 | [#2](https://github.com/Alex-Yu/done-together/issues/2) |
@@ -43,3 +43,15 @@ Bootstrap criteria preserve environment-before-skeleton separation. PM reconcile
 - Next routing action: Developer implements one Ready setup task from full grooming commit; commit and submit exact revision to QA (consumes attempt 1); orchestrator re-check follows QA PASS before Done/merge.
 
 Source publication: Issue bodies contain complete specifications; local source is unpushed. Issue links to develop source may not resolve until separately authorized source publication.
+
+## Developer handoff — environment-setup, 2026-10-28
+
+- Current role/task: Developer implementation complete; route `environment-setup` to independent QA.
+- Task branch: `task/environment-setup`, created from PM checkpoint18e9ab25fb08609d6709ce8af5e866486bee4fe3 and includes grooming66245f5fcde8bce1e189b7ff86885a3d232b8d7d.
+- Exact implementation commit: Recorded after implementation commit; QA must use full hash.
+- Evidence: [developer setup record](verification/environment-setup-developer.md), [validated setup commands](commands.md). No application source/tests exist.
+- Environment: isolated project PG17.11 running on127.0.0.1:55432; unrelated PG13:5432 preserved; Mailpit stopped after successful capture/shutdown.
+- Per-task developer-to-QA attempts: Setup0 before QA dispatch; all other tasks0. Batch completions0/10.
+- Blockers: None for setup; skeleton/features remain dependency-blocked Draft.
+- Push authorization/status: None; local commits only.
+- Next routing: Independent QA against recorded setup implementation, then orchestrator re-check/integration if PASS.

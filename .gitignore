@@ -9,3 +9,17 @@ Thumbs.db
 !.env.*.example
 
 # Add stack-specific build, cache, and dependency paths after choosing the stack.
+
+# Python environment, project-owned services, and private generated artifacts
+.venv/
+.local/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+staticfiles/
+test-results/
+playwright-report/
+*.egg-info/

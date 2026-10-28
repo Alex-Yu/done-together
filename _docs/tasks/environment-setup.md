@@ -1,6 +1,6 @@
 # environment-setup: Set up the Django development environment
 
-Status: Ready
+Status: In review
 Labels: `environment-setup`
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/11
 Local task: `_docs/tasks/environment-setup.md`
@@ -49,12 +49,12 @@ Follow [architecture](../architecture.md) and [commands](../commands.md). Native
 
 - PM readiness: Ready on 2026-10-28; full grooming commit recorded in backlog checkpoint.
 
-- Implementation summary: Not started; architecture-stage task refinement only.
-- Task branch / verified implementation commit: Pending
-- Changed files / revision: Pending implementation
+- Implementation summary: Reproducible Python3.13/Django5.2 runtime/dev lockfiles, project-local PostgreSQL17.11 cluster on55432, loopback Mailpit1.32.0 synthetic capture, Playwright browsers, secret-safe ignored local configuration and validated setup commands. No application source introduced.
+- Task branch / verified implementation commit: `task/environment-setup`; implementation commit recorded after commit in checkpoint. QA pending.
+- Changed files / revision: `.gitignore`, `.env.example`, `.python-version`, `pyproject.toml`, `uv.lock`, commands, setup task, backlog and developer evidence. Ignored local services/config are not committed.
 - Final branch tip / delivery commit / integration results: Pending
 - Push status / authorized remote and branch targets: None authorized
-- Checks and results: Commands intended and UNVERIFIED; no environment/application execution
-- Verification record: Pending
+- Checks and results: `uv sync --locked`, runtime imports, pytest/Ruff version probes, authenticated PostgreSQL SELECT1/role privileges/disposable test database rights, project cluster restart, browser executable availability, synthetic Mailpit SMTP/API/UI capture, loopback bindings, graceful Mailpit stop, config/ignore checks and `git diff --check` passed. Application commands remain UNVERIFIED.
+- Verification record: [developer setup evidence](../verification/environment-setup-developer.md); independent QA pending.
 - Orchestrator requirements re-check / evidence / outcome: Pending
-- Remaining risks or blockers: No consequential scope blocker; developer must inspect tools/access and report specific missing access if encountered.
+- Remaining risks or blockers: No setup blocker. Independent QA must replay AC001–007 before completion. PostgreSQL17 left running; Mailpit stopped. Existing PostgreSQL13 unchanged. No push authorization.
