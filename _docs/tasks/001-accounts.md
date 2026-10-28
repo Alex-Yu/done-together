@@ -1,11 +1,11 @@
 # 001: Account registration, verification, sign-in, recovery, and safeguards
 
-Status: Draft
+Status: Ready
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/1
 Local task: `_docs/tasks/001-accounts.md`
 Requirement links: [REQ-001](../plan.md), [REQ-007](../plan.md), [REQ-027](../plan.md)
-Dependencies: [application-skeleton](application-skeleton.md) Done and integrated into `develop`; PM readiness review after that dependency.
+Dependencies: [application-skeleton](application-skeleton.md) Done/integrated at `79711b8348ff400983c5e6d265b90a476c3a6bad`; independent QA1 and orchestrator PASS at `f663bfe2149500d13516c1d82d924c3fb0a87185`; current PM readiness passed.
 
 ## Goal
 
@@ -20,25 +20,28 @@ Parents can access and recover verified accounts with protected credentials.
 
 ## Out of scope
 
-Technology selection, unrelated release features, public launch, deployment, paid service provisioning, and scope excluded by the confirmed product plan. Where a criterion depends on another task, verify it after that dependency is integrated; do not mark unverified behavior complete.
+Technology selection, unrelated release features, public launch, deployment, paid service provisioning, and scope excluded by the confirmed product plan. Household models/invitations belong to [002](002-households.md), PINs/parent unlock to [003](003-pins.md), and board data to [004](004-board.md). Establish and execute the verified-account access guard now using a synthetic protected endpoint/test fixture without adding household data or product screens. Verify actual household isolation and PIN integration in those named tasks and final release verification; this task does not claim their completion.
 
 ## Constraints
 
-Follow the confirmed first-release scope and P-01–P-07 in [plan.md](../plan.md). Use the selected Django 5.2/Python 3.13/PostgreSQL 17/HTMX approach in [architecture.md](../architecture.md), ADR-001–003 and the locked setup dependencies. No SQLite substitute, frontend build stack, external email provider or deployment is authorized. Follow [process.md](../process.md) and [testing-guidelines.md](../testing-guidelines.md). The user handed over delivery on 2026-10-28. PM reviewed release scope and architecture during initial grooming; this task remains Draft until its dependency is Done/integrated and its current readiness review is recorded.
+Follow the confirmed first-release scope and P-01–P-07 in [plan.md](../plan.md). Use the selected Django 5.2/Python 3.13/PostgreSQL 17/HTMX approach in [architecture.md](../architecture.md), ADR-001–003 and the locked setup dependencies. No SQLite substitute, frontend build stack, external email provider or deployment is authorized. Follow [process.md](../process.md) and [testing-guidelines.md](../testing-guidelines.md). The user handed over delivery on 2026-10-28. Current PM readiness review passed after skeleton integration; implement from committed `develop` using the existing custom user and locked django-allauth. Keep identity-wide failure counters atomic in PostgreSQL across sessions/processes; supplementary source/request throttles must not replace the approved five-failure/five-minute identity rule. Use private access links, safe token logging, server-validated sessions, CSRF and secure cookie settings (loopback HTTP exception documented in local settings only).
 
 ## Verification plan
 
-Use django-allauth with the custom user established by the skeleton. Verify one-hour verification/recovery links at just before and at expiry, malformed/used links, duplicate registration, failed SMTP delivery, generic account errors, password invalidation and sign-out. PostgreSQL integration tests exercise five consecutive password failures across independent sessions/processes, five-minute restriction without deadline extension, permitted success clearing failures, and source/request throttling. PIN-specific use of the shared limiter is completed in task 003; no PIN UI is required here.
+- AC-001: Exercise register → captured verification email → verify → sign in → sign out, resend/recovery, and password replacement in browser and PostgreSQL/request tests. Mandatory verification must deny unverified/anonymous access through the reusable guard, including direct requests. Test links just before and at one-hour expiry, malformed/tampered/used links, replay after consumption, and recovery links after a password change. A reset makes the old password unusable; duplicate registration and unknown-address recovery use generic recoverable responses. Test local SMTP failure and successful retry without false success or loss of access. Capture synthetic account email in Mailpit separately from in-memory automated tests.
+- AC-002: Independent sessions/processes targeting the same account share five consecutive wrong-password attempts and a five-minute restriction. Check the fifth failure, correct password while restricted, exact expiry retry, no deadline extension from restricted attempts, and permitted success clearing failures. PostgreSQL concurrent transactions must not lose failures. Exercise supplementary source/request throttles and confirm generic errors do not disclose account existence. Shared limiter PIN use remains task 003.
+- AC-003: Inspect stored credential hashing, ordinary responses, email-link handling, headers and logs without printing actual secrets/tokens. Password fields never read back; private verification/recovery tokens must be redacted from routine request logs/referrers. Test CSRF rejection on account mutations and access denial through direct requests, secure session/cookie settings, and sign-out. PIN-specific storage/exposure is task 003.
+- AC-004: Execute keyboard/labeled-input/focus and recoverable validation/error flows in stable Chrome/Firefox at the agreed viewport/zoom, and retain installed-browser smoke/regression commands. Verify account persistence across sign-out/reload/server restart and that failed account actions leave consistent state. Scope household isolation tests to the account guard fixture now; actual two-household data/parent/child permissions are verified in tasks 002–004/007 and final release task 010. No unimplemented later behavior may be marked complete.
 
 For each named AC, record expected and actual observations at the exact implementation commit using [verification template](../templates/verification.md). Run targeted PostgreSQL integration/browser checks and required regression commands in [commands.md](../commands.md); developer records exact selectors before handoff, and empty selections do not pass. Use synthetic data and isolated test settings/in-memory mail. Missing environment or evidence is BLOCKED.
 
 ## Questions and assumptions
 
-Product scope and architecture are confirmed; no consequential product question identified. Commands remain UNVERIFIED until their owning tasks execute them; dependency completion and current PM readiness review remain pending. GitHub issues are authoritative. Existing issues were inspected before initial creation; match by local task ID/path at each synchronization to avoid duplicates.
+Product scope and architecture are confirmed; no consequential product question identified. Skeleton commands and prerequisites passed independent verification/integration; account-specific commands remain UNVERIFIED until implementation. All four criteria have concrete checks and later integration ownership; PM readiness passed. GitHub issues are authoritative. Existing issues were inspected before initial creation; match by local task ID/path at each synchronization to avoid duplicates.
 
 ## Handoff
 
-- PM scope review: 2026-10-28; requirements retained, selected architecture applied; Draft until dependency integration and current readiness review.
+- PM readiness: Ready on 2026-10-28 after skeleton integration; four ACs preserved and mapped to concrete account checks and named later integration owners. Full grooming commit recorded in backlog checkpoint.
 
 - Implementation summary: Not started
 - Task branch / verified implementation commit: Pending
@@ -48,4 +51,4 @@ Product scope and architecture are confirmed; no consequential product question 
 - Checks and results: Scope/architecture reviewed against confirmed requirements on 2026-10-28; issue reconciliation recorded in backlog checkpoint; implementation verification not run
 - Verification record: Pending
 - Orchestrator requirements re-check / evidence / outcome: Pending
-- Remaining risks or blockers: Dependency integration and current readiness review; no material scope blocker found
+- Remaining risks or blockers: None at readiness; specific access failures route through orchestrator; no pushes authorized

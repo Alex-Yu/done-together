@@ -13,7 +13,7 @@ Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature 
 | --- | --- | --- | --- | --- |
 | `environment-setup` | [Set up the development environment](tasks/environment-setup.md) | Done | None; PM readiness passed | [#11](https://github.com/Alex-Yu/done-together/issues/11) |
 | application-skeleton | [Create a runnable application skeleton](tasks/application-skeleton.md) | In review | environment-setup Done/integrated | [#12](https://github.com/Alex-Yu/done-together/issues/12) |
-| 001 | [Account registration, verification, sign-in, recovery, and safeguards](tasks/001-accounts.md) | Draft | application-skeleton | [#1](https://github.com/Alex-Yu/done-together/issues/1) |
+| 001 | [Account registration, verification, sign-in, recovery, and safeguards](tasks/001-accounts.md) | Ready | application-skeleton Done/integrated | [#1](https://github.com/Alex-Yu/done-together/issues/1) |
 | 002 | [Household creation, timezone setup, and second-parent invitation](tasks/002-households.md) | Draft | 001 | [#2](https://github.com/Alex-Yu/done-together/issues/2) |
 | 003 | [Child profiles, parent/child PIN management, and protected shared access](tasks/003-pins.md) | Draft | 002 | [#3](https://github.com/Alex-Yu/done-together/issues/3) |
 | 004 | [Shared board, empty states, and settings navigation](tasks/004-board.md) | Draft | 003 | [#4](https://github.com/Alex-Yu/done-together/issues/4) |
@@ -147,3 +147,12 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Final task tip/fast-forward delivery `79711b8348ff400983c5e6d265b90a476c3a6bad` on develop.
 - Post-merge Django checks/drift, server/config11 tests, Ruff lint/format, git diff check PASS. No implementation change during integration.
 - Attempts skeleton1/3, setup2/3; batch2/10. Issue12 Done/closed, exact body and state readback verified; no push.
+
+## PM Ready handoff — 001 accounts, 2026-10-28
+
+- Current role/task: PM → developer / 001 Ready. Skeleton integrated at `79711b8348ff400983c5e6d265b90a476c3a6bad`; QA1/orchestrator PASS implementation `f663bfe2149500d13516c1d82d924c3fb0a87185`, postmerge checks passed.
+- Scope/readiness: four ACs preserved; django-allauth/custom user, mandatory verification, one-hour safe links, recovery invalidation, atomic PostgreSQL five-failure/five-minute identity lockouts, supplementary source/request throttles, CSRF/session privacy, accessible recoverable errors and SMTP retry verified by specified backend/browser checks. No material question.
+- Sequencing: establish reusable verified-account access guard with synthetic protected endpoint fixture now; actual household data isolation 002/004 and PIN/parent authority 003/007 remain named later requirements, never claimed complete here.
+- Authoritative issue1 Ready/open reconciled and body readback verified; no pending synchronization. Grooming branch develop; full grooming commit recorded after commit.
+- Counters: batch1 completions2/10; setup2/3, skeleton1/3, 001–010 each0/3. No push authorization.
+- Next: developer creates task/001-accounts from committed grooming, implements account scope, commits exact implementation, hands to independent QA (attempt1).
