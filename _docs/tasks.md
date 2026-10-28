@@ -28,18 +28,18 @@ Bootstrap criteria preserve environment-before-skeleton separation. PM reconcile
 
 ## Checkpoint — 2026-10-28
 
-- Phase/current routing: Bootstrap Done/integrated; 001 accounts implementation In review, independent QA attempt1 next after workflow documentation handoff.
-- Agreed task set: environment-setup, application-skeleton, 001–010; REQ-001–027 and confirmed defaults unchanged.
-- Delivery state: develop includes setup delivery `e1d8b42d520abe8acf6bae470568ca0e0d67757e` and skeleton delivery `79711b8348ff400983c5e6d265b90a476c3a6bad`. Current branch `task/001-accounts`; exact account implementation `5f471f53c8b17128b9bd63c69af8fefa2028c6ab`, developer records tip `8c949311770573b746983a43f24fb2c4d2d851b5`; workflow-only changes follow with no application changes.
-- Current workflow (user override): retain independent per-task QA; remove the separate orchestrator per-task requirements verification. QA PASS → Done/completion records → integration checks. Failures or implementation changes route to developer and fresh affected QA. Orchestrator requirements review occurs only at final release verification alongside integrated-product QA; historical re-check evidence is preserved.
-- Readiness/evidence: Setup and skeleton Done; 001 In review; 002–010 Draft. [Account developer evidence](verification/001-accounts-developer.md) is not a QA verdict. [Commands](commands.md) contains actual validation; full feature release remains incomplete.
-- Attempts: setup2/3; skeleton1/3; 0010/3 before QA dispatch; 002–010 each0/3. Counts persist across sessions/batches.
-- Active batch2 completions0/10, explicitly reset/renewed by user during001. Historical batch1 completed setup and skeleton (2 tasks); no workflow-doc task counted.
-- Environment: project PostgreSQL17.11 loopback55432 running; unrelated PG13:5432 preserved. App/Mailpit/geckodriver stopped; synthetic data only.
-- GitHub: setup11 and skeleton12 Done/closed. Issue1 In review, exact implementation/hash readback verified by developer. Draft issues2–10 completion fields synchronized/readback for the current user-requested workflow; no pending synchronization.
-- Blockers: None for account QA dispatch; production decisions remain outside local delivery.
-- Push authorization: None; all commits local. Issue synchronization separately authorized.
-- Next action: QA verifies 001 at exact implementation (attempt1); PASS permits completion/integration directly under updated process; then PM grooms002 after successful integration.
+- Phase/current routing: Setup, skeleton and001 accounts Done/integrated; PM002 household grooming next.
+- Agreed scope: environment-setup, application-skeleton,001–010; REQ-001–027 and confirmed defaults unchanged.
+- Delivery: `develop` at account task final tip/fast-forward delivery `3afacd6e58d61f727f5aa2760a7ab0bbff445043`; verified implementation `5f471f53c8b17128b9bd63c69af8fefa2028c6ab`, independent QA1 PASS. No implementation change during merge.
+- Integration: migrate/check/drift,32 server/config tests, Ruff lint/format and diff check PASS. [Account QA](verification/001-accounts-qa.md) covers all four criteria plus browser/concurrency/privacy/email/persistence checks.
+- Current workflow/user override: independent per-task QA→completion records→integration checks; no per-task orchestrator verification. Final release requires integrated QA and orchestrator requirements review. Workflow commit `c4c4233d9cc670ae68d06f03efc77d0dad707cf0` preserved historical evidence.
+- Readiness:002–010 Draft pending current grooming and integrated dependencies. Full release incomplete.
+- Attempts: setup2/3; skeleton1/3;0011/3;002–010 each0/3. Preserve history across sessions/batches.
+- Active batch2 completions1/10 after user limit reset; historical batch1 completed bootstrap2 tasks. Remaining002–010 fit batch2.
+- Environment: PG17.11 loopback55432 running, unrelated PG13:5432 preserved; app/Mailpit/geckodriver stopped. Synthetic data only.
+- GitHub:11/12 closed; issue1 Done/closed, exact body and state readback verified; Draft issues2–10 current workflow fields synchronized.
+- Blockers: None for PM002 grooming. No pushes authorized; issue writes separately authorized.
+- Next: PM002 grooming on develop→developer→QA. All completed issue synchronization verified.
 
 Source publication: Issue bodies contain complete specifications; local source is unpushed. Issue links to develop source may not resolve until separately authorized source publication.
 
@@ -202,3 +202,8 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Administrative Done/integration follows QA PASS; no per-task orchestrator verification under user workflow override.
 - Next: commit completion, fast-forward task/001-accounts to develop, run required integration gates, record delivery and synchronize/close issue1.
 - Batch2 completion1/10 on successful integration; accounts1/3 QA attempts, setup2/skeleton1 retained, later tasks0. No push.
+
+## Accounts integration result
+
+- Delivery/final task tip `3afacd6e58d61f727f5aa2760a7ab0bbff445043` on develop; all required integration checks PASS (32 server/config tests), no code delta from QA-verified implementation.
+- Batch2 1/10,001 attempts1/3; bootstrap histories retained. Issue1 Done/closed, exact body and state readback verified; PM002 next. No push.
