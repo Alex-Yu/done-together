@@ -11,7 +11,7 @@ Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature 
 
 | ID / labels | Task | Status | Dependencies | GitHub issue |
 | --- | --- | --- | --- | --- |
-| `environment-setup` | [Set up the development environment](tasks/environment-setup.md) | In review | None; PM readiness passed | [#11](https://github.com/Alex-Yu/done-together/issues/11) |
+| `environment-setup` | [Set up the development environment](tasks/environment-setup.md) | In progress | None; PM readiness passed | [#11](https://github.com/Alex-Yu/done-together/issues/11) |
 | application-skeleton | [Create a runnable application skeleton](tasks/application-skeleton.md) | Draft | environment-setup | [#12](https://github.com/Alex-Yu/done-together/issues/12) |
 | 001 | [Account registration, verification, sign-in, recovery, and safeguards](tasks/001-accounts.md) | Draft | application-skeleton | [#1](https://github.com/Alex-Yu/done-together/issues/1) |
 | 002 | [Household creation, timezone setup, and second-parent invitation](tasks/002-households.md) | Draft | 001 | [#2](https://github.com/Alex-Yu/done-together/issues/2) |
@@ -34,7 +34,7 @@ Bootstrap criteria preserve environment-before-skeleton separation. PM reconcile
 - Current role/task: PM handoff → developer / [environment-setup](tasks/environment-setup.md); create `task/environment-setup` from committed grooming on develop.
 - Readiness: environment-setup Ready; skeleton scope refined but Draft until setup Done/integrated; features Draft pending integrated dependencies/current PM review.
 - Architecture / commands: Django + PostgreSQL + HTMX; commands remain UNVERIFIED until executed. Preserve unrelated PostgreSQL 13 on 5432; developer uses isolated project-owned PostgreSQL 17 on loopback 55432 and project-local tooling/cache where needed.
-- Per-task developer-to-QA attempts: environment-setup 0/3; application-skeleton 0/3; 001 0/3; 002 0/3; 003 0/3; 004 0/3; 005 0/3; 006 0/3; 007 0/3; 008 0/3; 009 0/3; 010 0/3. Attempts persist across sessions/batches.
+- Per-task developer-to-QA attempts: environment-setup 1/3; application-skeleton 0/3; 001 0/3; 002 0/3; 003 0/3; 004 0/3; 005 0/3; 006 0/3; 007 0/3; 008 0/3; 009 0/3; 010 0/3. Attempts persist across sessions/batches.
 - Delivery batch: 1; completions 0/10. Default limit stops after ten completed tasks (through 008 if sequential); 009/010 require explicit batch renewal before continuation. Do not claim full release then.
 - Verification evidence: PM scope/architecture review and exact issue-body readback only; no environment/application checks or QA verdict claimed. Developer and independent QA must verify every setup criterion before completion.
 - GitHub: origin `git@github.com:Alex-Yu/done-together.git` confirmed. Issues #1–#12 read/reconciled; #11 environment-setup with preserved label, #12 skeleton newly created; all open. No pending synchronization.
@@ -55,3 +55,14 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Blockers: None for setup; skeleton/features remain dependency-blocked Draft.
 - Push authorization/status: None; local commits only.
 - Next routing: Independent QA against recorded setup implementation, then orchestrator re-check/integration if PASS.
+
+
+## QA handoff — environment-setup attempt 1, 2026-10-28
+
+- Current role/task: QA FAIL → developer fix on existing `task/environment-setup`; setup remains In progress.
+- Exact verified implementation: `f31e725ed4356ee142370cf8323e36f9ea43d8d5`; reviewed at status-only tip `789b4d2c2abdea184b33b9ab42480eaa75b97013`. No implementation changes made by QA.
+- Evidence: [independent QA attempt1](verification/environment-setup-qa.md). AC001–006 pass; AC007 fails because commands.md line189 still uses Homebrew stop for the project-local pg_ctl cluster. Developer fixes command consistency and adds offline-safe Mailpit version probe, then commits for fresh QA.
+- Attempts: environment-setup1/3; application-skeleton and001–010 each0/3. Batch1 completions0/10.
+- Services: project PG17 restarted/left running on127.0.0.1:55432; unrelated PG13PID858 unchanged on5432; QA Mailpit stopped cleanly. Secrets never printed.
+- Synchronization: issue11 updated/readback during QA handoff; no issue closure, merge or push. Push authorization remains None.
+- Next routing: Developer documentation correction on same branch; QA affected re-verification at new full commit, then orchestrator re-check only after PASS.
