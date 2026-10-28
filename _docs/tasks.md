@@ -278,3 +278,10 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Services: no new owned services for scoped fix; dedicatedPG17 remains55432. No secret values printed.
 - Synchronization: issue2 PASS handoff updated/readback; no closure/merge/push. No push authorization.
 - Next: administratively complete002, integrate with docs-only develop divergence and run applicable integration gates; then PM current readiness for003.
+
+## Household completion — current routing
+
+- Independent QA attempt2 PASS at implementation `8269f5a6f5bd6fb71468a93e1a2c405f0aea519a`; evidence/status tip `53d4e47f5e998e6b2e36d6837f50538fbacb5daf`. [Evidence](verification/002-households-qa-attempt-2.md); attempt1 FAIL retained, F001 resolved.
+- Administrative Done/integration follows QA PASS. Develop already includes docs-only PM/QA preparation at `96e7018af88d67b24d0ff63b924f8ebec4f1e906`; merge preserves both histories without changing implementation.
+- Next: integration checks, delivery hash and issue2 completion synchronization, then PM marks003 Ready after dependency integration.
+- Active batch2 completion2/10 on successful integration;002 attempts2/3,0011/3,setup2/skeleton1,003–010 each0. No push.

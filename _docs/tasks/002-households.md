@@ -1,6 +1,6 @@
 # 002: Household creation, timezone setup, and second-parent invitation
 
-Status: In review
+Status: Done
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/2
 Local task: `_docs/tasks/002-households.md`
@@ -13,11 +13,11 @@ Parents can create a private household and invite the second parent.
 
 ## Acceptance criteria
 
-- [ ] AC-001: REQ-002: Intended verified recipient joins once; wrong-address, reused, and expired invitations fail; an expired invitation can be replaced.
-- [ ] AC-002: REQ-003: Either member parent can manage the household; outsiders cannot read or change it through UI or direct requests.
-- [ ] AC-003: REQ-011/P-02: Creation suggests the creating browser timezone, validates and stores the household IANA timezone, and provides no timezone-change controls. Occurrence identity/scheduling and browser-local overdue interpretation remain linked to tasks 005–007 and release AC-011.
-- [ ] AC-004: REQ-027: Passwords/PINs cannot be read back or exposed in ordinary responses/logs; access links are private; unauthorized direct requests fail. Mechanisms are architecture decisions.
-- [ ] AC-005: Affected changes enforce household isolation, protected parent/child permissions, persistent data, accessible keyboard interaction, and recoverable validation/failure states under REQ-003/023/025/026/027; no credential exposure or false success.
+- [x] AC-001: REQ-002: Intended verified recipient joins once; wrong-address, reused, and expired invitations fail; an expired invitation can be replaced.
+- [x] AC-002: REQ-003: Either member parent can manage the household; outsiders cannot read or change it through UI or direct requests.
+- [x] AC-003: REQ-011/P-02: Creation suggests the creating browser timezone, validates and stores the household IANA timezone, and provides no timezone-change controls. Occurrence identity/scheduling and browser-local overdue interpretation remain linked to tasks 005–007 and release AC-011.
+- [x] AC-004: REQ-027: Passwords/PINs cannot be read back or exposed in ordinary responses/logs; access links are private; unauthorized direct requests fail. Mechanisms are architecture decisions.
+- [x] AC-005: Affected changes enforce household isolation, protected parent/child permissions, persistent data, accessible keyboard interaction, and recoverable validation/failure states under REQ-003/023/025/026/027; no credential exposure or false success.
 
 ## Out of scope
 
@@ -52,5 +52,5 @@ Product scope and architecture are confirmed; no consequential product question 
 - Push status / authorized remote and branch targets: No pushes authorized
 - Checks and results: F001 affected4 plus original QA probe1 PASS; fresh full server53 PASS; system/drift/lint/format/diff PASS. Prior normal-path49server/6browser/native100/200/actualSMTP/restart positive evidence retained for unchanged code.
 - Verification record: [developer household evidence](../verification/002-households-developer.md); [independent QA attempt1 FAIL](../verification/002-households-qa.md); [developer F001 correction](../verification/002-households-fix-developer.md); [independent QA attempt2 PASS](../verification/002-households-qa-attempt-2.md).
-- Completion / integration evidence / outcome: Independent QA2 PASS; administrative completion/integration pending. Final release requirements review remains required.
+- Completion / integration evidence / outcome: Independent QA attempt2 PASS all five criteria at `8269f5a6f5bd6fb71468a93e1a2c405f0aea519a`; administrative Done/integration under user-updated workflow. No separate per-task orchestrator verification; final release requirements review remains.
 - Remaining risks or blockers: No QA blocker; F001 resolved by independent affected4/original1/fullserver53 PASS. Unchanged browser/native/SMTP/restart positives explicitly retained. Task003 PIN integration remains later. No new owned services; onlyPG17 running, no pushes authorized.
