@@ -1,6 +1,6 @@
 # Product specification — Done Together
 
-Status: Scope confirmed by the user on 2026-10-28, including proposed defaults P-01–P-07. Technology choices remain undecided.
+Status: Scope confirmed by the user on 2026-10-28, including proposed defaults P-01–P-07. Implementation approach selected on 2026-10-28: Django + PostgreSQL + HTMX; see [architecture.md](architecture.md).
 
 ## Problem and intended outcome
 
@@ -103,7 +103,7 @@ Every requirement is in scope for release one. Numerical limits and edge rules a
 - Access records: invitations, verification/recovery links, and signed-in sessions; their implementation belongs in architecture.
 - Emails, credentials, PINs, child names, household activity, and notes are private household data. Use synthetic fixtures and examples; keep real personal information and secrets out of source and logs.
 - Completion history/stars have no first-release age limit. Broader data removal, retention, and operational responsibilities must be revisited before public launch; product deletion controls cover chores only.
-- Account email delivery is needed for verification, invitation, and recovery. Failed requests/delivery must offer a recoverable error. Provider, credentials, storage, and synchronization technology are undecided.
+- Account email delivery is needed for verification, invitation, and recovery. Failed requests/delivery must offer a recoverable error. Local email capture uses Mailpit; external provider and credentials remain undecided. PostgreSQL storage and HTMX polling are recorded in [architecture.md](architecture.md).
 
 ## Constraints and confirmed defaults
 
@@ -119,7 +119,7 @@ The user confirmed P-01–P-07 with the complete first-release scope on 2026-10-
 | P-06 | Synchronization target: five seconds under normal connectivity. Test current stable Chrome and Firefox at minimum 1280×720, keyboard navigation, and 200% browser zoom. | Measurable quality gates; REQ-021/026. |
 | P-07 | A new recurring chore first becomes due on its first scheduled date on/after creation. After a gap with no unfinished occurrence, create only the latest scheduled occurrence due by today, never a backlog. Scheduling must not require a browser to remain open. | Initialization/recovery semantics; REQ-010–013. |
 
-Budget, hosting environment, backup/recovery arrangements, operational security, distribution, and tooling remain for architecture discussion before affected setup tasks become Ready. No stack has been selected.
+Django + PostgreSQL + HTMX was selected by the user on 2026-10-28; local tooling and intended commands are recorded in [architecture.md](architecture.md) and [commands.md](commands.md). Budget, hosting environment, backup/recovery arrangements, production operational security and distribution remain open before affected operational tasks become Ready. Local setup does not require production provisioning.
 
 ## Recorded user answers
 
@@ -168,5 +168,5 @@ Cross-cutting isolation, persistence, accessibility, concurrency, and credential
 - Discovery date: 2026-10-28.
 - User decisions D-01–D-07 and defaults P-01–P-07 confirmed by the user on 2026-10-28.
 - Blocking product questions: None. Architecture decisions remain separate.
-- Architecture undecided; no application code written.
+- Architecture selected by the user on 2026-10-28: Django + PostgreSQL + HTMX. No application code written; setup and application commands remain unverified.
 - Origin checked after confirmation: `git@github.com:Alex-Yu/done-together.git`; GitHub backlog mode selected. Tasks 001–010 are synchronized with GitHub issues #1–#10; see [tasks.md](tasks.md).

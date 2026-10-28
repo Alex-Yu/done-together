@@ -1,32 +1,81 @@
 # Architecture and implementation choices
 
-Status: Undecided. Complete after reviewing the product specification.
+Status: Core approach selected by the user on 2026-10-28: Django + PostgreSQL + HTMX. The design below records the recommended implementation baseline; dependency patches and local installation details remain unverified until bootstrap tasks run. Delivery has not been handed over and no scaffolding is authorized by this record.
 
 ## Options considered
 
-Compare plausible options against requirements, operational complexity, cost, team familiarity, testability, and portability. Explain tradeoffs; do not assume a web service, UI, database, or network connection is needed.
+| Approach | Benefits | Costs / reason for selection or rejection |
+| --- | --- | --- |
+| Django + PostgreSQL + HTMX | One application owns permissions, transactions, scheduling, and HTML; suits forms and shared board workflows. | Selected. Requires an application server and independent scheduler; polling generates regular requests. |
+| Next.js / TypeScript + Supabase | Interactive React UI; managed accounts, database, and realtime services. | Custom PIN authorization still needed; application logic and database policies require coordinated verification; more provider integration. |
+| React + separate Django API + PostgreSQL | Explicit API for multiple clients and richer frontend behavior. | Additional API contracts, client state, and build tooling are not justified by the browser-only first release. |
+
+No existing team language preference was supplied. The selection favors maintainability and verification of the approved first release rather than speculative clients. Provider costs and operating budget have not been estimated or approved.
 
 ## Selected approach
 
-- Language and runtime: Undecided
-- Application type and supported environments: Undecided
-- Frameworks and dependencies: Undecided
-- Storage and external integrations: Undecided
-- Packaging, distribution, or deployment: Undecided
-- Reason and decision owner: Undecided
+- Python 3.13, Django 5.2 LTS on a supported security patch, PostgreSQL 17 on a supported patch. These are intended compatible baselines, not observed installations. Setup records exact resolved versions and locks dependencies. Revisit upgrades before support expires; Django 5.2 extended support ends April 2028.
+- Server-rendered Django templates, locally served pinned HTMX, plain CSS, and small JavaScript modules for local dates, inactivity, focus-safe updates, and connectivity. No separate frontend build system or Node.js toolchain is required.
+- Django sessions/authentication, django-allauth for account verification/recovery, psycopg for PostgreSQL. Household invitations, PIN authorization, identity lockouts, and their exact expiry rules are application responsibilities.
+- PostgreSQL is the authoritative store in development, tests, and eventual operation. Do not substitute SQLite for transaction/concurrency verification.
+- A two-second board-version poll with conditional content refresh targets accepted changes appearing within five seconds under normal connectivity. This is a design target, not measured evidence.
+- An independent scheduler process invokes an idempotent Django management command at least once per minute; approval also reconciles recurrence inside its transaction. No Redis, Celery, or WebSocket service is initially required.
+- Local tools: uv, pytest/pytest-django, pytest-playwright, Ruff, Mailpit, Git, GitHub CLI, current stable Chrome and Firefox. Native macOS services are the intended local baseline; containers are optional, not required. See [commands.md](commands.md).
+- Hosting, distribution, production email provider, production process manager, backups, recovery objectives, operational ownership, and budget remain open. No provider provisioning or deployment is authorized.
 
 ## Structure and boundaries
 
-Describe components, responsibilities, dependencies, and source/test directory conventions. Add a diagram only if it clarifies the design.
+These are intended paths, to be created only during the appropriate implementation tasks:
+
+| Path | Responsibility |
+| --- | --- |
+| `manage.py`, `config/` | Django entry point, URLs, environment-specific settings, server entry points |
+| `accounts/` | Parent accounts, verification/recovery integration, sessions, PIN credentials and shared authentication limits |
+| `households/` | Membership, invitations, children, immutable household timezone, authorization helpers |
+| `chores/` | Definitions, occurrence snapshots, submissions/reviews, approval records, recurrence service and management command |
+| `board/` | Household-scoped read model, board/settings views, version polling and HTML fragments |
+| `templates/`, `static/` | Accessible templates, CSS, first-party JavaScript and pinned vendored HTMX |
+| `tests/unit/`, `tests/integration/`, `tests/e2e/` | Domain boundaries, real PostgreSQL behavior, browser journeys |
+| `pyproject.toml`, `uv.lock`, `.python-version` | Runtime/tool dependency constraints and reproducible resolution |
+
+Views validate input and call shared domain services; scheduled work calls the same recurrence service. Transactions belong in domain services so direct requests and scheduler execution enforce the same invariants. Django admin is not a substitute for the specified parent settings and must not provide a bypass on shared boards.
 
 ## Contracts and data
 
-Describe applicable interfaces, schemas, validation, errors, compatibility, persistence, and migration behavior. Link dedicated contract files as they become necessary.
+- A parent has at most one household; a household has at most two parents. Joining an invitation locks the relevant membership/household records and consumes a recipient-bound, expiring, single-use token atomically.
+- Definitions store schedules; occurrences capture title, child assignment, due calendar date, state, version, submission classification/timestamps, return note, and approval time. Edits to recurrence affect future snapshots only. Retain completion snapshots and approval records when definitions are deleted; avoid cascading away earned history.
+- Enforce unique definition/due-date occurrence identity, a conditional uniqueness constraint for one unfinished recurring occurrence, and a unique approval record per occurrence. Every accepted approval creates one durable star record atomically. Totals are derived from approval records, using approval time and household Monday boundaries.
+- Serialize approval, recurrence generation, edits, and deletion using a consistent lock order (definition before occurrence when applicable). Locking plus database constraints protects against concurrent requests and scheduler overlap. Return explicit conflict responses for incompatible stale versions, then refresh the board. Retried requests cannot create additional awards or occurrences.
+- Store instants in UTC and schedules/due dates as calendar dates interpreted with IANA household timezone data. Use Python timezone facilities for scheduling and weekly boundaries. Browser-local dates control overdue labels. Preserve submission timeliness across computers according to P-04; the submitting browser supplies its timezone context, while the server uses the receipt instant to avoid trusting a submitted clock value. Validate the timezone context. Local timezone is user-controlled, as in the approved product rule.
+- Recurrence implements P-07 on creation and recovery. On approval, create today's occurrence once if scheduled and distinct from the completed occurrence; never repeat today's already completed occurrence or create skipped dates as backlog. Scheduler catch-up creates only the latest eligible date when no unfinished occurrence exists. Test timezone/DST boundaries and gaps with no browsers open.
+- Same-origin HTML endpoints and version polling use household-scoped reads; mutation endpoints use POST with CSRF protection. Every mutation validates membership, role/PIN authority, current state, input, and version on the server. Validation failures leave data unchanged; stale state is an explicit conflict; unauthorized or expired authority denies access. Never expose credential hashes or access tokens in board fragments.
+- Maintain a household board revision, advanced atomically for every change affecting board content. Consistent snapshots include a revision. Refresh only changed regions, preserving focused controls, open forms and unsaved input. Recompute local overdue labels and household-week visibility across time boundaries even without a mutation. Polling must not count as parent activity.
 
-## Cross-cutting concerns
+## Authentication, privacy, and recovery
 
-Describe applicable authentication, authorization, privacy, accessibility, failure recovery, observability, and resource limits. Explain omissions.
+- A verified parent account opens a household board. This board session grants viewing only until a parent unlock or a valid child submission authorizes the corresponding action. An unlocked parent identity may differ from the parent who opened the board, but must be a member of that household.
+- Store a short-lived parent unlock server-side per board session, with selected parent identity and last accepted parent activity. Enforce expiry on every protected request after 60 seconds. Only explicit parent activity while unlocked extends it; polling, board viewing, and child actions do not. Client-side locking improves feedback but is not the authority. Own-password PIN resets must verify the selected parent's password.
+- Use maintained password hashing, including salted PIN hashes that preserve four-digit strings and leading zeroes; keep additional PIN hashing secret material outside the database/source. Child PINs authorize only that child's submission request and do not establish a parent session. Never persist plaintext credentials or log PIN input.
+- Keep atomic per-identity authentication failure counters in PostgreSQL across processes/computers: five consecutive failures impose five minutes of restriction; successful authentication clears failures when permitted. Require household board access before PIN attempts, use generic account errors and supplementary source/request throttling, and prevent attempts during restriction from extending the deadline. This reduces targeted lockout abuse but cannot eliminate it while preserving P-05's identity-wide restriction.
+- Enforce one-hour verification/recovery links and seven-day single-use invitations. Do not assume package defaults match P-05. Consume access links safely and redact their tokens from logs. Use secure HttpOnly session cookies, CSRF checks and HTTPS in any deployed environment; local HTTP is loopback-only.
+- Keep email, child names, notes and activity out of routine logs; use synthetic fixtures. Local account emails go only to loopback Mailpit. External email delivery must surface recoverable failures; email success is not inferred merely from successful local rendering.
+- On failed polls/requests, preserve the displayed board, show connection status, and disable changes. Browser network hints alone do not prove server readiness. Reconnect must fetch a fresh authorized snapshot before mutations resume. Never queue offline writes or display an unconfirmed mutation as committed. A lost response may follow a committed action; reconciliation must safely reveal the server result.
+- Offline scope is preservation of the currently open board. No service worker or persistent browser cache of private household data is introduced. Clear the board on sign-out or a confirmed authorization failure. Offline reload/startup is not promised by this design.
+
+## Verification and operations
+
+Unit tests cover schedules, timeliness, transitions and weekly boundaries. PostgreSQL integration tests cover competing approvals, uniqueness, deletion races, membership limits, lockout sharing, access-link consumption, and direct unauthorized requests. Browser journeys cover two independent sessions, five-second synchronization, 60-second parent expiry, focus preservation, offline/reconnect behavior, and visible failure handling. Include current stable Chrome and Firefox at 1280×720, keyboard-only use and 200% zoom; Playwright's Firefox build does not replace checking stable Firefox manually.
+
+The scheduler must operate without browsers and recover safely after downtime. Local setup proves database connectivity and mail capture without scaffolding; the skeleton then proves HTTP/database readiness. Production readiness requires explicit later decisions on HTTPS hosting, continuous scheduling, email delivery, restricted database roles, backups/restore tests, log redaction, monitoring and responsibility. These unresolved operations do not block isolated local bootstrap tasks, but block affected provisioning/deployment work.
 
 ## Decisions
 
-None yet. Store significant decisions in `_docs/decisions/` using the decision template; link them here. Supersede old decisions explicitly rather than rewriting their history.
+- [ADR-001: Django monolith with PostgreSQL and HTMX](decisions/001-django-postgresql-htmx.md)
+- [ADR-002: Transactional state, recurrence and approval integrity](decisions/002-transactional-workflows.md)
+- [ADR-003: Shared-board authority, polling and offline recovery](decisions/003-shared-board-access-and-sync.md)
+
+## References
+
+- [Django support periods](https://www.djangoproject.com/download/) and [Python compatibility](https://docs.djangoproject.com/en/5.2/faq/install/).
+- [Django transactions](https://docs.djangoproject.com/en/5.2/topics/db/transactions/) and [constraints](https://docs.djangoproject.com/en/5.2/ref/models/constraints/).
+- [HTMX polling](https://htmx.org/docs/#polling) and [django-allauth configuration](https://docs.allauth.org/en/latest/account/configuration.html).
