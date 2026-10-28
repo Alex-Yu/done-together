@@ -12,7 +12,10 @@ class AccountSafetyMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        if request.path.startswith("/accounts/") and request.method == "POST":
+        if (
+            request.path.startswith(("/accounts/", "/households/"))
+            and request.method == "POST"
+        ):
             try:
                 allowed = allow_source(request.META.get("REMOTE_ADDR", "unknown"))
             except DatabaseError:
@@ -29,7 +32,7 @@ class AccountSafetyMiddleware:
                 response["Referrer-Policy"] = self.referrer_policy(request.path)
                 return response
         response = self.get_response(request)
-        if request.path.startswith("/accounts/"):
+        if request.path.startswith(("/accounts/", "/households/")):
             add_never_cache_headers(response)
             response["Referrer-Policy"] = self.referrer_policy(request.path)
         return response
@@ -54,4 +57,9 @@ class AccountSafetyMiddleware:
             and not path.endswith("-set-password/")
             and not path.endswith("/done/")
         )
-        return "no-referrer" if private_verification or private_reset else "same-origin"
+        private_invitation = path.startswith("/households/invitations/")
+        return (
+            "no-referrer"
+            if private_verification or private_reset or private_invitation
+            else "same-origin"
+        )

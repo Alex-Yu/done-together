@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "accounts",
+    "households",
     "board",
 ]
 MIDDLEWARE = [

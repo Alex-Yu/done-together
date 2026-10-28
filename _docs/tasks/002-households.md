@@ -1,6 +1,6 @@
 # 002: Household creation, timezone setup, and second-parent invitation
 
-Status: Ready
+Status: In review
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/2
 Local task: `_docs/tasks/002-households.md`
@@ -45,12 +45,12 @@ Product scope and architecture are confirmed; no consequential product question 
 
 - PM readiness: Ready on 2026-10-28 after account integration; five ACs preserved, selected architecture and dependency confirmed, no consequential question. Full grooming commit recorded in backlog checkpoint.
 
-- Implementation summary: Not started
-- Task branch / verified implementation commit: Pending
-- Changed files / revision: Initial delivery grooming on `develop`; full grooming commit recorded in backlog checkpoint
+- Implementation summary: Transactional household/membership/invitation services with DB parent-slot constraints, scoped equal rights, immutable browser-suggested IANA timezone, hashed private invitations/session join flow, recoverable SMTP/validation/conflicts and accessible settings. Parent PIN integration remains003.
+- Task branch / verified implementation commit: `task/002-households`; exact hash recorded after implementation commit; independent QA pending.
+- Changed files / revision: households models/migration/services/views/forms/URLs/templates; account redirect/privacy middleware; timezone JS/styles/navigation; request/browser tests and tracked stable SMTP helper; commands/architecture/evidence.
 - Final branch tip / delivery commit / integration results: Pending
 - Push status / authorized remote and branch targets: No pushes authorized
-- Checks and results: Scope/architecture reviewed against confirmed requirements on 2026-10-28; issue reconciliation recorded in backlog checkpoint; implementation verification not run
-- Verification record: Pending
+- Checks and results: Household17, full server49, bundled browser6 PASS; final narrow rejected-flow1 PASS. Migrate/check/drift/lint/format/static/locked sync PASS; stable native100/200 create/invite/join/errors, real Mailpit and stored-state restart revisit PASS.
+- Verification record: [developer household evidence](../verification/002-households-developer.md); independent QA pending.
 - Completion / integration evidence / outcome: Pending
-- Remaining risks or blockers: None at readiness; specific access failures route through orchestrator; no pushes authorized
+- Remaining risks or blockers: No implementation blocker; independent QA required. Task003 must add parent PIN authority to existing management/settings. OnlyPG17 left running; no pushes authorized.

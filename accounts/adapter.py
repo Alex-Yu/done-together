@@ -27,6 +27,11 @@ class AccountAdapter(DefaultAccountAdapter):
             lambda: super(AccountAdapter, self).authenticate(request, **credentials),
         )
 
+    def get_login_redirect_url(self, request):
+        from households.views import pending_join_path
+
+        return pending_join_path(request) or super().get_login_redirect_url(request)
+
     def send_mail(self, template_prefix, email, context):
         try:
             return super().send_mail(template_prefix, email, context)
