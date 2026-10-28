@@ -124,3 +124,14 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Blockers: None for skeleton; feature001 awaits skeleton QA/re-check/integration/PM readiness.
 - Issue12 In review synchronized/readback at handoff. No merge/push; no push authorization.
 - Next routing: QA every skeletonAC on exact implementation, then orchestrator re-check/integration if PASS.
+
+
+## QA handoff — application-skeleton attempt 1, 2026-10-28
+
+- Current role/task: Independent QA PASS → orchestrator requirements re-check; skeleton remains In review.
+- Exact verified implementation: `f663bfe2149500d13516c1d82d924c3fb0a87185`; reviewed records-only tip `da17dd05d5f1187b591203c69f1ab02b3aa1a95b`.
+- Evidence: [skeleton independent QA PASS](verification/application-skeleton-qa.md). All five AC pass: locked config/custom user/testDB isolation; real DB health success/failure; local HTMX/CSRF; lint/checks/health4/server11/bundled2; independent installed stable Chrome156/Firefox159 native100/200% keyboard/focus/screenshots; clean server/driver stop.
+- Attempts: setup2/3; skeleton1/3;001–010 each0/3. Batch1 completions1/10.
+- Services: PG17 remains running127.0.0.1:55432; QA loopback webserver/geckodriver stopped exit0 and endpoints refused. No private values logged.
+- Synchronization: issue12 QA PASS handoff updated/readback; no closure, merge or push. Push authorization None.
+- Next routing: Orchestrator re-check same implementation/evidence; if gate passes, complete/merge/integration-check skeleton, then PM grooms001 accounts.

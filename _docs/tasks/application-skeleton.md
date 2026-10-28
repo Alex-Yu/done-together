@@ -46,11 +46,11 @@ Use the integrated environment-setup result and agreed architecture. Setup is Do
 - PM scope review: 2026-10-28; five criteria complete and architecture aligned; Ready after setup integration/current PM review. Full grooming commit recorded in backlog checkpoint.
 
 - Implementation summary: Django settings/entrypoints, custom parent initial migration, PostgreSQL-backed health, provisional accessible landing/CSRF HTMX smoke, locally pinned HTMX, meaningful isolated server/browser tests, and reproducible installed stable-browser nativezoom helper.
-- Task branch / verified implementation commit: `task/application-skeleton` / `f663bfe2149500d13516c1d82d924c3fb0a87185`; independent QA pending.
+- Task branch / verified implementation commit: `task/application-skeleton` / `f663bfe2149500d13516c1d82d924c3fb0a87185`; independent QA attempt1 PASS for all five criteria.
 - Changed files / revision: manage.py, config/, accounts/, board/, templates/, static/, tests/, tools/verify_skeleton_browsers.py, pyproject tooling, commands and delivery records; dependencies unchanged.
 - Final branch tip / delivery commit / integration results: Pending
 - Push status / authorized remote and branch targets: None authorized
 - Checks and results: Migrations, Django checks/drift, Ruff lint/format, locked sync and static collection passed; targeted health4, server11 and dual bundled-browser2 tests passed. Installed Chrome156/Firefox159 native100/200% keyboard/focus/HTMX checks passed with inspected screenshots. Feature/scheduler commands remain UNVERIFIED.
-- Verification record: [developer evidence](../verification/application-skeleton-developer.md); independent QA pending.
+- Verification record: [developer evidence](../verification/application-skeleton-developer.md); [independent QA PASS](../verification/application-skeleton-qa.md).
 - Orchestrator requirements re-check / evidence / outcome: Pending
-- Remaining risks or blockers: No implementation blocker; independent QA required. PG17 left running; developer web server/geckodriver stopped. Installed Firefox now159 after existing pending update on launch. No source pushes authorized.
+- Remaining risks or blockers: No QA blocker; orchestrator requirements re-check/integration pending. Independent health4/server11/bundled2 and installed stable100/200% keyboard/HTMX/screenshot checks passed. PG17 left running; QA web server/geckodriver stopped. Installed Firefox159. No source pushes authorized.
