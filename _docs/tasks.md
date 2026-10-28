@@ -14,7 +14,7 @@ Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature 
 | `environment-setup` | [Set up the development environment](tasks/environment-setup.md) | Done | None; PM readiness passed | [#11](https://github.com/Alex-Yu/done-together/issues/11) |
 | application-skeleton | [Create a runnable application skeleton](tasks/application-skeleton.md) | Done | environment-setup Done/integrated | [#12](https://github.com/Alex-Yu/done-together/issues/12) |
 | 001 | [Account registration, verification, sign-in, recovery, and safeguards](tasks/001-accounts.md) | In review | application-skeleton Done/integrated | [#1](https://github.com/Alex-Yu/done-together/issues/1) |
-| 002 | [Household creation, timezone setup, and second-parent invitation](tasks/002-households.md) | In review | 001 Done/integrated | [#2](https://github.com/Alex-Yu/done-together/issues/2) |
+| 002 | [Household creation, timezone setup, and second-parent invitation](tasks/002-households.md) | In progress | 001 Done/integrated | [#2](https://github.com/Alex-Yu/done-together/issues/2) |
 | 003 | [Child profiles, parent/child PIN management, and protected shared access](tasks/003-pins.md) | Draft | 002 | [#3](https://github.com/Alex-Yu/done-together/issues/3) |
 | 004 | [Shared board, empty states, and settings navigation](tasks/004-board.md) | Draft | 003 | [#4](https://github.com/Alex-Yu/done-together/issues/4) |
 | 005 | [One-off chore assignment and maintenance](tasks/005-one-off-chores.md) | Draft | 004 | [#5](https://github.com/Alex-Yu/done-together/issues/5) |
@@ -228,3 +228,23 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Counters: Active batch2 completions1/10 (001 Done); historical setup2/3,skeleton1/3,0011/3;0020/3 before QA dispatch;003–010 all0/3.
 - Issue2 In review/exact body/hash readback verified. Initial combined command was rejected by automatic approval review over destination/payload authorization; local records were completed first, read-only origin/repo/issue checks and private-value scans confirmed the authorized task-only payload, then a single direct exact issue edit succeeded with review. No pending synchronization. No source push authorization; no pushes/merge performed by developer.
 - Next: QA002 at exact implementation, then completion/integration on PASS, PM fresh003 readiness. Parent PIN/child/board/scheduling remain subsequent tasks.
+
+
+## QA in progress —002 households attempt1,2026-10-28
+
+- Current role/task: Independent QA002 running; task In review, no verdict yet.
+- Exact implementation: `1b01711d3fd9962825e38ba87297a22c976d0a09`; reviewed records-only tip `114b8f23086fd9784f296bcf0aa06cac3e34f66c`.
+- Counters:002 attempt1/3 dispatched; active renewed batch2 completions1/10; setup2/3/skeleton1/3/accounts1/3 retained;003–010 each0/3. Per-task orchestrator re-check removed by user; final release review remains.
+- Progress: locked sync/lint/format/migrate/system/drift/static and49server tests passed; bundled browser regression running. No completion verdict; remaining privacy/failure, installed-browser/SMTP/persistence checks pending.
+- Next: complete all fiveAC independently, record exact observations/verdict, synchronize issue2 and evidence-only commit. Technical findings route developer for fixes, never alter implementation during QA.
+
+
+## QA handoff —002 households attempt1,2026-10-28
+
+- Current role/task: Independent QA FAIL → developer fix;002 In progress on existing task/002-households.
+- Exact verified implementation: `1b01711d3fd9962825e38ba87297a22c976d0a09`; records-only reviewed tip `114b8f23086fd9784f296bcf0aa06cac3e34f66c`; no app fixes by QA.
+- Evidence: [002 QA attempt1](verification/002-households-qa.md). F001 AC004/005 FAIL: household DB errors after initial source limiter bypass account-only exception recovery and expose synthetic private detail in technical500/logs under local DEBUG. AC001–003 PASS;49server/6bundled and installed stable native100/200% actualSMTP/join/error/screenshots plus restart persistence pass. Independent narrow probe1FAIL.
+- Counters:0021/3; active renewed batch2 completions1/10; setup2/3/skeleton1/3/accounts1/3 retained;003–010 each0/3. User final-only orchestrator requirements review override remains.
+- Services: QA app/driver/Mailpit stopped exit0 and fourports closed; projectPG17 remains55432, unrelatedPG13 preserved.
+- Synchronization: issue2 In progress/findings/evidence updated and exact readback; no closure/merge/push. No push authorization.
+- Next: developer generic household DB-error/privacy correction and regression on same branch, new implementation commit then QA attempt2. Preserve prior positive evidence for unchanged code where valid.
