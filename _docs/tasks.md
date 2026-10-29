@@ -554,3 +554,8 @@ Source publication: Issue bodies contain complete specifications; local source i
 
 - Fresh independent final QA gpt-6.1-sol/high at immutable implementation `3769e5c9dba30388c7aa127af9fb2124f62444d0`, developer records tip `57c8596935c0149d94d031f926a8a33f48e73ad1` (documentation only). All27 ACs and full final gates mandatory. Attempt0101/3 consumed at dispatch; batch2 remains9/10, historical attempts unchanged.
 - Authoritative issue10 inspected unchanged In progress/open before handoff; coordinator In review/evidence/QA dispatch synchronization next. No product changes while QA runs. Existing user resume edit preserved/excluded; no push/deployment. Final requirements review remains mandatory after independent QA.
+
+##010 QA1 finding checkpoint —2026-10-29
+
+- At immutable `3769e5c9dba30388c7aa127af9fb2124f62444d0`, independent QA full166 server PASS152.82s; bundled1 FAIL/7 PASS/13 native opt-in skips61.03s. F010-QA001: `test_pins.py` exact locked caption expects pre-sync wording, actual includes “Reopen the board to unlock.” with board/Unlock form visible and connected. Required gate remains FAIL; no override or source change.
+- QA continues remaining native/SMTP/idle/restart gates at unchanged implementation; developer read-only diagnosis only until QA releases execution. SameQA1/3, batch2 9/10, historical counters preserved. Full finding/evidence: [010 QA](verification/010-release-qa.md). Next: QA findings handback, same developer correction, then affected independent QA2. No push/deployment; user resume preserved.
