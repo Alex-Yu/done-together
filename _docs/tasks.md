@@ -3,7 +3,7 @@
 Authoritative backlog: GitHub issues in [Alex-Yu/done-together](https://github.com/Alex-Yu/done-together/issues), selected after user scope confirmation under [process.md](process.md). Local task documents mirror the mapped GitHub issues; this file is the index/checkpoint.
 
 Backlog mode / origin repository: GitHub — `git@github.com:Alex-Yu/done-together.git`, checked 2026-10-28.
-Pending issue synchronization: Issue10 correction In review/commit/evidence awaits coordinator sync; prior QA1 FAIL/In progress exact body/OPEN readback verified. Issue9 Done/closed exact body/state readback verified. User authorization covers delivery issue updates5–10; local commits remain unpushed.
+Pending issue synchronization: None. Issue10 Done/integrated exact body/CLOSED readback verified; all12 mapped delivery issues CLOSED. Local source remains unpushed.
 
 ## Task index
 
@@ -26,13 +26,14 @@ Delivery handed over on2026-10-28. Environment setup, application skeleton and00
 
 Bootstrap criteria preserve environment-before-skeleton separation. PM reconciled all feature tasks to the selected architecture, retained stable acceptance IDs, and made later integration ownership explicit where features depend on later workflows. No requirement is claimed complete by grooming.
 
-## Checkpoint —2026-10-29 — task010 QA2 PASS / final requirements review
+## Checkpoint —2026-10-29 — LOCAL RELEASE COMPLETE
 
-- Scope bootstrap plus001–010,REQ-001–027/P-01–P-07 unchanged.001–009 integrated;010 Done records prepared after QA2/final review PASS; local integration next. IndependentQA2 PASS all27 at immutable `dc456af4aa16f03ee03e8dcc21fe3c5346cab3c3`; evidence-only tip `a1c0752baa0ccdb92554e67ffd8ce587844781f7`, [record](verification/010-release-qa-attempt-2.md). QA1 FAIL retained, both findings cleared. FreshPIN2/native13/keyboard4/focuscontrols12 PASS;36 same-host events0.9949–1.9487s. Retained independentQA1166server/sixnonPINbundled/SMTP/realidle/restart/privacy/schema evidence has explicit source/environment proof.
-- Final high-reasoning orchestrator requirements review PASS at the same code state; Done/completion records prepared, local integration next. Current branch task/010-release-verification; develop baseline6ea156f. Review file: [final review](verification/010-release-requirements.md).
-- Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;0041/3;0051/3;0061/3;0073/3;0081/3;0091/3;0102/3. Active batch2 completions9/10; historical batch1 bootstrap2. No resets.
-- Issue10 scope unchanged beforeQA2 PASS handoff; coordinator PASS/final-review synchronization next. Persistent authorization covers issues5–10 updates. No pushes/deployment.
-- Owned app/Mailpit/driver stopped exit0,8000/8025/1025/4445 closed,testDB0sessions; projectPG17:55432/unrelatedPG13:5432 preserved. Existing user resume.md edit unchanged/excluded; no implementation changes afterQA target. Final merge must preserve reviewed code and run applicable integration checks.
+- Scope bootstrap plus001–010,REQ-001–027/P-01–P-07/J-01–J-05 complete. All tasks Done/integrated on develop. Task010 final branch tip/integrated delivery `374c2ad42d1ac4b40bb111fc31bf3ed4cf1b66d2`; verified/reviewed implementation `dc456af4aa16f03ee03e8dcc21fe3c5346cab3c3`. Final record commits are docs-only; no implementation changes during integration.
+- Independent [QA2 PASS](verification/010-release-qa-attempt-2.md) all27ACs, evidence `a1c0752baa0ccdb92554e67ffd8ce587844781f7`; historicalQA1FAIL retained, both findings cleared. [Final requirements review PASS](verification/010-release-requirements.md) all27REQ/ACs, seven defaults/five journeys. [Integration PASS](verification/010-release-integration.md):28 affected cases19.68s,migrate/system/drift/Ruff160/diff; code-equivalence verified.
+- Full release evidence:166server,eight unique bundled,13freshnative includingkeyboard4,12focuscontrols; actual loopbackSMTP/real61secidle/restart/privacy/scheduler. Retained unchanged QA1 evidence explicitly revision/environment-bound.36fresh same-Mac events0.9949–1.9487seconds, all<=5seconds; no physical-second-computer claim.
+- Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;0041/3;0051/3;0061/3;0073/3;0081/3;0091/3;0102/3. Active batch2 completions10/10 after010 integration; historical batch1 bootstrap2. No resets/new batch. No further eligible in-scope task remains.
+- Issue10 Done/integrated exact body/CLOSED readback verified; all12 mapped issues11/12/1–10 CLOSED. No source push/deployment authorized or performed. Startup/limits: [commands](commands.md#verified-local-release-2026-10-29).
+- Owned app/mail/driver stopped,8000/8025/1025/4445closed,testDB0sessions;PG17:55432 and unrelatedPG13:5432 preserved. Only uncommitted file is original userresume.md, exactSHA987abed09c813aa9f566613ce5a040e905f0d6751b840f08a7ccaa46d8d5627f, excluded from delivery commits.
 
 Source publication: Issue bodies contain complete specifications; local source is unpushed. Issue links to develop source may not resolve until separately authorized source publication.
 
@@ -583,3 +584,11 @@ Source publication: Issue bodies contain complete specifications; local source i
 
 - Independent QA2 PASS atdc456af plus [final requirements review](verification/010-release-requirements.md) PASS all27 requirements/ACs,P01–P07,J01–J05. Completion records are documentation only; reviewed implementation/tests/helpers/configuration must remain identical through merge.
 - Task010 Done records prepared; active batch2 stays9/10 until successful integration, then10/10.0102/3/historical attempts unchanged. Next merge task branch into develop, run applicable checks/code-equivalence, record delivery and reconcile issue10 closed. No push/deployment; user resume preserved.
+
+##010 final local integration —2026-10-29
+
+- Delivery `374c2ad42d1ac4b40bb111fc31bf3ed4cf1b66d2` fast-forwarded into develop with exact reviewed codedc456af4aa16f03ee03e8dcc21fe3c5346cab3c3.28 affected integration cases19.68s and schema/system/static gates PASS; [record](verification/010-release-integration.md). Batch2 now10/10,0102/3 unchanged. Local scope complete; issue10 close/readback then final docs records only. No push/deployment; userresume/PGs preserved.
+
+## Final issue reconciliation —2026-10-29
+
+- Issue10 completion body/CLOSED state exact readback PASS; all12 mapped issues verified CLOSED. No pending issue synchronization. Final record commit is documentation-only; local reviewed code unchanged. No pushes/deployment.

@@ -1,6 +1,6 @@
 # Architecture and implementation choices
 
-Current delivery note (2026-10-29): the approved approach is implemented through001–010. Independent [release QA2](verification/010-release-qa-attempt-2.md) and [final requirements review](verification/010-release-requirements.md) PASS all agreed local release requirements atdc456af; documentation-only local integration is being recorded. Earlier prospective statements below are historical design context; [commands](commands.md) and the final release records own current validated execution evidence.
+Current delivery note (2026-10-29): the approved approach is implemented through001–010. Independent [release QA2](verification/010-release-qa-attempt-2.md) and [final requirements review](verification/010-release-requirements.md) PASS all agreed local release requirements atdc456af; [local integration](verification/010-release-integration.md) PASS at develop374c2ad with identical reviewed code. Earlier prospective statements below are historical design context; [commands](commands.md) and the final release records own current validated execution evidence.
 
 Status: Django + PostgreSQL + HTMX selected on2026-10-28 and implemented under the explicit delivery handover. Locked runtime/setup, concurrency, scheduler and browser behavior are locally verified. Hosting, external email and production operations remain unselected and no push/deployment is authorized.
 

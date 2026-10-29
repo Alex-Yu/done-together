@@ -1,6 +1,6 @@
 # Project commands
 
-Status: Bootstrap and001–010 locally implemented; independent release QA2 and final requirements review PASS at `dc456af4aa16f03ee03e8dcc21fe3c5346cab3c3`. Final local integration checks are being recorded. Earlier dated/prospective sections are historical evidence; this status and the final release records supersede their old pending/unverified labels. No push or deployment authorized.
+Status: Bootstrap and001–010 locally implemented; independent release QA2 and final requirements review PASS at `dc456af4aa16f03ee03e8dcc21fe3c5346cab3c3`. Final [local integration](verification/010-release-integration.md) PASS on develop374c2ad. Earlier dated/prospective sections are historical evidence; this status and the final release records supersede their old pending/unverified labels. No push or deployment authorized.
 
 The developer executes [environment-setup](tasks/environment-setup.md) before [application-skeleton](tasks/application-skeleton.md). Each task replaces intended entries with exact observed versions, working directory, environment, expected/observed results and evidence. Feature commands remain unverified until their owning tasks implement and validate them. QA checks independently under [testing-guidelines.md](testing-guidelines.md).
 
@@ -548,7 +548,7 @@ Retain fresh independent QA1's unchanged166 server/domain/security/config/SMTP/r
 
 ## Verified local release —2026-10-29
 
-Independent [QA2](verification/010-release-qa-attempt-2.md) and [final requirements review](verification/010-release-requirements.md) PASS all27 requirements atdc456af. Full166 PostgreSQL/server cases, eight unique bundled cases,13 installed-native tests including four complete keyboard journeys,12 focus controls, actual loopback SMTP/61second inactivity/restart/privacy and scheduler gates are supported by the revision-bound records. QA1 failures remain historical; affected QA2 passes supersede them. Final integration records the resulting develop delivery hash without changing the reviewed code.
+Independent [QA2](verification/010-release-qa-attempt-2.md) and [final requirements review](verification/010-release-requirements.md) PASS all27 requirements atdc456af. Full166 PostgreSQL/server cases, eight unique bundled cases,13 installed-native tests including four complete keyboard journeys,12 focus controls, actual loopback SMTP/61second inactivity/restart/privacy and scheduler gates are supported by the revision-bound records. QA1 failures remain historical; affected QA2 passes supersede them. Final [integration](verification/010-release-integration.md) PASS at develop374c2ad with28 affected cases and unchanged reviewed code.
 
 For local use, keep the dedicated PostgreSQL17 cluster on55432 running (documented start procedure above); preserve unrelated PostgreSQL13 on5432. In separate foreground terminals at repository root:
 

@@ -47,7 +47,7 @@ Technology selection, unrelated release features, public launch, deployment, pai
 
 ## Constraints
 
-Follow the confirmed first-release scope and P-01–P-07 in [plan.md](../plan.md). Use the selected Django 5.2/Python 3.13/PostgreSQL 17/HTMX approach in [architecture.md](../architecture.md), ADR-001–003 and the locked setup dependencies. No SQLite substitute, frontend build stack, external email provider or deployment is authorized. Follow [process.md](../process.md) and [testing-guidelines.md](../testing-guidelines.md). The user handed over delivery on 2026-10-28. PM refined scope/verification in parallel on an isolated grooming branch; acceptance IDs and release behavior are unchanged. This task remains Draft until its dependency is Done/integrated, this grooming is integrated onto `develop`, and current PM readiness is recorded. Independent task QA leads to completion/integration; orchestrator requirements review is final-release-only.
+Follow the confirmed first-release scope and P-01–P-07 in [plan.md](../plan.md). Use the selected Django 5.2/Python 3.13/PostgreSQL 17/HTMX approach in [architecture.md](../architecture.md), ADR-001–003 and the locked setup dependencies. No SQLite substitute, frontend build stack, external email provider or deployment is authorized. Follow [process.md](../process.md) and [testing-guidelines.md](../testing-guidelines.md). The user handed over delivery on 2026-10-28. PM refined scope/verification in parallel on an isolated grooming branch; acceptance IDs and release behavior are unchanged. Readiness was recorded after dependency/grooming integration using valid PM review; all final completion gates have now passed. Independent task QA leads to completion/integration; orchestrator requirements review is final-release-only.
 
 ## Verification plan
 
@@ -73,13 +73,13 @@ Product scope and architecture are confirmed; no consequential product question 
 - Implementation summary: Integrated release verification prepared/executed; fixed lost invitation success after synchronized redirect and pre-membership polling blocking join. Added complete true-keyboard native journeys, HTTP recurrence/history coverage and corrected verification fixture/document/identity timing. No new product feature/dependency.
 - Task branch / verified implementation commit: `task/010-release-verification` / `dc456af4aa16f03ee03e8dcc21fe3c5346cab3c3`; independent QA2 PASS evidence `a1c0752baa0ccdb92554e67ffd8ce587844781f7`.
 - Changed files / revision: QA1 correction changes only bundled PIN assertions, shared native focus verification and native review failure cleanup; product/backend/configuration unchanged from3769e5c. Documentation-only handoff follows; user resume.md excluded.
-- Final branch tip / delivery commit / integration results: Documentation-only completion tip will be merged locally into develop, followed by code-equivalence and affected integration checks; actual delivery hash/results recorded next.
+- Final branch tip / delivery commit / integration results: Task branch completion tip and integrated delivery `374c2ad42d1ac4b40bb111fc31bf3ed4cf1b66d2`; fast-forward into develop, identical reviewed code.28 affected integration cases plus migrate/check/drift/Ruff160/diff PASS; [integration](../verification/010-release-integration.md).
 - Push status / authorized remote and branch targets: No pushes authorized
 - Checks and results: Scoped QA1 fixes: bundled PIN2 PASS18.46s, native review4 engine/zoom cases PASS31.33s,12 actual native focus/outline/label positive/negative controls PASS, Ruff157/diff PASS. Fresh QA1 domain/server166/security/config/SMTP/idle/restart evidence retained by exact unchanged product diff. QA1 FAIL remains historical; QA2 must recertify all13 native tests plus affected bundled PIN cases.
-- Verification record: [QA1 correction developer](../verification/010-release-qa1-fixes-developer.md), scoped fixes PASS; [original independent QA1 FAIL](../verification/010-release-qa.md) preserved. Original developer27AC record remains historical; QA2 pending.
-- Completion / integration evidence / outcome: Independent QA2 PASS all27 and final requirements review PASS permit Done/completion records. Final merge/integration evidence pending immediately following this record; issue closes only after successful integration.
+- Verification record: Independent [QA2 PASS](../verification/010-release-qa-attempt-2.md), historical [QA1 FAIL](../verification/010-release-qa.md), [final requirements PASS](../verification/010-release-requirements.md), [integration PASS](../verification/010-release-integration.md).
+- Completion / integration evidence / outcome: Done/integrated locally after independent QA2 and final requirements review PASS, all27 ACs. Exact-code merge equivalence and final28 affected integration cases PASS. Active batch2 now10/10;0102/3, all history retained.
 - Orchestrator final release requirements review / evidence / outcome: [Final requirements review](../verification/010-release-requirements.md) PASS all27REQ/ACs, seven defaults and five journeys atdc456af; final merge must preserve reviewed code.
-- Remaining risks or blockers: No in-scope product blocker. Local integration checks and issue reconciliation remain administrative final gates; no pushes/deployment. Approved same-host/loopback/synthetic limitations remain documented.
+- Remaining risks or blockers: No in-scope blocker. Approved local/same-host/synthetic evidence limits remain documented; production operations outside scope. No push/deployment; issue10 Done/integrated exact body/CLOSED readback verified.
 
 ## Resumed readiness —2026-10-29
 
@@ -128,3 +128,12 @@ Product scope and architecture are confirmed; no consequential product question 
 
 - All27 ACs independently verified byQA2 atdc456af; final high requirements review PASS for all requirements/defaults/journeys. QA1FAIL and retry history preserved. Done records permit exact-code-preserving local integration; no additional product/test/helper change.
 - QA0102/3; batch2 remains9/10 until integration succeeds, then010 uses its remaining slot. No new batch or retries. Original user resume preserved. No push/deployment.
+
+## Integrated completion —2026-10-29
+
+- Fast-forward delivery `374c2ad42d1ac4b40bb111fc31bf3ed4cf1b66d2` on develop preserves reviewed implementation `dc456af4aa16f03ee03e8dcc21fe3c5346cab3c3` exactly (only docs differ). [Final integration](../verification/010-release-integration.md) PASS28 affected cases19.68s plus schema/system/lint/format/diff. IndependentQA2 and final requirements review PASS retained at identical code; all27ACs checked complete.
+- Bootstrap/001–010 Done/integrated; batch2 now10/10,0102/3/historical counts unchanged. No new task/batch. Userresume exact, owned services stopped/testDB0,PG17/13 preserved. No pushes/deployment.
+
+## Issue reconciliation —2026-10-29
+
+- Issue10 Done/integrated body and CLOSED state verified after successful integration. All12 mapped delivery issues11/12/1–10 verified CLOSED. Source remains unpushed; local source links may not resolve remotely. No remaining delivery blocker or pending authorized issue update.
