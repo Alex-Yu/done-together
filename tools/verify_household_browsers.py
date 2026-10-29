@@ -247,19 +247,28 @@ def wait_heading(ui, text):
 
 
 def tab_to(ui, name=None, button=False):
+    # Validation content can precede the snapshot that enables its controls.
+    # Tab must not skip disabled fields and leave focus in browser chrome.
+    wait_for(
+        ui,
+        "!document.querySelector('[data-sync]') || document.documentElement.dataset.connected === 'true'",
+        True,
+    )
     for _ in range(15):
         ui.press("Tab")
-        if (
-            ui.execute("document.activeElement.tagName") == "BUTTON"
-            if button
-            else ui.execute("document.activeElement.name") == name
-        ):
-            assert (
-                ui.execute("getComputedStyle(document.activeElement).outlineStyle")
-                != "none"
-            )
+        # Firefox retains activeElement while keyboard focus is in browser
+        # chrome. Read the actual focus and its outline together; a retained
+        # element is not a reached keyboard target.
+        focused = ui.execute(
+            "(() => {const e=document.activeElement,s=getComputedStyle(e);return {tag:e.tagName,name:e.name,focus:e.matches(':focus'),focusVisible:e.matches(':focus-visible'),hasFocus:document.hasFocus(),outlineStyle:s.outlineStyle,outlineWidth:s.outlineWidth,labels:e.labels?.length}})()"
+        )
+        target = focused["tag"] == "BUTTON" if button else focused["name"] == name
+        if target and focused["hasFocus"] and focused["focus"]:
+            assert focused["focusVisible"]
+            assert focused["outlineStyle"] != "none"
+            assert float(focused["outlineWidth"].removesuffix("px")) > 0
             if not button:
-                assert ui.execute("document.activeElement.labels.length") > 0
+                assert focused["labels"] > 0
             return
     raise AssertionError("Keyboard target not reached")
 

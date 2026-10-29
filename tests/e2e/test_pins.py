@@ -1,5 +1,22 @@
+import re
+
 from playwright.sync_api import expect
 from test_households import PASSWORD, register_verify_login
+
+
+def expect_locked_board(page):
+    # Snapshot polling can append a recovery explanation to the locked caption.
+    # Verify the actual locked board and recoverable controls, not one copy variant.
+    expect(page.locator("#parent-lock-status")).to_have_text(
+        re.compile(r"^Parent controls locked\.")
+    )
+    expect(page.locator(".child-columns")).to_be_visible()
+    unlock = page.get_by_role("button", name="Unlock parent controls", exact=True)
+    expect(unlock).to_be_visible()
+    expect(unlock).to_be_enabled()
+    expect(
+        page.get_by_role("link", name="Manage household settings", exact=True)
+    ).to_have_count(0)
 
 
 def test_parent_pin_child_management_lock_and_reset(
@@ -14,7 +31,7 @@ def test_parent_pin_child_management_lock_and_reset(
     page.locator("[name=password]").fill(PASSWORD)
     page.locator("[name=pin]").fill("0007")
     page.get_by_role("button", name="Save parent PIN").click()
-    expect(page.get_by_text("Parent controls locked.", exact=True)).to_be_visible()
+    expect_locked_board(page)
     page.locator("[name=pin]").fill("0007")
     page.get_by_role("button", name="Unlock parent controls").click()
     page.get_by_role("link", name="Manage household settings").click()
@@ -31,7 +48,7 @@ def test_parent_pin_child_management_lock_and_reset(
     page.get_by_role("link", name="Return to board", exact=True).click()
     page.get_by_role("button", name="Lock parent controls").click()
     expect(page.get_by_text("Birch", exact=True)).to_be_visible()
-    expect(page.get_by_text("Parent controls locked.", exact=True)).to_be_visible()
+    expect_locked_board(page)
     page.get_by_role("link", name="Set or reset your own parent PIN").click()
     page.locator("[name=password]").fill(PASSWORD)
     page.locator("[name=pin]").fill("0789")

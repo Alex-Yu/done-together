@@ -6,6 +6,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 
 import pytest
+from django.db import connections
 from playwright.sync_api import expect, sync_playwright
 
 from chores.models import Approval
@@ -144,11 +145,12 @@ def test_native_submission_return_resubmit_approval(live_server, monkeypatch):
                             "keyboard/PIN error/return note/resubmit/approve PASS",
                         )
                     finally:
-                        ui.close()
+                        try:
+                            ui.close()
+                        finally:
+                            connections.close_all()
         # ORM queries made while Playwright's event loop is active use its
         # connection context. Close that context before leaving Playwright.
-        from django.db import connections
-
         connections.close_all()
     connections.close_all()
 
