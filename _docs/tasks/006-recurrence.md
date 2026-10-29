@@ -1,6 +1,6 @@
 # 006: Recurrence, occurrence generation, future edits, and deletion
 
-Status: In review
+Status: Done
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/6
 Local task: `_docs/tasks/006-recurrence.md`
@@ -13,14 +13,14 @@ Fixed recurring schedules generate shared work without duplicate unfinished occu
 
 ## Acceptance criteria
 
-- [ ] AC-001: REQ-010: Create daily and selected-weekday recurring definitions with required title and child; apply P-07 initial generation and no-browser recovery.
-- [ ] AC-002: REQ-011: Different-timezone computers agree on occurrence identity and dates but may show different overdue labels at the same instant.
-- [ ] AC-003: REQ-012: Leaving daily work unfinished over several days, including awaiting approval, produces one outstanding item and no backlog after approval.
-- [ ] AC-004: REQ-013: Approving overdue Monday work on scheduled Wednesday completes Monday and creates Wednesday once; an unscheduled approval day waits for the next scheduled day.
-- [ ] AC-005: REQ-014: Editing title, assignment, or schedule leaves current occurrence details and completed history unchanged; subsequent occurrences use the edit.
-- [ ] AC-006: REQ-015: Deleting a definition removes to-do/awaiting-approval work and stops recurrence; prior approvals/history/star totals persist.
-- [ ] AC-007: REQ-025: Returning to the household restores data; chore deletion preserves earned history. Child/account/household deletion controls are excluded.
-- [ ] AC-008: Affected changes enforce household isolation, protected parent/child permissions, persistent data, accessible keyboard interaction, and recoverable validation/failure states under REQ-003/023/025/026/027; no credential exposure or false success.
+- [x] AC-001: REQ-010: Create daily and selected-weekday recurring definitions with required title and child; apply P-07 initial generation and no-browser recovery.
+- [x] AC-002: REQ-011: Different-timezone computers agree on occurrence identity and dates but may show different overdue labels at the same instant.
+- [x] AC-003: REQ-012: Leaving daily work unfinished over several days, including awaiting approval, produces one outstanding item and no backlog after approval.
+- [x] AC-004: REQ-013: Approving overdue Monday work on scheduled Wednesday completes Monday and creates Wednesday once; an unscheduled approval day waits for the next scheduled day.
+- [x] AC-005: REQ-014: Editing title, assignment, or schedule leaves current occurrence details and completed history unchanged; subsequent occurrences use the edit.
+- [x] AC-006: REQ-015: Deleting a definition removes to-do/awaiting-approval work and stops recurrence; prior approvals/history/star totals persist.
+- [x] AC-007: REQ-025: Returning to the household restores data; chore deletion preserves earned history. Child/account/household deletion controls are excluded.
+- [x] AC-008: Affected changes enforce household isolation, protected parent/child permissions, persistent data, accessible keyboard interaction, and recoverable validation/failure states under REQ-003/023/025/026/027; no credential exposure or false success.
 
 ## Out of scope
 
@@ -60,3 +60,5 @@ Product scope and architecture are confirmed; no consequential product question 
 - Coordinator readiness2026-10-29: reused PM grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d`, unchanged scope/AC/contracts.005 dependency integrated and37 affected integration tests/static/migration gates PASS. No repeat PM required. Fresh task-only developer next;006 attempts0/3.
 
 - Independent QA handoff2026-10-29: PASS attempt1/3 against immutable implementation `47268781b08fedb63330fcaaf27a98a3ee260c77`; [QA evidence](../verification/006-recurrence-qa.md). Recurrence29/29, affected38/38, native four engine×zoom cases and migration/system/lint/format/diff checks PASS. No product files changed; QA preserved the uncommitted `_docs/resume.md`. Task remains In review pending completion/integration bookkeeping; batch2 remains5/10. Actual award retention recheck follows007/008. No merge or push.
+
+- Completion2026-10-29: independent QA1 PASS eight criteria at `47268781b08fedb63330fcaaf27a98a3ee260c77`, final evidence tip `3968b76ae9c932f871f82393dda8e712151ba13d`; administrative Done, integration next. No product changes after QA.

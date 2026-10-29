@@ -18,7 +18,7 @@ Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature 
 | 003 | [Child profiles, parent/child PIN management, and protected shared access](tasks/003-pins.md) | Done | 002 Done/integrated | [#3](https://github.com/Alex-Yu/done-together/issues/3) |
 | 004 | [Shared board, empty states, and settings navigation](tasks/004-board.md) | Done | 003 Done/integrated | [#4](https://github.com/Alex-Yu/done-together/issues/4) |
 | 005 | [One-off chore assignment and maintenance](tasks/005-one-off-chores.md) | Done | 004 Done/integrated | [#5](https://github.com/Alex-Yu/done-together/issues/5) |
-| 006 | [Recurrence, occurrence generation, future edits, and deletion](tasks/006-recurrence.md) | In review | 005 Done/integrated | [#6](https://github.com/Alex-Yu/done-together/issues/6) |
+| 006 | [Recurrence, occurrence generation, future edits, and deletion](tasks/006-recurrence.md) | Done | 005 Done/integrated | [#6](https://github.com/Alex-Yu/done-together/issues/6) |
 | 007 | [Child submission, parent review, returns, and overdue rules](tasks/007-review.md) | Draft | 006 | [#7](https://github.com/Alex-Yu/done-together/issues/7) |
 | 008 | [Weekly/all-time stars and completion visibility](tasks/008-stars.md) | Draft | 007 | [#8](https://github.com/Alex-Yu/done-together/issues/8) |
 | 009 | [Synchronization, concurrent-action handling, and offline recovery](tasks/009-synchronization.md) | Draft | 008 | [#9](https://github.com/Alex-Yu/done-together/issues/9) |
@@ -433,3 +433,7 @@ Source publication: Issue bodies contain complete specifications; local source i
 -006 In review on `task/006-recurrence`; immutable implementation `47268781b08fedb63330fcaaf27a98a3ee260c77`, following tip records-only. Independent QA next;0060/3 before dispatch, batch2 remains5/10. No merge/push.
 -29 unique recurrence checks +37 affected regressions PASS,6 strengthened independent-transaction race cases PASS, installed Chrome156/Firefox159 native100/200% four cases PASS; actual no-browser60-second loop/SIGINT/restart/failure-recovery and static/migration gates PASS. [Evidence](verification/006-recurrence-developer.md); verbose sanitized ignored `.local/verification/006/`.
 - Issue6 In review/open body synchronized and exact readback verified under explicit user issue5–10 authorization. No implementation blocker. Actual review/awards007, totals008, synchronization009; full integrated regression010. Owned verification services stopped; PG17:55432/PG13:5432 retained. Existing user `_docs/resume.md` untouched/excluded.
+
+## Recurrence completion —2026-10-29
+
+- Independent QA1 PASS all eight criteria at `47268781b08fedb63330fcaaf27a98a3ee260c77`, final evidence tip `3968b76ae9c932f871f82393dda8e712151ba13d`.29 recurrence/38 affected/native4 cases and gates PASS. Same attempt resumed after usage interruption;0061/3, batch2 5/10 before integration. Administrative completion/integration next; no per-task requirements recheck or push.
