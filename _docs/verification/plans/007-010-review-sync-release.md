@@ -33,7 +33,7 @@ Task: [008](../../tasks/008-stars.md).
 
 ##009: synchronization, conflicts and offline recovery
 
-Task: [009](../../tasks/009-synchronization.md). Use two independent browser sessions; timestamp accepted server mutation and second-board observable result with one monotonic measurement clock. Report each event latency, not just poll interval or average. Both engines are required; include actual distinct-computer evidence if the release environment provides it and record the independence used.
+Task: [009](../../tasks/009-synchronization.md). User decision (2026-10-29): “Accept two independent browser sessions.” Two independent sessions/profiles on this Mac satisfy the two-computer synchronization evidence gate. Identify this as same-host evidence and do not claim testing across two physical computers. Timestamp accepted server mutation and other-session observable result with one monotonic measurement clock. Report each event latency for every required mutation class, not just poll interval or average. Both stable engines are required; record the independence setup used.
 
 | Scenario / AC | Independent procedure | Observable expectation |
 | --- | --- | --- |
@@ -84,7 +84,7 @@ Task: [010](../../tasks/010-release-verification.md). QA verifies the exact inte
 
 ### Integrated journey order
 
-1. J01: synthetic parent registers/verifies, creates timezone household, sets parentPIN/adds two children, invites second parent; second recipient registers/verifies/joins and opens independent computer board. Check empty-state guidance and invalid recipient/link cases.
+1. J01: synthetic parent registers/verifies, creates timezone household, sets parentPIN/adds two children, invites second parent; second recipient registers/verifies/joins and opens an independent browser session/profile on the same Mac. Record both sessions as same-host evidence. Check empty-state guidance and invalid recipient/link cases.
 2. J02: each parent unlocks own identity, create one-off/daily/weekday assignments; invalid input/stale edit/locked direct requests; future-only recurring edit and P03 one-off restrictions.
 3. J03: child's valid/wrong/other-childPIN submission; parent return with required explanation and child resubmit; competing approvals exactly one star; timeout/CSRF failures.
 4. J04: no-browser scheduler restart/gap catch-up; unfinished recurring persistence; late completion fixed schedule; weekly/overall progress and boundary rollover.
