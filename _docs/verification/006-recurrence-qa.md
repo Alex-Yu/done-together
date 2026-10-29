@@ -28,6 +28,8 @@ Environment: macOS, managed Python3.13, Django5.2.18, PostgreSQL17.11 on loopbac
 
 The first recurrence command was blocked by sandbox loopback policy before tests ran; the same command with approved local DB access passed. The first native attempt omitted the documented geckodriver startup and stopped before Firefox assertions; after starting the repository-owned driver, the full four-case retry passed. These setup retries exposed no product failure. Suites sharing the disposable database ran sequentially. QA stopped its owned geckodriver; project PostgreSQL17 remains on55432, unrelated PostgreSQL13 on5432 is untouched.
 
+Authorized issue synchronization: [GitHub issue #6](https://github.com/Alex-Yu/done-together/issues/6) now includes the QA handoff. The inspected helper verified exact body readback and OPEN state; the local task status remains In review.
+
 ## Findings and remaining integration ownership
 
 No task006 product findings. Actual protected approval HTTP, award creation and real approval/earned-star retention are not implemented in006; preserve and rerun them when007/008 integrate. Totals/weekly visibility remain008 and synchronization009. Full release journeys remain010.
