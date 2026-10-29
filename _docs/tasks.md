@@ -385,3 +385,12 @@ Source publication: Issue bodies contain complete specifications; local source i
 -004attempt1/3; batch2 completions3/10 before integration; earlier histories retained. Task In review, next administrative completion/integration; no per-task root recheck.
 - Issue4 QA evidence synchronized/readback; no merge/push byQA.
 - Token optimization checkpoint: use fresh task-only role contexts for future handoffs; pending user choice on lighter PM/routine-QA models. Current source untouched. Reuse unchanged evidence; final integrated regression010.
+
+## User-requested pause —2026-10-29
+
+- User explicitly requested pause to stop token use. No further delivery work until resume.
+- Current state: task004 board independent QA PASS at implementation `067addc7eda122736893d17d5ca4aff7ce1a2885`; QA evidence/status tip `797846a2e61ca0054724545424843c32cc422f8d`. Task remains In review; administrative completion/integration and issue closure are next after resume. No pending QA processes; PG17 retained.
+- Active batch2 completions3/10;004 QA attempt1/3; earlier histories unchanged.
+- User approved gpt-6-luna for routine PM/QA with fresh task-only contexts. Development/final release QA retain current model. New PM role `/root/pm_economy` is available; use fresh contexts for future developer/QA tasks.
+- Efficiency: focused affected checks per task, reuse valid unchanged evidence, full integrated regression at final release; concise handoffs and milestone updates. No per-task orchestrator requirements recheck.
+- Resume: read AGENTS/process/tasks and004 QA evidence, complete/integrate004 with focused integration checks, then PM005 readiness. No pushes authorized.
