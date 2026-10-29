@@ -503,3 +503,7 @@ Source publication: Issue bodies contain complete specifications; local source i
 -008 In review at immutable implementation `4f965a3c706f821fbc6a25ac601a1ffbd30e41d0` on task/008-stars; next tip records only. [Evidence](verification/008-stars-developer.md).105 unique server cases (8 new/97 affected), four installed native Chrome156/Firefox159100/200 cases and static/schema gates PASS. Real retained approval projection survives two fresh processes and sign-out/revisit; rollover/DST/race/scoping verified.
 - Independent QA next;0080/3 until dispatch, batch2 remains7/10; prior histories incl0073/3 retained. No merge/push. User resume edit preserved/excluded; owned browser/server/driver stopped, PG17/PG13 retained.009 idle refresh/sync and010 final release remain.
 - Issue8 In review/open evidence synchronized with exact body/state readback under explicit user issue5–10 authorization. No implementation changes after immutable commit.
+
+## Stars independent QA started —2026-10-29
+
+-008 QA attempt1/3 on immutable implementation `4f965a3c706f821fbc6a25ac601a1ffbd30e41d0`; batch2 remains7/10; earlier counters incl0073/3 retained. Developer handoff and five ACs reviewed before source summary. QA checkpoint is records-only; no application or test changes. Preserve `_docs/resume.md` exactly and exclude it. No merge/push.
