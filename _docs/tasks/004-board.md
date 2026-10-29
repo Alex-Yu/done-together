@@ -1,11 +1,11 @@
 # 004: Shared board, empty states, and settings navigation
 
-Status: Draft
+Status: Ready
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/4
 Local task: `_docs/tasks/004-board.md`
 Requirement links: [REQ-008](../plan.md), [REQ-009](../plan.md), [REQ-024](../plan.md), [REQ-026](../plan.md)
-Dependencies: [003](003-pins.md) Done and integrated into `develop`; PM readiness review after that dependency.
+Dependencies: [003](003-pins.md) Done/integrated at `8218a22e1b015e89be45aad814f5188150fafe4b`; independent QA1 PASS implementation `d18a01c0d5d22e4ed21ce7a4bf651a673c1cde1c`; PM current readiness passed on 2026-10-29.
 
 ## Goal
 
@@ -27,9 +27,11 @@ Technology selection, unrelated release features, public launch, deployment, pai
 
 Mixed-state presentation uses test-only synthetic read-model fixtures until005/006 provide persisted work;007 wires review UI,008 actual approval totals,009 automatic cross-board refresh. Preserve requirement ownership without fake production household data.
 
-Follow the confirmed first-release scope and P-01–P-07 in [plan.md](../plan.md). Use the selected Django 5.2/Python 3.13/PostgreSQL 17/HTMX approach in [architecture.md](../architecture.md), ADR-001–003 and the locked setup dependencies. No SQLite substitute, frontend build stack, external email provider or deployment is authorized. Follow [process.md](../process.md) and [testing-guidelines.md](../testing-guidelines.md). The user handed over delivery on 2026-10-28. PM refined scope/verification in parallel on an isolated grooming branch; acceptance IDs and release behavior are unchanged. This task remains Draft until its dependency is Done/integrated, this grooming is integrated onto `develop`, and current PM readiness is recorded. Independent task QA leads to completion/integration; orchestrator requirements review is final-release-only.
+Follow the confirmed first-release scope and P-01–P-07 in [plan.md](../plan.md). Use the selected Django 5.2/Python 3.13/PostgreSQL 17/HTMX approach in [architecture.md](../architecture.md), ADR-001–003 and the locked setup dependencies. No SQLite substitute, frontend build stack, external email provider or deployment is authorized. Follow [process.md](../process.md) and [testing-guidelines.md](../testing-guidelines.md). The user handed over delivery on 2026-10-28. PM refined scope/verification in parallel on an isolated grooming branch; acceptance IDs and release behavior are unchanged. Dependency003, parallel grooming8feda09 and QA preparation are integrated onto `develop`. Current PM review confirms all five criteria, exclusions, constraints and verification plan complete; this task is Ready. Independent task QA leads to completion/integration; orchestrator requirements review is final-release-only.
 
 ## Verification plan
+
+Use the integrated [QA preparation matrix](../verification/plans/003-006-identity-board-assignment.md) alongside the plan below. Real child columns, empty states and protected navigation are production behavior now; mixed chore states are internal test fixtures only until005–008. Preserve003 server timeout and locked board visibility; no production fake chores, fake totals, inert product controls or separate dashboard are required.
 
 - AC-001: Use a synthetic read-model fixture to display multiple children with to-do, overdue, awaiting and completed entries under the correct column; statuses include text independent of color. Empty household/child/work states guide allowed setup. Production reads remain real household scoped; synthetic state injection is test-only. Full persisted chore definitions/occurrences arrive005/006; submission/review state changes arrive007.
 - AC-002: Browser checks confirm active work and current-week completion entries are directly visible without a collapsed completed section. Seed older overdue and completed dates to exercise the presentation contract; approval-derived week filtering and totals are verified in008. Do not claim actual approval/rollover workflows complete now.
@@ -40,18 +42,18 @@ For each named AC, record expected and actual observations at the exact implemen
 
 ## Questions and assumptions
 
-Product scope and architecture are confirmed; no consequential product question identified. Existing setup/skeleton/account commands are verified; new feature commands remain UNVERIFIED until their owning task executes them. Parallel preparation is not readiness: dependency integration, grooming integration onto develop and current PM review remain pending. No material question found; minor sequencing assumptions are explicit in verification plan. GitHub issues are authoritative. Existing issues were inspected before initial creation; match by local task ID/path at each synchronization to avoid duplicates.
+Product scope and architecture are confirmed; no consequential product question identified. Existing setup/skeleton/account commands are verified; new feature commands remain UNVERIFIED until their owning task executes them. Dependency/grooming integration and current PM readiness are complete. Test-only mixed-state fixtures verify presentation boundaries now; actual chore/review/approval-derived week behavior remains005–008 and final010. No material question found; minor sequencing assumptions are explicit in verification plan. GitHub issues are authoritative. Existing issues were inspected before initial creation; match by local task ID/path at each synchronization to avoid duplicates.
 
 ## Handoff
 
-- PM parallel scope review: 2026-10-28; acceptance IDs/behavior retained, concrete per-criterion checks and later integration ownership recorded. Draft until dependency/grooming integration and current readiness review; isolated grooming commit supplied to orchestrator for develop integration.
+- PM readiness: Ready on 2026-10-29 after003 integration; five ACs unchanged, integrated scope/QA preparation reviewed, no consequential question. Full readiness commit recorded in backlog checkpoint.
 
 - Implementation summary: Not started
 - Task branch / verified implementation commit: Pending
-- Changed files / revision: Parallel grooming in isolated `grooming/future-release`; full commit supplied to orchestrator for integration onto develop before readiness
+- Changed files / revision: Parallel grooming8feda09 integrated; current Ready grooming on develop recorded in backlog checkpoint
 - Final branch tip / delivery commit / integration results: Pending
 - Push status / authorized remote and branch targets: No pushes authorized
 - Checks and results: PM scope/architecture/AC-link consistency checked; issue3–10 Draft bodies synchronized/readback during parallel grooming. No implementation verification run or claimed
 - Verification record: Pending
 - Completion / integration evidence / outcome: Pending
-- Remaining risks or blockers: Dependency integration and current readiness review; no material scope blocker found
+- Remaining risks or blockers: None at readiness; persisted work/review/totals remain005–008; no source pushes authorized
