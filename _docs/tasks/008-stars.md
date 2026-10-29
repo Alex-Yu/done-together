@@ -1,6 +1,6 @@
 # 008: Weekly/all-time stars and completion visibility
 
-Status: In review
+Status: Done
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/8
 Local task: `_docs/tasks/008-stars.md`
@@ -13,11 +13,11 @@ Families see accurate approval-based totals and current-week completions.
 
 ## Acceptance criteria
 
-- [ ] AC-001: REQ-009: Older overdue work remains visible; current-week completions are directly accessible; older completions leave the column but remain stored.
-- [ ] AC-002: REQ-019: Repeated, retried, or simultaneous approvals across computers yield one completion and one star. Submission/return earns none.
-- [ ] AC-003: REQ-020: Monday approval counts in the new week even for Sunday work; weekly rollover preserves history and all-time totals.
-- [ ] AC-004: REQ-025: Returning to the household restores data; chore deletion preserves earned history. Child/account/household deletion controls are excluded.
-- [ ] AC-005: Affected changes enforce household isolation, protected parent/child permissions, persistent data, accessible keyboard interaction, and recoverable validation/failure states under REQ-003/023/025/026/027; no credential exposure or false success.
+- [x] AC-001: REQ-009: Older overdue work remains visible; current-week completions are directly accessible; older completions leave the column but remain stored.
+- [x] AC-002: REQ-019: Repeated, retried, or simultaneous approvals across computers yield one completion and one star. Submission/return earns none.
+- [x] AC-003: REQ-020: Monday approval counts in the new week even for Sunday work; weekly rollover preserves history and all-time totals.
+- [x] AC-004: REQ-025: Returning to the household restores data; chore deletion preserves earned history. Child/account/household deletion controls are excluded.
+- [x] AC-005: Affected changes enforce household isolation, protected parent/child permissions, persistent data, accessible keyboard interaction, and recoverable validation/failure states under REQ-003/023/025/026/027; no credential exposure or false success.
 
 ## Out of scope
 
@@ -55,3 +55,5 @@ Product scope and architecture are confirmed; no consequential product question 
 - Remaining risks or blockers: None for implementation. Periodic connected-board refresh across time boundaries remains009.
 
 - Coordinator readiness2026-10-29: existing PM grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d` reused after unchanged scope/AC/contract check and007 integration.37 affected integration tests/static/migration gates PASS. Source of totals is actual007 approval records; no fixture substitutes. Fresh developer next;0080/3.
+
+- Completion2026-10-29: independent QA1 PASS all five criteria at `4f965a3c706f821fbc6a25ac601a1ffbd30e41d0`; evidence tip `1dfdd0c6a3b3df17435ef6f6d12a4c531b6b1212`, [QA record](../verification/008-stars-qa.md).105 affected tests/native4 PASS. Administrative Done/integration next; no separate per-task requirements review.

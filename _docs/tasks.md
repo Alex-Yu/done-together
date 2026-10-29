@@ -20,7 +20,7 @@ Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature 
 | 005 | [One-off chore assignment and maintenance](tasks/005-one-off-chores.md) | Done | 004 Done/integrated | [#5](https://github.com/Alex-Yu/done-together/issues/5) |
 | 006 | [Recurrence, occurrence generation, future edits, and deletion](tasks/006-recurrence.md) | Done | 005 Done/integrated | [#6](https://github.com/Alex-Yu/done-together/issues/6) |
 | 007 | [Child submission, parent review, returns, and overdue rules](tasks/007-review.md) | Done | 006 Done/integrated | [#7](https://github.com/Alex-Yu/done-together/issues/7) |
-| 008 | [Weekly/all-time stars and completion visibility](tasks/008-stars.md) | In review | 007 Done/integrated | [#8](https://github.com/Alex-Yu/done-together/issues/8) |
+| 008 | [Weekly/all-time stars and completion visibility](tasks/008-stars.md) | Done | 007 Done/integrated | [#8](https://github.com/Alex-Yu/done-together/issues/8) |
 | 009 | [Synchronization, concurrent-action handling, and offline recovery](tasks/009-synchronization.md) | Draft | 008 | [#9](https://github.com/Alex-Yu/done-together/issues/9) |
 | 010 | [Integrated release verification and browser/accessibility checks](tasks/010-release-verification.md) | Draft | 009 | [#10](https://github.com/Alex-Yu/done-together/issues/10) |
 
@@ -511,3 +511,7 @@ Source publication: Issue bodies contain complete specifications; local source i
 ## Stars independent QA handoff —2026-10-29
 
 -008 independent QA attempt1/3 PASS at immutable `4f965a3c706f821fbc6a25ac601a1ffbd30e41d0`; [QA evidence](verification/008-stars-qa.md). Targeted PostgreSQL suite:105 passed/1 unrelated long restart loop deselected. Installed Chrome156/Firefox159 actual100/200 journeys passed; all five ACs have independent evidence for exact household-week boundaries,167/169-hour DST weeks, approval/retry/concurrency, retention/reload, isolation, keyboard/text totals. Batch2 remains7/10;0073/3 and earlier histories retained. Issue8 remains In review/open. No merge/push; `_docs/resume.md` preserved/excluded; driver stopped/4445 closed; PG17/PG13 retained.
+
+## Stars completion —2026-10-29
+
+-008 independent QA1 PASS fiveACs at `4f965a3c706f821fbc6a25ac601a1ffbd30e41d0`, records tip `1dfdd0c6a3b3df17435ef6f6d12a4c531b6b1212`.105 affected tests/native4 cases PASS.0081/3; batch2 7/10 before integration. User accepted independent browser sessions on sameMac for two-computer gate; isolated PM clarification `d0be1b30912e489cd54f61fc2c1f720b34ff7f76` pending integration/sync9/10. No push.
