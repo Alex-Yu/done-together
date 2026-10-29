@@ -18,6 +18,7 @@ from verify_household_browsers import (
     wait_for,
     wait_heading,
 )
+from verify_release_keyboard import Keyboard
 
 
 def href(ui, text):
@@ -29,13 +30,22 @@ def href(ui, text):
 
 
 def choose_first_parent(ui):
-    tab_to(ui, "parent")
-    ui.press("ArrowUp")
+    first = ui.execute("document.querySelector('[name=parent]').options[0].value")
+    Keyboard(ui).select("parent", first)
 
 
 def manage(ui):
     ui.goto(href(ui, "Manage household settings"))
     wait_heading(ui, "Household settings")
+
+
+def assert_locked(ui):
+    assert ui.execute(
+        "[...document.querySelectorAll('[data-parent-controls] input,[data-parent-controls] select,[data-parent-controls] textarea,[data-parent-controls] button')].every(e=>e.disabled)"
+    )
+    assert ui.execute(
+        "[...document.querySelectorAll('[data-parent-controls] a')].every(e=>e.getAttribute('aria-disabled')==='true'||e.dataset.parentLocked==='true')"
+    )
 
 
 def unlock_first(ui, pin):
@@ -68,9 +78,10 @@ def pin_journey(ui, record):
         ui.click("Lock parent controls")
     wait_for(
         ui,
-        "document.getElementById('parent-lock-status').textContent.trim()",
-        "Parent controls locked.",
+        "document.getElementById('parent-lock-status').textContent.trim().startsWith('Parent controls locked.')",
+        True,
     )
+    assert_locked(ui)
     unlock_first(ui, "0007")
     manage(ui)
     ui.goto(href(ui, "Add child"))
@@ -105,9 +116,10 @@ def pin_journey(ui, record):
     ui.click("Save parent PIN")
     wait_for(
         ui,
-        "document.getElementById('parent-lock-status').textContent.trim()",
-        "Parent controls locked.",
+        "document.getElementById('parent-lock-status').textContent.trim().startsWith('Parent controls locked.')",
+        True,
     )
+    assert_locked(ui)
     choose_first_parent(ui)
     ui.fill("pin", "0007")
     ui.click("Unlock parent controls")
@@ -164,7 +176,12 @@ def run(revisit):
                         ui.close()
                         profile.cleanup()
                     continue
-                pin_journey(ui, record)
+                try:
+                    pin_journey(ui, record)
+                except Exception:
+                    ui.close()
+                    profile.cleanup()
+                    raise
                 if record["zoom"] == 1:
                     held.append((ui, profile, record))
                     if len(held) == 2:
@@ -176,9 +193,10 @@ def run(revisit):
                         for idle, old_profile, old_record in held:
                             wait_for(
                                 idle,
-                                "document.getElementById('parent-lock-status').textContent.trim()",
-                                "Parent controls locked.",
+                                "document.getElementById('parent-lock-status').textContent.trim().startsWith('Parent controls locked.')",
+                                True,
                             )
+                            assert_locked(idle)
                             assert old_record["child_name"] in idle.execute(
                                 "document.body.textContent"
                             )

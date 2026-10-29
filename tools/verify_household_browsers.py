@@ -82,7 +82,14 @@ class Chrome:
         self.page.locator(f'[name="{name}"]').fill(text)
 
     def click(self, text):
+        self.execute("(window.__nativePreviousBody = document.body, true)")
         self.page.get_by_role("button", name=text, exact=True).click()
+        wait_for(self, "document.body !== window.__nativePreviousBody", True)
+        wait_for(
+            self,
+            "!document.querySelector('[data-sync]') || document.documentElement.dataset.connected === 'true'",
+            True,
+        )
 
     def apply_zoom(self):
         pass
@@ -173,6 +180,7 @@ class Firefox:
         webdriver("POST", self.session + f"/element/{identity}/value", {"text": text})
 
     def click(self, text):
+        self.execute("(window.__nativePreviousBody = document.body, true)")
         element = self.execute(
             "[...document.querySelectorAll('button')].find(el=>el.textContent.trim()==="
             + json.dumps(text)
@@ -180,6 +188,12 @@ class Firefox:
         )
         identity = element["element-6066-11e4-a52e-4f735466cecf"]
         webdriver("POST", self.session + f"/element/{identity}/click", {})
+        wait_for(self, "document.body !== window.__nativePreviousBody", True)
+        wait_for(
+            self,
+            "!document.querySelector('[data-sync]') || document.documentElement.dataset.connected === 'true'",
+            True,
+        )
 
     def apply_zoom(self):
         try:
