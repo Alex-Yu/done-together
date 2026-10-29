@@ -74,18 +74,15 @@ class Chrome:
         self.page.goto(BASE_URL.rstrip("/") + path)
 
     def press(self, key):
-        if key == "Enter":
-            with self.page.expect_navigation(wait_until="load"):
-                self.page.keyboard.press(key)
-        else:
-            self.page.keyboard.press(key)
+        # Synchronized mutations render the confirmed fetch document without a
+        # second navigation. Callers wait for their observable result/heading.
+        self.page.keyboard.press(key)
 
     def fill(self, name, text):
         self.page.locator(f'[name="{name}"]').fill(text)
 
     def click(self, text):
-        with self.page.expect_navigation(wait_until="load"):
-            self.page.get_by_role("button", name=text, exact=True).click()
+        self.page.get_by_role("button", name=text, exact=True).click()
 
     def apply_zoom(self):
         pass
@@ -226,6 +223,13 @@ def wait_for(ui, expression, expected):
 
 def wait_heading(ui, text):
     wait_for(ui, "document.querySelector('h1')?.textContent.trim()", text)
+    # A fetched document can display its heading before the first authorized
+    # snapshot enables controls. Native helpers must honor that readiness gate.
+    wait_for(
+        ui,
+        "!document.querySelector('[data-sync]') || document.documentElement.dataset.connected === 'true'",
+        True,
+    )
 
 
 def tab_to(ui, name=None, button=False):

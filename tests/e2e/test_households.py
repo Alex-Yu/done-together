@@ -82,9 +82,20 @@ def test_household_timezone_invite_new_parent_join_and_other_computer(
         setup_pin_and_open_settings(creator)
         creator.get_by_label("Second parent’s email:", exact=True).fill(second)
         creator.get_by_role("button", name="Send invitation").click()
-        expect(creator.get_by_role("status")).to_have_text(
-            "Invitation email sent. The link expires in seven days."
-        )
+        expect(
+            creator.get_by_role("status").filter(has_text="Invitation email sent.")
+        ).to_have_text("Invitation email sent. The link expires in seven days.")
+        # Reload is a GET at the redirect target, never a second invitation POST.
+        assert creator.url.endswith("/settings/")
+        sent_count = len(mailoutbox)
+        creator.reload()
+        expect(
+            creator.get_by_role("heading", name="Household settings")
+        ).to_be_visible()
+        assert len(mailoutbox) == sent_count
+        expect(
+            creator.get_by_text("Invitation email sent.", exact=False)
+        ).to_have_count(0)
         private_path = captured_path(mailoutbox, "households/invitations/")
         # Open invitation before account creation; pending flow survives registration.
         recipient.goto(live_server.url + private_path)

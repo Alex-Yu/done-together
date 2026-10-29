@@ -91,7 +91,9 @@
       if ([401,403].includes(response.status)) { state(false, 'Action denied. Checking board access and current data…'); poll(true); return; }
       if (response.status >= 500) throw new Error('unavailable');
       const html = await response.text();
-      if (response.redirected) { location.assign(response.url); return; }
+      // fetch already followed the redirect and consumed one-use messages.
+      // Render that confirmed document rather than issuing a second GET.
+      if (response.redirected) history.replaceState(null, '', response.url);
       window.dispatchEvent(new Event('board:dispose'));
       document.open(); document.write(html); document.close();
     } catch { state(false, 'Action not confirmed. It may have committed. Reconnecting to check current data; no action will be retried.'); poll(true); }

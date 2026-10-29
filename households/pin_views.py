@@ -73,6 +73,7 @@ def parent_context(request, household):
     authority = authority_state(request, household.pk)
     return {
         "household": household,
+        "board_sync": True,
         "parent_authority": authority,
         "parent_remaining": max(
             0, 60 - (timezone.now() - authority.last_activity).total_seconds()
@@ -170,7 +171,7 @@ def parent_pin(request, household_id):
     return render(
         request,
         "households/parent_pin.html",
-        {"household": household, "form": form},
+        {"household": household, "board_sync": True, "form": form},
         status=400 if request.method == "POST" else 200,
     )
 

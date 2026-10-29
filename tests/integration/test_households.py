@@ -100,8 +100,15 @@ def test_create_and_intended_verified_join_equal_member_rights():
     form = recipient.get(exchange.headers["Location"])
     assert form.status_code == 200 and form.headers["Referrer-Policy"] == "same-origin"
     assert "no-store" in form.headers["Cache-Control"]
+    # Pre-membership bootstrap must remain usable without a member-only poll.
+    assert b"data-sync " not in form.content
+    assert b"js/board-sync.js" not in form.content
     joined = recipient.post(exchange.headers["Location"])
     assert joined.status_code == 302
+    board = recipient.get(joined.headers["Location"])
+    assert b"data-sync " in board.content
+    own_pin = recipient.get(reverse("parent_pin", args=[household.pk]))
+    assert b"data-sync " in own_pin.content
     invitation.refresh_from_db()
     assert invitation.consumed_at is not None
     assert household.memberships.count() == 2
