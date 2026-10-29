@@ -51,9 +51,9 @@ Product scope and architecture are confirmed; no consequential product question 
 - Implementation summary: Real scoped child columns, setup/empty guidance, semantic text-state card projection and shared board entry; settings keeps parent guard. No production fake work.
 - Task branch / verified implementation commit: `task/004-board`; `067addc7eda122736893d17d5ca4aff7ce1a2885`
 - Changed files / revision: Board read model/views/templates/CSS, scoped tests/native check and documentation; no schema/dependency change
-- Final branch tip / delivery commit / integration results: QA evidence tip `797846a2e61ca0054724545424843c32cc422f8d`; completion tip follows; integration next
+- Final branch tip / delivery commit / integration results: Final task tip/fast-forward delivery `bd608632e14d9a98aea957f82c433d8f03dc1ebc`; no implementation changes during integration
 - Push status / authorized remote and branch targets: No pushes authorized
 - Checks and results: Five unique board tests,20 affected PIN regressions and four installed Chrome/Firefox100/200% native cases PASS; check/drift/lint/format/diff PASS. Prior unchanged mail/61-second evidence reused; full integrated regression at010.
 - Verification record: [Developer AC table](../verification/004-board-developer.md); [independent QA PASS](../verification/004-board-qa.md)
-- Completion / integration evidence / outcome: Independent QA1 PASS all five criteria; administrative completion recorded, integration next
+- Completion / integration evidence / outcome: Independent QA1 PASS all five criteria; integrated. Migrate/check/drift,25 affected board/PIN tests,Ruff lint/format114 files,diff check PASS; retained native QA evidence unchanged
 - Remaining risks or blockers: No QA findings; persisted work/review/approval week visibility/totals remain005–008; no source pushes authorized

@@ -7,7 +7,7 @@ Pending issue synchronization: None after initial delivery grooming; bootstrap i
 
 ## Task index
 
-Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature roadmap against the selected architecture. Environment setup, skeleton,001 accounts,002 households and003 PIN/shared access are Done/integrated;004 is Done pending integration;005–010 remain Draft pending current readiness/dependency review. Scope was confirmed by the user on 2026-10-28, including P-01–P-07.
+Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature roadmap against the selected architecture. Environment setup, skeleton,001 accounts,002 households and003 PIN/shared access are Done/integrated;004 is Done/integrated;005 Ready;006–010 Draft pending dependencies. Scope was confirmed by the user on 2026-10-28, including P-01–P-07.
 
 | ID / labels | Task | Status | Dependencies | GitHub issue |
 | --- | --- | --- | --- | --- |
@@ -17,7 +17,7 @@ Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature 
 | 002 | [Household creation, timezone setup, and second-parent invitation](tasks/002-households.md) | Done | 001 Done/integrated | [#2](https://github.com/Alex-Yu/done-together/issues/2) |
 | 003 | [Child profiles, parent/child PIN management, and protected shared access](tasks/003-pins.md) | Done | 002 Done/integrated | [#3](https://github.com/Alex-Yu/done-together/issues/3) |
 | 004 | [Shared board, empty states, and settings navigation](tasks/004-board.md) | Done | 003 Done/integrated | [#4](https://github.com/Alex-Yu/done-together/issues/4) |
-| 005 | [One-off chore assignment and maintenance](tasks/005-one-off-chores.md) | Draft | 004 | [#5](https://github.com/Alex-Yu/done-together/issues/5) |
+| 005 | [One-off chore assignment and maintenance](tasks/005-one-off-chores.md) | Ready | 004 Done/integrated | [#5](https://github.com/Alex-Yu/done-together/issues/5) |
 | 006 | [Recurrence, occurrence generation, future edits, and deletion](tasks/006-recurrence.md) | Draft | 005 | [#6](https://github.com/Alex-Yu/done-together/issues/6) |
 | 007 | [Child submission, parent review, returns, and overdue rules](tasks/007-review.md) | Draft | 006 | [#7](https://github.com/Alex-Yu/done-together/issues/7) |
 | 008 | [Weekly/all-time stars and completion visibility](tasks/008-stars.md) | Draft | 007 | [#8](https://github.com/Alex-Yu/done-together/issues/8) |
@@ -31,10 +31,10 @@ Bootstrap criteria preserve environment-before-skeleton separation. PM reconcile
 - Delivery explicitly resumed by user; task004 independent QA PASS accepted for administrative completion/integration. No per-task requirements recheck.
 - Scope: bootstrap plus001–010, REQ-001–027 and P-01–P-07 unchanged; full release incomplete.
 - Branch task/004-board; implementation `067addc7eda122736893d17d5ca4aff7ce1a2885`; QA evidence `797846a2e61ca0054724545424843c32cc422f8d`. Later changes documentation only; retained [QA evidence](verification/004-board-qa.md) remains valid.
-- Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;0041/3;005–010 each0/3. Active batch2 completions3/10 before004 integration; historical batch1 bootstrap2.
-- Next: integrate004 and targeted gates, close/readback issue4; reuse unchanged PM grooming `8feda09` for005 readiness after dependency integration.
+- Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;0041/3;005–010 each0/3. Active batch2 completions4/10 after004 integration; historical batch1 bootstrap2.
+- Delivery004: `bd608632e14d9a98aea957f82c433d8f03dc1ebc` fast-forward, code unchanged. Migrate/check/drift,25 affected tests,Ruff lint/format114 files,diff PASS. Next: issue4 completion readback,005 readiness from existing PM grooming.
 - PG17 verified running55432; unrelatedPG13:5432 preserved. No push authorization. Uncommitted `_docs/resume.md` user edit preserved and excluded from delivery commits.
-- GitHub4/5 read and scope reconciled on resume;004 completion synchronization follows successful integration.005 Draft/open until readiness.
+- GitHub4 Done/closed exact body/state readback;005 unchanged scope reconciled and Ready from existing PM grooming; readiness synchronization follows.
 
 Source publication: Issue bodies contain complete specifications; local source is unpushed. Issue links to develop source may not resolve until separately authorized source publication.
 
@@ -401,3 +401,11 @@ Source publication: Issue bodies contain complete specifications; local source i
 ## Delivery resumed —2026-10-29
 
 - User explicitly resumed authorized graph.004 QA PASS accepted unchanged; administrative completion precedes integration. Counters/batch preserved; no routine prompts or pushes. Existing resume edit remains uncommitted.
+
+## Board integration result —2026-10-29
+
+- Final task tip/delivery `bd608632e14d9a98aea957f82c433d8f03dc1ebc`; implementation unchanged from independent QA PASS. Migrate/check/drift,25 board/PIN tests in11.15s,Ruff lint/format114 files,diff PASS. Retained four native cases and003 evidence unchanged. Active batch2 4/10;0041/3. No push; user resume edit remains uncommitted.
+
+## Task005 Ready —2026-10-29
+
+- Reused PM scope review `8feda09b8b827736f832fd8dff6a48ece0e7075d`; scope/AC/contracts unchanged,004 dependency integrated and issue4 closed/readback.005 Ready; fresh developer next, attempts0050/3; batch2 4/10. All earlier counters preserved. Readiness commit is this normal handoff; developer must include it. No push.
