@@ -457,3 +457,16 @@ RUN_NATIVE_RECURRENCE=1 PLAYWRIGHT_BROWSERS_PATH=.local/playwright UV_CACHE_DIR=
 ```
 
 Observed:29 recurrence cases passed across scoped runs (28 initial,1 added real connection-failure/restart case);37 affected regressions passed. Six race cases additionally passed after strengthening eligible-generation vs edit/delete fixtures. The real subprocess test runs once twice, observes actual60-second loop generation with no browser, sends SIGINT/observes exit0, and starts a fresh idempotent scheduler. A separate real refused connection produces a generic nonzero failure, then a fresh correctly connected process succeeds; deterministic loop failure/retry coverage checks interval60 without another elapsed-minute wait. Installed Chrome156.0.8078.48/Firefox159.0 passed four native100/200% cases: weekday checkbox keyboard selection, labels/focus, validation, future-only edits and deletion. Native select values are assigned after keyboard/label checks. All eight ignored screenshots were visually inspected; readable vertical scrolling/no horizontal overflow. Driver and all owned subprocesses stopped. Existing005 browser-local overdue evidence is retained for unchanged local-date JS/identity/date rendering;006 adds household DST/date scheduling checks. Actual submission/approval/stars remain007–008. Full evidence: [006 developer](verification/006-recurrence-developer.md).
+
+## Task007 affected review verification —2026-10-29
+
+Run PostgreSQL suites sequentially; keep projectPG17:55432 and unrelatedPG13:5432 separate.
+
+```sh
+UV_CACHE_DIR=.local/uv-cache uv run pytest tests/integration/test_review.py tests/integration/test_recurrence.py tests/integration/test_chores.py tests/integration/test_board.py tests/integration/test_pins.py -k 'not real_no_browser_once_loop_sixty_restart' -q
+.local/bin/geckodriver --host 127.0.0.1 --port 4445 --allow-system-access --log error
+# Separate shell; stop the owned driver afterward:
+RUN_NATIVE_REVIEW=1 PLAYWRIGHT_BROWSERS_PATH=.local/playwright UV_CACHE_DIR=.local/uv-cache uv run pytest tests/e2e/test_review_native.py -q -s
+```
+
+Actual review/approval/star workflows now replace prior synthetic-state evidence for007. Exact executed selectors/counts and retained unchanged006 scheduler evidence are in [007 developer](verification/007-review-developer.md).008 totals/week projection and009 synchronization/offline remain later.

@@ -32,3 +32,5 @@ main.board-page { width: min(100% - 3rem, 90rem); }
 .state-completed { border-left-style: double; background: #edf5f0; }
 .is-overdue { border-left-color: #9a3d24; background: #fff1e9; }
 .empty-board { grid-column: 1 / -1; }
+
+textarea { display: block; width: 100%; max-width: 38rem; padding: .6rem; font: inherit; border: 1px solid #596e61; border-radius: .35rem; }

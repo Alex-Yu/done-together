@@ -50,3 +50,51 @@ class RecurringForm(ChoreForm):
         if data.get("schedule") == "daily":
             data["weekdays"] = []
         return data
+
+
+class SubmissionForm(forms.Form):
+    version = forms.IntegerField(min_value=1, widget=forms.HiddenInput)
+    pin = forms.CharField(
+        label="Assigned child’s PIN",
+        strip=False,
+        required=False,
+        widget=forms.PasswordInput(
+            attrs={"inputmode": "numeric", "autocomplete": "off"}
+        ),
+    )
+    browser_timezone = forms.CharField(
+        label="Your computer timezone",
+        max_length=100,
+        help_text="Detected from this computer. If unavailable, choose its IANA timezone (for example Europe/Warsaw).",
+    )
+
+    def clean_browser_timezone(self):
+        from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
+
+        value = self.cleaned_data["browser_timezone"]
+        try:
+            ZoneInfo(value)
+        except (ZoneInfoNotFoundError, ValueError):
+            raise forms.ValidationError("Enter a valid computer timezone.") from None
+        return value
+
+
+class ReviewForm(forms.Form):
+    version = forms.IntegerField(min_value=1, widget=forms.HiddenInput)
+    action = forms.ChoiceField(
+        choices=[("approve", "Approve — award one star"), ("return", "Return to child")]
+    )
+    note = forms.CharField(
+        label="Return explanation",
+        required=False,
+        widget=forms.Textarea(attrs={"rows": 3}),
+        max_length=4000,
+    )
+
+    def clean(self):
+        data = super().clean()
+        if data.get("action") == "return" and not data.get("note"):
+            self.add_error(
+                "note", "Explain what needs doing before returning this chore."
+            )
+        return data

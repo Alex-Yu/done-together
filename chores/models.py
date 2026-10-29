@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 
@@ -37,6 +38,10 @@ class Occurrence(models.Model):
     )
     version = models.PositiveBigIntegerField(default=1)
     completed_at = models.DateTimeField(null=True)
+    submitted_at = models.DateTimeField(null=True)
+    submitted_timezone = models.CharField(max_length=100, blank=True)
+    submitted_late = models.BooleanField(null=True)
+    return_note = models.TextField(blank=True)
 
     class Meta:
         constraints = [
@@ -55,3 +60,10 @@ class Occurrence(models.Model):
                 name="valid_occurrence_state",
             ),
         ]
+
+
+class Approval(models.Model):
+    occurrence = models.OneToOneField(Occurrence, on_delete=models.PROTECT)
+    parent = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    approved_at = models.DateTimeField()
+    # Each unique durable approval is exactly one star; no mutable counter.

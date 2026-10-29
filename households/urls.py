@@ -6,6 +6,16 @@ from . import pin_views, views
 
 urlpatterns = [
     path(
+        "<int:household_id>/chores/<int:occurrence_id>/submit/",
+        chore_views.submit,
+        name="chore_submit",
+    ),
+    path(
+        "<int:household_id>/chores/<int:occurrence_id>/review/",
+        chore_views.review,
+        name="chore_review",
+    ),
+    path(
         "<int:household_id>/recurring/new/",
         chore_views.recurring,
         name="recurring_create",

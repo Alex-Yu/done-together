@@ -169,3 +169,131 @@ def recurring(request, household_id, definition_id=None, delete=False):
         },
         status=status,
     )
+
+
+def transition_page(request, household_id, occurrence_id, reviewing=False):
+    from django.utils import timezone
+
+    from households.pins import verify_child_pin
+
+    from .forms import ReviewForm, SubmissionForm
+    from .review import review_work, submit_work
+
+    received_at = timezone.now()
+    household = household_for_parent(request.user, household_id)
+    occurrence = (
+        Occurrence.objects.filter(pk=occurrence_id, household=household)
+        .select_related("child")
+        .first()
+    )
+    if not occurrence:
+        if request.method == "GET":
+            raise PermissionDenied("That chore is unavailable.")
+        from households.pin_views import ParentForm
+
+        messages.error(
+            request,
+            "That chore is unavailable or changed. Check the current board before trying again.",
+        )
+        return render(
+            request,
+            "households/board.html",
+            parent_context(request, household)
+            | {
+                "columns": columns_for_household(household),
+                "unlock_form": ParentForm(
+                    household, initial={"parent": request.user.pk}
+                ),
+            },
+            status=409,
+        )
+    form = (ReviewForm if reviewing else SubmissionForm)(
+        request.POST if request.method == "POST" else None,
+        initial={"version": occurrence.version},
+    )
+    status = 200
+    if request.method == "POST":
+        if form.is_valid():
+            # Do not enclose child authentication in a transition transaction: a
+            # stale/deleted/state-denied action must not roll back failure counts.
+            authenticated = reviewing or verify_child_pin(
+                request.user,
+                household.pk,
+                occurrence.child_id,
+                form.cleaned_data["pin"],
+            )
+            if not authenticated:
+                form.add_error(
+                    None,
+                    "Unable to submit. Use the assigned child’s PIN or try again in five minutes.",
+                )
+                status = 400
+            else:
+                try:
+                    if reviewing:
+                        review_work(
+                            household,
+                            occurrence.pk,
+                            form.cleaned_data["version"],
+                            request.parent_identity,
+                            form.cleaned_data["action"],
+                            form.cleaned_data["note"],
+                        )
+                    else:
+                        submit_work(
+                            household,
+                            occurrence.pk,
+                            form.cleaned_data["version"],
+                            occurrence.child_id,
+                            form.cleaned_data["browser_timezone"],
+                            received_at,
+                        )
+                except Conflict as error:
+                    form.add_error(None, str(error))
+                    status = 409
+                except DatabaseError:
+                    form.add_error(
+                        None,
+                        "Unable to confirm the result. Check the board before retrying.",
+                    )
+                    status = 503
+                else:
+                    messages.success(
+                        request,
+                        (
+                            "Chore approved. One star earned."
+                            if form.cleaned_data["action"] == "approve"
+                            else "Chore returned with your explanation."
+                        )
+                        if reviewing
+                        else "Chore submitted for approval.",
+                    )
+                    return redirect("household_board", household_id=household.pk)
+        else:
+            status = 400
+    return render(
+        request,
+        "chores/transition.html",
+        parent_context(request, household)
+        | {
+            "form": form,
+            "occurrence": occurrence,
+            "reviewing": reviewing,
+            "heading": "Review chore" if reviewing else "Submit chore",
+            "columns": columns_for_household(household) if status == 409 else (),
+        },
+        status=status,
+    )
+
+
+@require_http_methods(["GET", "POST"])
+@verified_parent_required
+def submit(request, household_id, occurrence_id):
+    return transition_page(request, household_id, occurrence_id)
+
+
+@require_http_methods(["GET", "POST"])
+@verified_parent_required
+@parent_unlocked_required
+def review(request, household_id, occurrence_id):
+    return transition_page(request, household_id, occurrence_id, reviewing=True)

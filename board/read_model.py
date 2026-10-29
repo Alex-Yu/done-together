@@ -24,6 +24,8 @@ class Card:
     recurring: bool = False
     overdue: bool = False
     completed_at: datetime | None = None
+    submitted_late: bool | None = None
+    return_note: str = ""
 
     @property
     def state_label(self):
@@ -68,6 +70,8 @@ def load_visible_work(household):
                 State(occurrence.state),
                 occurrence.due_date,
                 persisted=True,
+                submitted_late=occurrence.submitted_late,
+                return_note=occurrence.return_note,
                 recurring=occurrence.definition_id is not None
                 and occurrence.definition.schedule != "once",
             )

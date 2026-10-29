@@ -1,6 +1,6 @@
 # 007: Child submission, parent review, returns, and overdue rules
 
-Status: Ready
+Status: In progress
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/7
 Local task: `_docs/tasks/007-review.md`

@@ -28,7 +28,7 @@ def mixed_work(child_id):
                     "Old active assignment",
                     State.TO_DO,
                     today - timedelta(days=20),
-                    True,
+                    overdue=True,
                 ),
                 Card("review", "Awaiting review", State.AWAITING, today),
             ),

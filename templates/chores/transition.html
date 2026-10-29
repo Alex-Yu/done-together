@@ -1,0 +1,10 @@
+{% extends 'base.html' %}{% load static %}{% block content %}
+<h1>{{ heading }}</h1><h2>{{ occurrence.title }}</h2>
+<p>Assigned to {{ occurrence.child.name }} · Due {{ occurrence.due_date|date:'M j, Y' }} · {{ occurrence.get_state_display }}</p>
+{% if occurrence.return_note %}<p><strong>Parent explanation:</strong> {{ occurrence.return_note }}</p>{% endif %}
+{% if reviewing %}<div data-parent-controls data-parent-remaining="{{ parent_remaining }}" data-parent-activity="{{ parent_activity_url }}" data-parent-board="{{ parent_board_url }}">{% endif %}
+<form method="post">{% csrf_token %}{{ form.as_p }}<button type="submit">{% if reviewing %}Save review{% else %}Submit for approval{% endif %}</button></form>
+<p><a href="{% url 'household_board' household.pk %}">Return to board</a></p>
+{% if reviewing %}</div><script src="{% static 'js/parent-controls.js' %}" defer></script>{% else %}<script src="{% static 'js/submission.js' %}" defer></script>{% endif %}
+{% if columns %}{% include 'board/columns.html' %}<script src="{% static 'js/local-dates.js' %}" defer></script>{% endif %}
+{% endblock %}
