@@ -141,6 +141,7 @@ Answered on 2026-10-28 during this discovery conversation:
 | --- | --- | --- | --- |
 | Q-001 | Confirm or amend P-01–P-07. | Account boundaries, one-off lifecycle, scheduling, and security limits. | Resolved: user confirmed all defaults on 2026-10-28. |
 | Q-002 | Confirm the complete first-release scope in this specification. | Gates origin inspection and task/issue synchronization. | Resolved: user said “Confirm the scope” on 2026-10-28. |
+| Q-003 | Can two independent browser sessions on one Mac satisfy the two-computer synchronization evidence gate? | Determines the permitted synchronization evidence setup; does not change synchronization behavior or its performance target. | Resolved 2026-10-29: user said “Accept two independent browser sessions.” Independent sessions/profiles on the same host satisfy this gate. Verification records must state that both sessions ran on one host and must not claim testing across two physical computers. |
 | A-001 | Done Together is a provisional product name. | Reversible display wording. | Documented assumption. |
 | A-002 | Retain older completed history without adding a separate history screen. | Avoid unrequested screen. | Interpretation included in scope review. |
 
