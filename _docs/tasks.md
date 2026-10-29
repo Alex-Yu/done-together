@@ -3,11 +3,11 @@
 Authoritative backlog: GitHub issues in [Alex-Yu/done-together](https://github.com/Alex-Yu/done-together/issues), selected after user scope confirmation under [process.md](process.md). Local task documents mirror the mapped GitHub issues; this file is the index/checkpoint.
 
 Backlog mode / origin repository: GitHub — `git@github.com:Alex-Yu/done-together.git`, checked 2026-10-28.
-Pending issue synchronization:None. Issue9 In review/open exact body/state readback verified under explicit user authorization for delivery issues5–10. Local commits remain unpushed.
+Pending issue synchronization: None. Issue9 Done/closed exact body/state readback verified; issue10 remains Draft/open. User authorization covers delivery issue updates5–10; local commits remain unpushed.
 
 ## Task index
 
-Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature roadmap against the selected architecture. Environment setup, skeleton,001 accounts,002 households and003 PIN/shared access are Done/integrated;004–005 are Done/integrated;006–007 Done/integrated;008 Done/integrated;009 In review;010 Draft pending dependency. Scope was confirmed by the user on 2026-10-28, including P-01–P-07.
+Delivery handed over on2026-10-28. Environment setup, application skeleton and001–009 are Done/integrated.010 remains Draft and has not started. User requested pause after fully finishing009, before010. Scope remains bootstrap plus001–010, REQ-001–027 and confirmed defaults.
 
 | ID / labels | Task | Status | Dependencies | GitHub issue |
 | --- | --- | --- | --- | --- |
@@ -26,15 +26,17 @@ Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature 
 
 Bootstrap criteria preserve environment-before-skeleton separation. PM reconciled all feature tasks to the selected architecture, retained stable acceptance IDs, and made later integration ownership explicit where features depend on later workflows. No requirement is claimed complete by grooming.
 
-## Checkpoint —2026-10-29
+## Checkpoint —2026-10-29 — PAUSED before010
 
-- Active delivery:008 Done/integrated,009 In review,010 Draft. Scope bootstrap plus001–010, REQ-001–027/P-01–P-07 unchanged. Final release incomplete; final-only orchestrator requirements review.
-- Latest delivery `046a9cdb18278ee35cafd00685912d9a0f9be16b`;008 final tip `6a3b2d5dd2c529c9af40f351f299c03d18569dbf`, implementation `4f965a3c706f821fbc6a25ac601a1ffbd30e41d0`; independent QA1 PASS records `1dfdd0c6a3b3df17435ef6f6d12a4c531b6b1212`, [record](verification/008-stars-qa.md). Documentation-only PM clarification merged without product changes. Integration migrate/check/drift,45 affected tests in33.21s,Ruff lint/format146 files,diff PASS.
-- Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;0041/3;0051/3;0061/3;0073/3;0081/3;0091/3;0100/3. Active batch2 completions8/10; historical batch1 bootstrap2. No resets.
--009 readiness reuses original PM grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d` plus narrow clarification `d0be1b30912e489cd54f61fc2c1f720b34ff7f76`: user explicitly accepted two independent browser sessions on thisMac for two-computer evidence. Report single-host provenance; <=5second target/event classes/product requirements unchanged.009/010/taskQAplan updated. Developer implementation497a573 complete; independent QA next at the immutable revision.
-- GitHub4–8 closed/readback;009 In review/open and010 Draft. Explicit authorization covers existing issues5–10 specification/status/evidence/completion. No push/deployment authorization.
-- QA handoff — task009 attempt1, 2026-10-29: Fresh independent QA started against immutable implementation `497a573349f791833bdcee3683b3b1c23ed11ad0`; checkpoint tip `bb129d4845873e7c4ab523b3e32c8576e866dab4`. User boundary: finish009 QA and stop before010. Batch2 remains8/10; all prior retry counters unchanged, including0073/3. QA runs targeted affected synchronization checks and may reuse only revision-bound unchanged evidence. Same-host provenance must be explicit. User `_docs/resume.md` preserved and excluded.
-- PG17 retained55432; unrelatedPG13 preserved5432. Owned driver/browser/server stopped. Uncommitted `_docs/resume.md` preserved/excluded. NativeFirefox MUST use geckodriver --allow-system-access; corrected helper surfaces setup errors.
+- User explicitly requested: completely finish009, then stop before starting010. Delivery is PAUSED; no010 agent, implementation, readiness pass or release verification started. Resume only on explicit user instruction. Use [fresh-chat handoff](resume-after-009.md); older resume.md describes the previous004 pause and contains a preserved user edit.
+- Scope bootstrap plus001–010, REQ-001–027/P-01–P-07 unchanged. Setup/skeleton/001–009 Done/integrated;010 Draft. Full release remains unverified; final integrated QA and orchestrator requirements review are still required.
+- Branch develop. Latest product delivery/task009 final tip `a557fb2b06cc8d0a8349e39407e918750c842a15`; verified implementation `497a573349f791833bdcee3683b3b1c23ed11ad0`; independent QA1 PASS records tip `e53739a5616aba05008998314a9bc8da8fdc108f`, [record](verification/009-synchronization-qa.md). Later pause/completion commits are documentation only.
+-009 QA:109 affected server tests,3 native tests PASS (218.71s);36 fresh same-host events0.9086–2.0382s. Integration migrate/check/drift,24 synchronization/PIN tests in15.40s,Ruff lint/format151 files,diff PASS. No implementation change during fast-forward.
+- Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;0041/3;0051/3;0061/3;0073/3;0081/3;0091/3;0100/3. Active batch2 completions9/10; historical batch1 bootstrap2. No resets;010 fits the remaining batch slot. Defects/retries still follow existing limits.
+- Grooming: original PM `8feda09b8b827736f832fd8dff6a48ece0e7075d` plus approved clarification `d0be1b30912e489cd54f61fc2c1f720b34ff7f76` remain valid for unchanged product scope. User accepted independent sessions on thisMac for two-computer evidence; report same-host provenance, preserve<=5second target/all event classes.010 readiness must be recorded only after resume.
+- GitHub11/12/1–9 closed; issue9 exact Done body/CLOSED state readback verified.010 Draft/open; no pending issue updates. User explicitly authorized existing issues5–10 specification/status/evidence/completion updates. No source push/deployment authorization.
+- PG17 retained55432 accepting connections; unrelatedPG13 PID858 preserved5432; owned QA browser/server/driver stopped,4445 closed. NativeFirefox requires geckodriver --allow-system-access. Use UV_CACHE_DIR=.local/uv-cache uv run; hostpython3 shim unavailable. Local DB/process/git commands may require sandbox escalation.
+- Only preserved pre-existing uncommitted work: `_docs/resume.md` user additions (/goal prefix and new-chat instruction), excluded from commits. Do not discard or fold it into delivery commits. No further work in this coordinator until explicit resume.
 
 Source publication: Issue bodies contain complete specifications; local source is unpushed. Issue links to develop source may not resolve until separately authorized source publication.
 
@@ -535,3 +537,8 @@ Source publication: Issue bodies contain complete specifications; local source i
 ## Synchronization completion —2026-10-29
 
 -009 independent QA1 PASS fourACs at `497a573349f791833bdcee3683b3b1c23ed11ad0`, final records tip `e53739a5616aba05008998314a9bc8da8fdc108f`.109server/native3 PASS;36 fresh same-host events0.9086–2.0382s.0091/3; batch2 8/10 before integration. Complete/integrate/check/close009 then PAUSE by explicit user request before010. No push.
+
+## Synchronization integration / user pause —2026-10-29
+
+-009 final tip/delivery `a557fb2b06cc8d0a8349e39407e918750c842a15`; implementation unchanged from independent QA1 PASS.24 focused integration tests in15.40s and migration/system/drift/Ruff151/diff PASS. Issue9 Done/closed exact readback. Batch2 9/10;0091/3;0100/3.
+- User requested stopping after009 fully finished, before010 starts. PAUSED; fresh-chat instructions in [resume-after-009.md](resume-after-009.md). Task010 stays Draft. Full release is not claimed complete. No pushes; original uncommitted resume edit preserved.
