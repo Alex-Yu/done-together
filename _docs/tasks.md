@@ -371,3 +371,17 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Batch2 remains3/10;004 QA0 until dispatch. Prior histories unchanged. Driver/browser/test-server stopped; PG17 remains, PG13 preserved. No merge/push. Independent QA next; full release regression reserved010.
 
 - Issue4 In review/open exact-body readback verified after implementation067addc7eda122736893d17d5ca4aff7ce1a2885; local source remains unpushed. Clean records-only commit follows.
+
+
+## QA in progress —004 board attempt1,2026-10-29
+
+- Independent QA at implementation `067addc7eda122736893d17d5ca4aff7ce1a2885`, records tip `0d1245ea72d337c3bf7f09fb25f3c505ff43dce7`; no verdict yet.
+- Attempts0041/3; active batch2 completions3/10. Earlier histories retained. Focus boardACs/affected regression; unchanged PIN/account/email evidence retained. No per-task root recheck; final release review remains.
+
+
+## QA handoff —004 board,2026-10-29
+
+- PASS all fiveAC at `067addc7eda122736893d17d5ca4aff7ce1a2885`; [evidence](verification/004-board-qa.md).25affected tests/four native cases+static gates pass; no findings. Driver stopped; PG17 retained.
+-004attempt1/3; batch2 completions3/10 before integration; earlier histories retained. Task In review, next administrative completion/integration; no per-task root recheck.
+- Issue4 QA evidence synchronized/readback; no merge/push byQA.
+- Token optimization checkpoint: use fresh task-only role contexts for future handoffs; pending user choice on lighter PM/routine-QA models. Current source untouched. Reuse unchanged evidence; final integrated regression010.

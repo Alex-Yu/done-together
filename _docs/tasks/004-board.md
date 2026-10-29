@@ -54,6 +54,6 @@ Product scope and architecture are confirmed; no consequential product question 
 - Final branch tip / delivery commit / integration results: Records-only tip follows; QA/integration pending
 - Push status / authorized remote and branch targets: No pushes authorized
 - Checks and results: Five unique board tests,20 affected PIN regressions and four installed Chrome/Firefox100/200% native cases PASS; check/drift/lint/format/diff PASS. Prior unchanged mail/61-second evidence reused; full integrated regression at010.
-- Verification record: [Developer AC table](../verification/004-board-developer.md); independent QA pending
-- Completion / integration evidence / outcome: Pending
-- Remaining risks or blockers: None; persisted work/review/approval week visibility/totals remain005–008; no source pushes authorized
+- Verification record: [Developer AC table](../verification/004-board-developer.md); [independent QA PASS](../verification/004-board-qa.md)
+- Completion / integration evidence / outcome: Independent QA1 PASS; administrative integration pending
+- Remaining risks or blockers: No QA findings; persisted work/review/approval week visibility/totals remain005–008; no source pushes authorized
