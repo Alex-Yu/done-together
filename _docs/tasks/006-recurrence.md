@@ -1,6 +1,6 @@
 # 006: Recurrence, occurrence generation, future edits, and deletion
 
-Status: Ready
+Status: In review
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/6
 Local task: `_docs/tasks/006-recurrence.md`
@@ -47,14 +47,14 @@ Product scope and architecture are confirmed; no consequential product question 
 
 - PM parallel scope review: 2026-10-28; acceptance IDs/behavior retained, concrete per-criterion checks and later integration ownership recorded. Draft until dependency/grooming integration and current readiness review; isolated grooming commit supplied to orchestrator for develop integration.
 
-- Implementation summary: Not started
-- Task branch / verified implementation commit: Pending
-- Changed files / revision: Parallel grooming in isolated `grooming/future-release`; full commit supplied to orchestrator for integration onto develop before readiness
-- Final branch tip / delivery commit / integration results: Pending
-- Push status / authorized remote and branch targets: No pushes authorized
-- Checks and results: PM scope/architecture/AC-link consistency checked; issue3–10 Draft bodies synchronized/readback during parallel grooming. No implementation verification run or claimed
-- Verification record: Pending
-- Completion / integration evidence / outcome: Pending
-- Remaining risks or blockers: None for implementation. Actual submission/approval/star HTTP workflow remains007; totals008; synchronization009.
+- Implementation summary: daily/selected-weekday schedules, protected future-only edits/deletion, snapshot retention, conditional unfinished uniqueness and shared calendar recurrence/completion service. Independent once/60-second-loop scheduler with generic failure retry and clean interrupt.
+- Task branch / verified implementation commit: `task/006-recurrence` / `47268781b08fedb63330fcaaf27a98a3ee260c77` (immutable for independent QA).
+- Changed files / revision: chores models/migration/forms/views/recurrence/command; household routes/board templates/read model; targeted integration/native tests and shared native Space key helper; architecture/commands contracts.
+- Final branch tip / delivery commit / integration results: following records-only commit; no merge/integration yet.
+- Push status / authorized remote and branch targets: No pushes authorized or performed.
+- Checks and results:29 unique recurrence cases +37 affected regressions PASS;6 strengthened race cases PASS;1 native test/four installed Chrome156/Firefox159100/200% cases PASS. Real no-browser60-second loop, clean SIGINT, fresh restart and actual connection-refusal/recovery PASS. Migration/check/drift/lint/format/static/diff gates PASS.
+- Verification record: [006 developer](../verification/006-recurrence-developer.md); ignored sanitized artifacts `.local/verification/006/`.
+- Completion / integration evidence / outcome: In review; independent QA pending. Counter0060/3 before dispatch; batch2 remains5/10.
+- Remaining risks or blockers: None for006. Actual submission/approval/star HTTP workflow remains007; totals008; synchronization009. Existing uncommitted `_docs/resume.md` preserved/excluded; projectPG17 running55432, unrelatedPG13 preserved5432; owned verification services stopped.
 
 - Coordinator readiness2026-10-29: reused PM grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d`, unchanged scope/AC/contracts.005 dependency integrated and37 affected integration tests/static/migration gates PASS. No repeat PM required. Fresh task-only developer next;006 attempts0/3.
