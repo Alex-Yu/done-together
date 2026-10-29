@@ -1,10 +1,12 @@
 from django.urls import path
 
+from board.sync import snapshot
 from chores import views as chore_views
 
 from . import pin_views, views
 
 urlpatterns = [
+    path("<int:household_id>/snapshot/", snapshot, name="board_snapshot"),
     path(
         "<int:household_id>/chores/<int:occurrence_id>/submit/",
         chore_views.submit,

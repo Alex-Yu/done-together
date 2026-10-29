@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib import messages
 from django.db import transaction
+from django.db.models import F
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse
@@ -10,7 +11,7 @@ from django.views.decorators.http import require_GET, require_http_methods, requ
 from accounts.access import verified_parent_required
 from board.read_model import columns_for_household
 
-from .models import BoardAuthority, Child
+from .models import BoardAuthority, Child, Household
 from .pins import (
     authority_state,
     parent_unlocked_required,
@@ -60,6 +61,7 @@ class ChildForm(forms.Form):
 
 
 class ChildNameForm(forms.Form):
+    revision = forms.IntegerField(widget=forms.HiddenInput)
     name = forms.CharField(label="Child display name")
 
 
@@ -84,8 +86,10 @@ def parent_context(request, household):
 
 @require_GET
 @verified_parent_required
+@transaction.atomic
 def board(request, household_id):
-    household = household_for_parent(request.user, household_id)
+    household_for_parent(request.user, household_id)
+    household = Household.objects.select_for_update().get(pk=household_id)
     return render(
         request,
         "households/board.html",
@@ -179,12 +183,12 @@ def child_create(request, household_id):
     form = ChildForm(request.POST or None)
     if request.method == "POST" and form.is_valid():
         with transaction.atomic():
+            Household.objects.select_for_update().get(pk=household.pk)
             child = Child.objects.create(
                 household=household, name=form.cleaned_data["name"], pin_hash=""
             )
             save_child_pin(child, form.cleaned_data["pin"])
-            household.revision += 1
-            household.save(update_fields=["revision"])
+            Household.objects.filter(pk=household.pk).update(revision=F("revision") + 1)
         return redirect("household_settings", household_id=household_id)
     return render(
         request,
@@ -205,17 +209,27 @@ def child_edit(request, household_id, child_id, pin=False):
     if not child:
         raise PermissionDenied("That child is unavailable.")
     form = (ChildPinForm if pin else ChildNameForm)(
-        request.POST or None, initial={} if pin else {"name": child.name}
+        request.POST or None,
+        initial={} if pin else {"name": child.name, "revision": household.revision},
     )
     if request.method == "POST" and form.is_valid():
-        if pin:
-            save_child_pin(child, form.cleaned_data["pin"])
-        else:
-            child.name = form.cleaned_data["name"]
-            child.save(update_fields=["name"])
-        household.revision += 1
-        household.save(update_fields=["revision"])
-        return redirect("household_settings", household_id=household_id)
+        with transaction.atomic():
+            current = Household.objects.select_for_update().get(pk=household.pk)
+            if not pin and form.cleaned_data["revision"] != current.revision:
+                form.add_error(
+                    None,
+                    "This household changed. Return to the board and reopen the child before trying again.",
+                )
+            else:
+                if pin:
+                    save_child_pin(child, form.cleaned_data["pin"])
+                else:
+                    child.name = form.cleaned_data["name"]
+                    child.save(update_fields=["name"])
+                Household.objects.filter(pk=household.pk).update(
+                    revision=F("revision") + 1
+                )
+                return redirect("household_settings", household_id=household_id)
     return render(
         request,
         "households/child_form.html",

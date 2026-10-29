@@ -96,7 +96,13 @@ def test_child_add_edit_reset_and_pin_checks_cannot_grant_parent_authority():
     assert verify_child_pin(a, h.pk, child.pk, "0007")
     assert (
         c.post(
-            reverse("child_edit", args=[h.pk, child.pk]), {"name": "Birch"}
+            reverse("child_edit", args=[h.pk, child.pk]),
+            {
+                "name": "Birch",
+                "revision": c.get(reverse("child_edit", args=[h.pk, child.pk]))
+                .context["form"]
+                .initial["revision"],
+            },
         ).status_code
         == 302
     )

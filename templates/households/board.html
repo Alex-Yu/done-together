@@ -12,7 +12,7 @@
     <a href="{% url 'household_settings' household.pk %}">Manage household settings</a>
     <p><a href="{% url 'chore_create' household.pk %}">Assign one-off chore</a></p>
     <p><a href="{% url 'recurring_create' household.pk %}">Assign recurring chore</a></p>
-    <h3>Recurring schedules</h3><ul>{% for schedule in household.definition_set.all %}{% if schedule.schedule != 'once' %}<li>{{ schedule.title }} ({{ schedule.get_schedule_display }}) — <a href="{% url 'recurring_edit' household.pk schedule.pk %}">Edit recurring chore</a> · <a href="{% url 'recurring_delete' household.pk schedule.pk %}">Delete recurring chore</a></li>{% endif %}{% endfor %}</ul>
+    <div data-schedules>{% include "board/schedules.html" %}</div>
     <form method="post" action="{% url 'parent_lock' household.pk %}">{% csrf_token %}<button type="submit">Lock parent controls</button></form>
   </div>
   {% else %}

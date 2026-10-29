@@ -8,6 +8,8 @@
       card.querySelector('[data-overdue]').hidden = !overdue;
     });
   }
+  document.addEventListener("board:updated", update);
   update();
-  setInterval(update, 30000);
+  const timer = setInterval(update, 30000);
+  window.addEventListener('board:dispose', () => { clearInterval(timer); document.removeEventListener('board:updated', update); }, {once:true});
 })();
