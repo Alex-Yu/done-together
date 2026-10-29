@@ -59,3 +59,25 @@ class Invitation(models.Model):
             and self.superseded_at is None
             and django_timezone.now() < self.expires_at
         )
+
+
+class ParentCredential(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    pin_hash = models.CharField(max_length=256, default="")
+    version = models.PositiveBigIntegerField(default=0)
+
+
+class Child(models.Model):
+    household = models.ForeignKey(
+        Household, on_delete=models.PROTECT, related_name="children"
+    )
+    name = models.TextField()
+    pin_hash = models.CharField(max_length=256)
+
+
+class BoardAuthority(models.Model):
+    session_hash = models.CharField(max_length=64, unique=True)
+    household = models.ForeignKey(Household, on_delete=models.PROTECT)
+    parent = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    credential_version = models.PositiveBigIntegerField()
+    last_activity = models.DateTimeField()

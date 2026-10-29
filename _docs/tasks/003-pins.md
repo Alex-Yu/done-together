@@ -1,6 +1,6 @@
 # 003: Child profiles, parent/child PIN management, and protected shared access
 
-Status: Ready
+Status: In review
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/3
 Local task: `_docs/tasks/003-pins.md`
@@ -50,12 +50,12 @@ Product scope and architecture are confirmed; no consequential product question 
 
 - PM readiness: Ready on 2026-10-28 after002 and parallel grooming integration; six ACs unchanged, no consequential question. Full readiness grooming commit recorded in backlog checkpoint.
 
-- Implementation summary: Not started
-- Task branch / verified implementation commit: Pending
-- Changed files / revision: Parallel grooming8feda09 integrated; current Ready grooming committed on develop and recorded in backlog checkpoint
+- Implementation summary: Salted/peppered exact PIN credentials, selected-own-password setup/reset, scoped child add/name/PIN updates, session-bound DB parent authority/60sec activity guard, version/active-parent revocation and explicit-only client timer/activity. Existing002 management protected; verified bootstrap retained.
+- Task branch / verified implementation commit: `task/003-pins`; exact implementation hash recorded after commit; independent QA pending.
+- Changed files / revision: Household credential/child/authority models and migration, PIN services/views/routes/templates/JS, existing management guard integration, tests/native helpers and architecture/commands/evidence.
 - Final branch tip / delivery commit / integration results: Pending
 - Push status / authorized remote and branch targets: No pushes authorized
-- Checks and results: PM scope/architecture/AC-link consistency checked; issue3–10 Draft bodies synchronized/readback during parallel grooming. No implementation verification run or claimed
-- Verification record: Pending
+- Checks and results: PIN19/full backend72/household21/bundled browser8 PASS; final whitespace/pepper1 PASS. Standard gates PASS; native100/200 flows, both actual61sec idle locks and post-restart stored PIN/child revisit PASS.
+- Verification record: [developer evidence](../verification/003-pins-developer.md); independent QA pending.
 - Completion / integration evidence / outcome: Pending
-- Remaining risks or blockers: None at readiness; real child submission007 and full board004 remain named later integration owners; no source pushes authorized
+- Remaining risks or blockers: No implementation blocker; independent QA required. Actual child submission007/full board004 remain later. No child deletion controls. OnlyPG17 left running; no pushes authorized.

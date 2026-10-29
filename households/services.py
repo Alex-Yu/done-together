@@ -22,6 +22,7 @@ class Conflict(Exception):
 def require_verified(user):
     if (
         not user.is_authenticated
+        or not user.is_active
         or not EmailAddress.objects.filter(
             user=user, email__iexact=user.email, verified=True
         ).exists()

@@ -12,6 +12,8 @@ from accounts.adapter import EmailDeliveryError
 
 from .forms import HouseholdForm, InvitationForm
 from .models import Invitation, Membership
+from .pin_views import parent_context
+from .pins import parent_unlocked_required
 from .services import (
     Conflict,
     accept_invitation,
@@ -35,7 +37,7 @@ def entry(request):
         return redirect(pending_join_path(request))
     membership = Membership.objects.filter(user=request.user).first()
     if membership:
-        return redirect("household_settings", household_id=membership.household_id)
+        return redirect("household_board", household_id=membership.household_id)
     return redirect("household_create")
 
 
@@ -51,7 +53,7 @@ def create(request):
             form.add_error(None, str(error))
             status = 409 if isinstance(error, Conflict) else 400
         else:
-            return redirect("household_settings", household_id=household.pk)
+            return redirect("household_board", household_id=household.pk)
     elif request.method == "POST":
         status = 400
     return render(request, "households/create.html", {"form": form}, status=status)
@@ -59,6 +61,7 @@ def create(request):
 
 @require_http_methods(["GET", "POST"])
 @verified_parent_required
+@parent_unlocked_required
 def settings(request, household_id):
     household = household_for_parent(request.user, household_id)
     form = InvitationForm(request.POST or None)
@@ -92,7 +95,7 @@ def settings(request, household_id):
         request,
         "households/settings.html",
         {
-            "household": household,
+            **parent_context(request, household),
             "members": household.memberships.select_related("user"),
             "invitations": household.invitations.order_by("-created_at"),
             "form": form,
@@ -130,7 +133,7 @@ def join(request, flow):
             household = accept_invitation(request.user, digest)
             request.session.pop("household_invitation_digest", None)
             request.session.pop("household_invitation_flow", None)
-            return redirect("household_settings", household_id=household.pk)
+            return redirect("household_board", household_id=household.pk)
     except (Conflict, PermissionDenied) as error:
         request.session.pop("household_invitation_digest", None)
         request.session.pop("household_invitation_flow", None)

@@ -141,7 +141,12 @@ class Firefox:
         webdriver("POST", self.session + "/url", {"url": BASE_URL.rstrip("/") + path})
 
     def press(self, key):
-        value = {"Tab": "\ue004", "Enter": "\ue007"}[key]
+        value = {
+            "Tab": "\ue004",
+            "Enter": "\ue007",
+            "ArrowUp": "\ue013",
+            "ArrowDown": "\ue015",
+        }[key]
         webdriver(
             "POST",
             self.session + "/actions",
@@ -166,6 +171,7 @@ class Firefox:
             {"using": "css selector", "value": f'[name="{name}"]'},
         )
         identity = element["element-6066-11e4-a52e-4f735466cecf"]
+        webdriver("POST", self.session + f"/element/{identity}/clear", {})
         webdriver("POST", self.session + f"/element/{identity}/value", {"text": text})
 
     def click(self, text):
@@ -244,6 +250,47 @@ def signin(ui, email, password):
     wait_heading(ui, "Done Together")
 
 
+def setup_parent_and_settings(ui, password, pin="2468"):
+    wait_heading(ui, "Done Together")
+    path = ui.execute(
+        "[...document.querySelectorAll('a')].find(el=>el.getAttribute('href').endsWith('/parent-pin/')).getAttribute('href')"
+    )
+    ui.goto(path)
+    wait_heading(ui, "Set or reset your parent PIN")
+    ui.fill("password", password)
+    ui.fill("pin", pin)
+    ui.click("Save parent PIN")
+    wait_heading(ui, "Done Together")
+    ui.fill("pin", pin)
+    ui.click("Unlock parent controls")
+    wait_for(
+        ui,
+        "document.getElementById('parent-lock-status').textContent.trim()",
+        "Parent controls unlocked.",
+    )
+    path = ui.execute(
+        "[...document.querySelectorAll('a')].find(el=>el.textContent.trim()==='Manage household settings').getAttribute('href')"
+    )
+    ui.goto(path)
+    wait_heading(ui, "Household settings")
+
+
+def open_existing_settings(ui, pin="2468"):
+    wait_heading(ui, "Done Together")
+    ui.fill("pin", pin)
+    ui.click("Unlock parent controls")
+    wait_for(
+        ui,
+        "document.getElementById('parent-lock-status').textContent.trim()",
+        "Parent controls unlocked.",
+    )
+    path = ui.execute(
+        "[...document.querySelectorAll('a')].find(el=>el.textContent.trim()==='Manage household settings').getAttribute('href')"
+    )
+    ui.goto(path)
+    wait_heading(ui, "Household settings")
+
+
 def journey(ui, record):
     signin(ui, record["creator"], record["password"])
     ui.goto("/households/")
@@ -253,7 +300,7 @@ def journey(ui, record):
     tab_to(ui, "timezone")
     ui.press("Tab")
     ui.press("Enter")
-    wait_heading(ui, "Household settings")
+    setup_parent_and_settings(ui, record["password"])
     tab_to(ui, "email")
     ui.fill("email", record["recipient"])
     ui.press("Tab")
@@ -269,7 +316,7 @@ def journey(ui, record):
     wait_heading(ui, "Join the household")
     tab_to(ui, button=True)
     ui.press("Enter")
-    wait_heading(ui, "Household settings")
+    setup_parent_and_settings(ui, record["password"])
     assert record["creator"] in ui.execute("document.body.textContent")
     assert zone in ui.execute("document.body.textContent")
     assert ui.execute("document.querySelector('[name=timezone]')===null")
@@ -321,7 +368,7 @@ def run(revisit):
                     if revisit:
                         signin(ui, record["recipient"], record["password"])
                         ui.goto("/households/")
-                        wait_heading(ui, "Household settings")
+                        open_existing_settings(ui)
                         assert record["creator"] in ui.execute(
                             "document.body.textContent"
                         )

@@ -25,6 +25,19 @@ def register_verify_login(page, live_server, mailoutbox, email):
     page.get_by_role("button", name="Sign in", exact=True).click()
 
 
+def setup_pin_and_open_settings(page):
+    expect(
+        page.get_by_role("heading", name="Done Together", exact=True)
+    ).to_be_visible()
+    page.get_by_role("link", name="Set or reset your own parent PIN").click()
+    page.locator("[name=password]").fill(PASSWORD)
+    page.locator("[name=pin]").fill("2468")
+    page.get_by_role("button", name="Save parent PIN").click()
+    page.locator("[name=pin]").fill("2468")
+    page.get_by_role("button", name="Unlock parent controls").click()
+    page.get_by_role("link", name="Manage household settings").click()
+
+
 def test_household_timezone_invite_new_parent_join_and_other_computer(
     page, live_server, mailoutbox, browser_name
 ):
@@ -66,9 +79,7 @@ def test_household_timezone_invite_new_parent_join_and_other_computer(
         assert zone.evaluate("el=>getComputedStyle(el).outlineStyle") != "none"
         creator.keyboard.press("Tab")
         creator.keyboard.press("Enter")
-        expect(
-            creator.get_by_role("heading", name="Household settings")
-        ).to_be_visible()
+        setup_pin_and_open_settings(creator)
         creator.get_by_label("Second parent’s email:", exact=True).fill(second)
         creator.get_by_role("button", name="Send invitation").click()
         expect(creator.get_by_role("status")).to_have_text(
@@ -85,9 +96,7 @@ def test_household_timezone_invite_new_parent_join_and_other_computer(
             recipient.get_by_role("heading", name="Join the household")
         ).to_be_visible()
         recipient.get_by_role("button", name="Join household").click()
-        expect(
-            recipient.get_by_role("heading", name="Household settings")
-        ).to_be_visible()
+        setup_pin_and_open_settings(recipient)
         expect(recipient.get_by_text(first, exact=True)).to_be_visible()
         expect(recipient.get_by_text(second, exact=True)).to_be_visible()
         expect(recipient.get_by_text("Europe/Warsaw", exact=True)).to_be_visible()

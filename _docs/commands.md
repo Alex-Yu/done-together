@@ -1,6 +1,6 @@
 # Project commands
 
-Status: Environment, skeleton and accounts independently verified/integrated. Task002 households developer-validated on2026-10-28; independent household QA pending. Remaining feature/scheduler commands remain UNVERIFIED.
+Status: Environment, skeleton, accounts and households independently verified/integrated. Task003 PIN/child authority developer-validated on2026-10-29; independent QA pending. Remaining feature/scheduler commands remain UNVERIFIED.
 
 The developer executes [environment-setup](tasks/environment-setup.md) before [application-skeleton](tasks/application-skeleton.md). Each task replaces intended entries with exact observed versions, working directory, environment, expected/observed results and evidence. Feature commands remain unverified until their owning tasks implement and validate them. QA checks independently under [testing-guidelines.md](testing-guidelines.md).
 
@@ -358,6 +358,48 @@ Mailpit API confirmed invitation email receipt and the UI visibly showed actual 
 Task002 F001 correction: generic DatabaseError recovery now covers household endpoints as well as accounts after source/authorization checks. With DEBUGTrue, committed regressions inject controlled failures at create-service, settings-render, invitation-send transaction and join-service boundaries; each returns generic503/no-store/same-origin, omits private detail/traceback from response and actual request-handler logs, leaves household/membership/invitation state unchanged and permits retry. Run `uv run pytest tests/integration/test_households.py -k domain_database_failures -q`:4 passed/17 deselected. Original independent QA probe `.local/qa_households_extra.py` also passed1. Fresh full server regression53 passed; Django check/drift/lint/format/diff pass. Normal UI/browser/SMTP/scheduling code is unchanged by this one-line recovery-prefix fix, so prior QA positive6-browser/native/SMTP/restart evidence is retained; no unchanged browser suites repeated.
 
 Independent QA must verify the exact task002 implementation. Task003 must add parent PIN management protection while preserving verified-account creation/join bootstrap. Remaining feature/scheduler commands remain UNVERIFIED.
+
+
+### Validated PIN/child/parent-authority procedures — task003, 2026-10-29
+
+Verified-account household creation/join remain bootstrap. Existing household settings/invitations now require a selected-parent unlock; first/own parent PIN setup/reset stays reachable while locked and requires the selected member’s own account password. The board-opening account and selected parent may differ. The current read-only board surface lists children and remains visible when controls lock; full columns arrive004, actual child chore submission007. There are no child deletion controls/endpoints.
+
+```sh
+uv run python manage.py migrate
+uv run python manage.py check
+uv run python manage.py makemigrations --check --dry-run
+uv run ruff check .
+uv run ruff format --check .
+uv run pytest tests/integration/test_pins.py -q
+uv run pytest tests/unit tests/integration -q
+uv run pytest tests/e2e --browser chromium --browser firefox -q
+uv run python manage.py collectstatic --noinput
+uv sync --locked
+```
+
+Developer observed: targeted PIN suite19 passed, full backend72 passed in33.78s and bundled browser8 passed in49.16s, with earlier household regression21 passed. A final exact-password-whitespace correction was verified by its one affected password/pepper case (1 passed/19 deselected); no unchanged broader suites repeated. Current PIN collection contains20 cases after that addition. System/migration-drift/lint/format/static/locked checks pass. Static collection copied3 changed/new files with6 unmodified. The earlier002 request/browser fixtures now explicitly set/unlock parent credentials before protected settings; no authority bypass fixture is used for those HTTP checks.
+
+PIN validation accepts exactly four ASCII digits as strings, preserving `0007`/`0123`; no integer conversion. Stored PINs are salted maintained Argon2 hashes of identity/type-namespaced HMAC-SHA256 values using the independent ignored pepper. The raw PIN alone cannot verify the stored hash, and a different pepper denies verification. Password checks preserve exact whitespace and use the existing account password identity limiter. Parent/child PINs have their own shared identity keys with the approved five failures/five minutes across sessions; blocked attempts never extend the deadline and permitted success clears failures. Child credential checks require household board access and never grant/touch parent authority. The executable child-check endpoint exists only in a test URL fixture; no product submission workflow is claimed before007.
+
+Board authority is a PostgreSQL row keyed by an HMAC of the signed-in board session key, binding household, selected parent, credential version and last accepted parent activity. Each protected request rechecks membership, verification, active selected account, version and exact60-second expiry. Only successful parent POSTs touch authority; views, child checks, invalid/unauthorized actions do not. Explicit parent-control interaction may send a throttled CSRF-protected activity request; the client listens only within unlocked parent controls, never automatic timers/background polls/global mouse/child activity. Its timer only locks/reloads the visible board. Server enforcement remains authoritative.
+
+PIN resets increment credential version, invalidating all prior selected-parent grants. Unlock locks selected user→credential through verification/grant, matching reset order; deterministic paused-old-PIN/reset concurrency proves an old PIN cannot be tagged with a new version. Deactivating selected B revokes B’s grant in a board session opened by A. Leading-zero add/name/PIN updates, malformed/Unicode digits, old/new replacement, forged household/parent/child IDs, CSRF, no-store/password non-echo and generic DB failure checks pass. Failed authentication counters must be committed before raising a later product-transition denial;007 must preserve that shared-limiter rule when integrating submission.
+
+#### Installed browsers and actual idle timing
+
+With documented loopback app/Mailpit/geckodriver running:
+
+```sh
+PYTHONUNBUFFERED=1 uv run python tools/verify_pin_browsers.py
+# Stop/restart only the app, then:
+PYTHONUNBUFFERED=1 uv run python tools/verify_pin_browsers.py --revisit
+```
+
+The helper seeds private synthetic fixtures and exercises real invitation setup, then parent selection/password-authorized PIN setup, other-parent unlock, child addition/name editing/PIN reset, manual lock, own parent PIN replacement and recoverable old-PIN error. Installed Chrome156.0.8078.48/Firefox159.0 passed native100% (1280×720,DPR1) and200% (640×360,DPR2), keyboard/labeled focus and no horizontal overflow. Both100% browser cases then actually idled61seconds together, without parent input/heartbeat; each automatically locked while its read-only child board remained visible. This was real elapsed time, not a clock override. Deterministic backend tests separately cover59/60, accepted activity extending89/90, passive/child/failed-action nonextension and exact299/300 restriction retry.
+
+Screenshots `.local/pins-{chrome,firefox}-{100,200}.png` and `-idle.png` were visually inspected for readable board/child text and locked controls. Firefox WebDriver initially appended to a prefilled name field; helper fill now clears first, and narrow native100/200 checks proved exact replacement without repeating idle. The post-app-restart `--revisit` passed stored parent PIN and child state in all four browser/zoom cases. Helpers close their profiles; generated passwords stay in ignored0600 fixture files and are not printed. No external SMTP or real family data is used.
+
+App/Mailpit/geckodriver stopped cleanly after checks (exit0; endpoints refuse/HTTP000). ProjectPG17 remains55432; unrelatedPG13 is preserved. Independent QA must verify task003 at its exact implementation commit; full board/child submission remain later tasks.
 
 
 ## Acceptance and verification procedures — bootstrap executed; features UNVERIFIED

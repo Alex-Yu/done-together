@@ -7,15 +7,15 @@ Pending issue synchronization: None after initial delivery grooming; bootstrap i
 
 ## Task index
 
-Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature roadmap against the selected architecture. Environment-setup and skeleton are Done/integrated; 001 accounts is Ready after PM review; 002–010 remain Draft pending dependency integration/current readiness review. Scope was confirmed by the user on 2026-10-28, including P-01–P-07.
+Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature roadmap against the selected architecture. Environment setup, skeleton,001 accounts and002 households are Done/integrated;003 PIN/shared access is In progress;004–010 remain Draft pending dependency integration/current readiness review. Scope was confirmed by the user on 2026-10-28, including P-01–P-07.
 
 | ID / labels | Task | Status | Dependencies | GitHub issue |
 | --- | --- | --- | --- | --- |
 | `environment-setup` | [Set up the development environment](tasks/environment-setup.md) | Done | None; PM readiness passed | [#11](https://github.com/Alex-Yu/done-together/issues/11) |
 | application-skeleton | [Create a runnable application skeleton](tasks/application-skeleton.md) | Done | environment-setup Done/integrated | [#12](https://github.com/Alex-Yu/done-together/issues/12) |
-| 001 | [Account registration, verification, sign-in, recovery, and safeguards](tasks/001-accounts.md) | In review | application-skeleton Done/integrated | [#1](https://github.com/Alex-Yu/done-together/issues/1) |
-| 002 | [Household creation, timezone setup, and second-parent invitation](tasks/002-households.md) | In review | 001 Done/integrated | [#2](https://github.com/Alex-Yu/done-together/issues/2) |
-| 003 | [Child profiles, parent/child PIN management, and protected shared access](tasks/003-pins.md) | Ready | 002 Done/integrated | [#3](https://github.com/Alex-Yu/done-together/issues/3) |
+| 001 | [Account registration, verification, sign-in, recovery, and safeguards](tasks/001-accounts.md) | Done | application-skeleton Done/integrated | [#1](https://github.com/Alex-Yu/done-together/issues/1) |
+| 002 | [Household creation, timezone setup, and second-parent invitation](tasks/002-households.md) | Done | 001 Done/integrated | [#2](https://github.com/Alex-Yu/done-together/issues/2) |
+| 003 | [Child profiles, parent/child PIN management, and protected shared access](tasks/003-pins.md) | In review | 002 Done/integrated | [#3](https://github.com/Alex-Yu/done-together/issues/3) |
 | 004 | [Shared board, empty states, and settings navigation](tasks/004-board.md) | Draft | 003 | [#4](https://github.com/Alex-Yu/done-together/issues/4) |
 | 005 | [One-off chore assignment and maintenance](tasks/005-one-off-chores.md) | Draft | 004 | [#5](https://github.com/Alex-Yu/done-together/issues/5) |
 | 006 | [Recurrence, occurrence generation, future edits, and deletion](tasks/006-recurrence.md) | Draft | 005 | [#6](https://github.com/Alex-Yu/done-together/issues/6) |
@@ -26,9 +26,9 @@ Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature 
 
 Bootstrap criteria preserve environment-before-skeleton separation. PM reconciled all feature tasks to the selected architecture, retained stable acceptance IDs, and made later integration ownership explicit where features depend on later workflows. No requirement is claimed complete by grooming.
 
-## Checkpoint — 2026-10-28
+## Checkpoint — 2026-10-29
 
-- Phase/current routing: Setup, skeleton,001 accounts and002 households Done/integrated; 003 PIN task Ready; developer handoff next.
+- Phase/current routing: Setup, skeleton,001 accounts and002 households Done/integrated; 003 PIN task In progress on task/003-pins; implementation and final developer handoff pending.
 - Agreed scope: bootstrap plus001–010; REQ-001–027 and confirmed defaults unchanged. Full release incomplete.
 - Delivery: develop at `f98ba7ba2a46b875bb3a2c0c643d8a3bbe5a1cad`; household task tip `39297ba6903bfe1c7e96c9b85fb8d7dd8892f877`, verified implementation `8269f5a6f5bd6fb71468a93e1a2c405f0aea519a`, independent QA2 PASS. F001 resolved; attempt1 evidence retained.
 - Integration: non-FF merge preserves parallel PM/QA documentation at96e7018; implementation unchanged. Migrate/check/drift,53 server/config tests, Ruff lint/format and diff check all PASS.
@@ -37,9 +37,9 @@ Bootstrap criteria preserve environment-before-skeleton separation. PM reconcile
 - Evidence: [household QA2 PASS](verification/002-households-qa-attempt-2.md), [QA1 FAIL](verification/002-households-qa.md), [commands](commands.md).
 - Attempts: setup2/3;skeleton1/3;0011/3;0022/3;003–010 each0/3. Preserve histories.
 - Active batch2 completions2/10 after user reset; historical batch1 bootstrap2. Remaining003–010 fit renewed batch.
-- Environment: PG17.11 loopback55432 running; unrelated PG13:5432 preserved; app/Mailpit/geckodriver stopped. Synthetic data only.
+- Environment: PG17.11 loopback55432 retained; unrelated PG13:5432 preserved. Task003 verification services may still be running after usage interruption; developer must inspect actual owned-service state and stop cleanly before handoff. Synthetic data only.
 - GitHub:11/12/1 closed; issue2 Done/closed; exact completion body and state readback verified. No push authorization; issue writes separately authorized.
-- Blockers: None for003 implementation. Next: developer creates task/003-pins from committed develop grooming→implementation→independent QA attempt1. Issue3 Ready/open exactbody readback verified; no pending sync.
+- Current state: task003 source/tests uncommitted after a developer usage-limit interruption. Prior reported evidence: PIN19/backend72/bundled8 and installed-browser native100/200 plus actual61-second idle lock passed; narrow credential checks, persistence and final handoff remain. No QA verdict. Issue3 last synchronized In progress. Next: resume developer, commit exact implementation, independent QA attempt1. Preserve existing work and inspect live handles before restarting.
 
 Source publication: Issue bodies contain complete specifications; local source is unpushed. Issue links to develop source may not resolve until separately authorized source publication.
 
@@ -298,3 +298,26 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Issue3 Ready/open body readback verified. Grooming on develop; full readiness commit `0eb69675a07941132674a4e549bbf81e4da1e6c7`; following checkpoint-only commit records this hash. No implementation/QA claim from readiness.
 - Counters unchanged: batch2 completions2/10; setup2/3,skeleton1/3,0011/3,0022/3,003–010 each0/3. No pushes.
 - Next: developer branch task/003-pins includes readiness commit; exact implementation to independent QA attempt1, then completion/integration on PASS.
+
+## Developer started003 —2026-10-28
+
+- Current role/task:003 In progress on task/003-pins from Ready grooming0eb69675a07941132674a4e549bbf81e4da1e6c7/checkpointdb1096aa86bef0fcb517f93ca447785a7d237aba.
+- Scope: Salted/peppered PINs, selected-parent password recovery, scoped child management, DB board-session authority with60sec accepted-parent-only activity; existing002 settings/invites become PIN guarded, create/join remain verified bootstrap.
+- Active batch2 completions2/10;003 attempts0/3 before QA. Source incomplete/uncommitted; no QA verdict or push.
+
+## Continuation checkpoint —2026-10-29
+
+- Actual root state inspected: task/003-pins at readiness checkpoint `db1096aa86bef0fcb517f93ca447785a7d237aba` with uncommitted PIN source/tests; no implementation commit or task003 QA handoff yet.
+- Developer usage-limit interruption routed back to same developer with completed evidence preserved; final local credential checks/persistence/shutdown/records pending. No completion or failed QA attempt inferred from interruption.
+- Corrected stale task-index rows:001/002 Done,003 In progress. Active batch2 remains2/10;003 attempts0/3, previous histories retained.
+
+## Developer handoff —003 PINs,2026-10-29
+
+- Current role/task:003 implementation complete/In review; exact-code independent QA next. No per-task orchestrator re-check; final release review retained.
+- Branch:task/003-pins fromdb1096aa86bef0fcb517f93ca447785a7d237aba including Ready grooming0eb69675a07941132674a4e549bbf81e4da1e6c7. Exact implementation hash recorded after commit.
+- Evidence:[developer PIN record](verification/003-pins-developer.md), [commands](commands.md). PIN19/full backend72/household21/browser8 PASS; final exact-password/pepper1 PASS. Standard gates pass; installed native100/200 and both actual61sec idle locks/visible child board PASS; stored state restart revisit PASS.
+- Scope: Child add/read/name-or-PIN update, no deletion. Actual submission007 and full columns004 remain later. Existing002 management now guarded; bootstrap create/join/own password recovery preserved.
+- Services: owned app/Mailpit/geckodriver stopped exit0/endpoints refuse; dedicatedPG17 running55432, unrelatedPG13 preserved. Private fixture artifacts ignored.
+- Counters: batch2 completions2/10;0030/3 before QA dispatch; historical setup2/skeleton1/0011/0022;004–010 zero.
+- Issue3 final In review/hash synchronization/readback pending next handoff step. No merge/rebase/push.
+- Next: independent QA003 at exact commit, then completion/integration on PASS and PM004 fresh readiness.

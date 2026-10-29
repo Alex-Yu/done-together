@@ -36,9 +36,34 @@ def parent(email, verified=True):
     return user
 
 
+def unlock_fixture(client, user):
+    from django.contrib.auth.hashers import make_password
+
+    from households.models import ParentCredential
+    from households.pins import encoded_pin
+
+    membership = Membership.objects.filter(user=user).first()
+    if membership:
+        ParentCredential.objects.update_or_create(
+            user=user,
+            defaults={
+                "pin_hash": make_password(encoded_pin("parent", user.pk, "2468")),
+                "version": 1,
+            },
+        )
+        assert (
+            client.post(
+                reverse("parent_unlock", args=[membership.household_id]),
+                {"parent": user.pk, "pin": "2468"},
+            ).status_code
+            == 302
+        )
+
+
 def signed_in(user):
     client = Client()
     client.force_login(user)
+    unlock_fixture(client, user)
     return client
 
 
@@ -146,7 +171,7 @@ def test_wrong_anonymous_unverified_tampered_and_reused_invitation_denied():
         if user == wrong:
             assert client.get(reverse("household_entry")).headers[
                 "Location"
-            ] == reverse("household_settings", args=[wrong_household.pk])
+            ] == reverse("household_board", args=[wrong_household.pk])
         next_path = client.get(path).headers["Location"]
         assert client.post(next_path).status_code == 403
     assert Client().get(path + "tampered").status_code == 404
@@ -222,6 +247,7 @@ def test_timezone_immutable_and_one_household_per_account():
         household.save()
     client.post("/accounts/logout/")
     client.force_login(user)
+    unlock_fixture(client, user)
     assert (
         b"Europe/Warsaw"
         in client.get(reverse("household_settings", args=[household.pk])).content
@@ -433,6 +459,7 @@ def test_household_domain_database_failures_are_private_recoverable_and_retryabl
         household = create_household(owner, "Europe/Warsaw")
         url = reverse("household_settings", args=[household.pk])
         payload = {"email": "failure-recipient@example.test"}
+        unlock_fixture(client, owner)
     if failure_path == "settings_render":
         method = "get"
     if failure_path == "join":
