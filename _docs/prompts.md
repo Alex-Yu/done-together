@@ -34,7 +34,7 @@ Use `/goal` only when supported by your assistant and version; see README step 4
 
 ## Resume delivery
 
-> Read `AGENTS.md`, `_docs/tasks.md`, and linked handoffs. Resume as orchestrator from the recorded graph state. Preserve agreed decisions and task retry counts. Start a new batch with default limits unless overridden; request an extension for exhausted per-task attempts. Continue until verified delivery or a documented stop condition.
+> Read `AGENTS.md`, `_docs/team/execution-policy.md`, `_docs/resume.md` and the current checkpoint in `_docs/tasks.md`. Resume as orchestrator from the recorded state. Preserve agreed decisions, active batch and retry counts; open a new batch only when explicitly authorized. Use fresh task-only developer/QA agents, explicit model/reasoning settings, existing valid PM grooming, targeted checks and compact handoffs. Continue the authorized graph until verified delivery or a documented stop condition. A fresh chat does not itself authorize resuming a paused goal.
 
 ## Change a requirement
 

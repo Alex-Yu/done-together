@@ -68,7 +68,9 @@ The orchestrator routes work through this graph:
 
 ```mermaid
 flowchart TD
-    O[Orchestrator selects task] --> P[PM grooms and checks scope]
+    O[Orchestrator selects task] --> G{New grooming needed?}
+    G -->|Yes| P[PM grooms and checks scope]
+    G -->|No: reuse valid PM review| D
     P --> D[Developer sets up or implements]
     D --> Q[QA verifies implementation]
     Q -->|FAIL| D
@@ -85,7 +87,9 @@ flowchart TD
     V -->|Met| H[Deliver application and evidence]
 ```
 
-The developer first installs and configures the environment through the task labeled `environment-setup`. After independent QA passes it and the orchestrator records Done and integrates it, the developer creates and starts the application skeleton and runs its smoke check. Feature tasks follow the same grooming, implementation, and verification cycle.
+The developer first installs and configures the environment through the task labeled `environment-setup`. After independent QA passes it and the orchestrator records Done and integrates it, the developer creates and starts the application skeleton and runs its smoke check. Feature tasks follow the same implementation and verification cycle, reusing valid PM grooming when scope is unchanged.
+
+Use a fresh developer and QA context for each new task, keeping them for its fixes and retiring them after integration. The [execution policy](_docs/team/execution-policy.md) defines lighter PM/routine QA models, explicit reasoning limits, targeted verification, compact handoffs and batched bookkeeping. It preserves full final-release verification. To reduce coordinator history, start a fresh chat from [_docs/resume.md](_docs/resume.md); opening a chat does not resume a paused goal automatically.
 
 The developer executes setup and checks and records validated commands in [_docs/commands.md](_docs/commands.md). You do not need to install tools, route tasks, run routine tests, or request each retry. After independent QA PASS, the orchestrator records Done and integrates the task without a separate per-task requirements verification. QA or integration failures return the task to In progress and the developer, followed by fresh affected QA. Unverifiable criteria block completion. The orchestrator reviews requirements at final release verification only. The cycle continues automatically within the agreed scope and execution limits.
 
@@ -101,7 +105,7 @@ Default limits are three developer-to-QA attempts per task and ten completed tas
 
 To resume in the same or a fresh session:
 
-> Read `AGENTS.md`, `_docs/tasks.md`, and the linked task handoffs. Resume as orchestrator from the recorded state, preserving agreed scope and decisions. Start a new delivery batch with the default limits. Preserve per-task retry counts; ask for a specific limit extension if a task has exhausted its attempts. Continue the graph until verified completion or a documented stop condition.
+> Read `AGENTS.md`, `_docs/team/execution-policy.md`, `_docs/resume.md` and the current checkpoint in `_docs/tasks.md`. Resume as orchestrator, preserving scope, the active batch and all retry counts. Use fresh task-only agents and the recorded model/reasoning settings; reuse valid PM grooming. Continue the authorized graph until verified completion or a documented stop condition. Request an extension for exhausted limits; do not reset counters merely because the chat is fresh.
 
 ## 7. Receive the working application
 

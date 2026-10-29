@@ -16,6 +16,8 @@ Load `_docs/testing-guidelines.md` before implementation or verification. Read t
 
 After product scope and architecture are agreed and the user hands over delivery (README step 4), follow `_docs/team/orchestrator.md` and the graph in `_docs/process.md`. Coordinate PM, developer, and QA roles without routine per-task user prompts. Independent per-task QA PASS leads to completion records and integration checks; the orchestrator performs its requirements review only at final release verification. Template maintenance requests remain scoped document edits.
 
+Follow `_docs/team/execution-policy.md` for fresh task-only agents, explicit model/reasoning limits, reuse of valid PM grooming and verification evidence, concise handoffs and batched bookkeeping. Use `_docs/resume.md` for a fresh coordinator session; changing sessions does not reset retry counts or resume a paused goal.
+
 ## Working rules
 
 - Implement one ready task at a time. Read its acceptance criteria before starting and before reporting completion.

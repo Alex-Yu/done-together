@@ -2,6 +2,8 @@
 
 Prepare one task for implementation. Read the product plan, architecture, relevant decisions, and dependencies. Use `_docs/task-template.md`.
 
+Run only when grooming is missing, scope/contracts changed, or ambiguity needs PM review. Already-groomed unchanged tasks do not need another PM agent just because dependencies completed; the coordinator can reuse the recorded review. Follow [execution-policy.md](execution-policy.md): fresh task-only context, `gpt-6-luna` with low reasoning, concise output and batched edits.
+
 Make the goal clear, criteria observable, and scope small enough for one focused session. Cover important edge cases and link criteria to requirements. Ask the decision owner about consequential ambiguity; do not invent answers. Preserve deferred work with follow-up task links. Do not implement code.
 
 During orchestrated delivery, commit changes after each grooming pass under the Git policy in `_docs/process.md`, even if the task remains Draft or Blocked. Commit on `develop` before the developer creates the task branch; use the existing task branch when grooming a task returned for fixes. Include only relevant specification, task, and backlog changes, preserve unrelated work, and record the full grooming commit hash in the handoff. Synchronize mapped issues before handoff and record any pending synchronization.

@@ -28,17 +28,17 @@ Bootstrap criteria preserve environment-before-skeleton separation. PM reconcile
 
 ## Checkpoint — 2026-10-29
 
-- Phase/current routing: Environment, skeleton,001 accounts,002 households and003 PIN/shared access Done/integrated; 004 board In review; independent QA next.
+- Phase/current routing: Goal paused by user. Task004 board remains In review with independent QA PASS; administrative completion/integration is next only after explicit resume.
 - Agreed scope: bootstrap plus001–010; REQ-001–027 and confirmed defaults unchanged. Full release incomplete.
 - Delivery: develop at `8218a22e1b015e89be45aad814f5188150fafe4b`, task003 final tip/fast-forward delivery. Verified implementation `d18a01c0d5d22e4ed21ce7a4bf651a673c1cde1c`; independent QA1 PASS all six criteria. No implementation change during merge.
 - Integration: migrate/check/drift,73 server/config tests, Ruff lint/format and diff check PASS. [PIN QA evidence](verification/003-pins-qa.md) includes8bundled,15adversarial,2failure/privacy probes, stable native100/200/real61s idle and restart checks.
 - Preparation:004 In review after implementation;005–010 Draft grooming and QA plans integrated, dependencies still gate readiness.
 - Workflow override: independent per-task QA→completion/integration; no per-task orchestrator verification. Final release requires integrated QA and orchestrator requirements review.
-- Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;004–010 each0/3. Preserve histories.
+- Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;0041/3;005–010 each0/3. Preserve histories.
 - Active batch2 completions3/10 after user reset; historical batch1 bootstrap2. Remaining004–010 fit renewed batch.
 - Environment: PG17.11 loopback55432 retained; unrelated PG13:5432 preserved; app/Mailpit/geckodriver stopped. Synthetic data only.
 - GitHub:11/12/1/2 closed; issue3 Done/closed; exact body and state readback verified;issue4 In review/open exactbody readback verified;005–010 Draft/open.
-- Blockers: None. No pushes authorized. Next: independent QA attempt1 at implementation067addc7eda122736893d17d5ca4aff7ce1a2885; no pending issue synchronization.
+- Next after explicit resume: administrative completion/integration of004 after its recorded QA PASS, then005 readiness. No pushes authorized; no pending task-issue synchronization. See [compact resume](resume.md) and [execution policy](team/execution-policy.md).
 
 Source publication: Issue bodies contain complete specifications; local source is unpushed. Issue links to develop source may not resolve until separately authorized source publication.
 
@@ -394,3 +394,10 @@ Source publication: Issue bodies contain complete specifications; local source i
 - User approved gpt-6-luna for routine PM/QA with fresh task-only contexts. Development/final release QA retain current model. New PM role `/root/pm_economy` is available; use fresh contexts for future developer/QA tasks.
 - Efficiency: focused affected checks per task, reuse valid unchanged evidence, full integrated regression at final release; concise handoffs and milestone updates. No per-task orchestrator requirements recheck.
 - Resume: read AGENTS/process/tasks and004 QA evidence, complete/integrate004 with focused integration checks, then PM005 readiness. No pushes authorized.
+
+## Approved execution-policy update —2026-10-29
+
+- User approved fresh developer/independent-QA agents for each new task; retain same agents for fixes, then retire them after integration. New contexts inherit no chat history.
+- Applied [execution policy](team/execution-policy.md): explicit role reasoning/model limits; PM only for missing/changed grooming; targeted checks with retained unchanged evidence; concise handoffs/log files; batched bookkeeping. Full release gates and existing autonomy remain.
+- [Compact resume](resume.md) records the exact current state for a fresh coordinator chat. Opening a new chat does not reset counters or resume a paused goal. The current coordinator UI settings were not changed automatically.
+- Delivery remains paused; no task integration, implementation, agent dispatch or external issue write was performed by this workflow edit. The user authorized a local commit of this scoped documentation maintenance; application state and the paused goal are unchanged.

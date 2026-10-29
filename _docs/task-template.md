@@ -35,6 +35,8 @@ Give each criterion a stable ID. Define quality thresholds explicitly when relev
 
 ## Handoff
 
+Keep this compact; link evidence and sanitized log artifacts instead of copying logs or prior narratives. Pass exact known commits; record later delivery hashes at the next normal checkpoint rather than creating self-referencing hash-only commits.
+
 - Implementation summary: Pending
 - Task branch / verified implementation commit: Pending
 - Changed files / revision: Pending
