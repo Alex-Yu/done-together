@@ -3,11 +3,11 @@
 Authoritative backlog: GitHub issues in [Alex-Yu/done-together](https://github.com/Alex-Yu/done-together/issues), selected after user scope confirmation under [process.md](process.md). Local task documents mirror the mapped GitHub issues; this file is the index/checkpoint.
 
 Backlog mode / origin repository: GitHub — `git@github.com:Alex-Yu/done-together.git`, checked 2026-10-28.
-Pending issue synchronization:None. Existing issue5/6 Done/closed and007 In review/open exact bodies synchronized/readback under explicit user authorization for delivery issues5–10. Source links normalized; local commits remain unpushed.
+Pending issue synchronization:None. Existing issues5–7 Done/closed and008 Ready/open exact bodies synchronized/readback under explicit user authorization for delivery issues5–10. Source links normalized; local commits remain unpushed.
 
 ## Task index
 
-Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature roadmap against the selected architecture. Environment setup, skeleton,001 accounts,002 households and003 PIN/shared access are Done/integrated;004–005 are Done/integrated;006 Done/integrated;007 In review;008–010 Draft pending dependencies. Scope was confirmed by the user on 2026-10-28, including P-01–P-07.
+Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature roadmap against the selected architecture. Environment setup, skeleton,001 accounts,002 households and003 PIN/shared access are Done/integrated;004–005 are Done/integrated;006–007 Done/integrated;008 In progress;009–010 Draft pending dependencies. Scope was confirmed by the user on 2026-10-28, including P-01–P-07.
 
 | ID / labels | Task | Status | Dependencies | GitHub issue |
 | --- | --- | --- | --- | --- |
@@ -20,7 +20,7 @@ Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature 
 | 005 | [One-off chore assignment and maintenance](tasks/005-one-off-chores.md) | Done | 004 Done/integrated | [#5](https://github.com/Alex-Yu/done-together/issues/5) |
 | 006 | [Recurrence, occurrence generation, future edits, and deletion](tasks/006-recurrence.md) | Done | 005 Done/integrated | [#6](https://github.com/Alex-Yu/done-together/issues/6) |
 | 007 | [Child submission, parent review, returns, and overdue rules](tasks/007-review.md) | Done | 006 Done/integrated | [#7](https://github.com/Alex-Yu/done-together/issues/7) |
-| 008 | [Weekly/all-time stars and completion visibility](tasks/008-stars.md) | Ready | 007 Done/integrated | [#8](https://github.com/Alex-Yu/done-together/issues/8) |
+| 008 | [Weekly/all-time stars and completion visibility](tasks/008-stars.md) | In progress | 007 Done/integrated | [#8](https://github.com/Alex-Yu/done-together/issues/8) |
 | 009 | [Synchronization, concurrent-action handling, and offline recovery](tasks/009-synchronization.md) | Draft | 008 | [#9](https://github.com/Alex-Yu/done-together/issues/9) |
 | 010 | [Integrated release verification and browser/accessibility checks](tasks/010-release-verification.md) | Draft | 009 | [#10](https://github.com/Alex-Yu/done-together/issues/10) |
 
@@ -493,3 +493,7 @@ Source publication: Issue bodies contain complete specifications; local source i
 ## Review integration /008 Ready —2026-10-29
 
 -007 final tip/delivery `5502e1d1eb057ab79f8865615440b91ed148da54`; QA3 target unchanged,37 affected tests/static/migration PASS. Batch2 7/10;0073/3, priorFAIL/BLOCKED retained.008 Ready from existing PM grooming8feda09; issue7 closure/8 readiness readback next. No push.
+
+## Stars developer started —2026-10-29
+
+-008 In progress on task/008-stars from readiness78baad7b676dd6aa89b2fa7e4b85c7e12615d9e4; five ACs unchanged. Actual007 unique approvals are the source of counts/current-week visibility. Batch2 7/10;008 QA0/3; earlier histories retained. User resume edit preserved/excluded. No merge/push.

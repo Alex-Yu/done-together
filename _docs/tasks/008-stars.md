@@ -1,6 +1,6 @@
 # 008: Weekly/all-time stars and completion visibility
 
-Status: Ready
+Status: In progress
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/8
 Local task: `_docs/tasks/008-stars.md`

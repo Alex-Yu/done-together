@@ -2,6 +2,7 @@
 {% for column in columns %}
   <section class="child-column" aria-labelledby="child-heading-{{ column.child_id }}" data-child-id="{{ column.child_id }}">
     <h2 id="child-heading-{{ column.child_id }}" data-child-name>{{ column.name }}</h2>
+    <p class="star-totals" data-star-totals><span data-weekly-stars>This week: {{ column.work.weekly_stars }} star{{ column.work.weekly_stars|pluralize }}</span> · <span data-all-time-stars>All time: {{ column.work.all_time_stars }} star{{ column.work.all_time_stars|pluralize }}</span></p>
     {% if column.work.items %}
       <ul class="chore-cards" aria-label="Chores for {{ column.name }}">
       {% for item in column.work.items %}
