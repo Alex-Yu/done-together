@@ -507,3 +507,7 @@ Source publication: Issue bodies contain complete specifications; local source i
 ## Stars independent QA started —2026-10-29
 
 -008 QA attempt1/3 on immutable implementation `4f965a3c706f821fbc6a25ac601a1ffbd30e41d0`; batch2 remains7/10; earlier counters incl0073/3 retained. Developer handoff and five ACs reviewed before source summary. QA checkpoint is records-only; no application or test changes. Preserve `_docs/resume.md` exactly and exclude it. No merge/push.
+
+## Stars independent QA handoff —2026-10-29
+
+-008 independent QA attempt1/3 PASS at immutable `4f965a3c706f821fbc6a25ac601a1ffbd30e41d0`; [QA evidence](verification/008-stars-qa.md). Targeted PostgreSQL suite:105 passed/1 unrelated long restart loop deselected. Installed Chrome156/Firefox159 actual100/200 journeys passed; all five ACs have independent evidence for exact household-week boundaries,167/169-hour DST weeks, approval/retry/concurrency, retention/reload, isolation, keyboard/text totals. Batch2 remains7/10;0073/3 and earlier histories retained. Issue8 remains In review/open. No merge/push; `_docs/resume.md` preserved/excluded; driver stopped/4445 closed; PG17/PG13 retained.
