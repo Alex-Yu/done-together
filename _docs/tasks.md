@@ -3,7 +3,7 @@
 Authoritative backlog: GitHub issues in [Alex-Yu/done-together](https://github.com/Alex-Yu/done-together/issues), selected after user scope confirmation under [process.md](process.md). Local task documents mirror the mapped GitHub issues; this file is the index/checkpoint.
 
 Backlog mode / origin repository: GitHub — `git@github.com:Alex-Yu/done-together.git`, checked 2026-10-28.
-Pending issue synchronization: Issue10 In review/implementation/evidence handoff awaits coordinator synchronization. Prior issue10 In progress/open and issue9 Done/closed exact body/state readbacks verified. User authorization covers delivery issue updates5–10; local commits remain unpushed.
+Pending issue synchronization: Issue10 In review/implementation/evidence and QA1 dispatch handoff being synchronized by coordinator. Prior issue10 In progress/open and issue9 Done/closed exact body/state readbacks verified. User authorization covers delivery issue updates5–10; local commits remain unpushed.
 
 ## Task index
 
@@ -28,9 +28,9 @@ Bootstrap criteria preserve environment-before-skeleton separation. PM reconcile
 
 ## Checkpoint —2026-10-29 — task010 In review
 
-- User explicitly resumed delivery through final release gates.010 Ready using unchanged PM grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d` and clarification `d0be1b30912e489cd54f61fc2c1f720b34ff7f76`; authoritative issue10 inspected identical Draft/open scope before readiness.009 Done/integrated; develop start `4c19eed3d87edbe70fea0beb51096996710ab9aa`, task009 delivery `a557fb2b06cc8d0a8349e39407e918750c842a15`, product implementation `497a573349f791833bdcee3683b3b1c23ed11ad0`. Developer27AC PASS at immutable `3769e5c9dba30388c7aa127af9fb2124f62444d0` on `task/010-release-verification`; [evidence](verification/010-release-developer.md). Independent final QA then orchestrator release requirements review required.
+- User explicitly resumed delivery through final release gates.010 Ready using unchanged PM grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d` and clarification `d0be1b30912e489cd54f61fc2c1f720b34ff7f76`; authoritative issue10 inspected identical Draft/open scope before readiness.009 Done/integrated; develop start `4c19eed3d87edbe70fea0beb51096996710ab9aa`, task009 delivery `a557fb2b06cc8d0a8349e39407e918750c842a15`, product implementation `497a573349f791833bdcee3683b3b1c23ed11ad0`. Developer27AC PASS at immutable `3769e5c9dba30388c7aa127af9fb2124f62444d0` on `task/010-release-verification`; [evidence](verification/010-release-developer.md). Independent final QA attempt1 dispatched at this immutable commit (records tip57c8596935c0149d94d031f926a8a33f48e73ad1); final orchestrator release requirements review follows QA.
 - Scope bootstrap plus001–010, REQ-001–027/P-01–P-07 unchanged. Same-host independent profiles accepted; each required synchronization class <=5seconds. Full release remains unverified.
-- Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;0041/3;0051/3;0061/3;0073/3;0081/3;0091/3;0100/3. Active batch2 completions9/10; historical batch1 bootstrap2. No resets.
+- Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;0041/3;0051/3;0061/3;0073/3;0081/3;0091/3;0101/3. Active batch2 completions9/10; historical batch1 bootstrap2. No resets.
 - Issue10 In progress/F010-001/002 exact body/OPEN readback verified (`.local/verification/010/issue10-progress-readback.json`); next implementation review synchronization pending handoff. Authorization covers issues5–10 updates. No pushes or deployment. Source remains local.
 - Preserve `_docs/resume.md` uncommitted user edit exactly/exclude from task commits. PG17:55432/PG13:5432 preserved. Inspect live processes; DB suites sequential. Firefox driver requires --allow-system-access. Handoff/history: [resume-after-009](resume-after-009.md), [009 QA](verification/009-synchronization-qa.md).
 
@@ -549,3 +549,8 @@ Source publication: Issue bodies contain complete specifications; local source i
 
 -010 In review at immutable `3769e5c9dba30388c7aa127af9fb2124f62444d0`; records-only handoff follows. [Developer27AC PASS](verification/010-release-developer.md): full166server, final HTTP3, bundled8, native9 via scoped corrections/rechecks, true-keyboard4,36 same-host events0.9142–2.0968s; real SMTP/idle/restart and all static/schema gates PASS. Product F010-001/002 fixed; verifier failures retained/qualified, no source/config delta after3cc00aa.
 - Independent final QA next;0100/3, active batch2 remains9/10; historical counts unchanged. No Done/merge/push/deployment. Issue10 In review/commit/evidence sync pending coordinator; prior In progress/OPEN exact readback verified. User resume.md SHA unchanged/excluded. App/mail/driver stopped exit0, listeners closed, disposableDB0 sessions; PG17/PG13 preserved.
+
+##010 independent release QA dispatch —2026-10-29
+
+- Fresh independent final QA gpt-6.1-sol/high at immutable implementation `3769e5c9dba30388c7aa127af9fb2124f62444d0`, developer records tip `57c8596935c0149d94d031f926a8a33f48e73ad1` (documentation only). All27 ACs and full final gates mandatory. Attempt0101/3 consumed at dispatch; batch2 remains9/10, historical attempts unchanged.
+- Authoritative issue10 inspected unchanged In progress/open before handoff; coordinator In review/evidence/QA dispatch synchronization next. No product changes while QA runs. Existing user resume edit preserved/excluded; no push/deployment. Final requirements review remains mandatory after independent QA.

@@ -98,3 +98,7 @@ Product scope and architecture are confirmed; no consequential product question 
 - In review at immutable `3769e5c9dba30388c7aa127af9fb2124f62444d0`. [Developer27AC matrix](../verification/010-release-developer.md) records final outcomes, exact commands, same-host measurements, fresh screenshots and qualified historical verifier failures. Product/configuration unchanged after3cc00aa; later fixes strengthen tests/helpers only.
 - QA0100/3 before dispatch; batch2 remains9/10; all historical attempts preserved. Independent final QA next, then orchestrator final requirements review. No routine user approval/push/merge/deployment.
 - App/Mailpit/driver exit0; owned listeners closed; disposable DB0 sessions. PG17:55432 and unrelatedPG13:5432 retained. Existing user resume.md content/hash unchanged and excluded. Issue10 current In progress exact readback previously verified; In review/implementation/evidence synchronization pending coordinator normal handoff.
+
+## Independent release QA dispatch —2026-10-29
+
+- Fresh independent gpt-6.1-sol/high QA attempt1/3 at immutable `3769e5c9dba30388c7aa127af9fb2124f62444d0`, records-only developer tip `57c8596935c0149d94d031f926a8a33f48e73ad1`. All27 ACs and full final-release gates required; batch2 remains9/10, all previous counts preserved. No source changes, pushes or deployment during QA.
