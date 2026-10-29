@@ -49,9 +49,9 @@ Product scope and architecture are confirmed; no consequential product question 
 - PM readiness: Ready on 2026-10-29 after003 integration; five ACs unchanged, integrated scope/QA preparation reviewed, no consequential question. Full readiness commit recorded in backlog checkpoint.
 
 - Implementation summary: Real scoped child columns, setup/empty guidance, semantic text-state card projection and shared board entry; settings keeps parent guard. No production fake work.
-- Task branch / verified implementation commit: `task/004-board`; exact implementation hash recorded after commit
+- Task branch / verified implementation commit: `task/004-board`; `067addc7eda122736893d17d5ca4aff7ce1a2885`
 - Changed files / revision: Board read model/views/templates/CSS, scoped tests/native check and documentation; no schema/dependency change
-- Final branch tip / delivery commit / integration results: Pending
+- Final branch tip / delivery commit / integration results: Records-only tip follows; QA/integration pending
 - Push status / authorized remote and branch targets: No pushes authorized
 - Checks and results: Five unique board tests,20 affected PIN regressions and four installed Chrome/Firefox100/200% native cases PASS; check/drift/lint/format/diff PASS. Prior unchanged mail/61-second evidence reused; full integrated regression at010.
 - Verification record: [Developer AC table](../verification/004-board-developer.md); independent QA pending

@@ -37,8 +37,8 @@ Bootstrap criteria preserve environment-before-skeleton separation. PM reconcile
 - Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;004–010 each0/3. Preserve histories.
 - Active batch2 completions3/10 after user reset; historical batch1 bootstrap2. Remaining004–010 fit renewed batch.
 - Environment: PG17.11 loopback55432 retained; unrelated PG13:5432 preserved; app/Mailpit/geckodriver stopped. Synthetic data only.
-- GitHub:11/12/1/2 closed; issue3 Done/closed; exact body and state readback verified;issue4 In progress/open exactbody readback verified; In review synchronization pending;005–010 Draft/open.
-- Blockers: None. No pushes authorized. Next: exact implementation/records commit and issue4 In review synchronization, then independent QA attempt1.
+- GitHub:11/12/1/2 closed; issue3 Done/closed; exact body and state readback verified;issue4 In review/open exactbody readback verified;005–010 Draft/open.
+- Blockers: None. No pushes authorized. Next: independent QA attempt1 at implementation067addc7eda122736893d17d5ca4aff7ce1a2885; no pending issue synchronization.
 
 Source publication: Issue bodies contain complete specifications; local source is unpushed. Issue links to develop source may not resolve until separately authorized source publication.
 
@@ -367,5 +367,7 @@ Source publication: Issue bodies contain complete specifications; local source i
 
 ##004 developer handoff —2026-10-29
 
-- task/004-board based on Ready checkpoint69ef4983e77c2856a2cce9e818215e4e666245ab/grooming6ccc548e5c63a6139a8994f4bae9a4a8dc2b6bbd. Implementation complete/In review; exact hash follows commit. Five board cases +20 affected PIN regressions and four stable native engine/zoom cases PASS; evidence `_docs/verification/004-board-developer.md`.
+- task/004-board based on Ready checkpoint69ef4983e77c2856a2cce9e818215e4e666245ab/grooming6ccc548e5c63a6139a8994f4bae9a4a8dc2b6bbd. Implementation `067addc7eda122736893d17d5ca4aff7ce1a2885` complete/In review; subsequent records only. Five board cases +20 affected PIN regressions and four stable native engine/zoom cases PASS; evidence `_docs/verification/004-board-developer.md`.
 - Batch2 remains3/10;004 QA0 until dispatch. Prior histories unchanged. Driver/browser/test-server stopped; PG17 remains, PG13 preserved. No merge/push. Independent QA next; full release regression reserved010.
+
+- Issue4 In review/open exact-body readback verified after implementation067addc7eda122736893d17d5ca4aff7ce1a2885; local source remains unpushed. Clean records-only commit follows.
