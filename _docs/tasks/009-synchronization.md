@@ -1,6 +1,6 @@
 # 009: Synchronization, concurrent-action handling, and offline recovery
 
-Status: In review
+Status: Done
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/9
 Local task: `_docs/tasks/009-synchronization.md`
@@ -13,10 +13,10 @@ Connected computers converge automatically and disconnected boards stay read-onl
 
 ## Acceptance criteria
 
-- [ ] AC-001: REQ-021: Two independent browser sessions/profiles on this Mac cover child/profile, chore create/edit/delete, submissions, returns/approvals, and resulting totals without manual refresh; each accepted mutation is visible within five seconds (P-06). User accepted this same-host setup on 2026-10-29 for the two-computer evidence gate. Evidence must identify one-host sessions and make no claim of two-physical-computer testing.
-- [ ] AC-002: REQ-022: Disconnect preserves visible board and disables actions; reconnect refreshes data automatically before actions resume.
-- [ ] AC-003: REQ-023: Stale reviews, deletion races, and edits produce a valid outcome or explicit conflict with refreshed data; failed actions do not appear committed.
-- [ ] AC-004: Affected changes enforce household isolation, protected parent/child permissions, persistent data, accessible keyboard interaction, and recoverable validation/failure states under REQ-003/023/025/026/027; no credential exposure or false success.
+- [x] AC-001: REQ-021: Two independent browser sessions/profiles on this Mac cover child/profile, chore create/edit/delete, submissions, returns/approvals, and resulting totals without manual refresh; each accepted mutation is visible within five seconds (P-06). User accepted this same-host setup on 2026-10-29 for the two-computer evidence gate. Evidence must identify one-host sessions and make no claim of two-physical-computer testing.
+- [x] AC-002: REQ-022: Disconnect preserves visible board and disables actions; reconnect refreshes data automatically before actions resume.
+- [x] AC-003: REQ-023: Stale reviews, deletion races, and edits produce a valid outcome or explicit conflict with refreshed data; failed actions do not appear committed.
+- [x] AC-004: Affected changes enforce household isolation, protected parent/child permissions, persistent data, accessible keyboard interaction, and recoverable validation/failure states under REQ-003/023/025/026/027; no credential exposure or false success.
 
 ## Out of scope
 
@@ -56,3 +56,5 @@ Product scope and architecture are confirmed; no consequential product question 
 - Independent QA attempt1, 2026-10-29: PASS at immutable implementation `497a573349f791833bdcee3683b3b1c23ed11ad0`; evidence at [009 QA](../verification/009-synchronization-qa.md). Fresh targeted run:109 affected server cases passed; native suite3 passed in218.71s, with Chrome156/Firefox159 at100/200, same-host measurements across all required mutation classes, offline/reconnect/conflict/lost-response/idle-boundary evidence. Exact command outputs and artifacts recorded; owned Firefox driver stopped. Issue #9 QA handoff/readback pending. QA made no application-code changes. Stop after009 task handoff; do not start010.
 
 - Coordinator readiness2026-10-29:008 integrated,45 affected integration tests/static/migration PASS; original PM grooming8feda09 plus narrow clarificationd0be1b3 integrated at `046a9cdb18278ee35cafd00685912d9a0f9be16b`. User accepted two independent browser sessions; all<=5second per-event/class measurements, offline/reconnect/focus/privacy requirements unchanged. Fresh developer next;0090/3.
+
+- Completion2026-10-29: independent QA1 PASS all four criteria at `497a573349f791833bdcee3683b3b1c23ed11ad0`, final records tip `e53739a5616aba05008998314a9bc8da8fdc108f`; [QA evidence](../verification/009-synchronization-qa.md).109 server tests/native3 PASS;36 fresh same-host events0.9086–2.0382s. Administrative Done/integration next. User requires stop after009 fully integrated, before010 starts. No separate per-task requirements recheck.

@@ -21,7 +21,7 @@ Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature 
 | 006 | [Recurrence, occurrence generation, future edits, and deletion](tasks/006-recurrence.md) | Done | 005 Done/integrated | [#6](https://github.com/Alex-Yu/done-together/issues/6) |
 | 007 | [Child submission, parent review, returns, and overdue rules](tasks/007-review.md) | Done | 006 Done/integrated | [#7](https://github.com/Alex-Yu/done-together/issues/7) |
 | 008 | [Weekly/all-time stars and completion visibility](tasks/008-stars.md) | Done | 007 Done/integrated | [#8](https://github.com/Alex-Yu/done-together/issues/8) |
-| 009 | [Synchronization, concurrent-action handling, and offline recovery](tasks/009-synchronization.md) | In review | 008 Done/integrated | [#9](https://github.com/Alex-Yu/done-together/issues/9) |
+| 009 | [Synchronization, concurrent-action handling, and offline recovery](tasks/009-synchronization.md) | Done | 008 Done/integrated | [#9](https://github.com/Alex-Yu/done-together/issues/9) |
 | 010 | [Integrated release verification and browser/accessibility checks](tasks/010-release-verification.md) | Draft | 009 | [#10](https://github.com/Alex-Yu/done-together/issues/10) |
 
 Bootstrap criteria preserve environment-before-skeleton separation. PM reconciled all feature tasks to the selected architecture, retained stable acceptance IDs, and made later integration ownership explicit where features depend on later workflows. No requirement is claimed complete by grooming.
@@ -531,3 +531,7 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Evidence: [009 developer](verification/009-synchronization-developer.md).109 affected server tests PASS,3 native tests plus narrow actualFirefox200 form repeat PASS;36 same-Mac events0.9051–2.0266s. Check/drift/static/Ruff149/diff PASS. Honest screenshot/zoom scopes recorded; no implementation blocker.
 - QA0090/3 before dispatch; active batch2 remains8/10; historical attempts unchanged.010 stays Draft until009 Done/integrated. No task010 work. User resume edit preserved exactly/excluded.
 - Issue9 In review/open exact body/state synchronization/readback verified; authoritative scope unchanged. Records-only commit follows implementation. Owned browsers/test servers/driver stopped; PostgreSQL17:55432 and unrelated13:5432 retained.
+
+## Synchronization completion —2026-10-29
+
+-009 independent QA1 PASS fourACs at `497a573349f791833bdcee3683b3b1c23ed11ad0`, final records tip `e53739a5616aba05008998314a9bc8da8fdc108f`.109server/native3 PASS;36 fresh same-host events0.9086–2.0382s.0091/3; batch2 8/10 before integration. Complete/integrate/check/close009 then PAUSE by explicit user request before010. No push.
