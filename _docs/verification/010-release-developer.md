@@ -1,5 +1,7 @@
 # Verification:010 developer
 
+Historical developer record at3769e5c. Independent [QA1](010-release-qa.md) later FAILed two required browser verifiers; [scoped corrections](010-release-qa1-fixes-developer.md) atdc456af await independent QA2. This record does not override QA1 or claim final release completion.
+
 Overall verdict: PASS (developer verification; independent release QA pending)
 Task / specification: [010](../tasks/010-release-verification.md), [plan](../plan.md), [release scenarios](plans/007-010-review-sync-release.md).
 Revision: immutable implementation `3769e5c9dba30388c7aa127af9fb2124f62444d0`, branch `task/010-release-verification`. Subsequent handoff commit changes documentation only.

@@ -3,11 +3,11 @@
 Authoritative backlog: GitHub issues in [Alex-Yu/done-together](https://github.com/Alex-Yu/done-together/issues), selected after user scope confirmation under [process.md](process.md). Local task documents mirror the mapped GitHub issues; this file is the index/checkpoint.
 
 Backlog mode / origin repository: GitHub — `git@github.com:Alex-Yu/done-together.git`, checked 2026-10-28.
-Pending issue synchronization: Issue10 QA1 FAIL/In progress/fix routing synchronization pending. Prior issue10 In progress/open and issue9 Done/closed exact body/state readbacks verified. User authorization covers delivery issue updates5–10; local commits remain unpushed.
+Pending issue synchronization: Issue10 correction In review/commit/evidence awaits coordinator sync; prior QA1 FAIL/In progress exact body/OPEN readback verified. Issue9 Done/closed exact body/state readback verified. User authorization covers delivery issue updates5–10; local commits remain unpushed.
 
 ## Task index
 
-Delivery handed over on2026-10-28. Environment setup, application skeleton and001–009 are Done/integrated.010 In progress after independent QA1 FAIL; same-developer fixes and affectedQA2 next. Scope remains bootstrap plus001–010, REQ-001–027 and confirmed defaults.
+Delivery handed over on2026-10-28. Environment setup, application skeleton and001–009 are Done/integrated.010 In review after scoped QA1 verifier fixes; independent affectedQA2 (all13 native/PIN2) next. Scope remains bootstrap plus001–010, REQ-001–027 and confirmed defaults.
 
 | ID / labels | Task | Status | Dependencies | GitHub issue |
 | --- | --- | --- | --- | --- |
@@ -22,13 +22,13 @@ Delivery handed over on2026-10-28. Environment setup, application skeleton and00
 | 007 | [Child submission, parent review, returns, and overdue rules](tasks/007-review.md) | Done | 006 Done/integrated | [#7](https://github.com/Alex-Yu/done-together/issues/7) |
 | 008 | [Weekly/all-time stars and completion visibility](tasks/008-stars.md) | Done | 007 Done/integrated | [#8](https://github.com/Alex-Yu/done-together/issues/8) |
 | 009 | [Synchronization, concurrent-action handling, and offline recovery](tasks/009-synchronization.md) | Done | 008 Done/integrated | [#9](https://github.com/Alex-Yu/done-together/issues/9) |
-| 010 | [Integrated release verification and browser/accessibility checks](tasks/010-release-verification.md) | In progress | 009 | [#10](https://github.com/Alex-Yu/done-together/issues/10) |
+| 010 | [Integrated release verification and browser/accessibility checks](tasks/010-release-verification.md) | In review | 009 | [#10](https://github.com/Alex-Yu/done-together/issues/10) |
 
 Bootstrap criteria preserve environment-before-skeleton separation. PM reconciled all feature tasks to the selected architecture, retained stable acceptance IDs, and made later integration ownership explicit where features depend on later workflows. No requirement is claimed complete by grooming.
 
-## Checkpoint —2026-10-29 — task010 QA1 FAIL / In progress
+## Checkpoint —2026-10-29 — task010 corrections In review / QA2 next
 
-- User explicitly resumed delivery through final release gates.010 Ready using unchanged PM grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d` and clarification `d0be1b30912e489cd54f61fc2c1f720b34ff7f76`; authoritative issue10 inspected identical Draft/open scope before readiness.009 Done/integrated; develop start `4c19eed3d87edbe70fea0beb51096996710ab9aa`, task009 delivery `a557fb2b06cc8d0a8349e39407e918750c842a15`, product implementation `497a573349f791833bdcee3683b3b1c23ed11ad0`. Developer27AC PASS at immutable `3769e5c9dba30388c7aa127af9fb2124f62444d0` on `task/010-release-verification`; [evidence](verification/010-release-developer.md). Independent final QA attempt1 dispatched at this immutable commit (records tip57c8596935c0149d94d031f926a8a33f48e73ad1); final orchestrator release requirements review follows QA.
+- User explicitly resumed delivery through final release gates.010 Ready using unchanged PM grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d` and clarification `d0be1b30912e489cd54f61fc2c1f720b34ff7f76`; authoritative issue10 inspected identical Draft/open scope before readiness.009 Done/integrated; develop start `4c19eed3d87edbe70fea0beb51096996710ab9aa`, task009 delivery `a557fb2b06cc8d0a8349e39407e918750c842a15`, product implementation `497a573349f791833bdcee3683b3b1c23ed11ad0`. Developer27AC PASS at immutable `3769e5c9dba30388c7aa127af9fb2124f62444d0` on `task/010-release-verification`; [evidence](verification/010-release-developer.md). Independent QA1 FAIL preserved; scoped correction now `dc456af4aa16f03ee03e8dcc21fe3c5346cab3c3` ([evidence](verification/010-release-qa1-fixes-developer.md)). Independent affectedQA2 all13native/PIN2 next; final orchestrator release requirements review follows QA.
 - Scope bootstrap plus001–010, REQ-001–027/P-01–P-07 unchanged. Same-host independent profiles accepted; each required synchronization class <=5seconds. Full release remains unverified.
 - Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;0041/3;0051/3;0061/3;0073/3;0081/3;0091/3;0101/3. Active batch2 completions9/10; historical batch1 bootstrap2. No resets.
 - Issue10 In progress/F010-001/002 exact body/OPEN readback verified (`.local/verification/010/issue10-progress-readback.json`); next implementation review synchronization pending handoff. Authorization covers issues5–10 updates. No pushes or deployment. Source remains local.
@@ -564,3 +564,8 @@ Source publication: Issue bodies contain complete specifications; local source i
 
 - Independent QA1 FAIL at3769e5c; records `c895bcefbf4a8c795af3956f80c251d52191345e`, [26PASS/026FAIL matrix](verification/010-release-qa.md). Both findings routed together to same developer: stale bundled PIN caption assertion and unproven Firefox100 review outline failure. No implementation change during QA. All other required gates PASS with fresh revision-bound evidence.
 - Same developer fixes; limited high focus investigation. QA1/3 retained; QA2 only consumed on next immutable handoff. Batch2 remains9/10, all historical counts unchanged. Services stopped/DB ownership released, PostgreSQL instances preserved. User resume unchanged. No merge/push/deployment.
+
+##010 QA1 correction developer handoff —2026-10-29
+
+- In review at immutable `dc456af4aa16f03ee03e8dcc21fe3c5346cab3c3`, records-only handoff follows. [Scoped developer PASS](verification/010-release-qa1-fixes-developer.md): bundledPIN2 PASS18.46s, review4 native engine/zoom cases PASS31.33s,12 positive/negative native focus controls PASS; Ruff157/diff PASS. QA001 checks actual locked state; QA002 proven readiness/disabled-control browser-chrome focus race fixed without weakening focus/label checks. Only tests/helper changed, no product/backend/config delta from3769e5c.
+- Independent QA2 must replay all13 native tests/PIN2; unchanged freshQA1 server/domain/SMTP/idle/restart evidence retained by exact diff. QA1FAIL history remains; attempts0101/3 until dispatch, batch2 9/10, earlier counts unchanged. Correction issue10 review sync pending coordinator; prior FAIL/In progress OPEN readback verified. Owned ports closed/testDB0sessions, PG17/13 preserved; user resumeSHA unchanged/excluded. No merge/push/deploy.

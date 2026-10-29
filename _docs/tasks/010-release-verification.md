@@ -1,6 +1,6 @@
 # 010: Integrated release verification and browser/accessibility checks
 
-Status: In progress
+Status: In review
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/10
 Local task: `_docs/tasks/010-release-verification.md`
@@ -71,15 +71,15 @@ Product scope and architecture are confirmed; no consequential product question 
 - PM parallel scope review: 2026-10-28; acceptance IDs/behavior retained, concrete per-criterion checks and later integration ownership recorded. Draft until dependency/grooming integration and current readiness review; isolated grooming commit supplied to orchestrator for develop integration.
 
 - Implementation summary: Integrated release verification prepared/executed; fixed lost invitation success after synchronized redirect and pre-membership polling blocking join. Added complete true-keyboard native journeys, HTTP recurrence/history coverage and corrected verification fixture/document/identity timing. No new product feature/dependency.
-- Task branch / verified implementation commit: `task/010-release-verification` / `3769e5c9dba30388c7aa127af9fb2124f62444d0` (immutable developer implementation; independent QA next)
-- Changed files / revision: Three product files (member sync opt-in, fetched redirect document), scoped integration/native tests and verification helpers; final source/test revision above. Documentation-only handoff follows; user resume.md excluded.
+- Task branch / verified implementation commit: `task/010-release-verification` / `dc456af4aa16f03ee03e8dcc21fe3c5346cab3c3` (immutable QA1 correction; independent affected QA2 next)
+- Changed files / revision: QA1 correction changes only bundled PIN assertions, shared native focus verification and native review failure cleanup; product/backend/configuration unchanged from3769e5c. Documentation-only handoff follows; user resume.md excluded.
 - Final branch tip / delivery commit / integration results: Records-only handoff follows implementation; integration pending independent QA/final requirements review. No merge performed.
 - Push status / authorized remote and branch targets: No pushes authorized
-- Checks and results: Full166 server PASS; final stronger HTTP3 PASS; bundled8 PASS; nine native tests verified through7 unchanged PASS+2 corrected/rechecked PASS, explicitFirefox200 followup2 PASS; fresh true-keyboard4 PASS;36 same-host events0.9142–2.0968s; actual SMTP4/real idle2/restart revisits4 PASS. Locked/schema/system/static/Ruff156/diff PASS. Exact selectors, revision retention and historical diagnostics in developer record.
-- Verification record: [010 developer](../verification/010-release-developer.md), PASS27ACs at developer stage; ignored artifacts `.local/verification/010/`
+- Checks and results: Scoped QA1 fixes: bundled PIN2 PASS18.46s, native review4 engine/zoom cases PASS31.33s,12 actual native focus/outline/label positive/negative controls PASS, Ruff157/diff PASS. Fresh QA1 domain/server166/security/config/SMTP/idle/restart evidence retained by exact unchanged product diff. QA1 FAIL remains historical; QA2 must recertify all13 native tests plus affected bundled PIN cases.
+- Verification record: [QA1 correction developer](../verification/010-release-qa1-fixes-developer.md), scoped fixes PASS; [original independent QA1 FAIL](../verification/010-release-qa.md) preserved. Original developer27AC record remains historical; QA2 pending.
 - Completion / integration evidence / outcome: Pending
 - Orchestrator final release requirements review / evidence / outcome: Pending
-- Remaining risks or blockers: No implementation blocker. Independent final QA and orchestrator requirements review remain mandatory; issue10 In review/evidence sync pending coordinator. No release completion/push/deployment claim.
+- Remaining risks or blockers: No blocker for scoped corrections. Independent affected QA2 (all13 native tests/PIN2) and final orchestrator requirements review remain mandatory; issue10 correction review/evidence sync pending coordinator. No release completion/push/deployment claim.
 
 ## Resumed readiness —2026-10-29
 
@@ -108,3 +108,9 @@ Product scope and architecture are confirmed; no consequential product question 
 - Independent QA1 FAIL at `3769e5c9dba30388c7aa127af9fb2124f62444d0`, evidence `c895bcefbf4a8c795af3956f80c251d52191345e` / [record](../verification/010-release-qa.md).26AC PASS;026FAIL.166server PASS; bundled7PASS/1FAIL; native12PASS/1FAIL including keyboard4PASS; actual SMTP/idle/restart/security/operational gates PASS;36 same-host events1.1863–1.9300s.
 - F010-QA001: bundled PIN locked-caption assertion stale. F010-QA002: Firefox100 native return-note outline assertion failed; cause unproven. Same developer must resolve both without weakening ACs; limited high investigation for focus failure. QA released services/DB ownership cleanly; all owned services stopped/PGs preserved.
 - Attempts0101/3; batch2 9/10, earlier counts retained. Reuse fresh unchanged evidence only after revision/config/environment proof. New immutable correction then independent affectedQA2 required; final requirements review remains pending. No merge/push/deployment; original resume edit preserved.
+
+## QA1 corrections / developer handoff —2026-10-29
+
+- In review at immutable `dc456af4aa16f03ee03e8dcc21fe3c5346cab3c3`; [scoped fix evidence](../verification/010-release-qa1-fixes-developer.md). QA001 now verifies actual locked board/recoverable controls; QA002 was proven disabled-form/readiness navigation into Firefox chrome with retained activeElement. Corrected helper waits authorized readiness and requires actual focus/visible positive-width outline/label; no DOM focus repair, product change or removed focus check. Native review closes ORM contexts on failures.
+- BundledPIN2 PASS18.46s, native review4 cases PASS31.33s,12 positive/negative controls PASS, static checks PASS. Independent QA2 must rerun all13 native tests plus bundledPIN2; only unchanged domain/backend/config/SMTP/idle/restart evidence is retained. Original QA1 FAIL and both findings remain visible.
+- QA0101/3 until dispatch; batch2 9/10 and historical counters unchanged. All owned ports closed/testDB0sessions; PG17/13 preserved. Original resume.md hash unchanged/excluded. Issue10 QA1 FAIL/In progress exact readback verified; correction In review/hash/evidence sync pending coordinator. No merge/push/deployment.

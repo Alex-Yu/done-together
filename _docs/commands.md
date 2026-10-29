@@ -500,7 +500,7 @@ Observed:109 affected server cases PASS (4 new sync),3 native tests PASS, one na
 
 ## Task010 integrated release commands —2026-10-29
 
-The setup/feature sections above are historical execution records. The application now includes001–009; use this section for the current final gate. Task010 is In review after developer27AC PASS at3769e5c; independent QA and final orchestrator review remain required for release completion. Run all disposable PostgreSQL suites **sequentially**; keep local projectPG17:55432 and unrelatedPG13:5432 distinct. Native Firefox requires the exact driver privilege flag below.
+The setup/feature sections above are historical execution records. The application now includes001–009; use this section for the current final gate. Task010 is In review atdc456af after scoped QA1 verifier corrections; affected QA2 and final orchestrator review remain required. The correction section below identifies retained evidence and required all13 native/PIN2 rechecks. Run all disposable PostgreSQL suites **sequentially**; keep local projectPG17:55432 and unrelatedPG13:5432 distinct. Native Firefox requires the exact driver privilege flag below.
 
 ```sh
 UV_CACHE_DIR=.local/uv-cache uv sync --locked
@@ -535,3 +535,13 @@ PYTHONUNBUFFERED=1 PLAYWRIGHT_BROWSERS_PATH=.local/playwright UV_CACHE_DIR=.loca
 The PIN helper also captures actual invitations and performs real61-second stable-browser inactivity while retaining board content. Close owned app/Mailpit/driver cleanly and verify their listeners stop; preserve both PostgreSQL clusters. [010 developer matrix](verification/010-release-developer.md) records actual exact revision/counts/latencies/screenshots, setup limitations and discovered integrated defects. Logs, screenshots, synthetic private fixture files and per-event measurements stay ignored; no external SMTP or deployment is configured.
 
 Developer010 executed the final gates:166 server PASS152.05s (final strengthened HTTP3 PASS5.26s), bundled8 PASS50.14s, nine unique native tests verified through7 retained PASS+2 corrected/rechecked PASS53.96s and explicitFirefox200 followup2 PASS20.45s, complete fresh keyboard4 PASS95.45s. Actual loopback SMTP/invitations4, real61sec idle2, fresh app restart/account and selected-identity household/PIN revisits4 PASS.36 same-Mac events0.9142–2.0968s. Ruff156/static/system/drift/locked/scheduler/diff PASS. [Developer record](verification/010-release-developer.md) qualifies code-revision reuse, historical failures and exact artifacts; this is not independent QA or final release completion. Owned app/Mailpit/driver stopped cleanly, DB17/13 retained.
+
+## Task010 affected QA1 correction checks
+
+At correction `dc456af4aa16f03ee03e8dcc21fe3c5346cab3c3`, only bundled PIN verification, shared native focus helper and native review cleanup changed. Product/backend/config/dependencies remain unchanged from QA1's3769e5c. [Fix evidence](verification/010-release-qa1-fixes-developer.md) records bundledPIN2 PASS18.46s, native review4 cases PASS31.33s and12 actual positive/negative focus controls PASS; Ruff157/diff PASS. QA1 FAIL remains historical. Independent QA2 must run **all13 installed-native tests** (the full native command above with every flag, including RUN_NATIVE_RELEASE=1), plus:
+
+```sh
+PLAYWRIGHT_BROWSERS_PATH=.local/playwright UV_CACHE_DIR=.local/uv-cache uv run pytest tests/e2e/test_pins.py --browser chromium --browser firefox -q
+```
+
+Retain fresh independent QA1's unchanged166 server/domain/security/config/SMTP/real-idle/restart evidence only with the recorded exact product/configuration diff proof; no developer replay of those unchanged gates. Native focus evidence requires QA2 recertification because its shared helper changed. Owned services are stopped; PG17/13 remain available. No source push/deployment authorized.
