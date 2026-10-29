@@ -21,19 +21,19 @@ Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature 
 | 006 | [Recurrence, occurrence generation, future edits, and deletion](tasks/006-recurrence.md) | Done | 005 Done/integrated | [#6](https://github.com/Alex-Yu/done-together/issues/6) |
 | 007 | [Child submission, parent review, returns, and overdue rules](tasks/007-review.md) | Done | 006 Done/integrated | [#7](https://github.com/Alex-Yu/done-together/issues/7) |
 | 008 | [Weekly/all-time stars and completion visibility](tasks/008-stars.md) | Done | 007 Done/integrated | [#8](https://github.com/Alex-Yu/done-together/issues/8) |
-| 009 | [Synchronization, concurrent-action handling, and offline recovery](tasks/009-synchronization.md) | Draft | 008 | [#9](https://github.com/Alex-Yu/done-together/issues/9) |
+| 009 | [Synchronization, concurrent-action handling, and offline recovery](tasks/009-synchronization.md) | Ready | 008 Done/integrated | [#9](https://github.com/Alex-Yu/done-together/issues/9) |
 | 010 | [Integrated release verification and browser/accessibility checks](tasks/010-release-verification.md) | Draft | 009 | [#10](https://github.com/Alex-Yu/done-together/issues/10) |
 
 Bootstrap criteria preserve environment-before-skeleton separation. PM reconciled all feature tasks to the selected architecture, retained stable acceptance IDs, and made later integration ownership explicit where features depend on later workflows. No requirement is claimed complete by grooming.
 
 ## Checkpoint —2026-10-29
 
-- Active delivery:007 Done/integrated,008 In review;009–010 Draft. Scope bootstrap plus001–010, REQ-001–027/P-01–P-07 unchanged. Final release incomplete; final-only orchestrator requirements review.
-- Latest delivery/task007 final tip `5502e1d1eb057ab79f8865615440b91ed148da54`; verified target `e68c669d145d9edf2c4cd0aec38669c80ce8776a`, application `8b66f1b426de24e4bd9f48affb4e8f0b5e6d3db8`; independent QA3 PASS records `143303944c321187dd872377dd1abe3dca9e4ac9`, [record](verification/007-review-qa-attempt-3.md). QA1 FAIL/QA2 BLOCKED retained; driver flag omission proven, helper errors/context corrected. Integration migrate/check/drift,37 affected tests in26.53s,Ruff lint/format142 files,diff PASS; no merge implementation changes.
-- Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;0041/3;0051/3;0061/3;0073/3;008–0100/3. Active batch2 completions7/10; historical batch1 bootstrap2. No resets.
--008 readiness reuses unchanged PM grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d`;007 dependency integrated, five ACs/contracts unchanged. Developer008 handoff below; fresh independent QA gpt-6-luna medium next.
-- GitHub4–6 closed/readback;007 closed/readback;008 In review/open evidence synchronized with exact body/state readback. Explicit user authorization covers existing issues5–10 specification/status/evidence/completion. No push/deployment authorization.
-- PG17 retained55432; unrelatedPG13 preserved5432. Owned driver/browser/server stopped. Uncommitted `_docs/resume.md` user edit preserved/excluded. Native Firefox MUST launch geckodriver with --allow-system-access; corrected helper surfaces missing privilege explicitly.
+- Active delivery:008 Done/integrated,009 Ready,010 Draft. Scope bootstrap plus001–010, REQ-001–027/P-01–P-07 unchanged. Final release incomplete; final-only orchestrator requirements review.
+- Latest delivery `046a9cdb18278ee35cafd00685912d9a0f9be16b`;008 final tip `6a3b2d5dd2c529c9af40f351f299c03d18569dbf`, implementation `4f965a3c706f821fbc6a25ac601a1ffbd30e41d0`; independent QA1 PASS records `1dfdd0c6a3b3df17435ef6f6d12a4c531b6b1212`, [record](verification/008-stars-qa.md). Documentation-only PM clarification merged without product changes. Integration migrate/check/drift,45 affected tests in33.21s,Ruff lint/format146 files,diff PASS.
+- Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;0041/3;0051/3;0061/3;0073/3;0081/3;009–0100/3. Active batch2 completions8/10; historical batch1 bootstrap2. No resets.
+-009 readiness reuses original PM grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d` plus narrow clarification `d0be1b30912e489cd54f61fc2c1f720b34ff7f76`: user explicitly accepted two independent browser sessions on thisMac for two-computer evidence. Report single-host provenance; <=5second target/event classes/product requirements unchanged.009/010/taskQAplan updated. Fresh developer gpt-6.1-sol medium next; new independent QA gpt-6-luna medium afterward.
+- GitHub4–7 closed/readback;008 closure,009 Ready and010 Draft clarification synchronization follow this checkpoint. Explicit authorization covers existing issues5–10 specification/status/evidence/completion. No push/deployment authorization.
+- PG17 retained55432; unrelatedPG13 preserved5432. Owned driver/browser/server stopped. Uncommitted `_docs/resume.md` preserved/excluded. NativeFirefox MUST use geckodriver --allow-system-access; corrected helper surfaces setup errors.
 
 Source publication: Issue bodies contain complete specifications; local source is unpushed. Issue links to develop source may not resolve until separately authorized source publication.
 
@@ -515,3 +515,7 @@ Source publication: Issue bodies contain complete specifications; local source i
 ## Stars completion —2026-10-29
 
 -008 independent QA1 PASS fiveACs at `4f965a3c706f821fbc6a25ac601a1ffbd30e41d0`, records tip `1dfdd0c6a3b3df17435ef6f6d12a4c531b6b1212`.105 affected tests/native4 cases PASS.0081/3; batch2 7/10 before integration. User accepted independent browser sessions on sameMac for two-computer gate; isolated PM clarification `d0be1b30912e489cd54f61fc2c1f720b34ff7f76` pending integration/sync9/10. No push.
+
+## Stars integration /009 Ready —2026-10-29
+
+-008 final tip `6a3b2d5dd2c529c9af40f351f299c03d18569dbf`; approved documentation clarification delivery `046a9cdb18278ee35cafd00685912d9a0f9be16b`, product unchanged.45 affected tests/static/migration PASS. Batch2 8/10;0081/3.009 Ready;010 Draft with same-host clarification. Issue8 closure/9readiness/10clarification readback next; no push.

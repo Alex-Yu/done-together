@@ -1,11 +1,11 @@
 # 009: Synchronization, concurrent-action handling, and offline recovery
 
-Status: Draft
+Status: Ready
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/9
 Local task: `_docs/tasks/009-synchronization.md`
 Requirement links: [REQ-021](../plan.md), [REQ-022](../plan.md), [REQ-023](../plan.md)
-Dependencies: [008](008-stars.md) Done and integrated into `develop`; PM readiness review after that dependency.
+Dependencies: [008](008-stars.md) Done/integrated `6a3b2d5dd2c529c9af40f351f299c03d18569dbf`; independent QA1 and affected integration gates PASS.
 
 ## Goal
 
@@ -24,7 +24,7 @@ Technology selection, unrelated release features, public launch, deployment, pai
 
 ## Constraints
 
-Follow the confirmed first-release scope and P-01–P-07 in [plan.md](../plan.md). Use the selected Django 5.2/Python 3.13/PostgreSQL 17/HTMX approach in [architecture.md](../architecture.md), ADR-001–003 and the locked setup dependencies. No SQLite substitute, frontend build stack, external email provider or deployment is authorized. Follow [process.md](../process.md) and [testing-guidelines.md](../testing-guidelines.md). The user handed over delivery on 2026-10-28. PM refined scope/verification in parallel on an isolated grooming branch; acceptance IDs and release behavior are unchanged. This task remains Draft until its dependency is Done/integrated, this grooming is integrated onto `develop`, and current PM readiness is recorded. Independent task QA leads to completion/integration; orchestrator requirements review is final-release-only.
+Follow the confirmed first-release scope and P-01–P-07 in [plan.md](../plan.md). Use the selected Django 5.2/Python 3.13/PostgreSQL 17/HTMX approach in [architecture.md](../architecture.md), ADR-001–003 and the locked setup dependencies. No SQLite substitute, frontend build stack, external email provider or deployment is authorized. Follow [process.md](../process.md) and [testing-guidelines.md](../testing-guidelines.md). The user handed over delivery on 2026-10-28. PM refined scope/verification in parallel on an isolated grooming branch; acceptance IDs and release behavior are unchanged. Ready on2026-10-29: coordinator reused PM scope review `8feda09b8b827736f832fd8dff6a48ece0e7075d` plus narrow user-approved verification clarification `d0be1b30912e489cd54f61fc2c1f720b34ff7f76`; dependency008 and both grooming records integrated. Four ACs/product contracts unchanged. Independent task QA leads to completion/integration; orchestrator requirements review is final-release-only.
 
 ## Verification plan
 
@@ -37,7 +37,7 @@ For each named AC, record expected and actual observations at the exact implemen
 
 ## Questions and assumptions
 
-Product scope and architecture are confirmed; no consequential product question identified. Existing setup/skeleton/account commands are verified; new feature commands remain UNVERIFIED until their owning task executes them. Parallel preparation is not readiness: dependency integration, grooming integration onto develop and current PM review remain pending. No material question found; minor sequencing assumptions are explicit in verification plan. GitHub issues are authoritative. Existing issues were inspected before initial creation; match by local task ID/path at each synchronization to avoid duplicates.
+Product scope and architecture are confirmed; no consequential product question identified. Existing setup/skeleton/account commands are verified; new feature commands remain UNVERIFIED until their owning task executes them. Dependency008 and grooming integrated; readiness reuses valid product PM review plus approved same-host evidence clarification. No material question found; minor sequencing assumptions are explicit in verification plan. GitHub issues are authoritative. Existing issues were inspected before initial creation; match by local task ID/path at each synchronization to avoid duplicates.
 
 ## Handoff
 
@@ -51,4 +51,6 @@ Product scope and architecture are confirmed; no consequential product question 
 - Checks and results: PM scope/architecture/AC-link consistency checked; issue3–10 Draft bodies synchronized/readback during parallel grooming. No implementation verification run or claimed
 - Verification record: Pending
 - Completion / integration evidence / outcome: Pending
-- Remaining risks or blockers: Dependency integration and current readiness review; no material scope blocker found
+- Remaining risks or blockers: None for implementation. Two independent sessions on this Mac satisfy the user-approved evidence gate; provenance must remain explicit.
+
+- Coordinator readiness2026-10-29:008 integrated,45 affected integration tests/static/migration PASS; original PM grooming8feda09 plus narrow clarificationd0be1b3 integrated at `046a9cdb18278ee35cafd00685912d9a0f9be16b`. User accepted two independent browser sessions; all<=5second per-event/class measurements, offline/reconnect/focus/privacy requirements unchanged. Fresh developer next;0090/3.
