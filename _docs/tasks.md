@@ -30,8 +30,8 @@ Bootstrap criteria preserve environment-before-skeleton separation. PM reconcile
 
 - Active delivery:005 Done/integrated,006 In review. Scope/bootstrap plus001–010, REQ-001–027/P-01–P-07 unchanged. Final release incomplete; final-only orchestrator requirements review.
 - Latest delivery/task005 final tip `c846fffc548961e5c800bd56583e84d3b9cf96c9`; implementation `2424cdf4fd056a392977ac4414e51df594be4039`; independent QA1 PASS evidence `b1078daf64ae71b1d7d605f83a04b1c3d2f8f7a0`, [record](verification/005-one-off-qa.md). Integration migrate/check/drift,37 affected tests in19.27s,Ruff lint/format125 files,diff PASS; no implementation change.
-- Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;0041/3;0051/3;006–0100/3. Active batch2 completions5/10; historical batch1 bootstrap2. Preserve counters.
--006 readiness reuses unchanged PM grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d`;005 dependency integrated, eight ACs/contracts unchanged. Fresh developer gpt-6.1-sol medium implementation complete; new independent QA gpt-6-luna medium next against47268781b08fedb63330fcaaf27a98a3ee260c77.
+- Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;0041/3;0051/3;0061/3 (independent QA attempt1 dispatched);007–0100/3. Active batch2 completions5/10; historical batch1 bootstrap2. Preserve counters.
+-006 readiness reuses unchanged PM grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d`;005 dependency integrated, eight ACs/contracts unchanged. Developer implementation `47268781b08fedb63330fcaaf27a98a3ee260c77` immutable; QA attempt1/3 dispatched to fresh gpt-6-luna medium against exact hash. Records-only tip before QA `57a5ae8558db1dd3e03b20c348e1f7026387e1c0`; no product changes.
 - GitHub4/5 closed/readback;006 In review/open synchronized/readback. User explicitly authorized existing issues5–10 status/specification/evidence/completion updates on2026-10-29. No source push/deployment authorization.
 - PG17 retained55432; unrelatedPG13 preserved5432. Owned driver/browser/server stopped. Uncommitted `_docs/resume.md` user edit preserved/excluded from commits.
 
