@@ -143,6 +143,7 @@ class Firefox:
     def press(self, key):
         value = {
             "Tab": "\ue004",
+            "Space": "\ue00d",
             "Enter": "\ue007",
             "ArrowUp": "\ue013",
             "ArrowDown": "\ue015",

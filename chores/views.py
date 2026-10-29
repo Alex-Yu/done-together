@@ -92,3 +92,80 @@ def manage(request, household_id, occurrence_id=None, delete=False):
         },
         status=status,
     )
+
+
+@require_http_methods(["GET", "POST"])
+@verified_parent_required
+@parent_unlocked_required
+def recurring(request, household_id, definition_id=None, delete=False):
+    from .forms import RecurringForm
+    from .models import Definition
+    from .recurrence import save_recurring
+
+    household = household_for_parent(request.user, household_id)
+    definition = None
+    if definition_id:
+        definition = (
+            Definition.objects.filter(pk=definition_id, household=household)
+            .exclude(schedule="once")
+            .first()
+        )
+        if not definition:
+            raise PermissionDenied("That schedule is unavailable.")
+    initial = (
+        {
+            key: getattr(definition, key)
+            for key in ("title", "child", "schedule", "weekdays", "version")
+        }
+        if definition
+        else {}
+    )
+    form = RecurringForm(
+        household, request.POST if request.method == "POST" else None, initial=initial
+    )
+    if delete:
+        form = forms.Form(
+            request.POST if request.method == "POST" else None,
+            initial={"version": definition.version},
+        )
+        form.fields["version"] = forms.IntegerField(
+            min_value=1, widget=forms.HiddenInput
+        )
+    status = 200
+    if request.method == "POST":
+        if form.is_valid():
+            try:
+                save_recurring(household, form.cleaned_data, definition_id, delete)
+            except Conflict as error:
+                form.add_error(None, str(error))
+                status = 409
+            except DatabaseError:
+                form.add_error(
+                    None,
+                    "Unable to save. Return to the board to check the current result before retrying.",
+                )
+                status = 503
+            else:
+                messages.success(
+                    request,
+                    "Schedule deleted."
+                    if delete
+                    else "Schedule saved. Current work keeps its captured details.",
+                )
+                return redirect("household_board", household_id=household.pk)
+        else:
+            status = 400
+    return render(
+        request,
+        "chores/recurring.html",
+        parent_context(request, household)
+        | {
+            "form": form,
+            "definition": definition,
+            "delete": delete,
+            "heading": "Delete recurring chore"
+            if delete
+            else ("Edit recurring chore" if definition else "Assign recurring chore"),
+        },
+        status=status,
+    )

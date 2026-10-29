@@ -5,7 +5,19 @@ class Definition(models.Model):
     household = models.ForeignKey("households.Household", on_delete=models.PROTECT)
     title = models.CharField(max_length=200)
     child = models.ForeignKey("households.Child", on_delete=models.PROTECT)
-    due_date = models.DateField()
+    due_date = models.DateField(null=True)
+    schedule = models.CharField(
+        max_length=12,
+        default="once",
+        choices=[
+            ("once", "One-off"),
+            ("daily", "Daily"),
+            ("weekdays", "Selected weekdays"),
+        ],
+    )
+    weekdays = models.JSONField(default=list)
+    eligible_from = models.DateField(null=True)
+    version = models.PositiveBigIntegerField(default=1)
 
 
 class Occurrence(models.Model):
@@ -28,6 +40,11 @@ class Occurrence(models.Model):
 
     class Meta:
         constraints = [
+            models.UniqueConstraint(
+                fields=["definition"],
+                condition=~models.Q(state="completed"),
+                name="one_unfinished_per_definition",
+            ),
             models.UniqueConstraint(
                 fields=["definition", "due_date"], name="unique_definition_due_date"
             ),

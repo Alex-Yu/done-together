@@ -40,6 +40,7 @@ def save_one_off(household, data, occurrence_id=None, delete=False):
         occurrence = Occurrence.objects.select_for_update().get(pk=candidate.pk)
         if (
             not definition
+            or definition.schedule != "once"
             or occurrence.state != "to_do"
             or occurrence.version != data.get("version")
         ):

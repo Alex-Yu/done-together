@@ -1,6 +1,6 @@
 # Project commands
 
-Status: Environment, skeleton, accounts and households independently verified/integrated. Task003 PIN/child authority developer-validated on2026-10-29; independent QA pending. Remaining feature/scheduler commands remain UNVERIFIED.
+Status: Environment, skeleton and001–005 independently verified/integrated. Task006 recurrence/scheduler developer-validated on2026-10-29; independent QA pending. Later007–010 feature commands remain UNVERIFIED.
 
 The developer executes [environment-setup](tasks/environment-setup.md) before [application-skeleton](tasks/application-skeleton.md). Each task replaces intended entries with exact observed versions, working directory, environment, expected/observed results and evidence. Feature commands remain unverified until their owning tasks implement and validate them. QA checks independently under [testing-guidelines.md](testing-guidelines.md).
 
@@ -176,7 +176,7 @@ Open `http://127.0.0.1:8025/`; verify the synthetic subject/sender/recipient and
 
 ## Application commands — skeleton developer-validated; features UNVERIFIED
 
-Skeleton commands below now exist and were executed successfully; feature examples/scheduler commands remain UNVERIFIED. Detailed reproduction and observations follow the table.
+Skeleton commands below exist and were executed successfully; later task-specific sections record feature validation, including006 scheduler. Future approval commands remain UNVERIFIED. Detailed reproduction and observations follow the table.
 
 | Operation | Intended command | Expected behavior / validation owner |
 | --- | --- | --- |
@@ -197,8 +197,8 @@ Skeleton commands below now exist and were executed successfully; feature exampl
 | Select feature tests | `uv run pytest tests/integration/ -k approval -q` | UNVERIFIED future selector; task007 must supply real approval tests, not an empty passing selection |
 | Full server tests | `uv run pytest tests/unit tests/integration -q` | Isolated PostgreSQL test database; in-memory mail; concurrency tests use independent transactions; skeleton initializes suite, features extend it |
 | Browser tests | `uv run pytest tests/e2e --browser chromium --browser firefox -q` | Live test server with synthetic fixtures and isolated database; skeleton configures fixture and smoke journey, features extend it |
-| Recurrence once | `uv run python manage.py reconcile_recurrence --once` | UNVERIFIED: idempotent catch-up; implemented/validated by task 006, not bootstrap |
-| Local independent scheduler | `uv run python manage.py reconcile_recurrence --loop --interval 60` | UNVERIFIED: separate foreground process; no browser needed; Ctrl-C stops it; task 006 defines safe loop/retry behavior |
+| Recurrence once | `uv run python manage.py reconcile_recurrence --once` | Developer-validated006: idempotent latest eligible catch-up, no browser required |
+| Local independent scheduler | `uv run python manage.py reconcile_recurrence --loop --interval 60` | Developer-validated006: actual60-second loop, generic DB retry, clean Ctrl-C and restart |
 
 ### Validated skeleton procedures — 2026-10-28
 
@@ -440,3 +440,20 @@ RUN_NATIVE_CHORES=1 PLAYWRIGHT_BROWSERS_PATH=.local/playwright UV_CACHE_DIR=.loc
 ```
 
 Observed005 implementation:37 server cases PASS;1 native test/four Chrome156/Firefox159 native100/200% cases and two DST timezone contexts PASS. Native calendar/select values use test assignment after labeled keyboard-focus checks; keyboard submits/text/recovery tested. Real two-process PostgreSQL restart included. Full integrated browser journeys remain010. Evidence: [005 developer](verification/005-one-off-developer.md).
+
+## Task006 affected recurrence verification —2026-10-29
+
+Run only one disposable PostgreSQL suite at a time. `UV_CACHE_DIR=.local/uv-cache uv run python` uses the managed interpreter; the host `python` shim is unavailable. No browser or web server is needed for the scheduler:
+
+```sh
+UV_CACHE_DIR=.local/uv-cache uv run python manage.py reconcile_recurrence --once
+UV_CACHE_DIR=.local/uv-cache uv run python manage.py reconcile_recurrence --loop --interval 60
+# Ctrl-C stops the owned foreground scheduler cleanly.
+UV_CACHE_DIR=.local/uv-cache uv run pytest tests/integration/test_recurrence.py -q
+UV_CACHE_DIR=.local/uv-cache uv run pytest tests/integration/test_chores.py tests/integration/test_board.py tests/integration/test_pins.py -q
+.local/bin/geckodriver --host 127.0.0.1 --port 4445 --allow-system-access --log error
+# Separate shell; stop owned driver after verification:
+RUN_NATIVE_RECURRENCE=1 PLAYWRIGHT_BROWSERS_PATH=.local/playwright UV_CACHE_DIR=.local/uv-cache uv run pytest tests/e2e/test_recurrence_native.py -q -s
+```
+
+Observed:29 recurrence cases passed across scoped runs (28 initial,1 added real connection-failure/restart case);37 affected regressions passed. Six race cases additionally passed after strengthening eligible-generation vs edit/delete fixtures. The real subprocess test runs once twice, observes actual60-second loop generation with no browser, sends SIGINT/observes exit0, and starts a fresh idempotent scheduler. A separate real refused connection produces a generic nonzero failure, then a fresh correctly connected process succeeds; deterministic loop failure/retry coverage checks interval60 without another elapsed-minute wait. Installed Chrome156.0.8078.48/Firefox159.0 passed four native100/200% cases: weekday checkbox keyboard selection, labels/focus, validation, future-only edits and deletion. Native select values are assigned after keyboard/label checks. All eight ignored screenshots were visually inspected; readable vertical scrolling/no horizontal overflow. Driver and all owned subprocesses stopped. Existing005 browser-local overdue evidence is retained for unchanged local-date JS/identity/date rendering;006 adds household DST/date scheduling checks. Actual submission/approval/stars remain007–008. Full evidence: [006 developer](verification/006-recurrence-developer.md).

@@ -21,6 +21,7 @@ class Card:
     state: State
     due_date: date
     persisted: bool = False
+    recurring: bool = False
     overdue: bool = False
     completed_at: datetime | None = None
 
@@ -57,6 +58,7 @@ def load_visible_work(household):
     for occurrence in (
         Occurrence.objects.filter(household=household)
         .exclude(state="completed")
+        .select_related("definition")
         .order_by("due_date", "pk")
     ):
         grouped.setdefault(occurrence.child_id, []).append(
@@ -66,6 +68,8 @@ def load_visible_work(household):
                 State(occurrence.state),
                 occurrence.due_date,
                 persisted=True,
+                recurring=occurrence.definition_id is not None
+                and occurrence.definition.schedule != "once",
             )
         )
     return {child: VisibleWork(active=tuple(cards)) for child, cards in grouped.items()}

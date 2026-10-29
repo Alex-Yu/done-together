@@ -5,6 +5,22 @@ from chores import views as chore_views
 from . import pin_views, views
 
 urlpatterns = [
+    path(
+        "<int:household_id>/recurring/new/",
+        chore_views.recurring,
+        name="recurring_create",
+    ),
+    path(
+        "<int:household_id>/recurring/<int:definition_id>/edit/",
+        chore_views.recurring,
+        name="recurring_edit",
+    ),
+    path(
+        "<int:household_id>/recurring/<int:definition_id>/delete/",
+        chore_views.recurring,
+        {"delete": True},
+        name="recurring_delete",
+    ),
     path("<int:household_id>/chores/new/", chore_views.manage, name="chore_create"),
     path(
         "<int:household_id>/chores/<int:occurrence_id>/edit/",
