@@ -497,3 +497,41 @@ SYNC_NATIVE_CASE=firefox-2 RUN_NATIVE_SYNC=1 PLAYWRIGHT_BROWSERS_PATH=.local/pla
 ```
 
 Observed:109 affected server cases PASS (4 new sync),3 native tests PASS, one narrow Firefox200 form test PASS.36 accepted mutation→other-session DOM measurements0.9051–2.0266s cover each required class in all four native observer engine/zoom cases. Both independent profiles are on this one Mac; no physical-second-computer claim. Native idle Monday and actual local-date timer, unchanged DOM, drafts/caret/conflicts, offline/500/unreachable, unknown committed response/no retry, exact expiry and confirmed private-view clear verified. Initial Firefox form navigation reset zoom; only the narrow follow-up counts as200% form conflict/unknown-response evidence. Blank Chrome200 offline capture is excluded as visual evidence. System/drift/Ruff149/diff PASS; static collection3 copied9 unmodified. [Exact evidence/selectors](verification/009-synchronization-developer.md); logs/screenshots ignored `.local/verification/009/`. Run DB suites sequentially; full integrated regression remains010.
+
+## Task010 integrated release commands —2026-10-29
+
+The setup/feature sections above are historical execution records. The application now includes001–009; use this section for the current final gate. Task010 is In review after developer27AC PASS at3769e5c; independent QA and final orchestrator review remain required for release completion. Run all disposable PostgreSQL suites **sequentially**; keep local projectPG17:55432 and unrelatedPG13:5432 distinct. Native Firefox requires the exact driver privilege flag below.
+
+```sh
+UV_CACHE_DIR=.local/uv-cache uv sync --locked
+UV_CACHE_DIR=.local/uv-cache uv run python manage.py migrate
+UV_CACHE_DIR=.local/uv-cache uv run python manage.py check
+UV_CACHE_DIR=.local/uv-cache uv run python manage.py makemigrations --check --dry-run
+UV_CACHE_DIR=.local/uv-cache uv run ruff check .
+UV_CACHE_DIR=.local/uv-cache uv run ruff format --check .
+UV_CACHE_DIR=.local/uv-cache uv run pytest tests/unit tests/integration -q
+PLAYWRIGHT_BROWSERS_PATH=.local/playwright UV_CACHE_DIR=.local/uv-cache uv run pytest tests/e2e --browser chromium --browser firefox -q
+UV_CACHE_DIR=.local/uv-cache uv run python manage.py collectstatic --noinput
+UV_CACHE_DIR=.local/uv-cache uv run python manage.py reconcile_recurrence --once
+.local/bin/geckodriver --host 127.0.0.1 --port 4445 --allow-system-access --log error
+# Separate shell, after bundled suite completes:
+RUN_NATIVE_BOARD=1 RUN_NATIVE_CHORES=1 RUN_NATIVE_RECURRENCE=1 RUN_NATIVE_REVIEW=1 RUN_NATIVE_STARS=1 RUN_NATIVE_SYNC=1 RUN_NATIVE_RELEASE=1 PLAYWRIGHT_BROWSERS_PATH=.local/playwright UV_CACHE_DIR=.local/uv-cache uv run pytest tests/e2e/test_board_native.py tests/e2e/test_chores_native.py tests/e2e/test_recurrence_native.py tests/e2e/test_review_native.py tests/e2e/test_stars_native.py tests/e2e/test_sync_native.py tests/e2e/test_release_keyboard_native.py -q -s
+# Verify the Firefox200 form/conflict/lost-response zoom scope explicitly:
+SYNC_NATIVE_CASE=firefox-2 RUN_NATIVE_SYNC=1 PLAYWRIGHT_BROWSERS_PATH=.local/playwright UV_CACHE_DIR=.local/uv-cache uv run pytest tests/e2e/test_sync_native.py -k open_form -q -s
+```
+
+The complete server suite includes actual independent-transaction/HTTP races and the real no-browser scheduler once/60-second-loop/SIGINT/restart/refused-connection checks; no long-scheduler deselection is allowed at this gate. Native release cases are independently isolated per engine/zoom, preserve real per-source limits, and use actual keyboard navigation/select/date input rather than DOM field value/focus assignment. Existing earlier native scenarios retain their documented scope and supplement this integrated fresh-account keyboard journey.
+
+For actual SMTP and process-persistence checks, start only the documented loopback Mailpit/application processes, verify `/health/`, then run:
+
+```sh
+PYTHONUNBUFFERED=1 PLAYWRIGHT_BROWSERS_PATH=.local/playwright UV_CACHE_DIR=.local/uv-cache uv run python tools/verify_account_mail.py
+PYTHONUNBUFFERED=1 PLAYWRIGHT_BROWSERS_PATH=.local/playwright UV_CACHE_DIR=.local/uv-cache uv run python tools/verify_pin_browsers.py
+# Stop/restart only the owned app; verify readiness, then:
+PYTHONUNBUFFERED=1 PLAYWRIGHT_BROWSERS_PATH=.local/playwright UV_CACHE_DIR=.local/uv-cache uv run python tools/verify_account_mail.py --revisit
+PYTHONUNBUFFERED=1 PLAYWRIGHT_BROWSERS_PATH=.local/playwright UV_CACHE_DIR=.local/uv-cache uv run python tools/verify_pin_browsers.py --revisit
+```
+
+The PIN helper also captures actual invitations and performs real61-second stable-browser inactivity while retaining board content. Close owned app/Mailpit/driver cleanly and verify their listeners stop; preserve both PostgreSQL clusters. [010 developer matrix](verification/010-release-developer.md) records actual exact revision/counts/latencies/screenshots, setup limitations and discovered integrated defects. Logs, screenshots, synthetic private fixture files and per-event measurements stay ignored; no external SMTP or deployment is configured.
+
+Developer010 executed the final gates:166 server PASS152.05s (final strengthened HTTP3 PASS5.26s), bundled8 PASS50.14s, nine unique native tests verified through7 retained PASS+2 corrected/rechecked PASS53.96s and explicitFirefox200 followup2 PASS20.45s, complete fresh keyboard4 PASS95.45s. Actual loopback SMTP/invitations4, real61sec idle2, fresh app restart/account and selected-identity household/PIN revisits4 PASS.36 same-Mac events0.9142–2.0968s. Ruff156/static/system/drift/locked/scheduler/diff PASS. [Developer record](verification/010-release-developer.md) qualifies code-revision reuse, historical failures and exact artifacts; this is not independent QA or final release completion. Owned app/Mailpit/driver stopped cleanly, DB17/13 retained.

@@ -1,5 +1,7 @@
 # Architecture and implementation choices
 
+Current delivery note (2026-10-29): the approved approach below is implemented through001–009. Early prospective statements are retained as historical decisions; [commands](commands.md) and the [010 release record](verification/010-release-developer.md) own current execution evidence. Task010 integrated verification is ongoing; independent release QA/final requirements review remain required.
+
 Status: Core approach selected by the user on 2026-10-28: Django + PostgreSQL + HTMX. The design below records the recommended implementation baseline; dependency patches and local installation details remain unverified until bootstrap tasks run. Delivery has not been handed over and no scaffolding is authorized by this record.
 
 ## Options considered

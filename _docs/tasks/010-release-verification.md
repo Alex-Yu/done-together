@@ -1,6 +1,6 @@
 # 010: Integrated release verification and browser/accessibility checks
 
-Status: Ready
+Status: In review
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/10
 Local task: `_docs/tasks/010-release-verification.md`
@@ -70,18 +70,31 @@ Product scope and architecture are confirmed; no consequential product question 
 
 - PM parallel scope review: 2026-10-28; acceptance IDs/behavior retained, concrete per-criterion checks and later integration ownership recorded. Draft until dependency/grooming integration and current readiness review; isolated grooming commit supplied to orchestrator for develop integration.
 
-- Implementation summary: Not started
-- Task branch / verified implementation commit: Pending
-- Changed files / revision: Parallel grooming in isolated `grooming/future-release`; full commit supplied to orchestrator for integration onto develop before readiness
-- Final branch tip / delivery commit / integration results: Pending
+- Implementation summary: Integrated release verification prepared/executed; fixed lost invitation success after synchronized redirect and pre-membership polling blocking join. Added complete true-keyboard native journeys, HTTP recurrence/history coverage and corrected verification fixture/document/identity timing. No new product feature/dependency.
+- Task branch / verified implementation commit: `task/010-release-verification` / `3769e5c9dba30388c7aa127af9fb2124f62444d0` (immutable developer implementation; independent QA next)
+- Changed files / revision: Three product files (member sync opt-in, fetched redirect document), scoped integration/native tests and verification helpers; final source/test revision above. Documentation-only handoff follows; user resume.md excluded.
+- Final branch tip / delivery commit / integration results: Records-only handoff follows implementation; integration pending independent QA/final requirements review. No merge performed.
 - Push status / authorized remote and branch targets: No pushes authorized
-- Checks and results: PM scope/architecture/AC-link consistency checked; issue3–10 Draft bodies synchronized/readback during parallel grooming. No implementation verification run or claimed
-- Verification record: Pending
+- Checks and results: Full166 server PASS; final stronger HTTP3 PASS; bundled8 PASS; nine native tests verified through7 unchanged PASS+2 corrected/rechecked PASS, explicitFirefox200 followup2 PASS; fresh true-keyboard4 PASS;36 same-host events0.9142–2.0968s; actual SMTP4/real idle2/restart revisits4 PASS. Locked/schema/system/static/Ruff156/diff PASS. Exact selectors, revision retention and historical diagnostics in developer record.
+- Verification record: [010 developer](../verification/010-release-developer.md), PASS27ACs at developer stage; ignored artifacts `.local/verification/010/`
 - Completion / integration evidence / outcome: Pending
 - Orchestrator final release requirements review / evidence / outcome: Pending
-- Remaining risks or blockers: Dependency integration and current readiness review; no material scope blocker found
+- Remaining risks or blockers: No implementation blocker. Independent final QA and orchestrator requirements review remain mandatory; issue10 In review/evidence sync pending coordinator. No release completion/push/deployment claim.
 
 ## Resumed readiness —2026-10-29
 
 - User explicitly resumed delivery with010;009 Done/integrated. Authoritative issue10 inspected OPEN/Draft with identical scope. Reused unchanged PM grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d` and approved clarification `d0be1b30912e489cd54f61fc2c1f720b34ff7f76`, both ancestors of develop `4c19eed3d87edbe70fea0beb51096996710ab9aa`. Ready; fresh developer verification preparation next.
 -010 QA attempts0/3; active batch2 remains9/10; all historical counters preserved. No push/deployment. Existing user resume.md edit excluded.
+
+## Integrated verification preparation —2026-10-29
+
+- Branch `task/010-release-verification` from Ready `6ea156f15d03a1a4553bcadaffbd14a025fe6cd5`; unchanged PM scope. QA0/3, batch2 9/10; historical counts preserved.
+- Baseline full PostgreSQL server/concurrency/scheduler suite:163 PASS145.09s. Baseline bundled engines:6 PASS,2 FAIL,9 native skips. F010-001: synchronization fetch consumed invitation success flash on redirect then issued a second GET. F010-002: invitation join bootstrap incorrectly polled a member-only snapshot, clearing the join UI before membership. Narrow integrated corrections preserve the confirmed fetched redirect document and opt authorized member pages into synchronization explicitly, including locked own-PIN recovery. Both affected bundled household cases now PASS20.73s; full final gates follow.
+- Adding true keyboard-only installed-browser J01–J05 verification, including native select/date paths; existing focus-plus-JS-value checks alone do not certify that gate. Product scope and ACs unchanged.
+- Issue10 In progress/F010-001/002 exact body/OPEN readback verified by coordinator (`.local/verification/010/issue10-progress-readback.json`); next implementation review/evidence synchronization pending coordinator handoff. No developer external writes. No push/deployment. Existing user resume.md edit preserved/excluded.
+
+## Developer review handoff —2026-10-29
+
+- In review at immutable `3769e5c9dba30388c7aa127af9fb2124f62444d0`. [Developer27AC matrix](../verification/010-release-developer.md) records final outcomes, exact commands, same-host measurements, fresh screenshots and qualified historical verifier failures. Product/configuration unchanged after3cc00aa; later fixes strengthen tests/helpers only.
+- QA0100/3 before dispatch; batch2 remains9/10; all historical attempts preserved. Independent final QA next, then orchestrator final requirements review. No routine user approval/push/merge/deployment.
+- App/Mailpit/driver exit0; owned listeners closed; disposable DB0 sessions. PG17:55432 and unrelatedPG13:5432 retained. Existing user resume.md content/hash unchanged and excluded. Issue10 current In progress exact readback previously verified; In review/implementation/evidence synchronization pending coordinator normal handoff.
