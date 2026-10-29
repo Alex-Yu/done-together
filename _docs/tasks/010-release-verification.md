@@ -1,6 +1,6 @@
 # 010: Integrated release verification and browser/accessibility checks
 
-Status: In review
+Status: In progress
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/10
 Local task: `_docs/tasks/010-release-verification.md`
@@ -102,3 +102,9 @@ Product scope and architecture are confirmed; no consequential product question 
 ## Independent release QA dispatch —2026-10-29
 
 - Fresh independent gpt-6.1-sol/high QA attempt1/3 at immutable `3769e5c9dba30388c7aa127af9fb2124f62444d0`, records-only developer tip `57c8596935c0149d94d031f926a8a33f48e73ad1`. All27 ACs and full final-release gates required; batch2 remains9/10, all previous counts preserved. No source changes, pushes or deployment during QA.
+
+## QA1 FAIL / same-developer fix routing —2026-10-29
+
+- Independent QA1 FAIL at `3769e5c9dba30388c7aa127af9fb2124f62444d0`, evidence `c895bcefbf4a8c795af3956f80c251d52191345e` / [record](../verification/010-release-qa.md).26AC PASS;026FAIL.166server PASS; bundled7PASS/1FAIL; native12PASS/1FAIL including keyboard4PASS; actual SMTP/idle/restart/security/operational gates PASS;36 same-host events1.1863–1.9300s.
+- F010-QA001: bundled PIN locked-caption assertion stale. F010-QA002: Firefox100 native return-note outline assertion failed; cause unproven. Same developer must resolve both without weakening ACs; limited high investigation for focus failure. QA released services/DB ownership cleanly; all owned services stopped/PGs preserved.
+- Attempts0101/3; batch2 9/10, earlier counts retained. Reuse fresh unchanged evidence only after revision/config/environment proof. New immutable correction then independent affectedQA2 required; final requirements review remains pending. No merge/push/deployment; original resume edit preserved.
