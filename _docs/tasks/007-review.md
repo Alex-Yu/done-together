@@ -1,6 +1,6 @@
 # 007: Child submission, parent review, returns, and overdue rules
 
-Status: In review
+Status: In progress
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/7
 Local task: `_docs/tasks/007-review.md`
@@ -29,6 +29,8 @@ Technology selection, unrelated release features, public launch, deployment, pai
 Follow the confirmed first-release scope and P-01–P-07 in [plan.md](../plan.md). Use the selected Django 5.2/Python 3.13/PostgreSQL 17/HTMX approach in [architecture.md](../architecture.md), ADR-001–003 and the locked setup dependencies. No SQLite substitute, frontend build stack, external email provider or deployment is authorized. Follow [process.md](../process.md) and [testing-guidelines.md](../testing-guidelines.md). The user handed over delivery on 2026-10-28. PM refined scope/verification in parallel on an isolated grooming branch; acceptance IDs and release behavior are unchanged. Ready on2026-10-29: coordinator reused unchanged PM scope review `8feda09b8b827736f832fd8dff6a48ece0e7075d`; dependency006 and grooming integrated, six criteria/contracts/verification plan unchanged. Independent task QA leads to completion/integration; orchestrator requirements review is final-release-only.
 
 ## Verification plan
+
+Firefox native verification requires the exact driver launch: `.local/bin/geckodriver --host 127.0.0.1 --port 4445 --allow-system-access --log error`. The system-access flag enables privileged native100/200 zoom and is mandatory; missing privilege must surface as setup failure, not a false sign-in timeout. Stop only this owned driver after checks. See [commands](../commands.md).
 
 - AC-001: Actual eligible assigned chore submission accepts only that child's valid PIN; wrong/another-child/outsider/duplicate/stale requests cannot authorize transition or management. Reuse003 identity lockout and test submission endpoint five-failure/five-minute behavior across sessions. No star on submission; no parent-unlock extension from child actions.
 - AC-002: Either unlocked parent approves pending work or returns it with a nonblank explanation; whitespace-only/missing note rejected atomically. Return restores to-do and visible note; same child can resubmit. Expired/locked/wrong-household direct requests deny. Parent controls remain on board, with keyboard-accessible labeled forms and honest recoverable errors.
@@ -63,3 +65,5 @@ Product scope and architecture are confirmed; no consequential product question 
 - F001 investigation2026-10-29: returned In progress after independent QA0071 FAIL at8b66f1b; Firefox159 sign-in outcome unresolved. Narrow Firefox100 sanitized HTTP/redirect/focus probe next, then affected100/200 flow verification. No scope/AC change; batch2 6/10,0071/3 preserved.
 
 - F001 developer handback2026-10-29: no code change justified; exact implementation8b66f1b unchanged. Firefox100 probe1 PASS9.68s, unchanged-helper100/200 repeat1 PASS17.42s with sanitized successful HTTP traces. In review for independent targeted recheck; F001 not QA-cleared. QA1 FAIL retained, next dispatch2/3 per coordinator; batch2 6/10.
+
+- F001 proven setup cause2026-10-29: QA2 driver omitted documented `--allow-system-access`; synthetic page heading was present but native zoom returned500/System access required, swallowed by the wait helper. Minimal helper correction now surfaces zoom/setup errors and restores content context in finally. Product unchanged; targeted noflag/withflag and Firefox100/200 checks next. Attempts2/3, batch2 6/10; final QA dispatch3/3.

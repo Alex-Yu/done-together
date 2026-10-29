@@ -185,17 +185,19 @@ class Firefox:
         webdriver("POST", self.session + f"/element/{identity}/click", {})
 
     def apply_zoom(self):
-        webdriver("POST", self.session + "/moz/context", {"context": "chrome"})
-        value = webdriver(
-            "POST",
-            self.session + "/execute/sync",
-            {
-                "script": f"window.gBrowser.selectedBrowser.browsingContext.fullZoom={self.zoom};return window.gBrowser.selectedBrowser.browsingContext.fullZoom;",
-                "args": [],
-            },
-        )
-        assert value == self.zoom
-        webdriver("POST", self.session + "/moz/context", {"context": "content"})
+        try:
+            webdriver("POST", self.session + "/moz/context", {"context": "chrome"})
+            value = webdriver(
+                "POST",
+                self.session + "/execute/sync",
+                {
+                    "script": f"window.gBrowser.selectedBrowser.browsingContext.fullZoom={self.zoom};return window.gBrowser.selectedBrowser.browsingContext.fullZoom;",
+                    "args": [],
+                },
+            )
+            assert value == self.zoom
+        finally:
+            webdriver("POST", self.session + "/moz/context", {"context": "content"})
 
     def screenshot(self, path):
         path.write_bytes(
@@ -210,12 +212,14 @@ def wait_for(ui, expression, expected):
     deadline = time.monotonic() + 5
     while time.monotonic() < deadline:
         try:
-            if ui.execute(expression) == expected:
-                ui.apply_zoom()
-                return
+            matched = ui.execute(expression) == expected
         except Exception:
             # Native navigation can replace the execution context between polls.
-            pass
+            matched = False
+        if matched:
+            # Zoom/setup errors are not navigation races. Surface them directly.
+            ui.apply_zoom()
+            return
         time.sleep(0.05)
     raise AssertionError("Browser navigation/status did not settle")
 

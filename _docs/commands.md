@@ -469,4 +469,6 @@ UV_CACHE_DIR=.local/uv-cache uv run pytest tests/integration/test_review.py test
 RUN_NATIVE_REVIEW=1 PLAYWRIGHT_BROWSERS_PATH=.local/playwright UV_CACHE_DIR=.local/uv-cache uv run pytest tests/e2e/test_review_native.py -q -s
 ```
 
+The `--allow-system-access` flag on the driver command above is required for Firefox native browser zoom. Do not omit it: Firefox's privileged zoom API otherwise returns HTTP500/System access required. The verification helper now surfaces that setup failure directly instead of misreporting a heading/sign-in timeout, and restores content context after a zoom failure. Start this exact owned driver before the native run; stop it afterward. QA3 must use the full command above.
+
 Actual review/approval/star workflows now replace prior synthetic-state evidence for007. Exact executed selectors/counts and retained unchanged006 scheduler evidence are in [007 developer](verification/007-review-developer.md).008 totals/week projection and009 synchronization/offline remain later.

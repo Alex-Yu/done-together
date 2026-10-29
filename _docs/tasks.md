@@ -7,7 +7,7 @@ Pending issue synchronization:None. Existing issue5/6 Done/closed and007 In revi
 
 ## Task index
 
-Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature roadmap against the selected architecture. Environment setup, skeleton,001 accounts,002 households and003 PIN/shared access are Done/integrated;004–005 are Done/integrated;006 Done/integrated;007 In review;008–010 Draft pending dependencies. Scope was confirmed by the user on 2026-10-28, including P-01–P-07.
+Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature roadmap against the selected architecture. Environment setup, skeleton,001 accounts,002 households and003 PIN/shared access are Done/integrated;004–005 are Done/integrated;006 Done/integrated;007 In progress;008–010 Draft pending dependencies. Scope was confirmed by the user on 2026-10-28, including P-01–P-07.
 
 | ID / labels | Task | Status | Dependencies | GitHub issue |
 | --- | --- | --- | --- | --- |
@@ -19,7 +19,7 @@ Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature 
 | 004 | [Shared board, empty states, and settings navigation](tasks/004-board.md) | Done | 003 Done/integrated | [#4](https://github.com/Alex-Yu/done-together/issues/4) |
 | 005 | [One-off chore assignment and maintenance](tasks/005-one-off-chores.md) | Done | 004 Done/integrated | [#5](https://github.com/Alex-Yu/done-together/issues/5) |
 | 006 | [Recurrence, occurrence generation, future edits, and deletion](tasks/006-recurrence.md) | Done | 005 Done/integrated | [#6](https://github.com/Alex-Yu/done-together/issues/6) |
-| 007 | [Child submission, parent review, returns, and overdue rules](tasks/007-review.md) | In review | 006 Done/integrated | [#7](https://github.com/Alex-Yu/done-together/issues/7) |
+| 007 | [Child submission, parent review, returns, and overdue rules](tasks/007-review.md) | In progress | 006 Done/integrated | [#7](https://github.com/Alex-Yu/done-together/issues/7) |
 | 008 | [Weekly/all-time stars and completion visibility](tasks/008-stars.md) | Draft | 007 | [#8](https://github.com/Alex-Yu/done-together/issues/8) |
 | 009 | [Synchronization, concurrent-action handling, and offline recovery](tasks/009-synchronization.md) | Draft | 008 | [#9](https://github.com/Alex-Yu/done-together/issues/9) |
 | 010 | [Integrated release verification and browser/accessibility checks](tasks/010-release-verification.md) | Draft | 009 | [#10](https://github.com/Alex-Yu/done-together/issues/10) |
@@ -28,7 +28,7 @@ Bootstrap criteria preserve environment-before-skeleton separation. PM reconcile
 
 ## Checkpoint —2026-10-29
 
-- Active delivery:006 Done/integrated,007 In review for F001 targeted independent Firefox recheck after QA1 FAIL. Agreed scope bootstrap plus001–010, REQ-001–027/P-01–P-07 unchanged. Final release incomplete; final-only orchestrator requirements review.
+- Active delivery:006 Done/integrated,007 In progress for proven F001 verification-helper/setup correction after QA2 BLOCKED. Agreed scope bootstrap plus001–010, REQ-001–027/P-01–P-07 unchanged. Final release incomplete; final-only orchestrator requirements review.
 - Latest delivery/task006 final tip `42e1c982001f9ae687a6451a1b3d3ad25648edcc`; implementation `47268781b08fedb63330fcaaf27a98a3ee260c77`; independent QA1 PASS records tip `3968b76ae9c932f871f82393dda8e712151ba13d`, [record](verification/006-recurrence-qa.md). Integration migrate/check/drift,65 affected tests (1 deselected) in95.51s,Ruff lint/format132 files,diff PASS; no implementation change.
 - Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;0041/3;0051/3;0061/3;0071/3;008–0100/3. Active batch2 completions6/10; historical batch1 bootstrap2. QA006 usage-limit interruption resumed same attempt; no count reset.
 -007 readiness reuses unchanged PM grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d`; dependency006 integrated, six ACs/contracts unchanged. Implementation `8b66f1b426de24e4bd9f48affb4e8f0b5e6d3db8` on task/007-review; independent QA gpt-6-luna medium next.
@@ -471,3 +471,7 @@ Source publication: Issue bodies contain complete specifications; local source i
 
 - No implementation/helper change; exact8b66f1b426de24e4bd9f48affb4e8f0b5e6d3db8 retained. [Investigation evidence](verification/007-review-f001-investigation.md):Firefox100 initial PASS9.68s; unchanged-helper100/200 repeat PASS17.42s with actual login POST302→redirect→board200 and complete review flows. Earlier QA cause unproven, F001 not QA-cleared.
 - In review for same QA narrow Firefox100/200 plus sanitized request tracing; retain97 server/Chrome/timezone evidence. QA1 FAIL preserved; next dispatch2/3 conservatively counts a handoff despite no code change. Batch2 6/10, earlier histories unchanged. Driver/profiles/live servers stopped, PG17/PG13 preserved; user resume untouched, no merge/push. Issue7 In review handback synchronized/exact body/open readback verified.
+
+##007 F001 helper correction started —2026-10-29
+
+- Narrow high investigator isolated QA2 missing geckodriver `--allow-system-access`: actual synthetic Sign in heading present; swallowed zoom privilege500 caused false heading timeout. Source delta limited to verification helper error propagation/content-context cleanup. No product change or scope/AC weakening. Targeted synthetic noflag/withflag and actualFirefox100/200 next; retain97server/Chrome/timezone.0072/3, batch2 6/10; finalQA3 required. No merge/push; user resume preserved.
