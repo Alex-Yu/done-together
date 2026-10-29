@@ -19,7 +19,7 @@ Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature 
 | 004 | [Shared board, empty states, and settings navigation](tasks/004-board.md) | Done | 003 Done/integrated | [#4](https://github.com/Alex-Yu/done-together/issues/4) |
 | 005 | [One-off chore assignment and maintenance](tasks/005-one-off-chores.md) | Done | 004 Done/integrated | [#5](https://github.com/Alex-Yu/done-together/issues/5) |
 | 006 | [Recurrence, occurrence generation, future edits, and deletion](tasks/006-recurrence.md) | Done | 005 Done/integrated | [#6](https://github.com/Alex-Yu/done-together/issues/6) |
-| 007 | [Child submission, parent review, returns, and overdue rules](tasks/007-review.md) | In review | 006 Done/integrated | [#7](https://github.com/Alex-Yu/done-together/issues/7) |
+| 007 | [Child submission, parent review, returns, and overdue rules](tasks/007-review.md) | Done | 006 Done/integrated | [#7](https://github.com/Alex-Yu/done-together/issues/7) |
 | 008 | [Weekly/all-time stars and completion visibility](tasks/008-stars.md) | Draft | 007 | [#8](https://github.com/Alex-Yu/done-together/issues/8) |
 | 009 | [Synchronization, concurrent-action handling, and offline recovery](tasks/009-synchronization.md) | Draft | 008 | [#9](https://github.com/Alex-Yu/done-together/issues/9) |
 | 010 | [Integrated release verification and browser/accessibility checks](tasks/010-release-verification.md) | Draft | 009 | [#10](https://github.com/Alex-Yu/done-together/issues/10) |
@@ -485,3 +485,7 @@ Source publication: Issue bodies contain complete specifications; local source i
 
 - Independent QA3 PASS at helper-fix `e68c669d145d9edf2c4cd0aec38669c80ce8776a`; application revision `8b66f1b426de24e4bd9f48affb4e8f0b5e6d3db8` unchanged. [Final QA evidence](verification/007-review-qa-attempt-3.md). Firefox159100/200 complete keyboard review flows PASS with sanitized login/review HTTP redirects; missing-flag synthetic probe surfaces explicit system-access error and restores content context. QA1 FAIL and QA2 BLOCKED remain historical, not rewritten. Retained97 server regressions plus Chrome/timezone checks from QA1.
 - Issue7 QA3 PASS handoff synchronized/exact body+OPEN readback verified; task stays In review pending administrative completion/integration. Batch2 remains6/10;007 attempts3/3. No product change, merge, push, or release claim. Driver/browser processes stopped; disposable test DB zero active sessions; PG17/PG13 preserved. User `_docs/resume.md` untouched and excluded. Later008–010 gates remain outstanding.
+
+## Review completion —2026-10-29
+
+-007 independent QA3 PASS all six ACs at `e68c669d145d9edf2c4cd0aec38669c80ce8776a`, final evidence tip `143303944c321187dd872377dd1abe3dca9e4ac9`. QA1 FAIL/QA2 BLOCKED retained; missing driver privilege proven, helper fixed to surface setup error/restore context, final independent Firefox100/200 PASS. Application unchanged from8b66f1b; retained97 server/Chrome/timezone evidence.0073/3; batch2 6/10 before integration. No push.

@@ -1,6 +1,6 @@
 # 007: Child submission, parent review, returns, and overdue rules
 
-Status: In review
+Status: Done
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/7
 Local task: `_docs/tasks/007-review.md`
@@ -13,12 +13,12 @@ Children submit assigned work and parents approve or return it without duplicate
 
 ## Acceptance criteria
 
-- [ ] AC-001: REQ-016: Correct PIN moves eligible work to awaiting approval; incorrect/another child's PIN or duplicate requests cannot create unauthorized transitions.
-- [ ] AC-002: REQ-017: Approval completes work; empty return note is rejected; valid return shows the note and restores to-do; child can retry.
-- [ ] AC-003: REQ-018: Submission before deadline remains non-overdue after it while awaiting approval; return after deadline restores overdue. Apply P-04 timeliness classification.
-- [ ] AC-004: REQ-019: Repeated, retried, or simultaneous approvals across computers yield one completion and one star. Submission/return earns none.
-- [ ] AC-005: REQ-023: Stale reviews, deletion races, and edits produce a valid outcome or explicit conflict with refreshed data; failed actions do not appear committed.
-- [ ] AC-006: Affected changes enforce household isolation, protected parent/child permissions, persistent data, accessible keyboard interaction, and recoverable validation/failure states under REQ-003/023/025/026/027; no credential exposure or false success.
+- [x] AC-001: REQ-016: Correct PIN moves eligible work to awaiting approval; incorrect/another child's PIN or duplicate requests cannot create unauthorized transitions.
+- [x] AC-002: REQ-017: Approval completes work; empty return note is rejected; valid return shows the note and restores to-do; child can retry.
+- [x] AC-003: REQ-018: Submission before deadline remains non-overdue after it while awaiting approval; return after deadline restores overdue. Apply P-04 timeliness classification.
+- [x] AC-004: REQ-019: Repeated, retried, or simultaneous approvals across computers yield one completion and one star. Submission/return earns none.
+- [x] AC-005: REQ-023: Stale reviews, deletion races, and edits produce a valid outcome or explicit conflict with refreshed data; failed actions do not appear committed.
+- [x] AC-006: Affected changes enforce household isolation, protected parent/child permissions, persistent data, accessible keyboard interaction, and recoverable validation/failure states under REQ-003/023/025/026/027; no credential exposure or false success.
 
 ## Out of scope
 
@@ -69,3 +69,5 @@ Product scope and architecture are confirmed; no consequential product question 
 - F001 proven setup cause2026-10-29: QA2 driver omitted documented `--allow-system-access`; synthetic page heading was present but native zoom returned500/System access required, swallowed by the wait helper. Minimal helper correction now surfaces zoom/setup errors and restores content context in finally. Product unchanged; targeted noflag/withflag and Firefox100/200 checks next. Attempts2/3, batch2 6/10; final QA dispatch3/3.
 
 - F001 helper-fix handoff2026-10-29: exact `e68c669d145d9edf2c4cd0aec38669c80ce8776a`, source change only verification helper plus instructions. Synthetic missing privilege now explicit HTTP500 in0.01s; withflag100/200 and injected failure context cleanup PASS. Actual Firefox100/200 flows1 PASS18.88s. In review; finalQA3 next using exact requiredflag driver command, attempts2/3 and batch2 6/10 retained. No push; owned processes stopped.
+
+- Completion2026-10-29: independent QA3 PASS all six criteria at `e68c669d145d9edf2c4cd0aec38669c80ce8776a` (application `8b66f1b426de24e4bd9f48affb4e8f0b5e6d3db8`), records tip `143303944c321187dd872377dd1abe3dca9e4ac9`. [QA3 record](../verification/007-review-qa-attempt-3.md). QA1 FAIL/QA2 BLOCKED retained; F001 cleared by independent Firefox100/200 and helper error/context evidence. Administrative Done/integration next; no per-task requirements recheck.
