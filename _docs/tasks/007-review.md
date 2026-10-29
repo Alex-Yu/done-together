@@ -1,6 +1,6 @@
 # 007: Child submission, parent review, returns, and overdue rules
 
-Status: In progress
+Status: In review
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/7
 Local task: `_docs/tasks/007-review.md`
@@ -49,14 +49,14 @@ Product scope and architecture are confirmed; no consequential product question 
 - PM parallel scope review: 2026-10-28; acceptance IDs/behavior retained, concrete per-criterion checks and later integration ownership recorded. Draft until dependency/grooming integration and current readiness review; isolated grooming commit supplied to orchestrator for develop integration.
 
 - Implementation summary: Actual assigned-child PIN submission with independently committed identity limits; server-receipt/browser-zone timeliness; protected required-note return/resubmission and atomic completion/unique one-star approval/recurrence; scoped conflicts and recoverable failures.
-- Task branch / verified implementation commit: `task/007-review` / `8b66f1b426de24e4bd9f48affb4e8f0b5e6d3db8` (developer verified; QA attempt1 FAIL, attempt2 BLOCKED)
+- Task branch / verified implementation commit: `task/007-review` / `e68c669d145d9edf2c4cd0aec38669c80ce8776a` (helper correction; unchanged application8b66f1b; QA1 FAIL/QA2 BLOCKED preserved, QA3 pending)
 - Changed files / revision: Chore model/migration/forms/review service/views, household routes, board read model/templates/local-date/submission JavaScript/CSS, affected board fixture and new review/browser checks; architecture/commands records.
 - Final branch tip / delivery commit / integration results: Implementation above; following handoff records only. Integration pending independent QA.
 - Push status / authorized remote and branch targets: No pushes authorized
 - Checks and results:32 unique review cases and65 affected regressions PASS across scoped runs; stable Chrome156/Firefox159 native100/200 four flows and LA/Tokyo timeliness check PASS; migration/system/drift/static/Ruff/diff gates PASS. Exact selectors/results and resolved harness findings in the developer record.
-- Verification records: [007 developer](../verification/007-review-developer.md); [independent QA attempt1](../verification/007-review-qa.md); [F001 developer investigation](../verification/007-review-f001-investigation.md); [independent QA attempt2](../verification/007-review-qa-attempt-2.md)
+- Verification records: [007 developer](../verification/007-review-developer.md); [independent QA attempt1](../verification/007-review-qa.md); [F001 developer investigation](../verification/007-review-f001-investigation.md); [independent QA attempt2](../verification/007-review-qa-attempt-2.md); [helper-fix developer evidence](../verification/007-review-helper-fix-developer.md)
 - Completion / integration evidence / outcome: Pending
-- Remaining risks or blockers: F001 remains not QA-cleared. QA2 Firefox159 runs received GET `/accounts/login/` 200 but both timed out waiting for the Sign in heading before filling/submitting; page title, heading and response body length were not captured. Developer100/200 passes remain non-independent evidence. Needs narrow high-reasoning investigation and then QA attempt3/3 after correction. Chrome/server/timezone evidence retained. Visible aggregate totals/week filtering008; automatic synchronization/offline009.
+- Remaining risks or blockers: F001 awaits independent QA3 clearance. Proven QA2 setup cause: omitted mandatory geckodriver `--allow-system-access`, with zoom error swallowed by heading polling. Helper now surfaces setup errors and restores content context; synthetic noflag/withflag/failure cleanup and actual Firefox100/200 flows PASS. Product unchanged;97 server/Chrome/timezone evidence retained. Totals008/sync009 remain later.
 
 - Coordinator readiness2026-10-29: reused PM grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d`, unchanged scope/AC/contracts;006 integrated,65 affected tests/static/migration gates PASS. Actual award creation and deletion retention now mandatory with006 recurrence hook and003 child limiter integration; no scope change. Fresh developer next,0070/3.
 
@@ -67,3 +67,5 @@ Product scope and architecture are confirmed; no consequential product question 
 - F001 developer handback2026-10-29: no code change justified; exact implementation8b66f1b unchanged. Firefox100 probe1 PASS9.68s, unchanged-helper100/200 repeat1 PASS17.42s with sanitized successful HTTP traces. In review for independent targeted recheck; F001 not QA-cleared. QA1 FAIL retained, next dispatch2/3 per coordinator; batch2 6/10.
 
 - F001 proven setup cause2026-10-29: QA2 driver omitted documented `--allow-system-access`; synthetic page heading was present but native zoom returned500/System access required, swallowed by the wait helper. Minimal helper correction now surfaces zoom/setup errors and restores content context in finally. Product unchanged; targeted noflag/withflag and Firefox100/200 checks next. Attempts2/3, batch2 6/10; final QA dispatch3/3.
+
+- F001 helper-fix handoff2026-10-29: exact `e68c669d145d9edf2c4cd0aec38669c80ce8776a`, source change only verification helper plus instructions. Synthetic missing privilege now explicit HTTP500 in0.01s; withflag100/200 and injected failure context cleanup PASS. Actual Firefox100/200 flows1 PASS18.88s. In review; finalQA3 next using exact requiredflag driver command, attempts2/3 and batch2 6/10 retained. No push; owned processes stopped.
