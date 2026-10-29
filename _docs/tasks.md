@@ -457,6 +457,10 @@ Source publication: Issue bodies contain complete specifications; local source i
 - [Independent QA evidence](verification/007-review-qa.md). Reproduce F001 with documented native review command; Firefox returned to sign-in page with blank fields and no visible error. Response status/body not captured; cause unresolved. Route same developer thread for narrow Firefox investigation; after a fix this task needs fresh QA attempt2/3.
 - Issue7 remains In review/open and has been synchronized with the F001 QA handoff; exact body/open-state readback required. Batch2 remains6/10 before integration; prior counters unchanged. No implementation change, task completion, merge or push. QA processes and geckodriver stopped; PostgreSQL17 retained55432 and unrelated PostgreSQL13 preserved5432. User `_docs/resume.md` remains untouched and excluded.008 totals/week projection,009 synchronization/offline and010 full release gates remain later.
 
+## Review QA recheck started —2026-10-29
+
+- New QA handoff after developer F001 investigation; attempt2/3 starts against the same immutable implementation `8b66f1b426de24e4bd9f48affb4e8f0b5e6d3db8`. Investigation reports targeted Firefox159100/200 journeys pass with sanitized login/review response tracing, but explicitly leaves QA1 F001 unresolved pending independent verification. QA1 FAIL and its evidence remain retained; batch2 stays6/10. No application changes, Done, merge or push. User `_docs/resume.md` untouched/excluded.
+
 ##007 F001 investigation started —2026-10-29
 
 - Same developer/branch after QA1 FAIL ca6970e328c72daf7e87528249c7dc7edf3bddf8. In progress; Firefox100-only sanitized request/status/redirect probe, no diagnosis assumed. Retain97 server/Chrome/timezone evidence where unchanged; affected Firefox100/200 workflow required.0071/3, batch2 6/10, all earlier histories preserved. No merge/push; user resume edit untouched.
