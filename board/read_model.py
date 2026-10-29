@@ -1,7 +1,6 @@
-"""Presentation contract. Work providers add persisted occurrences in005–008.
+"""Household-scoped persisted active work; approval/week projection joins in008.
 
-Production currently reads real scoped children and empty work. Tests may replace
-load_visible_work internally; HTTP input never selects a fixture/provider.
+Tests can patch the work provider internally; HTTP never selects a fixture.
 """
 
 from dataclasses import dataclass
@@ -21,6 +20,7 @@ class Card:
     title: str
     state: State
     due_date: date
+    persisted: bool = False
     overdue: bool = False
     completed_at: datetime | None = None
 
@@ -51,8 +51,24 @@ class Column:
 
 
 def load_visible_work(household):
-    # No fake production work/awards. Future occurrence queries own visibility.
-    return {}
+    from chores.models import Occurrence
+
+    grouped = {}
+    for occurrence in (
+        Occurrence.objects.filter(household=household)
+        .exclude(state="completed")
+        .order_by("due_date", "pk")
+    ):
+        grouped.setdefault(occurrence.child_id, []).append(
+            Card(
+                str(occurrence.pk),
+                occurrence.title,
+                State(occurrence.state),
+                occurrence.due_date,
+                persisted=True,
+            )
+        )
+    return {child: VisibleWork(active=tuple(cards)) for child, cards in grouped.items()}
 
 
 def columns_for_household(household):

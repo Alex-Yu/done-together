@@ -1,8 +1,22 @@
 from django.urls import path
 
+from chores import views as chore_views
+
 from . import pin_views, views
 
 urlpatterns = [
+    path("<int:household_id>/chores/new/", chore_views.manage, name="chore_create"),
+    path(
+        "<int:household_id>/chores/<int:occurrence_id>/edit/",
+        chore_views.manage,
+        name="chore_edit",
+    ),
+    path(
+        "<int:household_id>/chores/<int:occurrence_id>/delete/",
+        chore_views.manage,
+        {"delete": True},
+        name="chore_delete",
+    ),
     path("<int:household_id>/board/", pin_views.board, name="household_board"),
     path("<int:household_id>/unlock/", pin_views.unlock, name="parent_unlock"),
     path("<int:household_id>/lock/", pin_views.lock, name="parent_lock"),

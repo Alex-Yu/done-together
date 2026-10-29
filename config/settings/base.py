@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     "accounts",
     "households",
     "board",
+    "chores",
 ]
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
