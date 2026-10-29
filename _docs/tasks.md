@@ -7,7 +7,7 @@ Pending issue synchronization: None after initial delivery grooming; bootstrap i
 
 ## Task index
 
-Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature roadmap against the selected architecture. Environment setup, skeleton,001 accounts,002 households and003 PIN/shared access are Done/integrated;004 is In review;005–010 remain Draft pending current readiness/dependency review. Scope was confirmed by the user on 2026-10-28, including P-01–P-07.
+Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature roadmap against the selected architecture. Environment setup, skeleton,001 accounts,002 households and003 PIN/shared access are Done/integrated;004 is Done pending integration;005–010 remain Draft pending current readiness/dependency review. Scope was confirmed by the user on 2026-10-28, including P-01–P-07.
 
 | ID / labels | Task | Status | Dependencies | GitHub issue |
 | --- | --- | --- | --- | --- |
@@ -16,7 +16,7 @@ Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature 
 | 001 | [Account registration, verification, sign-in, recovery, and safeguards](tasks/001-accounts.md) | Done | application-skeleton Done/integrated | [#1](https://github.com/Alex-Yu/done-together/issues/1) |
 | 002 | [Household creation, timezone setup, and second-parent invitation](tasks/002-households.md) | Done | 001 Done/integrated | [#2](https://github.com/Alex-Yu/done-together/issues/2) |
 | 003 | [Child profiles, parent/child PIN management, and protected shared access](tasks/003-pins.md) | Done | 002 Done/integrated | [#3](https://github.com/Alex-Yu/done-together/issues/3) |
-| 004 | [Shared board, empty states, and settings navigation](tasks/004-board.md) | In review | 003 Done/integrated | [#4](https://github.com/Alex-Yu/done-together/issues/4) |
+| 004 | [Shared board, empty states, and settings navigation](tasks/004-board.md) | Done | 003 Done/integrated | [#4](https://github.com/Alex-Yu/done-together/issues/4) |
 | 005 | [One-off chore assignment and maintenance](tasks/005-one-off-chores.md) | Draft | 004 | [#5](https://github.com/Alex-Yu/done-together/issues/5) |
 | 006 | [Recurrence, occurrence generation, future edits, and deletion](tasks/006-recurrence.md) | Draft | 005 | [#6](https://github.com/Alex-Yu/done-together/issues/6) |
 | 007 | [Child submission, parent review, returns, and overdue rules](tasks/007-review.md) | Draft | 006 | [#7](https://github.com/Alex-Yu/done-together/issues/7) |
@@ -28,17 +28,13 @@ Bootstrap criteria preserve environment-before-skeleton separation. PM reconcile
 
 ## Checkpoint — 2026-10-29
 
-- Phase/current routing: Goal paused by user. Task004 board remains In review with independent QA PASS; administrative completion/integration is next only after explicit resume.
-- Agreed scope: bootstrap plus001–010; REQ-001–027 and confirmed defaults unchanged. Full release incomplete.
-- Delivery: develop at `8218a22e1b015e89be45aad814f5188150fafe4b`, task003 final tip/fast-forward delivery. Verified implementation `d18a01c0d5d22e4ed21ce7a4bf651a673c1cde1c`; independent QA1 PASS all six criteria. No implementation change during merge.
-- Integration: migrate/check/drift,73 server/config tests, Ruff lint/format and diff check PASS. [PIN QA evidence](verification/003-pins-qa.md) includes8bundled,15adversarial,2failure/privacy probes, stable native100/200/real61s idle and restart checks.
-- Preparation:004 In review after implementation;005–010 Draft grooming and QA plans integrated, dependencies still gate readiness.
-- Workflow override: independent per-task QA→completion/integration; no per-task orchestrator verification. Final release requires integrated QA and orchestrator requirements review.
-- Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;0041/3;005–010 each0/3. Preserve histories.
-- Active batch2 completions3/10 after user reset; historical batch1 bootstrap2. Remaining004–010 fit renewed batch.
-- Environment: PG17.11 loopback55432 retained; unrelated PG13:5432 preserved; app/Mailpit/geckodriver stopped. Synthetic data only.
-- GitHub:11/12/1/2 closed; issue3 Done/closed; exact body and state readback verified;issue4 In review/open exactbody readback verified;005–010 Draft/open.
-- Next after explicit resume: administrative completion/integration of004 after its recorded QA PASS, then005 readiness. No pushes authorized; no pending task-issue synchronization. See [compact resume](resume.md) and [execution policy](team/execution-policy.md).
+- Delivery explicitly resumed by user; task004 independent QA PASS accepted for administrative completion/integration. No per-task requirements recheck.
+- Scope: bootstrap plus001–010, REQ-001–027 and P-01–P-07 unchanged; full release incomplete.
+- Branch task/004-board; implementation `067addc7eda122736893d17d5ca4aff7ce1a2885`; QA evidence `797846a2e61ca0054724545424843c32cc422f8d`. Later changes documentation only; retained [QA evidence](verification/004-board-qa.md) remains valid.
+- Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;0041/3;005–010 each0/3. Active batch2 completions3/10 before004 integration; historical batch1 bootstrap2.
+- Next: integrate004 and targeted gates, close/readback issue4; reuse unchanged PM grooming `8feda09` for005 readiness after dependency integration.
+- PG17 verified running55432; unrelatedPG13:5432 preserved. No push authorization. Uncommitted `_docs/resume.md` user edit preserved and excluded from delivery commits.
+- GitHub4/5 read and scope reconciled on resume;004 completion synchronization follows successful integration.005 Draft/open until readiness.
 
 Source publication: Issue bodies contain complete specifications; local source is unpushed. Issue links to develop source may not resolve until separately authorized source publication.
 
@@ -401,3 +397,7 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Applied [execution policy](team/execution-policy.md): explicit role reasoning/model limits; PM only for missing/changed grooming; targeted checks with retained unchanged evidence; concise handoffs/log files; batched bookkeeping. Full release gates and existing autonomy remain.
 - [Compact resume](resume.md) records the exact current state for a fresh coordinator chat. Opening a new chat does not reset counters or resume a paused goal. The current coordinator UI settings were not changed automatically.
 - Delivery remains paused; no task integration, implementation, agent dispatch or external issue write was performed by this workflow edit. The user authorized a local commit of this scoped documentation maintenance; application state and the paused goal are unchanged.
+
+## Delivery resumed —2026-10-29
+
+- User explicitly resumed authorized graph.004 QA PASS accepted unchanged; administrative completion precedes integration. Counters/batch preserved; no routine prompts or pushes. Existing resume edit remains uncommitted.

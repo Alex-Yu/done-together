@@ -1,6 +1,6 @@
 # 004: Shared board, empty states, and settings navigation
 
-Status: In review
+Status: Done
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/4
 Local task: `_docs/tasks/004-board.md`
@@ -51,9 +51,9 @@ Product scope and architecture are confirmed; no consequential product question 
 - Implementation summary: Real scoped child columns, setup/empty guidance, semantic text-state card projection and shared board entry; settings keeps parent guard. No production fake work.
 - Task branch / verified implementation commit: `task/004-board`; `067addc7eda122736893d17d5ca4aff7ce1a2885`
 - Changed files / revision: Board read model/views/templates/CSS, scoped tests/native check and documentation; no schema/dependency change
-- Final branch tip / delivery commit / integration results: Records-only tip follows; QA/integration pending
+- Final branch tip / delivery commit / integration results: QA evidence tip `797846a2e61ca0054724545424843c32cc422f8d`; completion tip follows; integration next
 - Push status / authorized remote and branch targets: No pushes authorized
 - Checks and results: Five unique board tests,20 affected PIN regressions and four installed Chrome/Firefox100/200% native cases PASS; check/drift/lint/format/diff PASS. Prior unchanged mail/61-second evidence reused; full integrated regression at010.
 - Verification record: [Developer AC table](../verification/004-board-developer.md); [independent QA PASS](../verification/004-board-qa.md)
-- Completion / integration evidence / outcome: Independent QA1 PASS; administrative integration pending
+- Completion / integration evidence / outcome: Independent QA1 PASS all five criteria; administrative completion recorded, integration next
 - Remaining risks or blockers: No QA findings; persisted work/review/approval week visibility/totals remain005–008; no source pushes authorized
