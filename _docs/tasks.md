@@ -22,14 +22,14 @@ Delivery handed over on2026-10-28. Environment setup, application skeleton and00
 | 007 | [Child submission, parent review, returns, and overdue rules](tasks/007-review.md) | Done | 006 Done/integrated | [#7](https://github.com/Alex-Yu/done-together/issues/7) |
 | 008 | [Weekly/all-time stars and completion visibility](tasks/008-stars.md) | Done | 007 Done/integrated | [#8](https://github.com/Alex-Yu/done-together/issues/8) |
 | 009 | [Synchronization, concurrent-action handling, and offline recovery](tasks/009-synchronization.md) | Done | 008 Done/integrated | [#9](https://github.com/Alex-Yu/done-together/issues/9) |
-| 010 | [Integrated release verification and browser/accessibility checks](tasks/010-release-verification.md) | In review | 009 | [#10](https://github.com/Alex-Yu/done-together/issues/10) |
+| 010 | [Integrated release verification and browser/accessibility checks](tasks/010-release-verification.md) | Done | 009 | [#10](https://github.com/Alex-Yu/done-together/issues/10) |
 
 Bootstrap criteria preserve environment-before-skeleton separation. PM reconciled all feature tasks to the selected architecture, retained stable acceptance IDs, and made later integration ownership explicit where features depend on later workflows. No requirement is claimed complete by grooming.
 
 ## Checkpoint —2026-10-29 — task010 QA2 PASS / final requirements review
 
-- Scope bootstrap plus001–010,REQ-001–027/P-01–P-07 unchanged.001–009 integrated;010 In review. IndependentQA2 PASS all27 at immutable `dc456af4aa16f03ee03e8dcc21fe3c5346cab3c3`; evidence-only tip `a1c0752baa0ccdb92554e67ffd8ce587844781f7`, [record](verification/010-release-qa-attempt-2.md). QA1 FAIL retained, both findings cleared. FreshPIN2/native13/keyboard4/focuscontrols12 PASS;36 same-host events0.9949–1.9487s. Retained independentQA1166server/sixnonPINbundled/SMTP/realidle/restart/privacy/schema evidence has explicit source/environment proof.
-- Final high-reasoning orchestrator requirements review underway at the same code state; no Done/merge/release completion until its outcome. Current branch task/010-release-verification; develop baseline6ea156f. Review file: verification/010-release-requirements.md (pending).
+- Scope bootstrap plus001–010,REQ-001–027/P-01–P-07 unchanged.001–009 integrated;010 Done records prepared after QA2/final review PASS; local integration next. IndependentQA2 PASS all27 at immutable `dc456af4aa16f03ee03e8dcc21fe3c5346cab3c3`; evidence-only tip `a1c0752baa0ccdb92554e67ffd8ce587844781f7`, [record](verification/010-release-qa-attempt-2.md). QA1 FAIL retained, both findings cleared. FreshPIN2/native13/keyboard4/focuscontrols12 PASS;36 same-host events0.9949–1.9487s. Retained independentQA1166server/sixnonPINbundled/SMTP/realidle/restart/privacy/schema evidence has explicit source/environment proof.
+- Final high-reasoning orchestrator requirements review PASS at the same code state; Done/completion records prepared, local integration next. Current branch task/010-release-verification; develop baseline6ea156f. Review file: [final review](verification/010-release-requirements.md).
 - Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;0041/3;0051/3;0061/3;0073/3;0081/3;0091/3;0102/3. Active batch2 completions9/10; historical batch1 bootstrap2. No resets.
 - Issue10 scope unchanged beforeQA2 PASS handoff; coordinator PASS/final-review synchronization next. Persistent authorization covers issues5–10 updates. No pushes/deployment.
 - Owned app/Mailpit/driver stopped exit0,8000/8025/1025/4445 closed,testDB0sessions; projectPG17:55432/unrelatedPG13:5432 preserved. Existing user resume.md edit unchanged/excluded; no implementation changes afterQA target. Final merge must preserve reviewed code and run applicable integration checks.
@@ -578,3 +578,8 @@ Source publication: Issue bodies contain complete specifications; local source i
 ##010 independent QA2 PASS / final review —2026-10-29
 
 - Same independentQA2 PASS all27 at `dc456af4aa16f03ee03e8dcc21fe3c5346cab3c3`, evidence `a1c0752baa0ccdb92554e67ffd8ce587844781f7`; QA1FAIL retained. Fresh13native/PIN2/12focuscontrols and qualified retainedQA1 evidence complete final QA gates. Final high orchestrator requirements review next at identical code; no completion/integration yet.0102/3,batch2 9/10; all other history preserved.
+
+##010 completion gate / local integration next —2026-10-29
+
+- Independent QA2 PASS atdc456af plus [final requirements review](verification/010-release-requirements.md) PASS all27 requirements/ACs,P01–P07,J01–J05. Completion records are documentation only; reviewed implementation/tests/helpers/configuration must remain identical through merge.
+- Task010 Done records prepared; active batch2 stays9/10 until successful integration, then10/10.0102/3/historical attempts unchanged. Next merge task branch into develop, run applicable checks/code-equivalence, record delivery and reconcile issue10 closed. No push/deployment; user resume preserved.

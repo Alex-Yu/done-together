@@ -1,6 +1,6 @@
 # Project commands
 
-Status: Environment, skeleton and001–005 independently verified/integrated. Task006 recurrence/scheduler developer-validated on2026-10-29; independent QA pending. Later007–010 feature commands remain UNVERIFIED.
+Status: Bootstrap and001–010 locally implemented; independent release QA2 and final requirements review PASS at `dc456af4aa16f03ee03e8dcc21fe3c5346cab3c3`. Final local integration checks are being recorded. Earlier dated/prospective sections are historical evidence; this status and the final release records supersede their old pending/unverified labels. No push or deployment authorized.
 
 The developer executes [environment-setup](tasks/environment-setup.md) before [application-skeleton](tasks/application-skeleton.md). Each task replaces intended entries with exact observed versions, working directory, environment, expected/observed results and evidence. Feature commands remain unverified until their owning tasks implement and validate them. QA checks independently under [testing-guidelines.md](testing-guidelines.md).
 
@@ -545,3 +545,17 @@ PLAYWRIGHT_BROWSERS_PATH=.local/playwright UV_CACHE_DIR=.local/uv-cache uv run p
 ```
 
 Retain fresh independent QA1's unchanged166 server/domain/security/config/SMTP/real-idle/restart evidence only with the recorded exact product/configuration diff proof; no developer replay of those unchanged gates. Native focus evidence requires QA2 recertification because its shared helper changed. Owned services are stopped; PG17/13 remain available. No source push/deployment authorized.
+
+## Verified local release —2026-10-29
+
+Independent [QA2](verification/010-release-qa-attempt-2.md) and [final requirements review](verification/010-release-requirements.md) PASS all27 requirements atdc456af. Full166 PostgreSQL/server cases, eight unique bundled cases,13 installed-native tests including four complete keyboard journeys,12 focus controls, actual loopback SMTP/61second inactivity/restart/privacy and scheduler gates are supported by the revision-bound records. QA1 failures remain historical; affected QA2 passes supersede them. Final integration records the resulting develop delivery hash without changing the reviewed code.
+
+For local use, keep the dedicated PostgreSQL17 cluster on55432 running (documented start procedure above); preserve unrelated PostgreSQL13 on5432. In separate foreground terminals at repository root:
+
+```sh
+.local/bin/mailpit --listen 127.0.0.1:8025 --smtp 127.0.0.1:1025 --database .local/mailpit.db --disable-version-check --smtp-disable-rdns --block-remote-css-and-fonts
+UV_CACHE_DIR=.local/uv-cache uv run python manage.py runserver 127.0.0.1:8000 --noreload
+UV_CACHE_DIR=.local/uv-cache uv run python manage.py reconcile_recurrence --loop --interval 60
+```
+
+Open `http://127.0.0.1:8000/`; account/invitation emails are captured only at `http://127.0.0.1:8025/`. Scheduler operation is independent of browsers. Ctrl-C stops each owned foreground process. No app/Mailpit/driver is intentionally left running after verification; PostgreSQL instances are retained. Local HTTP, same-Mac independent-profile synchronization evidence and synthetic fixtures certify the agreed local scope; production hosting/email/operations remain outside this delivery.

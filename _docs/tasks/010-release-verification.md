@@ -1,6 +1,6 @@
 # 010: Integrated release verification and browser/accessibility checks
 
-Status: In review
+Status: Done
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/10
 Local task: `_docs/tasks/010-release-verification.md`
@@ -13,33 +13,33 @@ Verify all agreed release requirements on the integrated delivery revision.
 
 ## Acceptance criteria
 
-- [ ] AC-001: REQ-001: Verified parents can sign in; unverified accounts cannot access household data; password recovery invalidates the old password; invalid/expired links deny access.
-- [ ] AC-002: REQ-002: Intended verified recipient joins once; wrong-address, reused, and expired invitations fail; an expired invitation can be replaced.
-- [ ] AC-003: REQ-003: Either member parent can manage the household; outsiders cannot read or change it through UI or direct requests.
-- [ ] AC-004: REQ-004: Protected settings add children/reset child PINs; own password authorizes own parent PIN reset; replaced PINs fail. Four-digit PINs preserve leading zeroes.
-- [ ] AC-005: REQ-005: Either valid parent PIN unlocks management; child/incorrect PINs and locked requests cannot perform parent actions.
-- [ ] AC-006: REQ-006: After 60 seconds, management requires a PIN again. Board viewing and child activity do not extend parent access.
-- [ ] AC-007: REQ-007: Repeated failures trigger a temporary restriction, including direct requests; retry is possible after the restriction. Apply P-05 limits.
-- [ ] AC-008: REQ-008: Mixed-state assignments appear under the correct child; states are understandable without color alone; empty states guide setup.
-- [ ] AC-009: REQ-009: Older overdue work remains visible; current-week completions are directly accessible; older completions leave the column but remain stored.
-- [ ] AC-010: REQ-010: Parent can create each type; missing/invalid title, child, or date/schedule cannot create partial work. Children cannot claim or reassign work.
-- [ ] AC-011: REQ-011: Different-timezone computers agree on occurrence identity and dates but may show different overdue labels at the same instant.
-- [ ] AC-012: REQ-012: Leaving daily work unfinished over several days, including awaiting approval, produces one outstanding item and no backlog after approval.
-- [ ] AC-013: REQ-013: Approving overdue Monday work on scheduled Wednesday completes Monday and creates Wednesday once; an unscheduled approval day waits for the next scheduled day.
-- [ ] AC-014: REQ-014: Editing title, assignment, or schedule leaves current occurrence details and completed history unchanged; subsequent occurrences use the edit.
-- [ ] AC-015: REQ-015: Deleting a definition removes to-do/awaiting-approval work and stops recurrence; prior approvals/history/star totals persist.
-- [ ] AC-016: REQ-016: Correct PIN moves eligible work to awaiting approval; incorrect/another child's PIN or duplicate requests cannot create unauthorized transitions.
-- [ ] AC-017: REQ-017: Approval completes work; empty return note is rejected; valid return shows the note and restores to-do; child can retry.
-- [ ] AC-018: REQ-018: Submission before deadline remains non-overdue after it while awaiting approval; return after deadline restores overdue. Apply P-04 timeliness classification.
-- [ ] AC-019: REQ-019: Repeated, retried, or simultaneous approvals across computers yield one completion and one star. Submission/return earns none.
-- [ ] AC-020: REQ-020: Monday approval counts in the new week even for Sunday work; weekly rollover preserves history and all-time totals.
-- [ ] AC-021: REQ-021: Two independent browser sessions/profiles on this Mac cover child/profile, chore create/edit/delete, submissions, returns/approvals, and resulting totals without manual refresh; each server-accepted mutation becomes visible within five seconds (P-06). User accepted this same-host setup on 2026-10-29 for the two-computer synchronization evidence gate. Evidence must identify both sessions as one-host and must not claim testing across two physical computers.
-- [ ] AC-022: REQ-022: Disconnect preserves visible board and disables actions; reconnect refreshes data automatically before actions resume.
-- [ ] AC-023: REQ-023: Stale reviews, deletion races, and edits produce a valid outcome or explicit conflict with refreshed data; failed actions do not appear committed.
-- [ ] AC-024: REQ-024: Chores/reviews are managed on the board; accounts/children/PINs in settings; no separate dashboard, sounds, or reminder notifications are required.
-- [ ] AC-025: REQ-025: Returning to the household restores data; chore deletion preserves earned history. Child/account/household deletion controls are excluded.
-- [ ] AC-026: REQ-026: Core journeys work with keyboard and visible focus, labeled inputs, and text status equivalents; agreed browser/viewport/zoom checks pass.
-- [ ] AC-027: REQ-027: Passwords/PINs cannot be read back or exposed in ordinary responses/logs; access links are private; unauthorized direct requests fail. Mechanisms are architecture decisions.
+- [x] AC-001: REQ-001: Verified parents can sign in; unverified accounts cannot access household data; password recovery invalidates the old password; invalid/expired links deny access.
+- [x] AC-002: REQ-002: Intended verified recipient joins once; wrong-address, reused, and expired invitations fail; an expired invitation can be replaced.
+- [x] AC-003: REQ-003: Either member parent can manage the household; outsiders cannot read or change it through UI or direct requests.
+- [x] AC-004: REQ-004: Protected settings add children/reset child PINs; own password authorizes own parent PIN reset; replaced PINs fail. Four-digit PINs preserve leading zeroes.
+- [x] AC-005: REQ-005: Either valid parent PIN unlocks management; child/incorrect PINs and locked requests cannot perform parent actions.
+- [x] AC-006: REQ-006: After 60 seconds, management requires a PIN again. Board viewing and child activity do not extend parent access.
+- [x] AC-007: REQ-007: Repeated failures trigger a temporary restriction, including direct requests; retry is possible after the restriction. Apply P-05 limits.
+- [x] AC-008: REQ-008: Mixed-state assignments appear under the correct child; states are understandable without color alone; empty states guide setup.
+- [x] AC-009: REQ-009: Older overdue work remains visible; current-week completions are directly accessible; older completions leave the column but remain stored.
+- [x] AC-010: REQ-010: Parent can create each type; missing/invalid title, child, or date/schedule cannot create partial work. Children cannot claim or reassign work.
+- [x] AC-011: REQ-011: Different-timezone computers agree on occurrence identity and dates but may show different overdue labels at the same instant.
+- [x] AC-012: REQ-012: Leaving daily work unfinished over several days, including awaiting approval, produces one outstanding item and no backlog after approval.
+- [x] AC-013: REQ-013: Approving overdue Monday work on scheduled Wednesday completes Monday and creates Wednesday once; an unscheduled approval day waits for the next scheduled day.
+- [x] AC-014: REQ-014: Editing title, assignment, or schedule leaves current occurrence details and completed history unchanged; subsequent occurrences use the edit.
+- [x] AC-015: REQ-015: Deleting a definition removes to-do/awaiting-approval work and stops recurrence; prior approvals/history/star totals persist.
+- [x] AC-016: REQ-016: Correct PIN moves eligible work to awaiting approval; incorrect/another child's PIN or duplicate requests cannot create unauthorized transitions.
+- [x] AC-017: REQ-017: Approval completes work; empty return note is rejected; valid return shows the note and restores to-do; child can retry.
+- [x] AC-018: REQ-018: Submission before deadline remains non-overdue after it while awaiting approval; return after deadline restores overdue. Apply P-04 timeliness classification.
+- [x] AC-019: REQ-019: Repeated, retried, or simultaneous approvals across computers yield one completion and one star. Submission/return earns none.
+- [x] AC-020: REQ-020: Monday approval counts in the new week even for Sunday work; weekly rollover preserves history and all-time totals.
+- [x] AC-021: REQ-021: Two independent browser sessions/profiles on this Mac cover child/profile, chore create/edit/delete, submissions, returns/approvals, and resulting totals without manual refresh; each server-accepted mutation becomes visible within five seconds (P-06). User accepted this same-host setup on 2026-10-29 for the two-computer synchronization evidence gate. Evidence must identify both sessions as one-host and must not claim testing across two physical computers.
+- [x] AC-022: REQ-022: Disconnect preserves visible board and disables actions; reconnect refreshes data automatically before actions resume.
+- [x] AC-023: REQ-023: Stale reviews, deletion races, and edits produce a valid outcome or explicit conflict with refreshed data; failed actions do not appear committed.
+- [x] AC-024: REQ-024: Chores/reviews are managed on the board; accounts/children/PINs in settings; no separate dashboard, sounds, or reminder notifications are required.
+- [x] AC-025: REQ-025: Returning to the household restores data; chore deletion preserves earned history. Child/account/household deletion controls are excluded.
+- [x] AC-026: REQ-026: Core journeys work with keyboard and visible focus, labeled inputs, and text status equivalents; agreed browser/viewport/zoom checks pass.
+- [x] AC-027: REQ-027: Passwords/PINs cannot be read back or exposed in ordinary responses/logs; access links are private; unauthorized direct requests fail. Mechanisms are architecture decisions.
 
 ## Out of scope
 
@@ -71,15 +71,15 @@ Product scope and architecture are confirmed; no consequential product question 
 - PM parallel scope review: 2026-10-28; acceptance IDs/behavior retained, concrete per-criterion checks and later integration ownership recorded. Draft until dependency/grooming integration and current readiness review; isolated grooming commit supplied to orchestrator for develop integration.
 
 - Implementation summary: Integrated release verification prepared/executed; fixed lost invitation success after synchronized redirect and pre-membership polling blocking join. Added complete true-keyboard native journeys, HTTP recurrence/history coverage and corrected verification fixture/document/identity timing. No new product feature/dependency.
-- Task branch / verified implementation commit: `task/010-release-verification` / `dc456af4aa16f03ee03e8dcc21fe3c5346cab3c3` (immutable QA1 correction; independent affected QA2 next)
+- Task branch / verified implementation commit: `task/010-release-verification` / `dc456af4aa16f03ee03e8dcc21fe3c5346cab3c3`; independent QA2 PASS evidence `a1c0752baa0ccdb92554e67ffd8ce587844781f7`.
 - Changed files / revision: QA1 correction changes only bundled PIN assertions, shared native focus verification and native review failure cleanup; product/backend/configuration unchanged from3769e5c. Documentation-only handoff follows; user resume.md excluded.
-- Final branch tip / delivery commit / integration results: Records-only handoff follows implementation; integration pending independent QA/final requirements review. No merge performed.
+- Final branch tip / delivery commit / integration results: Documentation-only completion tip will be merged locally into develop, followed by code-equivalence and affected integration checks; actual delivery hash/results recorded next.
 - Push status / authorized remote and branch targets: No pushes authorized
 - Checks and results: Scoped QA1 fixes: bundled PIN2 PASS18.46s, native review4 engine/zoom cases PASS31.33s,12 actual native focus/outline/label positive/negative controls PASS, Ruff157/diff PASS. Fresh QA1 domain/server166/security/config/SMTP/idle/restart evidence retained by exact unchanged product diff. QA1 FAIL remains historical; QA2 must recertify all13 native tests plus affected bundled PIN cases.
 - Verification record: [QA1 correction developer](../verification/010-release-qa1-fixes-developer.md), scoped fixes PASS; [original independent QA1 FAIL](../verification/010-release-qa.md) preserved. Original developer27AC record remains historical; QA2 pending.
-- Completion / integration evidence / outcome: Pending
-- Orchestrator final release requirements review / evidence / outcome: Pending
-- Remaining risks or blockers: No blocker for scoped corrections. Independent affected QA2 (all13 native tests/PIN2) and final orchestrator requirements review remain mandatory; issue10 correction review/evidence sync pending coordinator. No release completion/push/deployment claim.
+- Completion / integration evidence / outcome: Independent QA2 PASS all27 and final requirements review PASS permit Done/completion records. Final merge/integration evidence pending immediately following this record; issue closes only after successful integration.
+- Orchestrator final release requirements review / evidence / outcome: [Final requirements review](../verification/010-release-requirements.md) PASS all27REQ/ACs, seven defaults and five journeys atdc456af; final merge must preserve reviewed code.
+- Remaining risks or blockers: No in-scope product blocker. Local integration checks and issue reconciliation remain administrative final gates; no pushes/deployment. Approved same-host/loopback/synthetic limitations remain documented.
 
 ## Resumed readiness —2026-10-29
 
@@ -123,3 +123,8 @@ Product scope and architecture are confirmed; no consequential product question 
 
 - IndependentQA2 PASS all27 at `dc456af4aa16f03ee03e8dcc21fe3c5346cab3c3`, evidence tip `a1c0752baa0ccdb92554e67ffd8ce587844781f7`, [record](../verification/010-release-qa-attempt-2.md). FreshPIN2/native13/keyboard4/focuscontrols12 PASS;36 same-host events0.9949–1.9487s; retained independentQA1 server/SMTP/idle/restart/security/schema evidence explicitly revision/environment-bound. F010-QA001/002 cleared;QA1FAIL retained.
 - Final orchestrator requirements review underway at identicalcode. Task stays In review,0102/3,batch2 9/10; no merge/push/deployment. Owned verification services stopped/PGs/userresume preserved.
+
+## Completion gate —2026-10-29
+
+- All27 ACs independently verified byQA2 atdc456af; final high requirements review PASS for all requirements/defaults/journeys. QA1FAIL and retry history preserved. Done records permit exact-code-preserving local integration; no additional product/test/helper change.
+- QA0102/3; batch2 remains9/10 until integration succeeds, then010 uses its remaining slot. No new batch or retries. Original user resume preserved. No push/deployment.
