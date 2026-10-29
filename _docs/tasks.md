@@ -480,3 +480,7 @@ Source publication: Issue bodies contain complete specifications; local source i
 
 - In review at immutable helper-fix `e68c669d145d9edf2c4cd0aec38669c80ce8776a`, records-only tip follows. [Evidence](verification/007-review-helper-fix-developer.md). Proven QA2 missing driverflag triggered swallowed zoom error; helper surfaces setup failure and restores context. Synthetic noflag/withflag/100/200/injected failure checks PASS; actual Firefox159100/200 flows1 PASS18.88s, clean teardown. Application unchanged;97 server/Chrome/timezone evidence retained.
 - Same independentQA finalattempt3 next, exact driver `.local/bin/geckodriver --host 127.0.0.1 --port 4445 --allow-system-access --log error`. Attempts2/3 (QA1 FAIL/QA2 BLOCKED) preserved until dispatch; batch2 6/10. No merge/push; user resume preserved, owned processes stopped/PG17+PG13 retained. Issue7 In review/helper evidence synchronized, exact body/open readback verified.
+
+##007 final QA attempt3 started —2026-10-29
+
+- Fresh handoff after helper correction; exact QA target `e68c669d145d9edf2c4cd0aec38669c80ce8776a` (task application still `8b66f1b426de24e4bd9f48affb4e8f0b5e6d3db8`; verification helper changed). QA1 FAIL and QA2 BLOCKED retained; attempts3/3 now dispatched. Batch2 remains6/10. Rerun only missing Firefox159100/200 native workflows with required geckodriver privilege; retain unchanged server/Chrome/timezone evidence. No product changes, Done, merge or push; user `_docs/resume.md` untouched/excluded.
