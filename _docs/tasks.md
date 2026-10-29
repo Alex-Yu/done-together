@@ -7,7 +7,7 @@ Pending issue synchronization: None. Issue9 Done/closed exact body/state readbac
 
 ## Task index
 
-Delivery handed over on2026-10-28. Environment setup, application skeleton and001–009 are Done/integrated.010 remains Draft and has not started. User requested pause after fully finishing009, before010. Scope remains bootstrap plus001–010, REQ-001–027 and confirmed defaults.
+Delivery handed over on2026-10-28. Environment setup, application skeleton and001–009 are Done/integrated.010 Ready after explicit user resume; release verification preparation next. Scope remains bootstrap plus001–010, REQ-001–027 and confirmed defaults.
 
 | ID / labels | Task | Status | Dependencies | GitHub issue |
 | --- | --- | --- | --- | --- |
@@ -22,21 +22,17 @@ Delivery handed over on2026-10-28. Environment setup, application skeleton and00
 | 007 | [Child submission, parent review, returns, and overdue rules](tasks/007-review.md) | Done | 006 Done/integrated | [#7](https://github.com/Alex-Yu/done-together/issues/7) |
 | 008 | [Weekly/all-time stars and completion visibility](tasks/008-stars.md) | Done | 007 Done/integrated | [#8](https://github.com/Alex-Yu/done-together/issues/8) |
 | 009 | [Synchronization, concurrent-action handling, and offline recovery](tasks/009-synchronization.md) | Done | 008 Done/integrated | [#9](https://github.com/Alex-Yu/done-together/issues/9) |
-| 010 | [Integrated release verification and browser/accessibility checks](tasks/010-release-verification.md) | Draft | 009 | [#10](https://github.com/Alex-Yu/done-together/issues/10) |
+| 010 | [Integrated release verification and browser/accessibility checks](tasks/010-release-verification.md) | Ready | 009 | [#10](https://github.com/Alex-Yu/done-together/issues/10) |
 
 Bootstrap criteria preserve environment-before-skeleton separation. PM reconciled all feature tasks to the selected architecture, retained stable acceptance IDs, and made later integration ownership explicit where features depend on later workflows. No requirement is claimed complete by grooming.
 
-## Checkpoint —2026-10-29 — PAUSED before010
+## Checkpoint —2026-10-29 — RESUMED task010 Ready
 
-- User explicitly requested: completely finish009, then stop before starting010. Delivery is PAUSED; no010 agent, implementation, readiness pass or release verification started. Resume only on explicit user instruction. Use [fresh-chat handoff](resume-after-009.md); older resume.md describes the previous004 pause and contains a preserved user edit.
-- Scope bootstrap plus001–010, REQ-001–027/P-01–P-07 unchanged. Setup/skeleton/001–009 Done/integrated;010 Draft. Full release remains unverified; final integrated QA and orchestrator requirements review are still required.
-- Branch develop. Latest product delivery/task009 final tip `a557fb2b06cc8d0a8349e39407e918750c842a15`; verified implementation `497a573349f791833bdcee3683b3b1c23ed11ad0`; independent QA1 PASS records tip `e53739a5616aba05008998314a9bc8da8fdc108f`, [record](verification/009-synchronization-qa.md). Later pause/completion commits are documentation only.
--009 QA:109 affected server tests,3 native tests PASS (218.71s);36 fresh same-host events0.9086–2.0382s. Integration migrate/check/drift,24 synchronization/PIN tests in15.40s,Ruff lint/format151 files,diff PASS. No implementation change during fast-forward.
-- Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;0041/3;0051/3;0061/3;0073/3;0081/3;0091/3;0100/3. Active batch2 completions9/10; historical batch1 bootstrap2. No resets;010 fits the remaining batch slot. Defects/retries still follow existing limits.
-- Grooming: original PM `8feda09b8b827736f832fd8dff6a48ece0e7075d` plus approved clarification `d0be1b30912e489cd54f61fc2c1f720b34ff7f76` remain valid for unchanged product scope. User accepted independent sessions on thisMac for two-computer evidence; report same-host provenance, preserve<=5second target/all event classes.010 readiness must be recorded only after resume.
-- GitHub11/12/1–9 closed; issue9 exact Done body/CLOSED state readback verified.010 Draft/open; no pending issue updates. User explicitly authorized existing issues5–10 specification/status/evidence/completion updates. No source push/deployment authorization.
-- PG17 retained55432 accepting connections; unrelatedPG13 PID858 preserved5432; owned QA browser/server/driver stopped,4445 closed. NativeFirefox requires geckodriver --allow-system-access. Use UV_CACHE_DIR=.local/uv-cache uv run; hostpython3 shim unavailable. Local DB/process/git commands may require sandbox escalation.
-- Only preserved pre-existing uncommitted work: `_docs/resume.md` user additions (/goal prefix and new-chat instruction), excluded from commits. Do not discard or fold it into delivery commits. No further work in this coordinator until explicit resume.
+- User explicitly resumed delivery through final release gates.010 Ready using unchanged PM grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d` and clarification `d0be1b30912e489cd54f61fc2c1f720b34ff7f76`; authoritative issue10 inspected identical Draft/open scope before readiness.009 Done/integrated; develop start `4c19eed3d87edbe70fea0beb51096996710ab9aa`, task009 delivery `a557fb2b06cc8d0a8349e39407e918750c842a15`, product implementation `497a573349f791833bdcee3683b3b1c23ed11ad0`. Fresh task-only developer next; independent final QA then orchestrator release requirements review required.
+- Scope bootstrap plus001–010, REQ-001–027/P-01–P-07 unchanged. Same-host independent profiles accepted; each required synchronization class <=5seconds. Full release remains unverified.
+- Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;0041/3;0051/3;0061/3;0073/3;0081/3;0091/3;0100/3. Active batch2 completions9/10; historical batch1 bootstrap2. No resets.
+- Issue10 readiness synchronization pending; authorization covers issues5–10 updates. No pushes or deployment. Source remains local.
+- Preserve `_docs/resume.md` uncommitted user edit exactly/exclude from task commits. PG17:55432/PG13:5432 preserved. Inspect live processes; DB suites sequential. Firefox driver requires --allow-system-access. Handoff/history: [resume-after-009](resume-after-009.md), [009 QA](verification/009-synchronization-qa.md).
 
 Source publication: Issue bodies contain complete specifications; local source is unpushed. Issue links to develop source may not resolve until separately authorized source publication.
 

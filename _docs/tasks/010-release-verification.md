@@ -1,6 +1,6 @@
 # 010: Integrated release verification and browser/accessibility checks
 
-Status: Draft
+Status: Ready
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/10
 Local task: `_docs/tasks/010-release-verification.md`
@@ -80,3 +80,8 @@ Product scope and architecture are confirmed; no consequential product question 
 - Completion / integration evidence / outcome: Pending
 - Orchestrator final release requirements review / evidence / outcome: Pending
 - Remaining risks or blockers: Dependency integration and current readiness review; no material scope blocker found
+
+## Resumed readiness —2026-10-29
+
+- User explicitly resumed delivery with010;009 Done/integrated. Authoritative issue10 inspected OPEN/Draft with identical scope. Reused unchanged PM grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d` and approved clarification `d0be1b30912e489cd54f61fc2c1f720b34ff7f76`, both ancestors of develop `4c19eed3d87edbe70fea0beb51096996710ab9aa`. Ready; fresh developer verification preparation next.
+-010 QA attempts0/3; active batch2 remains9/10; all historical counters preserved. No push/deployment. Existing user resume.md edit excluded.
