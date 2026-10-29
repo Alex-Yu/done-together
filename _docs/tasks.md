@@ -17,7 +17,7 @@ Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature 
 | 002 | [Household creation, timezone setup, and second-parent invitation](tasks/002-households.md) | Done | 001 Done/integrated | [#2](https://github.com/Alex-Yu/done-together/issues/2) |
 | 003 | [Child profiles, parent/child PIN management, and protected shared access](tasks/003-pins.md) | Done | 002 Done/integrated | [#3](https://github.com/Alex-Yu/done-together/issues/3) |
 | 004 | [Shared board, empty states, and settings navigation](tasks/004-board.md) | Done | 003 Done/integrated | [#4](https://github.com/Alex-Yu/done-together/issues/4) |
-| 005 | [One-off chore assignment and maintenance](tasks/005-one-off-chores.md) | In review | 004 Done/integrated | [#5](https://github.com/Alex-Yu/done-together/issues/5) |
+| 005 | [One-off chore assignment and maintenance](tasks/005-one-off-chores.md) | Done | 004 Done/integrated | [#5](https://github.com/Alex-Yu/done-together/issues/5) |
 | 006 | [Recurrence, occurrence generation, future edits, and deletion](tasks/006-recurrence.md) | Draft | 005 | [#6](https://github.com/Alex-Yu/done-together/issues/6) |
 | 007 | [Child submission, parent review, returns, and overdue rules](tasks/007-review.md) | Draft | 006 | [#7](https://github.com/Alex-Yu/done-together/issues/7) |
 | 008 | [Weekly/all-time stars and completion visibility](tasks/008-stars.md) | Draft | 007 | [#8](https://github.com/Alex-Yu/done-together/issues/8) |
@@ -418,3 +418,7 @@ Source publication: Issue bodies contain complete specifications; local source i
 ## QA005 dispatch —2026-10-29
 
 - Independent QA attempt1/3 at `2424cdf4fd056a392977ac4414e51df594be4039`, records tip `b85dfadf111501f1dab297adb8a27013626b4556`. Four ACs mandatory; fresh routine QA gpt-6-luna medium. Explicit user authorization now covers issue5–10 updates; no source push. Batch2 remains4/10.
+
+## One-off chores completion —2026-10-29
+
+- Independent QA1 PASS all four criteria at `2424cdf4fd056a392977ac4414e51df594be4039`; evidence `b1078daf64ae71b1d7d605f83a04b1c3d2f8f7a0`.37 affected tests and native4+timezone2 cases PASS. Administrative completion/integration next; no per-task requirements recheck.0051/3; batch2 4/10 before integration. No push.

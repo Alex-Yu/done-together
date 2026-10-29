@@ -1,6 +1,6 @@
 # 005: One-off chore assignment and maintenance
 
-Status: In review
+Status: Done
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/5
 Local task: `_docs/tasks/005-one-off-chores.md`
@@ -13,10 +13,10 @@ Parents can assign and maintain dated one-off work using P-03 rules.
 
 ## Acceptance criteria
 
-- [ ] AC-001: REQ-010: Create titled one-off chores with a specific child and due date; reject invalid input without partial work. Apply P-03 edits/deletion. Recurrence is covered by task 006.
-- [ ] AC-002: REQ-011: Different-timezone computers agree on occurrence identity and dates but may show different overdue labels at the same instant.
-- [ ] AC-003: REQ-025: Returning to the household restores data; chore deletion preserves earned history. Child/account/household deletion controls are excluded.
-- [ ] AC-004: Affected changes enforce household isolation, protected parent/child permissions, persistent data, accessible keyboard interaction, and recoverable validation/failure states under REQ-003/023/025/026/027; no credential exposure or false success.
+- [x] AC-001: REQ-010: Create titled one-off chores with a specific child and due date; reject invalid input without partial work. Apply P-03 edits/deletion. Recurrence is covered by task 006.
+- [x] AC-002: REQ-011: Different-timezone computers agree on occurrence identity and dates but may show different overdue labels at the same instant.
+- [x] AC-003: REQ-025: Returning to the household restores data; chore deletion preserves earned history. Child/account/household deletion controls are excluded.
+- [x] AC-004: Affected changes enforce household isolation, protected parent/child permissions, persistent data, accessible keyboard interaction, and recoverable validation/failure states under REQ-003/023/025/026/027; no credential exposure or false success.
 
 ## Out of scope
 
@@ -60,3 +60,5 @@ Product scope and architecture are confirmed; no consequential product question 
 - Issue5 developer synchronization: Pending. Remote Ready/open body read and confirmed scope unchanged apart from normalized source links before handoff. Automatic approval review rejected In review/evidence publication as external disclosure without explicit authorization; coordinator notified to reconcile. No replacement issue or bypass attempted.
 
 - QA routing: independent attempt1/3 dispatched at exact implementation; no verdict yet. User explicitly authorized issue5–10 specifications/status/evidence/completion updates2026-10-29; handoff synchronization follows.
+
+- Independent QA1 PASS all four ACs at `2424cdf4fd056a392977ac4414e51df594be4039`; evidence commit `b1078daf64ae71b1d7d605f83a04b1c3d2f8f7a0`, [record](../verification/005-one-off-qa.md).37 affected tests and four native zoom/two timezone cases PASS. Administrative completion recorded; integration next. Earlier pending synchronization resolved with explicit user authorization and readback; completion update follows integration.
