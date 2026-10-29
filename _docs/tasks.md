@@ -26,15 +26,14 @@ Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature 
 
 Bootstrap criteria preserve environment-before-skeleton separation. PM reconciled all feature tasks to the selected architecture, retained stable acceptance IDs, and made later integration ownership explicit where features depend on later workflows. No requirement is claimed complete by grooming.
 
-## Checkpoint — 2026-10-29
+## Checkpoint —2026-10-29
 
-- Delivery explicitly resumed by user; task004 independent QA PASS accepted for administrative completion/integration. No per-task requirements recheck.
-- Scope: bootstrap plus001–010, REQ-001–027 and P-01–P-07 unchanged; full release incomplete.
-- Branch `task/005-one-off-chores`; immutable implementation `2424cdf4fd056a392977ac4414e51df594be4039`, [developer evidence](verification/005-one-off-developer.md) PASS. Independent QA is next; task005 locally In review.004 remains integrated with valid QA evidence.
-- Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;0041/3;005–010 each0/3. Active batch2 completions4/10 after004 integration; historical batch1 bootstrap2.
-- Delivery004: `bd608632e14d9a98aea957f82c433d8f03dc1ebc` fast-forward, code unchanged. Migrate/check/drift,25 affected tests,Ruff lint/format114 files,diff PASS. Next: reconcile005 issue handoff then independent QA.
-- PG17 verified running55432; unrelatedPG13:5432 preserved. No push authorization. Uncommitted `_docs/resume.md` user edit preserved and excluded from delivery commits.
-- GitHub4 Done/closed;005 remote remains Ready/open. Issue5 In review handoff blocked by automatic approval review (external specification/evidence disclosure considered not explicitly authorized); coordinator must resolve authorization and synchronize/read back. No code blocker.
+- Active delivery:005 In review, independent QA attempt1/3 dispatch next. Branch task/005-one-off-chores; implementation `2424cdf4fd056a392977ac4414e51df594be4039`, developer records tip `b85dfadf111501f1dab297adb8a27013626b4556`; [evidence](verification/005-one-off-developer.md).
+- Scope/bootstrap plus001–010, REQ-001–027/P-01–P-07 unchanged.004 Done/integrated `bd608632e14d9a98aea957f82c433d8f03dc1ebc`;25 affected integration tests/static/migration gates PASS; issue4 closed/readback.005 PM grooming reused `8feda09b8b827736f832fd8dff6a48ece0e7075d`, Ready commit `f975918d78aeabf329f3fdb94b962bb23592d5a5`.
+- Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;0041/3;0051/3 dispatched;006–0100/3. Active batch2 completions4/10; historical batch1 bootstrap2. Full release incomplete; final-only orchestrator requirements review.
+- Developer005:37 affected tests;four native cases+two timezone contexts;static/migrate/drift PASS. No implementation changes after exact commit. Fresh task-only QA gpt-6-luna medium next; same developer retained for fixes.
+- User explicitly authorized existing delivery issues5–10 status/specification/evidence/completion updates on2026-10-29 after auto-review rejection.005 sync pending until direct readback; no pushes/deployment authorized.
+- PG17 retained55432; unrelatedPG13 preserved5432. Owned driver/browser/server stopped. Uncommitted `_docs/resume.md` user edit preserved/excluded from commits.
 
 Source publication: Issue bodies contain complete specifications; local source is unpushed. Issue links to develop source may not resolve until separately authorized source publication.
 
@@ -415,3 +414,7 @@ Source publication: Issue bodies contain complete specifications; local source i
 
 - In review: implementation `2424cdf4fd056a392977ac4414e51df594be4039`, branch `task/005-one-off-chores`; [developer evidence](verification/005-one-off-developer.md).37 server/affected tests and1 native test/four zoom cases+timezone contexts PASS; static/schema gates PASS.
 - QA0050/3 until dispatch; batch2 remains4/10, earlier counters retained. Next: independent QA at immutable implementation. No merge/push. Unrelated resume edit preserved. Issue5 synchronization pending: automatic approval review rejected external issue update; remote remains Ready/open. Coordinator notified.
+
+## QA005 dispatch —2026-10-29
+
+- Independent QA attempt1/3 at `2424cdf4fd056a392977ac4414e51df594be4039`, records tip `b85dfadf111501f1dab297adb8a27013626b4556`. Four ACs mandatory; fresh routine QA gpt-6-luna medium. Explicit user authorization now covers issue5–10 updates; no source push. Batch2 remains4/10.
