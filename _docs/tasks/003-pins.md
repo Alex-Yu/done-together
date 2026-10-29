@@ -51,7 +51,7 @@ Product scope and architecture are confirmed; no consequential product question 
 - PM readiness: Ready on 2026-10-28 after002 and parallel grooming integration; six ACs unchanged, no consequential question. Full readiness grooming commit recorded in backlog checkpoint.
 
 - Implementation summary: Salted/peppered exact PIN credentials, selected-own-password setup/reset, scoped child add/name/PIN updates, session-bound DB parent authority/60sec activity guard, version/active-parent revocation and explicit-only client timer/activity. Existing002 management protected; verified bootstrap retained.
-- Task branch / verified implementation commit: `task/003-pins`; exact implementation hash recorded after commit; independent QA pending.
+- Task branch / verified implementation commit: `task/003-pins` / `d18a01c0d5d22e4ed21ce7a4bf651a673c1cde1c`; independent QA pending.
 - Changed files / revision: Household credential/child/authority models and migration, PIN services/views/routes/templates/JS, existing management guard integration, tests/native helpers and architecture/commands/evidence.
 - Final branch tip / delivery commit / integration results: Pending
 - Push status / authorized remote and branch targets: No pushes authorized

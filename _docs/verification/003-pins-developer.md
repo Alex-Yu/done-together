@@ -2,7 +2,7 @@
 
 Overall verdict:PENDING — independent QA required.
 Task/specification:[003](../tasks/003-pins.md), [plan](../plan.md), [architecture](../architecture.md), [commands](../commands.md).
-Revision:Implementation hash recorded after commit.
+Revision:`d18a01c0d5d22e4ed21ce7a4bf651a673c1cde1c` on task/003-pins; subsequent handoff-only records change no implementation.
 Reviewer/independence:Developer self-check, not independent QA.
 Environment:macOS/Python3.13.15/Django5.2.18/PostgreSQL17.11; bundled Chromium/Firefox; installed Chrome156.0.8078.48/Firefox159.0; synthetic isolated fixtures only.
 Date:2026-10-29 (work began2026-10-28).

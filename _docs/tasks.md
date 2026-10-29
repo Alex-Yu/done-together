@@ -314,10 +314,10 @@ Source publication: Issue bodies contain complete specifications; local source i
 ## Developer handoff —003 PINs,2026-10-29
 
 - Current role/task:003 implementation complete/In review; exact-code independent QA next. No per-task orchestrator re-check; final release review retained.
-- Branch:task/003-pins fromdb1096aa86bef0fcb517f93ca447785a7d237aba including Ready grooming0eb69675a07941132674a4e549bbf81e4da1e6c7. Exact implementation hash recorded after commit.
+- Branch:task/003-pins fromdb1096aa86bef0fcb517f93ca447785a7d237aba including Ready grooming0eb69675a07941132674a4e549bbf81e4da1e6c7. Exact implementation hash:`d18a01c0d5d22e4ed21ce7a4bf651a673c1cde1c`.
 - Evidence:[developer PIN record](verification/003-pins-developer.md), [commands](commands.md). PIN19/full backend72/household21/browser8 PASS; final exact-password/pepper1 PASS. Standard gates pass; installed native100/200 and both actual61sec idle locks/visible child board PASS; stored state restart revisit PASS.
 - Scope: Child add/read/name-or-PIN update, no deletion. Actual submission007 and full columns004 remain later. Existing002 management now guarded; bootstrap create/join/own password recovery preserved.
 - Services: owned app/Mailpit/geckodriver stopped exit0/endpoints refuse; dedicatedPG17 running55432, unrelatedPG13 preserved. Private fixture artifacts ignored.
 - Counters: batch2 completions2/10;0030/3 before QA dispatch; historical setup2/skeleton1/0011/0022;004–010 zero.
-- Issue3 final In review/hash synchronization/readback pending next handoff step. No merge/rebase/push.
+- Issue3 In review/exact implementation hash/task body synchronized and readback verified; no pending synchronization. No merge/rebase/push.
 - Next: independent QA003 at exact commit, then completion/integration on PASS and PM004 fresh readiness.
