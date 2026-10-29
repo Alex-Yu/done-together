@@ -355,6 +355,6 @@ Source publication: Issue bodies contain complete specifications; local source i
 
 - Dependency003 Done/integrated `8218a22e1b015e89be45aad814f5188150fafe4b`, QA1 PASS `d18a01c0d5d22e4ed21ce7a4bf651a673c1cde1c`; postmerge73 backend/check/migrate/drift/Ruff PASS.
 - Five ACs unchanged; integrated Draft grooming/QA matrix reviewed. Real child columns/empty states/protected navigation now; synthetic internal mixed-state fixtures only for005–008 pending workflows. Preserve003 timeout and read-only board visibility; no production fake chores/totals or dashboard.
-- Issue4 Ready/open exactbody readback verified. Grooming on develop; full readiness commit recorded after creation. No implementation/QA claim from readiness.
+- Issue4 Ready/open exactbody readback verified. Grooming on develop; full readiness commit `6ccc548e5c63a6139a8994f4bae9a4a8dc2b6bbd`; following checkpoint-only commit records this hash. No implementation/QA claim from readiness.
 - Counters unchanged: batch2 completions3/10; setup2/3,skeleton1/3,0011/3,0022/3,0031/3,004–010 each0/3. No pushes.
 - Next: developer task/004-board includes readiness commit; exact implementation to independent QA attempt1→completion/integration on PASS.
