@@ -450,3 +450,7 @@ Source publication: Issue bodies contain complete specifications; local source i
 
 -007 In review on task/007-review at immutable `8b66f1b426de24e4bd9f48affb4e8f0b5e6d3db8`; next tip records only. [Developer evidence](verification/007-review-developer.md).32 unique review tests +65 affected regressions PASS across scoped runs; four stable native engine/zoom flows, browser timeliness, restart/rollback/HTTP races and static/schema gates PASS. Independent QA next,0070/3 until dispatch; batch2 6/10, prior histories retained.
 - Owned browser/server/driver stopped; PG17 retained55432/PG13 preserved5432. No merge/push. User resume edit preserved/excluded.008 totals/week projection,009 sync/offline and010 full release gates remain later. Issue7 handoff synchronized/exact body/open readback verified under explicit user issue5–10 authorization.
+
+## Review QA started —2026-10-29
+
+- Independent QA attempt1/3 dispatched against immutable implementation `8b66f1b426de24e4bd9f48affb4e8f0b5e6d3db8` on `task/007-review`; this checkpoint is evidence/status only. Six ACs and verification plan unchanged. Active batch2 remains6/10 before integration; prior histories retained. User `_docs/resume.md` remains untouched and excluded. PostgreSQL17 owned cluster retained on55432; preserve unrelated PostgreSQL13 on5432. No implementation changes, merge or push.
