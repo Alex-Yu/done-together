@@ -47,14 +47,14 @@ Product scope and architecture are confirmed; no consequential product question 
 - PM parallel scope review: 2026-10-28; acceptance IDs/behavior retained, concrete per-criterion checks and later integration ownership recorded. Draft until dependency/grooming integration and current readiness review; isolated grooming commit supplied to orchestrator for develop integration.
 
 - Implementation summary: Actual assigned-child PIN submission with independently committed identity limits; server-receipt/browser-zone timeliness; protected required-note return/resubmission and atomic completion/unique one-star approval/recurrence; scoped conflicts and recoverable failures.
-- Task branch / verified implementation commit: `task/007-review` / `8b66f1b426de24e4bd9f48affb4e8f0b5e6d3db8` (developer verified; independent QA pending)
+- Task branch / verified implementation commit: `task/007-review` / `8b66f1b426de24e4bd9f48affb4e8f0b5e6d3db8` (developer verified; independent QA attempt1 FAIL)
 - Changed files / revision: Chore model/migration/forms/review service/views, household routes, board read model/templates/local-date/submission JavaScript/CSS, affected board fixture and new review/browser checks; architecture/commands records.
 - Final branch tip / delivery commit / integration results: Implementation above; following handoff records only. Integration pending independent QA.
 - Push status / authorized remote and branch targets: No pushes authorized
 - Checks and results:32 unique review cases and65 affected regressions PASS across scoped runs; stable Chrome156/Firefox159 native100/200 four flows and LA/Tokyo timeliness check PASS; migration/system/drift/static/Ruff/diff gates PASS. Exact selectors/results and resolved harness findings in the developer record.
-- Verification record: [007 developer](../verification/007-review-developer.md)
+- Verification records: [007 developer](../verification/007-review-developer.md); [independent QA attempt1](../verification/007-review-qa.md)
 - Completion / integration evidence / outcome: Pending
-- Remaining risks or blockers: None for independent QA. Visible aggregate totals/week filtering008; automatic synchronization/offline009.
+- Remaining risks or blockers: Firefox159 native login→review journey does not reach the board in independent QA; Chrome and server scenarios pass. Route to developer for investigation before fresh QA. Visible aggregate totals/week filtering008; automatic synchronization/offline009.
 
 - Coordinator readiness2026-10-29: reused PM grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d`, unchanged scope/AC/contracts;006 integrated,65 affected tests/static/migration gates PASS. Actual award creation and deletion retention now mandatory with006 recurrence hook and003 child limiter integration; no scope change. Fresh developer next,0070/3.
 
