@@ -29,9 +29,14 @@ def href(ui, text):
     )
 
 
-def choose_first_parent(ui):
-    first = ui.execute("document.querySelector('[name=parent]').options[0].value")
-    Keyboard(ui).select("parent", first)
+def choose_parent(ui, email):
+    identity = ui.execute(
+        "[...document.querySelector('[name=parent]').options].find(o=>o.textContent.trim()==="
+        + json.dumps(email)
+        + ").value"
+    )
+    Keyboard(ui).select("parent", identity)
+    return identity
 
 
 def manage(ui):
@@ -48,8 +53,8 @@ def assert_locked(ui):
     )
 
 
-def unlock_first(ui, pin):
-    choose_first_parent(ui)
+def unlock_parent(ui, pin, email):
+    choose_parent(ui, email)
     ui.fill("pin", pin)
     ui.click("Unlock parent controls")
     wait_for(
@@ -66,7 +71,7 @@ def pin_journey(ui, record):
     reset = href(ui, "Set or reset your own parent PIN")
     ui.goto(reset)
     wait_heading(ui, "Set or reset your parent PIN")
-    choose_first_parent(ui)
+    choose_parent(ui, record["creator"])
     ui.fill("password", record["password"])
     ui.fill("pin", "0007")
     ui.click("Save parent PIN")
@@ -82,7 +87,7 @@ def pin_journey(ui, record):
         True,
     )
     assert_locked(ui)
-    unlock_first(ui, "0007")
+    unlock_parent(ui, "0007", record["creator"])
     manage(ui)
     ui.goto(href(ui, "Add child"))
     wait_heading(ui, "Add child")
@@ -110,7 +115,7 @@ def pin_journey(ui, record):
     )
     ui.goto(reset)
     wait_heading(ui, "Set or reset your parent PIN")
-    choose_first_parent(ui)
+    choose_parent(ui, record["creator"])
     ui.fill("password", record["password"])
     ui.fill("pin", "0789")
     ui.click("Save parent PIN")
@@ -120,7 +125,7 @@ def pin_journey(ui, record):
         True,
     )
     assert_locked(ui)
-    choose_first_parent(ui)
+    choose_parent(ui, record["creator"])
     ui.fill("pin", "0007")
     ui.click("Unlock parent controls")
     wait_for(ui, "document.body.textContent.includes('Unable to unlock.')", True)
@@ -138,6 +143,7 @@ def pin_journey(ui, record):
     assert metrics["width"] == 1280 // record["zoom"] and not metrics["overflow"]
     ui.screenshot(ROOT / f".local/pins-{record['engine']}-{record['zoom'] * 100}.png")
     record["selected_pin"] = "0789"
+    record["selected_parent"] = record["creator"]
     record["child_name"] = "Birch native"
     print(
         record["engine"],
@@ -167,7 +173,9 @@ def run(revisit):
                         signin(ui, record["recipient"], record["password"])
                         ui.goto("/households/")
                         wait_heading(ui, "Done Together")
-                        unlock_first(ui, record["selected_pin"])
+                        unlock_parent(
+                            ui, record["selected_pin"], record["selected_parent"]
+                        )
                         manage(ui)
                         assert record["child_name"] in ui.execute(
                             "document.body.textContent"
