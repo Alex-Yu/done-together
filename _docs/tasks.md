@@ -3,11 +3,11 @@
 Authoritative backlog: GitHub issues in [Alex-Yu/done-together](https://github.com/Alex-Yu/done-together/issues), selected after user scope confirmation under [process.md](process.md). Local task documents mirror the mapped GitHub issues; this file is the index/checkpoint.
 
 Backlog mode / origin repository: GitHub — `git@github.com:Alex-Yu/done-together.git`, checked 2026-10-28.
-Pending issue synchronization:None. Existing issues5–7 Done/closed and008 Ready/open exact bodies synchronized/readback under explicit user authorization for delivery issues5–10. Source links normalized; local commits remain unpushed.
+Pending issue synchronization:None. Existing issues5–7 Done/closed and008 In review/open exact bodies synchronized/readback under explicit user authorization for delivery issues5–10. Source links normalized; local commits remain unpushed.
 
 ## Task index
 
-Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature roadmap against the selected architecture. Environment setup, skeleton,001 accounts,002 households and003 PIN/shared access are Done/integrated;004–005 are Done/integrated;006–007 Done/integrated;008 In progress;009–010 Draft pending dependencies. Scope was confirmed by the user on 2026-10-28, including P-01–P-07.
+Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature roadmap against the selected architecture. Environment setup, skeleton,001 accounts,002 households and003 PIN/shared access are Done/integrated;004–005 are Done/integrated;006–007 Done/integrated;008 In review;009–010 Draft pending dependencies. Scope was confirmed by the user on 2026-10-28, including P-01–P-07.
 
 | ID / labels | Task | Status | Dependencies | GitHub issue |
 | --- | --- | --- | --- | --- |
@@ -20,7 +20,7 @@ Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature 
 | 005 | [One-off chore assignment and maintenance](tasks/005-one-off-chores.md) | Done | 004 Done/integrated | [#5](https://github.com/Alex-Yu/done-together/issues/5) |
 | 006 | [Recurrence, occurrence generation, future edits, and deletion](tasks/006-recurrence.md) | Done | 005 Done/integrated | [#6](https://github.com/Alex-Yu/done-together/issues/6) |
 | 007 | [Child submission, parent review, returns, and overdue rules](tasks/007-review.md) | Done | 006 Done/integrated | [#7](https://github.com/Alex-Yu/done-together/issues/7) |
-| 008 | [Weekly/all-time stars and completion visibility](tasks/008-stars.md) | In progress | 007 Done/integrated | [#8](https://github.com/Alex-Yu/done-together/issues/8) |
+| 008 | [Weekly/all-time stars and completion visibility](tasks/008-stars.md) | In review | 007 Done/integrated | [#8](https://github.com/Alex-Yu/done-together/issues/8) |
 | 009 | [Synchronization, concurrent-action handling, and offline recovery](tasks/009-synchronization.md) | Draft | 008 | [#9](https://github.com/Alex-Yu/done-together/issues/9) |
 | 010 | [Integrated release verification and browser/accessibility checks](tasks/010-release-verification.md) | Draft | 009 | [#10](https://github.com/Alex-Yu/done-together/issues/10) |
 
@@ -28,11 +28,11 @@ Bootstrap criteria preserve environment-before-skeleton separation. PM reconcile
 
 ## Checkpoint —2026-10-29
 
-- Active delivery:007 Done/integrated,008 Ready;009–010 Draft. Scope bootstrap plus001–010, REQ-001–027/P-01–P-07 unchanged. Final release incomplete; final-only orchestrator requirements review.
+- Active delivery:007 Done/integrated,008 In review;009–010 Draft. Scope bootstrap plus001–010, REQ-001–027/P-01–P-07 unchanged. Final release incomplete; final-only orchestrator requirements review.
 - Latest delivery/task007 final tip `5502e1d1eb057ab79f8865615440b91ed148da54`; verified target `e68c669d145d9edf2c4cd0aec38669c80ce8776a`, application `8b66f1b426de24e4bd9f48affb4e8f0b5e6d3db8`; independent QA3 PASS records `143303944c321187dd872377dd1abe3dca9e4ac9`, [record](verification/007-review-qa-attempt-3.md). QA1 FAIL/QA2 BLOCKED retained; driver flag omission proven, helper errors/context corrected. Integration migrate/check/drift,37 affected tests in26.53s,Ruff lint/format142 files,diff PASS; no merge implementation changes.
 - Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;0041/3;0051/3;0061/3;0073/3;008–0100/3. Active batch2 completions7/10; historical batch1 bootstrap2. No resets.
--008 readiness reuses unchanged PM grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d`;007 dependency integrated, five ACs/contracts unchanged. Fresh developer gpt-6.1-sol medium next; new independent QA gpt-6-luna medium after handoff.
-- GitHub4–6 closed/readback;007 closure and008 readiness synchronization follow this checkpoint. Explicit user authorization covers existing issues5–10 specification/status/evidence/completion. No push/deployment authorization.
+-008 readiness reuses unchanged PM grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d`;007 dependency integrated, five ACs/contracts unchanged. Developer008 handoff below; fresh independent QA gpt-6-luna medium next.
+- GitHub4–6 closed/readback;007 closed/readback;008 In review/open evidence synchronized with exact body/state readback. Explicit user authorization covers existing issues5–10 specification/status/evidence/completion. No push/deployment authorization.
 - PG17 retained55432; unrelatedPG13 preserved5432. Owned driver/browser/server stopped. Uncommitted `_docs/resume.md` user edit preserved/excluded. Native Firefox MUST launch geckodriver with --allow-system-access; corrected helper surfaces missing privilege explicitly.
 
 Source publication: Issue bodies contain complete specifications; local source is unpushed. Issue links to develop source may not resolve until separately authorized source publication.
@@ -497,3 +497,9 @@ Source publication: Issue bodies contain complete specifications; local source i
 ## Stars developer started —2026-10-29
 
 -008 In progress on task/008-stars from readiness78baad7b676dd6aa89b2fa7e4b85c7e12615d9e4; five ACs unchanged. Actual007 unique approvals are the source of counts/current-week visibility. Batch2 7/10;008 QA0/3; earlier histories retained. User resume edit preserved/excluded. No merge/push.
+
+## Stars developer handoff —2026-10-29
+
+-008 In review at immutable implementation `4f965a3c706f821fbc6a25ac601a1ffbd30e41d0` on task/008-stars; next tip records only. [Evidence](verification/008-stars-developer.md).105 unique server cases (8 new/97 affected), four installed native Chrome156/Firefox159100/200 cases and static/schema gates PASS. Real retained approval projection survives two fresh processes and sign-out/revisit; rollover/DST/race/scoping verified.
+- Independent QA next;0080/3 until dispatch, batch2 remains7/10; prior histories incl0073/3 retained. No merge/push. User resume edit preserved/excluded; owned browser/server/driver stopped, PG17/PG13 retained.009 idle refresh/sync and010 final release remain.
+- Issue8 In review/open evidence synchronized with exact body/state readback under explicit user issue5–10 authorization. No implementation changes after immutable commit.

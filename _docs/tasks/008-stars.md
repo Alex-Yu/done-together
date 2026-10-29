@@ -1,6 +1,6 @@
 # 008: Weekly/all-time stars and completion visibility
 
-Status: In progress
+Status: In review
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/8
 Local task: `_docs/tasks/008-stars.md`
@@ -44,14 +44,14 @@ Product scope and architecture are confirmed; no consequential product question 
 
 - PM parallel scope review: 2026-10-28; acceptance IDs/behavior retained, concrete per-criterion checks and later integration ownership recorded. Draft until dependency/grooming integration and current readiness review; isolated grooming commit supplied to orchestrator for develop integration.
 
-- Implementation summary: Not started
-- Task branch / verified implementation commit: Pending
-- Changed files / revision: Parallel grooming in isolated `grooming/future-release`; full commit supplied to orchestrator for integration onto develop before readiness
-- Final branch tip / delivery commit / integration results: Pending
+- Implementation summary: Approval-derived weekly/all-time stars and current-household-week completions now appear directly alongside all active work; calendar-Monday boundaries preserve DST/history.
+- Task branch / verified implementation commit: `task/008-stars` / `4f965a3c706f821fbc6a25ac601a1ffbd30e41d0` (immutable implementation)
+- Changed files / revision: board read model/template, targeted integration/native-browser tests, architecture and start checkpoint; subsequent tip records only.
+- Final branch tip / delivery commit / integration results: Records-only tip follows; independent QA and integration pending.
 - Push status / authorized remote and branch targets: No pushes authorized
-- Checks and results: PM scope/architecture/AC-link consistency checked; issue3–10 Draft bodies synchronized/readback during parallel grooming. No implementation verification run or claimed
-- Verification record: Pending
-- Completion / integration evidence / outcome: Pending
+- Checks and results:105 unique server cases (8 stars +97 affected),1 native test/four stable Chrome/Firefox100/200 cases, system/drift/static/Ruff/diff PASS.
+- Verification record: [008 developer](../verification/008-stars-developer.md)
+- Completion / integration evidence / outcome: Independent QA next; not Done/merged.
 - Remaining risks or blockers: None for implementation. Periodic connected-board refresh across time boundaries remains009.
 
 - Coordinator readiness2026-10-29: existing PM grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d` reused after unchanged scope/AC/contract check and007 integration.37 affected integration tests/static/migration gates PASS. Source of totals is actual007 approval records; no fixture substitutes. Fresh developer next;0080/3.
