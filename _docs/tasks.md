@@ -538,7 +538,7 @@ Source publication: Issue bodies contain complete specifications; local source i
 ## Synchronization integration / user pause —2026-10-29
 
 -009 final tip/delivery `a557fb2b06cc8d0a8349e39407e918750c842a15`; implementation unchanged from independent QA1 PASS.24 focused integration tests in15.40s and migration/system/drift/Ruff151/diff PASS. Issue9 Done/closed exact readback. Batch2 9/10;0091/3;0100/3.
-- User requested stopping after009 fully finished, before010 starts. PAUSED; fresh-chat instructions in [resume-after-009.md](resume-after-009.md). Task010 stays Draft. Full release is not claimed complete. No pushes; original uncommitted resume edit preserved.
+- User requested stopping after009 fully finished, before010 starts. Delivery was paused at this checkpoint with task010 Draft and the full release incomplete. The pause was subsequently resumed and010 completed; see the current checkpoint above. No pushes; original uncommitted resume edit preserved.
 
 ##010 integrated verification started —2026-10-29
 
