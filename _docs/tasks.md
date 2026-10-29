@@ -7,7 +7,7 @@ Pending issue synchronization: None after initial delivery grooming; bootstrap i
 
 ## Task index
 
-Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature roadmap against the selected architecture. Environment setup, skeleton,001 accounts and002 households are Done/integrated;003 PIN/shared access is In progress;004–010 remain Draft pending dependency integration/current readiness review. Scope was confirmed by the user on 2026-10-28, including P-01–P-07.
+Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature roadmap against the selected architecture. Environment setup, skeleton,001 accounts,002 households and003 PIN/shared access are Done/integrated;004–010 remain Draft pending current readiness/dependency review. Scope was confirmed by the user on 2026-10-28, including P-01–P-07.
 
 | ID / labels | Task | Status | Dependencies | GitHub issue |
 | --- | --- | --- | --- | --- |
@@ -28,18 +28,17 @@ Bootstrap criteria preserve environment-before-skeleton separation. PM reconcile
 
 ## Checkpoint — 2026-10-29
 
-- Phase/current routing: Setup, skeleton,001 accounts and002 households Done/integrated; 003 PIN task In progress on task/003-pins; implementation and final developer handoff pending.
+- Phase/current routing: Environment, skeleton,001 accounts,002 households and003 PIN/shared access Done/integrated; PM004 board readiness next.
 - Agreed scope: bootstrap plus001–010; REQ-001–027 and confirmed defaults unchanged. Full release incomplete.
-- Delivery: develop at `f98ba7ba2a46b875bb3a2c0c643d8a3bbe5a1cad`; household task tip `39297ba6903bfe1c7e96c9b85fb8d7dd8892f877`, verified implementation `8269f5a6f5bd6fb71468a93e1a2c405f0aea519a`, independent QA2 PASS. F001 resolved; attempt1 evidence retained.
-- Integration: non-FF merge preserves parallel PM/QA documentation at96e7018; implementation unchanged. Migrate/check/drift,53 server/config tests, Ruff lint/format and diff check all PASS.
-- Preparation integrated: PM Draft003–010 grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d`; QA plans `29bdf2e2b576592ab2654456b5bb42e863874333` under verification/plans. 003 is Ready after current PM review;004–010 remain Draft with dependencies gating readiness.
+- Delivery: develop at `8218a22e1b015e89be45aad814f5188150fafe4b`, task003 final tip/fast-forward delivery. Verified implementation `d18a01c0d5d22e4ed21ce7a4bf651a673c1cde1c`; independent QA1 PASS all six criteria. No implementation change during merge.
+- Integration: migrate/check/drift,73 server/config tests, Ruff lint/format and diff check PASS. [PIN QA evidence](verification/003-pins-qa.md) includes8bundled,15adversarial,2failure/privacy probes, stable native100/200/real61s idle and restart checks.
+- Preparation: Draft004–010 grooming and independent QA plans already integrated; dependencies still gate Ready.
 - Workflow override: independent per-task QA→completion/integration; no per-task orchestrator verification. Final release requires integrated QA and orchestrator requirements review.
-- Evidence: [household QA2 PASS](verification/002-households-qa-attempt-2.md), [QA1 FAIL](verification/002-households-qa.md), [commands](commands.md).
-- Attempts: setup2/3;skeleton1/3;0011/3;0022/3;003–010 each0/3. Preserve histories.
-- Active batch2 completions2/10 after user reset; historical batch1 bootstrap2. Remaining003–010 fit renewed batch.
-- Environment: PG17.11 loopback55432 retained; unrelated PG13:5432 preserved. Task003 verification services may still be running after usage interruption; developer must inspect actual owned-service state and stop cleanly before handoff. Synthetic data only.
-- GitHub:11/12/1 closed; issue2 Done/closed; exact completion body and state readback verified. No push authorization; issue writes separately authorized.
-- Current state: task003 source/tests uncommitted after a developer usage-limit interruption. Prior reported evidence: PIN19/backend72/bundled8 and installed-browser native100/200 plus actual61-second idle lock passed; narrow credential checks, persistence and final handoff remain. No QA verdict. Issue3 last synchronized In progress. Next: resume developer, commit exact implementation, independent QA attempt1. Preserve existing work and inspect live handles before restarting.
+- Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;004–010 each0/3. Preserve histories.
+- Active batch2 completions3/10 after user reset; historical batch1 bootstrap2. Remaining004–010 fit renewed batch.
+- Environment: PG17.11 loopback55432 retained; unrelated PG13:5432 preserved; app/Mailpit/geckodriver stopped. Synthetic data only.
+- GitHub:11/12/1/2 closed; issue3 Done/closed; exact body and state readback verified;004–010 Draft/open.
+- Blockers: None for PM004 readiness. No pushes authorized. Next: PM004 Ready→developer→QA; all completed issue synchronization verified.
 
 Source publication: Issue bodies contain complete specifications; local source is unpushed. Issue links to develop source may not resolve until separately authorized source publication.
 
@@ -346,3 +345,8 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Independent QA attempt1 PASS all six criteria at implementation `d18a01c0d5d22e4ed21ce7a4bf651a673c1cde1c`; evidence/status tip `2457faf3664a65459cce664ae6fc39690a210360`. [QA evidence](verification/003-pins-qa.md).
 - Administrative completion/integration follows QA PASS; no separate per-task orchestrator verification. Next merge, required integration checks, delivery hash and issue3 synchronization/closure; PM004 readiness after integration.
 - Active batch2 completion3/10 after successful integration;003 attempts1/3; setup2/skeleton1/accounts1/households2 retained,004–010 each0. No push.
+
+## PIN integration result —2026-10-29
+
+- Task final tip/fast-forward delivery `8218a22e1b015e89be45aad814f5188150fafe4b`; no code changes during integration.
+- Post-merge migrate/check/drift,73server tests,Ruff lint/format,diff check PASS. Active batch2 3/10;003 attempt1/3. Issue3 Done/closed, exact body and state readback verified; PM004 next. No push.
