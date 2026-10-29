@@ -7,7 +7,7 @@ Pending issue synchronization: None after initial delivery grooming; bootstrap i
 
 ## Task index
 
-Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature roadmap against the selected architecture. Environment setup, skeleton,001 accounts,002 households and003 PIN/shared access are Done/integrated;004–010 remain Draft pending current readiness/dependency review. Scope was confirmed by the user on 2026-10-28, including P-01–P-07.
+Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature roadmap against the selected architecture. Environment setup, skeleton,001 accounts,002 households and003 PIN/shared access are Done/integrated;004 is In review;005–010 remain Draft pending current readiness/dependency review. Scope was confirmed by the user on 2026-10-28, including P-01–P-07.
 
 | ID / labels | Task | Status | Dependencies | GitHub issue |
 | --- | --- | --- | --- | --- |
@@ -16,7 +16,7 @@ Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature 
 | 001 | [Account registration, verification, sign-in, recovery, and safeguards](tasks/001-accounts.md) | Done | application-skeleton Done/integrated | [#1](https://github.com/Alex-Yu/done-together/issues/1) |
 | 002 | [Household creation, timezone setup, and second-parent invitation](tasks/002-households.md) | Done | 001 Done/integrated | [#2](https://github.com/Alex-Yu/done-together/issues/2) |
 | 003 | [Child profiles, parent/child PIN management, and protected shared access](tasks/003-pins.md) | Done | 002 Done/integrated | [#3](https://github.com/Alex-Yu/done-together/issues/3) |
-| 004 | [Shared board, empty states, and settings navigation](tasks/004-board.md) | Ready | 003 Done/integrated | [#4](https://github.com/Alex-Yu/done-together/issues/4) |
+| 004 | [Shared board, empty states, and settings navigation](tasks/004-board.md) | In review | 003 Done/integrated | [#4](https://github.com/Alex-Yu/done-together/issues/4) |
 | 005 | [One-off chore assignment and maintenance](tasks/005-one-off-chores.md) | Draft | 004 | [#5](https://github.com/Alex-Yu/done-together/issues/5) |
 | 006 | [Recurrence, occurrence generation, future edits, and deletion](tasks/006-recurrence.md) | Draft | 005 | [#6](https://github.com/Alex-Yu/done-together/issues/6) |
 | 007 | [Child submission, parent review, returns, and overdue rules](tasks/007-review.md) | Draft | 006 | [#7](https://github.com/Alex-Yu/done-together/issues/7) |
@@ -28,17 +28,17 @@ Bootstrap criteria preserve environment-before-skeleton separation. PM reconcile
 
 ## Checkpoint — 2026-10-29
 
-- Phase/current routing: Environment, skeleton,001 accounts,002 households and003 PIN/shared access Done/integrated; 004 board Ready; developer handoff next.
+- Phase/current routing: Environment, skeleton,001 accounts,002 households and003 PIN/shared access Done/integrated; 004 board In review; independent QA next.
 - Agreed scope: bootstrap plus001–010; REQ-001–027 and confirmed defaults unchanged. Full release incomplete.
 - Delivery: develop at `8218a22e1b015e89be45aad814f5188150fafe4b`, task003 final tip/fast-forward delivery. Verified implementation `d18a01c0d5d22e4ed21ce7a4bf651a673c1cde1c`; independent QA1 PASS all six criteria. No implementation change during merge.
 - Integration: migrate/check/drift,73 server/config tests, Ruff lint/format and diff check PASS. [PIN QA evidence](verification/003-pins-qa.md) includes8bundled,15adversarial,2failure/privacy probes, stable native100/200/real61s idle and restart checks.
-- Preparation:004 Ready after current PM review;005–010 Draft grooming and QA plans integrated, dependencies still gate readiness.
+- Preparation:004 In review after implementation;005–010 Draft grooming and QA plans integrated, dependencies still gate readiness.
 - Workflow override: independent per-task QA→completion/integration; no per-task orchestrator verification. Final release requires integrated QA and orchestrator requirements review.
 - Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;004–010 each0/3. Preserve histories.
 - Active batch2 completions3/10 after user reset; historical batch1 bootstrap2. Remaining004–010 fit renewed batch.
 - Environment: PG17.11 loopback55432 retained; unrelated PG13:5432 preserved; app/Mailpit/geckodriver stopped. Synthetic data only.
-- GitHub:11/12/1/2 closed; issue3 Done/closed; exact body and state readback verified;issue4 Ready/open exactbody readback verified;005–010 Draft/open.
-- Blockers: None for004 implementation. No pushes authorized. Next: developer task/004-board from committed develop grooming→implementation→independent QA attempt1; no pending issue synchronization.
+- GitHub:11/12/1/2 closed; issue3 Done/closed; exact body and state readback verified;issue4 In progress/open exactbody readback verified; In review synchronization pending;005–010 Draft/open.
+- Blockers: None. No pushes authorized. Next: exact implementation/records commit and issue4 In review synchronization, then independent QA attempt1.
 
 Source publication: Issue bodies contain complete specifications; local source is unpushed. Issue links to develop source may not resolve until separately authorized source publication.
 
@@ -358,3 +358,14 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Issue4 Ready/open exactbody readback verified. Grooming on develop; full readiness commit `6ccc548e5c63a6139a8994f4bae9a4a8dc2b6bbd`; following checkpoint-only commit records this hash. No implementation/QA claim from readiness.
 - Counters unchanged: batch2 completions3/10; setup2/3,skeleton1/3,0011/3,0022/3,0031/3,004–010 each0/3. No pushes.
 - Next: developer task/004-board includes readiness commit; exact implementation to independent QA attempt1→completion/integration on PASS.
+
+## Developer started004 —2026-10-29
+
+- Current role/task:004 In progress on task/004-board from69ef4983e77c2856a2cce9e818215e4e666245ab including Ready grooming6ccc548e5c63a6139a8994f4bae9a4a8dc2b6bbd.
+- Real child columns/empty guidance/scoped shared entry now; mixed work states internal test fixtures only until005–008. Preserve003 authority and failure handling.
+- Active batch2 completions3/10;004 attempts0/3 before QA. Source incomplete/uncommitted; no verdict/merge/push.
+
+##004 developer handoff —2026-10-29
+
+- task/004-board based on Ready checkpoint69ef4983e77c2856a2cce9e818215e4e666245ab/grooming6ccc548e5c63a6139a8994f4bae9a4a8dc2b6bbd. Implementation complete/In review; exact hash follows commit. Five board cases +20 affected PIN regressions and four stable native engine/zoom cases PASS; evidence `_docs/verification/004-board-developer.md`.
+- Batch2 remains3/10;004 QA0 until dispatch. Prior histories unchanged. Driver/browser/test-server stopped; PG17 remains, PG13 preserved. No merge/push. Independent QA next; full release regression reserved010.

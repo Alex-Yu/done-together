@@ -8,6 +8,7 @@ from django.utils import timezone
 from django.views.decorators.http import require_GET, require_http_methods, require_POST
 
 from accounts.access import verified_parent_required
+from board.read_model import columns_for_household
 
 from .models import BoardAuthority, Child
 from .pins import (
@@ -91,7 +92,7 @@ def board(request, household_id):
         parent_context(request, household)
         | {
             "unlock_form": ParentForm(household, initial={"parent": request.user.pk}),
-            "children": household.children.all(),
+            "columns": columns_for_household(household),
         },
     )
 
@@ -117,7 +118,7 @@ def unlock(request, household_id):
         request,
         "households/board.html",
         parent_context(request, household)
-        | {"unlock_form": form, "children": household.children.all()},
+        | {"unlock_form": form, "columns": columns_for_household(household)},
         status=400,
     )
 

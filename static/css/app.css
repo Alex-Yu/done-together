@@ -17,3 +17,18 @@ label { display: block; font-weight: 600; }
 .helptext { display: block; max-width: 38rem; }
 
 select { display: block; max-width: 100%; padding: .6rem; font: inherit; border: 1px solid #596e61; border-radius: .35rem; }
+
+main.board-page { width: min(100% - 3rem, 90rem); }
+.child-columns { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(18rem,100%),1fr)); gap: 1rem; align-items: start; }
+.child-column { min-width: 0; margin-top: 1rem; padding: 1rem; }
+.child-column h2, .chore-card h3, .empty-board, nav { overflow-wrap: anywhere; }
+.child-column h2 { margin-top: 0; }
+.chore-cards { list-style: none; padding: 0; margin: 0; display: grid; gap: .8rem; }
+.chore-card { border: 1px solid #b7cbbf; border-left: .35rem solid #4e7b61; border-radius: .5rem; padding: .8rem; background: #f8fbf8; overflow-wrap: anywhere; }
+.chore-card h3 { margin: 0 0 .5rem; font-size: 1.1rem; }
+.chore-card p { margin: .35rem 0; }
+.chore-state { font-weight: 650; }
+.state-awaiting_approval { border-left-style: dashed; background: #fff8e8; }
+.state-completed { border-left-style: double; background: #edf5f0; }
+.is-overdue { border-left-color: #9a3d24; background: #fff1e9; }
+.empty-board { grid-column: 1 / -1; }

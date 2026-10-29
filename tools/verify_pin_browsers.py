@@ -94,7 +94,7 @@ def pin_journey(ui, record):
     ui.goto(href(ui, "Return to board"))
     wait_heading(ui, "Done Together")
     assert (
-        ui.execute("document.querySelector('main > ul li').textContent.trim()")
+        ui.execute("document.querySelector('[data-child-name]').textContent.trim()")
         == "Birch native"
     )
     ui.goto(reset)

@@ -10,3 +10,5 @@ Derive checks from the specification and acceptance criteria, including failure 
 - QA does not fix code in the verification pass. Give the engineer reproducible findings, then verify the resulting revision.
 
 Use `_docs/templates/verification.md` for the record. Overall verdict is FAIL if any criterion fails; otherwise BLOCKED if any required criterion or check cannot be verified; otherwise PASS. Required automated-check failures also prevent PASS. Keep all findings visible even when one fails early.
+
+User delivery optimization (2026-10-29): run targeted feature/security checks and affected regressions per task; reuse exact prior evidence for unchanged behavior. Reserve full integrated regression and complete stable-browser journeys for final release010. Preserve every AC and critical new security/race check; record the delta and exact commands/results concisely.

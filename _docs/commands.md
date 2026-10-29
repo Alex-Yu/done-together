@@ -416,3 +416,16 @@ Record procedures, actual results and exact revision in `_docs/verification/` us
 ## Upstream references
 
 Intended syntax/prerequisites were checked against [uv projects](https://docs.astral.sh/uv/guides/projects/), [Homebrew PostgreSQL 17](https://formulae.brew.sh/formula/postgresql@17), [Mailpit installation](https://mailpit.axllent.org/docs/install/), and [Playwright browsers](https://playwright.dev/python/docs/browsers). These sources do not validate the local environment or future project commands.
+
+## Task004 affected board verification
+
+Per user instruction, use targeted feature/security checks plus affected regressions during delivery; reserve full integrated suites and complete stable-browser journeys for010. Do not repeat unchanged account/mail/real61-second idle flows for board presentation changes.
+
+```sh
+UV_CACHE_DIR=.local/uv-cache uv run pytest tests/integration/test_board.py tests/integration/test_pins.py -q
+.local/bin/geckodriver --host 127.0.0.1 --port 4445 --allow-system-access --log error
+# Separate shell; stop owned driver afterward with Ctrl-C:
+RUN_NATIVE_BOARD=1 PLAYWRIGHT_BROWSERS_PATH=.local/playwright UV_CACHE_DIR=.local/uv-cache uv run pytest tests/e2e/test_board_native.py -q -s
+```
+
+Observed:5 unique board cases and20 affected PIN cases passed across scoped runs; native1 test/four installed Chrome156/Firefox159 engine/100/200% cases passed. Native test uses disposable PostgreSQL/live server and an internal patched work provider, not production fixtures or an HTTP seed route. Chrome uses actual Page zoom setting; Firefox uses privileged browsingContext.fullZoom. Screenshots `.local/board-{chrome,firefox}-{100,200}.png` inspected. Production renders real children/empty work; persisted chore/review/approval week behavior remains005–008. Full evidence: [004 developer](verification/004-board-developer.md).

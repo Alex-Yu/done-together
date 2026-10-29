@@ -1,6 +1,6 @@
 # 004: Shared board, empty states, and settings navigation
 
-Status: Ready
+Status: In review
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/4
 Local task: `_docs/tasks/004-board.md`
@@ -13,11 +13,11 @@ Families can consult child columns and parents can navigate protected settings.
 
 ## Acceptance criteria
 
-- [ ] AC-001: REQ-008: Mixed-state assignments appear under the correct child; states are understandable without color alone; empty states guide setup.
-- [ ] AC-002: REQ-009: Provide directly visible active/completed states with no collapsed completion section; final approval-based data and weekly rollover are integrated in task 008.
-- [ ] AC-003: REQ-024: Chores/reviews are managed on the board; accounts/children/PINs in settings; no separate dashboard, sounds, or reminder notifications are required.
-- [ ] AC-004: REQ-026: Core journeys work with keyboard and visible focus, labeled inputs, and text status equivalents; agreed browser/viewport/zoom checks pass.
-- [ ] AC-005: Affected changes enforce household isolation, protected parent/child permissions, persistent data, accessible keyboard interaction, and recoverable validation/failure states under REQ-003/023/025/026/027; no credential exposure or false success.
+- [x] AC-001: REQ-008: Mixed-state assignments appear under the correct child; states are understandable without color alone; empty states guide setup.
+- [x] AC-002: REQ-009: Provide directly visible active/completed states with no collapsed completion section; final approval-based data and weekly rollover are integrated in task 008.
+- [x] AC-003: REQ-024: Chores/reviews are managed on the board; accounts/children/PINs in settings; no separate dashboard, sounds, or reminder notifications are required.
+- [x] AC-004: REQ-026: Core journeys work with keyboard and visible focus, labeled inputs, and text status equivalents; agreed browser/viewport/zoom checks pass.
+- [x] AC-005: Affected changes enforce household isolation, protected parent/child permissions, persistent data, accessible keyboard interaction, and recoverable validation/failure states under REQ-003/023/025/026/027; no credential exposure or false success.
 
 ## Out of scope
 
@@ -48,12 +48,12 @@ Product scope and architecture are confirmed; no consequential product question 
 
 - PM readiness: Ready on 2026-10-29 after003 integration; five ACs unchanged, integrated scope/QA preparation reviewed, no consequential question. Full readiness commit recorded in backlog checkpoint.
 
-- Implementation summary: Not started
-- Task branch / verified implementation commit: Pending
-- Changed files / revision: Parallel grooming8feda09 integrated; current Ready grooming on develop recorded in backlog checkpoint
+- Implementation summary: Real scoped child columns, setup/empty guidance, semantic text-state card projection and shared board entry; settings keeps parent guard. No production fake work.
+- Task branch / verified implementation commit: `task/004-board`; exact implementation hash recorded after commit
+- Changed files / revision: Board read model/views/templates/CSS, scoped tests/native check and documentation; no schema/dependency change
 - Final branch tip / delivery commit / integration results: Pending
 - Push status / authorized remote and branch targets: No pushes authorized
-- Checks and results: PM scope/architecture/AC-link consistency checked; issue3–10 Draft bodies synchronized/readback during parallel grooming. No implementation verification run or claimed
-- Verification record: Pending
+- Checks and results: Five unique board tests,20 affected PIN regressions and four installed Chrome/Firefox100/200% native cases PASS; check/drift/lint/format/diff PASS. Prior unchanged mail/61-second evidence reused; full integrated regression at010.
+- Verification record: [Developer AC table](../verification/004-board-developer.md); independent QA pending
 - Completion / integration evidence / outcome: Pending
-- Remaining risks or blockers: None at readiness; persisted work/review/totals remain005–008; no source pushes authorized
+- Remaining risks or blockers: None; persisted work/review/approval week visibility/totals remain005–008; no source pushes authorized
