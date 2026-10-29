@@ -3,11 +3,11 @@
 Authoritative backlog: GitHub issues in [Alex-Yu/done-together](https://github.com/Alex-Yu/done-together/issues), selected after user scope confirmation under [process.md](process.md). Local task documents mirror the mapped GitHub issues; this file is the index/checkpoint.
 
 Backlog mode / origin repository: GitHub — `git@github.com:Alex-Yu/done-together.git`, checked 2026-10-28.
-Pending issue synchronization: None after initial delivery grooming; bootstrap issues #11/#12 and existing feature issues #1–#10 updated and exact-body readback verified on 2026-10-28 (source link formatting normalized). Local commits remain unpushed.
+Pending issue synchronization:005 In review/evidence handoff rejected by automatic approval review; remote remains Ready/open. Prior baseline: bootstrap issues #11/#12 and existing feature issues #1–#10 updated and exact-body readback verified on 2026-10-28 (source link formatting normalized). Local commits remain unpushed.
 
 ## Task index
 
-Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature roadmap against the selected architecture. Environment setup, skeleton,001 accounts,002 households and003 PIN/shared access are Done/integrated;004 is Done/integrated;005 Ready;006–010 Draft pending dependencies. Scope was confirmed by the user on 2026-10-28, including P-01–P-07.
+Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature roadmap against the selected architecture. Environment setup, skeleton,001 accounts,002 households and003 PIN/shared access are Done/integrated;004 is Done/integrated;005 In review;006–010 Draft pending dependencies. Scope was confirmed by the user on 2026-10-28, including P-01–P-07.
 
 | ID / labels | Task | Status | Dependencies | GitHub issue |
 | --- | --- | --- | --- | --- |
@@ -17,7 +17,7 @@ Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature 
 | 002 | [Household creation, timezone setup, and second-parent invitation](tasks/002-households.md) | Done | 001 Done/integrated | [#2](https://github.com/Alex-Yu/done-together/issues/2) |
 | 003 | [Child profiles, parent/child PIN management, and protected shared access](tasks/003-pins.md) | Done | 002 Done/integrated | [#3](https://github.com/Alex-Yu/done-together/issues/3) |
 | 004 | [Shared board, empty states, and settings navigation](tasks/004-board.md) | Done | 003 Done/integrated | [#4](https://github.com/Alex-Yu/done-together/issues/4) |
-| 005 | [One-off chore assignment and maintenance](tasks/005-one-off-chores.md) | Ready | 004 Done/integrated | [#5](https://github.com/Alex-Yu/done-together/issues/5) |
+| 005 | [One-off chore assignment and maintenance](tasks/005-one-off-chores.md) | In review | 004 Done/integrated | [#5](https://github.com/Alex-Yu/done-together/issues/5) |
 | 006 | [Recurrence, occurrence generation, future edits, and deletion](tasks/006-recurrence.md) | Draft | 005 | [#6](https://github.com/Alex-Yu/done-together/issues/6) |
 | 007 | [Child submission, parent review, returns, and overdue rules](tasks/007-review.md) | Draft | 006 | [#7](https://github.com/Alex-Yu/done-together/issues/7) |
 | 008 | [Weekly/all-time stars and completion visibility](tasks/008-stars.md) | Draft | 007 | [#8](https://github.com/Alex-Yu/done-together/issues/8) |
@@ -30,11 +30,11 @@ Bootstrap criteria preserve environment-before-skeleton separation. PM reconcile
 
 - Delivery explicitly resumed by user; task004 independent QA PASS accepted for administrative completion/integration. No per-task requirements recheck.
 - Scope: bootstrap plus001–010, REQ-001–027 and P-01–P-07 unchanged; full release incomplete.
-- Branch task/004-board; implementation `067addc7eda122736893d17d5ca4aff7ce1a2885`; QA evidence `797846a2e61ca0054724545424843c32cc422f8d`. Later changes documentation only; retained [QA evidence](verification/004-board-qa.md) remains valid.
+- Branch `task/005-one-off-chores`; immutable implementation `2424cdf4fd056a392977ac4414e51df594be4039`, [developer evidence](verification/005-one-off-developer.md) PASS. Independent QA is next; task005 locally In review.004 remains integrated with valid QA evidence.
 - Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;0041/3;005–010 each0/3. Active batch2 completions4/10 after004 integration; historical batch1 bootstrap2.
-- Delivery004: `bd608632e14d9a98aea957f82c433d8f03dc1ebc` fast-forward, code unchanged. Migrate/check/drift,25 affected tests,Ruff lint/format114 files,diff PASS. Next: issue4 completion readback,005 readiness from existing PM grooming.
+- Delivery004: `bd608632e14d9a98aea957f82c433d8f03dc1ebc` fast-forward, code unchanged. Migrate/check/drift,25 affected tests,Ruff lint/format114 files,diff PASS. Next: reconcile005 issue handoff then independent QA.
 - PG17 verified running55432; unrelatedPG13:5432 preserved. No push authorization. Uncommitted `_docs/resume.md` user edit preserved and excluded from delivery commits.
-- GitHub4 Done/closed exact body/state readback;005 unchanged scope reconciled and Ready from existing PM grooming; readiness synchronization follows.
+- GitHub4 Done/closed;005 remote remains Ready/open. Issue5 In review handoff blocked by automatic approval review (external specification/evidence disclosure considered not explicitly authorized); coordinator must resolve authorization and synchronize/read back. No code blocker.
 
 Source publication: Issue bodies contain complete specifications; local source is unpushed. Issue links to develop source may not resolve until separately authorized source publication.
 
@@ -409,3 +409,9 @@ Source publication: Issue bodies contain complete specifications; local source i
 ## Task005 Ready —2026-10-29
 
 - Reused PM scope review `8feda09b8b827736f832fd8dff6a48ece0e7075d`; scope/AC/contracts unchanged,004 dependency integrated and issue4 closed/readback.005 Ready; fresh developer next, attempts0050/3; batch2 4/10. All earlier counters preserved. Readiness commit is this normal handoff; developer must include it. No push.
+
+
+## Task005 implementation handoff —2026-10-29
+
+- In review: implementation `2424cdf4fd056a392977ac4414e51df594be4039`, branch `task/005-one-off-chores`; [developer evidence](verification/005-one-off-developer.md).37 server/affected tests and1 native test/four zoom cases+timezone contexts PASS; static/schema gates PASS.
+- QA0050/3 until dispatch; batch2 remains4/10, earlier counters retained. Next: independent QA at immutable implementation. No merge/push. Unrelated resume edit preserved. Issue5 synchronization pending: automatic approval review rejected external issue update; remote remains Ready/open. Coordinator notified.

@@ -1,6 +1,6 @@
 # 005: One-off chore assignment and maintenance
 
-Status: Ready
+Status: In review
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/5
 Local task: `_docs/tasks/005-one-off-chores.md`
@@ -45,14 +45,16 @@ Product scope and architecture are confirmed; no consequential product question 
 
 - PM parallel scope review: 2026-10-28; acceptance IDs/behavior retained, concrete per-criterion checks and later integration ownership recorded. Draft until dependency/grooming integration and current readiness review; isolated grooming commit supplied to orchestrator for develop integration.
 
-- Implementation summary: Not started
-- Task branch / verified implementation commit: Pending
-- Changed files / revision: Parallel grooming in isolated `grooming/future-release`; full commit supplied to orchestrator for integration onto develop before readiness
-- Final branch tip / delivery commit / integration results: Pending
+- Implementation summary: Persisted dated one-off definitions/occurrences, protected board create/edit/reassign/delete forms, to-do-only versioned transactions, atomic board revisions and browser-local overdue labels.
+- Task branch / implementation commit for QA: `task/005-one-off-chores` / `2424cdf4fd056a392977ac4414e51df594be4039`; independent QA pending.
+- Changed files / revision: `chores/` models/migration/forms/services/views; board projection/templates/local-date script; household routes/settings; targeted integration/native tests; architecture contract. Exact implementation commit above.
+- Final branch tip / delivery commit / integration results: Evidence/status-only handoff commit follows implementation; no merge/integration by developer.
 - Push status / authorized remote and branch targets: No pushes authorized
-- Checks and results: PM scope/architecture/AC-link consistency checked; issue3–10 Draft bodies synchronized/readback during parallel grooming. No implementation verification run or claimed
-- Verification record: Pending
+- Checks and results:37 targeted server/affected regression tests PASS;1 native test/four installed Chrome156/Firefox159 native100/200% cases plus DST timezone comparison PASS; lint/format123 files, migrate/check/drift/diff PASS.
+- Verification record: [005 developer](../verification/005-one-off-developer.md); screenshots ignored `.local/verification/005/`.
 - Completion / integration evidence / outcome: Pending
-- Remaining risks or blockers: None for implementation; later recurrence/review/stars/synchronization remain006–009.
+- Remaining risks or blockers: None. Independent QA pending; recurrence/review/stars/synchronization remain006–009. No earned-star workflow claimed from protected state fixtures.
 
 - Coordinator readiness: 2026-10-29; reused PM grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d` after unchanged-scope check.004 delivered `bd608632e14d9a98aea957f82c433d8f03dc1ebc`,25 affected tests and static/migration gates PASS; issue4 Done/closed exact readback. No repeat PM required.
+
+- Issue5 developer synchronization: Pending. Remote Ready/open body read and confirmed scope unchanged apart from normalized source links before handoff. Automatic approval review rejected In review/evidence publication as external disclosure without explicit authorization; coordinator notified to reconcile. No replacement issue or bypass attempted.

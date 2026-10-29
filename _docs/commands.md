@@ -429,3 +429,14 @@ RUN_NATIVE_BOARD=1 PLAYWRIGHT_BROWSERS_PATH=.local/playwright UV_CACHE_DIR=.loca
 ```
 
 Observed:5 unique board cases and20 affected PIN cases passed across scoped runs; native1 test/four installed Chrome156/Firefox159 engine/100/200% cases passed. Native test uses disposable PostgreSQL/live server and an internal patched work provider, not production fixtures or an HTTP seed route. Chrome uses actual Page zoom setting; Firefox uses privileged browsingContext.fullZoom. Screenshots `.local/board-{chrome,firefox}-{100,200}.png` inspected. Production renders real children/empty work; persisted chore/review/approval week behavior remains005–008. Full evidence: [004 developer](verification/004-board-developer.md).
+
+## Task005 affected one-off verification
+
+```sh
+UV_CACHE_DIR=.local/uv-cache uv run pytest tests/integration/test_chores.py tests/integration/test_board.py tests/integration/test_pins.py -q
+.local/bin/geckodriver --host 127.0.0.1 --port 4445 --allow-system-access --log error
+# Separate shell; stop owned driver afterward:
+RUN_NATIVE_CHORES=1 PLAYWRIGHT_BROWSERS_PATH=.local/playwright UV_CACHE_DIR=.local/uv-cache uv run pytest tests/e2e/test_chores_native.py -q -s
+```
+
+Observed005 implementation:37 server cases PASS;1 native test/four Chrome156/Firefox159 native100/200% cases and two DST timezone contexts PASS. Native calendar/select values use test assignment after labeled keyboard-focus checks; keyboard submits/text/recovery tested. Real two-process PostgreSQL restart included. Full integrated browser journeys remain010. Evidence: [005 developer](verification/005-one-off-developer.md).
