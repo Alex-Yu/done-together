@@ -3,11 +3,11 @@
 Authoritative backlog: GitHub issues in [Alex-Yu/done-together](https://github.com/Alex-Yu/done-together/issues), selected after user scope confirmation under [process.md](process.md). Local task documents mirror the mapped GitHub issues; this file is the index/checkpoint.
 
 Backlog mode / origin repository: GitHub — `git@github.com:Alex-Yu/done-together.git`, checked 2026-10-28.
-Pending issue synchronization:None. Existing issues5–7 Done/closed and008 In review/open exact bodies synchronized/readback under explicit user authorization for delivery issues5–10. Source links normalized; local commits remain unpushed.
+Pending issue synchronization:None. Issue9 In review/open exact body/state readback verified under explicit user authorization for delivery issues5–10. Local commits remain unpushed.
 
 ## Task index
 
-Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature roadmap against the selected architecture. Environment setup, skeleton,001 accounts,002 households and003 PIN/shared access are Done/integrated;004–005 are Done/integrated;006–007 Done/integrated;008 In review;009–010 Draft pending dependencies. Scope was confirmed by the user on 2026-10-28, including P-01–P-07.
+Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature roadmap against the selected architecture. Environment setup, skeleton,001 accounts,002 households and003 PIN/shared access are Done/integrated;004–005 are Done/integrated;006–007 Done/integrated;008 Done/integrated;009 In review;010 Draft pending dependency. Scope was confirmed by the user on 2026-10-28, including P-01–P-07.
 
 | ID / labels | Task | Status | Dependencies | GitHub issue |
 | --- | --- | --- | --- | --- |
@@ -21,18 +21,18 @@ Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature 
 | 006 | [Recurrence, occurrence generation, future edits, and deletion](tasks/006-recurrence.md) | Done | 005 Done/integrated | [#6](https://github.com/Alex-Yu/done-together/issues/6) |
 | 007 | [Child submission, parent review, returns, and overdue rules](tasks/007-review.md) | Done | 006 Done/integrated | [#7](https://github.com/Alex-Yu/done-together/issues/7) |
 | 008 | [Weekly/all-time stars and completion visibility](tasks/008-stars.md) | Done | 007 Done/integrated | [#8](https://github.com/Alex-Yu/done-together/issues/8) |
-| 009 | [Synchronization, concurrent-action handling, and offline recovery](tasks/009-synchronization.md) | Ready | 008 Done/integrated | [#9](https://github.com/Alex-Yu/done-together/issues/9) |
+| 009 | [Synchronization, concurrent-action handling, and offline recovery](tasks/009-synchronization.md) | In review | 008 Done/integrated | [#9](https://github.com/Alex-Yu/done-together/issues/9) |
 | 010 | [Integrated release verification and browser/accessibility checks](tasks/010-release-verification.md) | Draft | 009 | [#10](https://github.com/Alex-Yu/done-together/issues/10) |
 
 Bootstrap criteria preserve environment-before-skeleton separation. PM reconciled all feature tasks to the selected architecture, retained stable acceptance IDs, and made later integration ownership explicit where features depend on later workflows. No requirement is claimed complete by grooming.
 
 ## Checkpoint —2026-10-29
 
-- Active delivery:008 Done/integrated,009 Ready,010 Draft. Scope bootstrap plus001–010, REQ-001–027/P-01–P-07 unchanged. Final release incomplete; final-only orchestrator requirements review.
+- Active delivery:008 Done/integrated,009 In review,010 Draft. Scope bootstrap plus001–010, REQ-001–027/P-01–P-07 unchanged. Final release incomplete; final-only orchestrator requirements review.
 - Latest delivery `046a9cdb18278ee35cafd00685912d9a0f9be16b`;008 final tip `6a3b2d5dd2c529c9af40f351f299c03d18569dbf`, implementation `4f965a3c706f821fbc6a25ac601a1ffbd30e41d0`; independent QA1 PASS records `1dfdd0c6a3b3df17435ef6f6d12a4c531b6b1212`, [record](verification/008-stars-qa.md). Documentation-only PM clarification merged without product changes. Integration migrate/check/drift,45 affected tests in33.21s,Ruff lint/format146 files,diff PASS.
 - Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;0041/3;0051/3;0061/3;0073/3;0081/3;009–0100/3. Active batch2 completions8/10; historical batch1 bootstrap2. No resets.
--009 readiness reuses original PM grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d` plus narrow clarification `d0be1b30912e489cd54f61fc2c1f720b34ff7f76`: user explicitly accepted two independent browser sessions on thisMac for two-computer evidence. Report single-host provenance; <=5second target/event classes/product requirements unchanged.009/010/taskQAplan updated. Fresh developer gpt-6.1-sol medium next; new independent QA gpt-6-luna medium afterward.
-- GitHub4–7 closed/readback;008 closure,009 Ready and010 Draft clarification synchronization follow this checkpoint. Explicit authorization covers existing issues5–10 specification/status/evidence/completion. No push/deployment authorization.
+-009 readiness reuses original PM grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d` plus narrow clarification `d0be1b30912e489cd54f61fc2c1f720b34ff7f76`: user explicitly accepted two independent browser sessions on thisMac for two-computer evidence. Report single-host provenance; <=5second target/event classes/product requirements unchanged.009/010/taskQAplan updated. Developer implementation497a573 complete; independent QA next at the immutable revision.
+- GitHub4–8 closed/readback;009 In review/open and010 Draft. Explicit authorization covers existing issues5–10 specification/status/evidence/completion. No push/deployment authorization.
 - PG17 retained55432; unrelatedPG13 preserved5432. Owned driver/browser/server stopped. Uncommitted `_docs/resume.md` preserved/excluded. NativeFirefox MUST use geckodriver --allow-system-access; corrected helper surfaces setup errors.
 
 Source publication: Issue bodies contain complete specifications; local source is unpushed. Issue links to develop source may not resolve until separately authorized source publication.
@@ -519,3 +519,14 @@ Source publication: Issue bodies contain complete specifications; local source i
 ## Stars integration /009 Ready —2026-10-29
 
 -008 final tip `6a3b2d5dd2c529c9af40f351f299c03d18569dbf`; approved documentation clarification delivery `046a9cdb18278ee35cafd00685912d9a0f9be16b`, product unchanged.45 affected tests/static/migration PASS. Batch2 8/10;0081/3.009 Ready;010 Draft with same-host clarification. Issue8 closure/9readiness/10clarification readback next; no push.
+
+## Developer009 start —2026-10-29
+
+- Task009 In progress on `task/009-synchronization` from readiness `3433ea259db4f84a17f3f9b03f5eb4b3eceb5182`; scoped snapshot/poll/offline/race implementation underway. QA0090/3; batch2 remains8/10; historical counters retained. No merge/push. Unrelated resume edit preserved.
+
+## Developer009 implementation handoff —2026-10-29
+
+- Current role/task:009 implementation complete/In review on `task/009-synchronization`; immutable implementation `497a573349f791833bdcee3683b3b1c23ed11ad0`. Independent QA next; no Done/merge/push.
+- Evidence: [009 developer](verification/009-synchronization-developer.md).109 affected server tests PASS,3 native tests plus narrow actualFirefox200 form repeat PASS;36 same-Mac events0.9051–2.0266s. Check/drift/static/Ruff149/diff PASS. Honest screenshot/zoom scopes recorded; no implementation blocker.
+- QA0090/3 before dispatch; active batch2 remains8/10; historical attempts unchanged.010 stays Draft until009 Done/integrated. No task010 work. User resume edit preserved exactly/excluded.
+- Issue9 In review/open exact body/state synchronization/readback verified; authoritative scope unchanged. Records-only commit follows implementation. Owned browsers/test servers/driver stopped; PostgreSQL17:55432 and unrelated13:5432 retained.

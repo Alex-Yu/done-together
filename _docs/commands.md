@@ -483,3 +483,17 @@ RUN_NATIVE_STARS=1 PLAYWRIGHT_BROWSERS_PATH=.local/playwright UV_CACHE_DIR=.loca
 ```
 
 Observed:104 server cases PASS, then added foreign-history scoping case1 PASS/7 deselected (105 unique overall;8 new stars cases). One native test/four Chrome156/Firefox159100/200 cases PASS; four screenshots inspected. Exact selectors, calendar boundaries/DST, real approval/race/restart/retention and retained unchanged evidence: [008 developer](verification/008-stars-developer.md). Run DB suites sequentially.009 owns idle periodic rollover refresh;008 proves fresh reads across boundary without writes.
+
+
+## Task009 affected synchronization verification —2026-10-29
+
+```sh
+UV_CACHE_DIR=.local/uv-cache uv run pytest tests/integration/test_sync.py tests/integration/test_stars.py tests/integration/test_review.py tests/integration/test_board.py tests/integration/test_pins.py tests/integration/test_chores.py tests/integration/test_recurrence.py -k 'not real_no_browser_once_loop_sixty_restart' -q
+.local/bin/geckodriver --host 127.0.0.1 --port 4445 --allow-system-access --log error
+# Separate shell; stop owned driver afterward:
+RUN_NATIVE_SYNC=1 PLAYWRIGHT_BROWSERS_PATH=.local/playwright UV_CACHE_DIR=.local/uv-cache uv run pytest tests/e2e/test_sync_native.py -q -s
+# Narrow required Firefox200 form follow-up; no broad replay:
+SYNC_NATIVE_CASE=firefox-2 RUN_NATIVE_SYNC=1 PLAYWRIGHT_BROWSERS_PATH=.local/playwright UV_CACHE_DIR=.local/uv-cache uv run pytest tests/e2e/test_sync_native.py -k open_form -q -s
+```
+
+Observed:109 affected server cases PASS (4 new sync),3 native tests PASS, one narrow Firefox200 form test PASS.36 accepted mutation→other-session DOM measurements0.9051–2.0266s cover each required class in all four native observer engine/zoom cases. Both independent profiles are on this one Mac; no physical-second-computer claim. Native idle Monday and actual local-date timer, unchanged DOM, drafts/caret/conflicts, offline/500/unreachable, unknown committed response/no retry, exact expiry and confirmed private-view clear verified. Initial Firefox form navigation reset zoom; only the narrow follow-up counts as200% form conflict/unknown-response evidence. Blank Chrome200 offline capture is excluded as visual evidence. System/drift/Ruff149/diff PASS; static collection3 copied9 unmodified. [Exact evidence/selectors](verification/009-synchronization-developer.md); logs/screenshots ignored `.local/verification/009/`. Run DB suites sequentially; full integrated regression remains010.

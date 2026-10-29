@@ -1,6 +1,6 @@
 # 009: Synchronization, concurrent-action handling, and offline recovery
 
-Status: Ready
+Status: In review
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/9
 Local task: `_docs/tasks/009-synchronization.md`
@@ -43,14 +43,14 @@ Product scope and architecture are confirmed; no consequential product question 
 
 - PM parallel scope review: 2026-10-28; acceptance IDs/behavior retained, concrete per-criterion checks and later integration ownership recorded. Draft until dependency/grooming integration and current readiness review; isolated grooming commit supplied to orchestrator for develop integration.
 
-- Implementation summary: Not started
-- Task branch / verified implementation commit: Pending
-- Changed files / revision: Parallel grooming in isolated `grooming/future-release`; full commit supplied to orchestrator for integration onto develop before readiness
-- Final branch tip / delivery commit / integration results: Pending
+- Implementation summary: Household-serialized revision/snapshot polling updates board regions and calendar boundaries while preserving forms; failed/offline requests retain last board with writes disabled until authorized resync. Explicit stale child edits and unknown committed-response handling protect against lost edits/retries.
+- Task branch / verified implementation commit: `task/009-synchronization` / `497a573349f791833bdcee3683b3b1c23ed11ad0` (immutable implementation; independent QA pending)
+- Changed files / revision: `board/sync.py`, child revision/locking and snapshot route, synchronization/parent/local-date JS, board templates, targeted server/native tests. No schema/dependency change.
+- Final branch tip / delivery commit / integration results: Records-only tip follows; independent QA and integration pending.
 - Push status / authorized remote and branch targets: No pushes authorized
-- Checks and results: PM scope/architecture/AC-link consistency checked; issue3–10 Draft bodies synchronized/readback during parallel grooming. No implementation verification run or claimed
-- Verification record: Pending
-- Completion / integration evidence / outcome: Pending
-- Remaining risks or blockers: None for implementation. Two independent sessions on this Mac satisfy the user-approved evidence gate; provenance must remain explicit.
+- Checks and results:109 affected server tests PASS (4 new synchronization cases);3 native tests PASS plus one required narrow Firefox200 form spotcheck PASS.36 same-host mutation events0.9051–2.0266s. System/drift/static/Ruff/diff PASS.
+- Verification record: [009 developer](../verification/009-synchronization-developer.md)
+- Completion / integration evidence / outcome: Independent QA next; not Done/merged.009 QA0/3 until dispatch; batch2 remains8/10.
+- Remaining risks or blockers: None for implementation. Evidence explicitly uses independent profiles on one Mac, not two physical computers. Initial Firefox form zoom-reset gap closed by narrow actual200 repeat; blank Chrome200 offline capture excluded as visual evidence. See verification record for exact retained scopes.
 
 - Coordinator readiness2026-10-29:008 integrated,45 affected integration tests/static/migration PASS; original PM grooming8feda09 plus narrow clarificationd0be1b3 integrated at `046a9cdb18278ee35cafd00685912d9a0f9be16b`. User accepted two independent browser sessions; all<=5second per-event/class measurements, offline/reconnect/focus/privacy requirements unchanged. Fresh developer next;0090/3.
