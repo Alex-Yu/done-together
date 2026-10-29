@@ -321,3 +321,22 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Counters: batch2 completions2/10;0030/3 before QA dispatch; historical setup2/skeleton1/0011/0022;004–010 zero.
 - Issue3 In review/exact implementation hash/task body synchronized and readback verified; no pending synchronization. No merge/rebase/push.
 - Next: independent QA003 at exact commit, then completion/integration on PASS and PM004 fresh readiness.
+
+
+## QA in progress —003 PINs attempt1,2026-10-29
+
+- Current role/task: Independent QA003 running; task In review, no verdict yet.
+- Exact implementation: `d18a01c0d5d22e4ed21ce7a4bf651a673c1cde1c`; reviewed records-only tip `c3bd384206e33347509d369cbda563873a59f74f`.
+- Counters:003 attempt1/3 dispatched; active renewed batch2 completions2/10; setup2/skeleton1/accounts1/households2 histories retained;004–010 each0/3. Final-only orchestrator requirements review remains.
+- Next: exact-commit sixAC verification including independent adversarial authority/reset/time-boundary probes, required sequential PostgreSQL/browser/native checks and privacy; record all findings and direct issue3 readback, evidence-only commit.
+
+
+## QA handoff —003 PINs attempt1,2026-10-29
+
+- Current role/task: Independent QA PASS → administrative completion/integration;003 remains In review. Final-only orchestrator requirements review preserved.
+- Exact verified implementation: `d18a01c0d5d22e4ed21ce7a4bf651a673c1cde1c`; reviewed records-only tip `c3bd384206e33347509d369cbda563873a59f74f`.
+- Evidence: [003 independent QA PASS](verification/003-pins-qa.md). All sixAC pass;73backend/8bundled/15independent adversarial/2source-DBfailure probes; stableChrome156/Firefox159 native100/200, both actual61s idle locks with visible childboard, six fresh screenshots and allfour postrestart revisits.
+- Counters:0031/3; active renewed batch2 completions2/10 before integration; setup2/skeleton1/accounts1/households2 histories retained;004–0100/3.
+- Services: QA app/driver/Mailpit stopped exit0 and temporary fourportsclosed; PG17 running55432, PG13 preserved. No private values printed.
+- Synchronization: issue3 PASS handoff updated/exact readback; no closure/merge/push. No push authorization.
+- Next: administratively complete/integrate/check003, then PM readiness for004; real child submission007/full board004 remain later owners.

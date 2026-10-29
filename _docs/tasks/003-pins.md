@@ -51,11 +51,11 @@ Product scope and architecture are confirmed; no consequential product question 
 - PM readiness: Ready on 2026-10-28 after002 and parallel grooming integration; six ACs unchanged, no consequential question. Full readiness grooming commit recorded in backlog checkpoint.
 
 - Implementation summary: Salted/peppered exact PIN credentials, selected-own-password setup/reset, scoped child add/name/PIN updates, session-bound DB parent authority/60sec activity guard, version/active-parent revocation and explicit-only client timer/activity. Existing002 management protected; verified bootstrap retained.
-- Task branch / verified implementation commit: `task/003-pins` / `d18a01c0d5d22e4ed21ce7a4bf651a673c1cde1c`; independent QA pending.
+- Task branch / verified implementation commit: `task/003-pins` / `d18a01c0d5d22e4ed21ce7a4bf651a673c1cde1c`; independent QA attempt1 PASS all sixAC.
 - Changed files / revision: Household credential/child/authority models and migration, PIN services/views/routes/templates/JS, existing management guard integration, tests/native helpers and architecture/commands/evidence.
 - Final branch tip / delivery commit / integration results: Pending
 - Push status / authorized remote and branch targets: No pushes authorized
 - Checks and results: PIN19/full backend72/household21/bundled browser8 PASS; final whitespace/pepper1 PASS. Standard gates PASS; native100/200 flows, both actual61sec idle locks and post-restart stored PIN/child revisit PASS.
-- Verification record: [developer evidence](../verification/003-pins-developer.md); independent QA pending.
-- Completion / integration evidence / outcome: Pending
-- Remaining risks or blockers: No implementation blocker; independent QA required. Actual child submission007/full board004 remain later. No child deletion controls. OnlyPG17 left running; no pushes authorized.
+- Verification record: [developer evidence](../verification/003-pins-developer.md); [independent QA PASS](../verification/003-pins-qa.md).
+- Completion / integration evidence / outcome: Independent QA PASS; administrative completion/integration pending; final-release requirements review remains.
+- Remaining risks or blockers: No QA blocker. Independent73backend/8bundled/15adversarial/2failure-source probes and all native100/200/actual61s idle/restart cases PASS. Actual child submission007/full board004 remain later. QA owned services stopped; onlyPG17 running; no pushes authorized.
