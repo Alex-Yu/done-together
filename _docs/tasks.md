@@ -26,13 +26,13 @@ Delivery handed over on2026-10-28. Environment setup, application skeleton and00
 
 Bootstrap criteria preserve environment-before-skeleton separation. PM reconciled all feature tasks to the selected architecture, retained stable acceptance IDs, and made later integration ownership explicit where features depend on later workflows. No requirement is claimed complete by grooming.
 
-## Checkpoint —2026-10-29 — task010 corrections In review / QA2 next
+## Checkpoint —2026-10-29 — task010 QA2 PASS / final requirements review
 
-- User explicitly resumed delivery through final release gates.010 Ready using unchanged PM grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d` and clarification `d0be1b30912e489cd54f61fc2c1f720b34ff7f76`; authoritative issue10 inspected identical Draft/open scope before readiness.009 Done/integrated; develop start `4c19eed3d87edbe70fea0beb51096996710ab9aa`, task009 delivery `a557fb2b06cc8d0a8349e39407e918750c842a15`, product implementation `497a573349f791833bdcee3683b3b1c23ed11ad0`. Developer27AC PASS at immutable `3769e5c9dba30388c7aa127af9fb2124f62444d0` on `task/010-release-verification`; [evidence](verification/010-release-developer.md). Independent QA1 FAIL preserved; scoped correction now `dc456af4aa16f03ee03e8dcc21fe3c5346cab3c3` ([evidence](verification/010-release-qa1-fixes-developer.md)). Independent affectedQA2 dispatched atdc456af, all13native/PIN2; final orchestrator release requirements review follows QA.
-- Scope bootstrap plus001–010, REQ-001–027/P-01–P-07 unchanged. Same-host independent profiles accepted; each required synchronization class <=5seconds. Full release remains unverified.
+- Scope bootstrap plus001–010,REQ-001–027/P-01–P-07 unchanged.001–009 integrated;010 In review. IndependentQA2 PASS all27 at immutable `dc456af4aa16f03ee03e8dcc21fe3c5346cab3c3`; evidence-only tip `a1c0752baa0ccdb92554e67ffd8ce587844781f7`, [record](verification/010-release-qa-attempt-2.md). QA1 FAIL retained, both findings cleared. FreshPIN2/native13/keyboard4/focuscontrols12 PASS;36 same-host events0.9949–1.9487s. Retained independentQA1166server/sixnonPINbundled/SMTP/realidle/restart/privacy/schema evidence has explicit source/environment proof.
+- Final high-reasoning orchestrator requirements review underway at the same code state; no Done/merge/release completion until its outcome. Current branch task/010-release-verification; develop baseline6ea156f. Review file: verification/010-release-requirements.md (pending).
 - Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;0041/3;0051/3;0061/3;0073/3;0081/3;0091/3;0102/3. Active batch2 completions9/10; historical batch1 bootstrap2. No resets.
-- Issue10 In progress/F010-001/002 exact body/OPEN readback verified (`.local/verification/010/issue10-progress-readback.json`); next implementation review synchronization pending handoff. Authorization covers issues5–10 updates. No pushes or deployment. Source remains local.
-- Preserve `_docs/resume.md` uncommitted user edit exactly/exclude from task commits. PG17:55432/PG13:5432 preserved. Inspect live processes; DB suites sequential. Firefox driver requires --allow-system-access. Handoff/history: [resume-after-009](resume-after-009.md), [009 QA](verification/009-synchronization-qa.md).
+- Issue10 scope unchanged beforeQA2 PASS handoff; coordinator PASS/final-review synchronization next. Persistent authorization covers issues5–10 updates. No pushes/deployment.
+- Owned app/Mailpit/driver stopped exit0,8000/8025/1025/4445 closed,testDB0sessions; projectPG17:55432/unrelatedPG13:5432 preserved. Existing user resume.md edit unchanged/excluded; no implementation changes afterQA target. Final merge must preserve reviewed code and run applicable integration checks.
 
 Source publication: Issue bodies contain complete specifications; local source is unpushed. Issue links to develop source may not resolve until separately authorized source publication.
 
@@ -574,3 +574,7 @@ Source publication: Issue bodies contain complete specifications; local source i
 
 - Same independent final QA gpt-6.1-sol/high verifies immutable `dc456af4aa16f03ee03e8dcc21fe3c5346cab3c3`; records tip `a3a6ba51c3045ebb51d271fd21a3761ecf1e92d0`. Attempt0102/3 consumed;QA1FAIL retained, batch2 9/10/historical counts unchanged. Replay all13native and bundledPIN2; retain fresh unchanged QA1 evidence only after exact revision/config/environment comparison.
 - Issue10 authoritative scope unchanged before dispatch; In review/fix evidence/QA2 exact synchronization next. No source changes duringQA; no merge/push/deployment. User resume preserved. Final requirements review after independentPASS remains mandatory.
+
+##010 independent QA2 PASS / final review —2026-10-29
+
+- Same independentQA2 PASS all27 at `dc456af4aa16f03ee03e8dcc21fe3c5346cab3c3`, evidence `a1c0752baa0ccdb92554e67ffd8ce587844781f7`; QA1FAIL retained. Fresh13native/PIN2/12focuscontrols and qualified retainedQA1 evidence complete final QA gates. Final high orchestrator requirements review next at identical code; no completion/integration yet.0102/3,batch2 9/10; all other history preserved.
