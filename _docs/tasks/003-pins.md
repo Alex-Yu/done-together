@@ -1,6 +1,6 @@
 # 003: Child profiles, parent/child PIN management, and protected shared access
 
-Status: In review
+Status: Done
 Labels: None
 GitHub issue: https://github.com/Alex-Yu/done-together/issues/3
 Local task: `_docs/tasks/003-pins.md`
@@ -13,12 +13,12 @@ Children have submission identities and either parent can securely unlock manage
 
 ## Acceptance criteria
 
-- [ ] AC-001: REQ-004: Protected settings add children/reset child PINs; own password authorizes own parent PIN reset; replaced PINs fail. Four-digit PINs preserve leading zeroes.
-- [ ] AC-002: REQ-005: Either valid parent PIN unlocks management; child/incorrect PINs and locked requests cannot perform parent actions.
-- [ ] AC-003: REQ-006: After 60 seconds, management requires a PIN again. Board viewing and child activity do not extend parent access.
-- [ ] AC-004: REQ-007: Repeated failures trigger a temporary restriction, including direct requests; retry is possible after the restriction. Apply P-05 limits.
-- [ ] AC-005: REQ-027: Passwords/PINs cannot be read back or exposed in ordinary responses/logs; access links are private; unauthorized direct requests fail. Mechanisms are architecture decisions.
-- [ ] AC-006: Affected changes enforce household isolation, protected parent/child permissions, persistent data, accessible keyboard interaction, and recoverable validation/failure states under REQ-003/023/025/026/027; no credential exposure or false success.
+- [x] AC-001: REQ-004: Protected settings add children/reset child PINs; own password authorizes own parent PIN reset; replaced PINs fail. Four-digit PINs preserve leading zeroes.
+- [x] AC-002: REQ-005: Either valid parent PIN unlocks management; child/incorrect PINs and locked requests cannot perform parent actions.
+- [x] AC-003: REQ-006: After 60 seconds, management requires a PIN again. Board viewing and child activity do not extend parent access.
+- [x] AC-004: REQ-007: Repeated failures trigger a temporary restriction, including direct requests; retry is possible after the restriction. Apply P-05 limits.
+- [x] AC-005: REQ-027: Passwords/PINs cannot be read back or exposed in ordinary responses/logs; access links are private; unauthorized direct requests fail. Mechanisms are architecture decisions.
+- [x] AC-006: Affected changes enforce household isolation, protected parent/child permissions, persistent data, accessible keyboard interaction, and recoverable validation/failure states under REQ-003/023/025/026/027; no credential exposure or false success.
 
 ## Out of scope
 
@@ -57,5 +57,5 @@ Product scope and architecture are confirmed; no consequential product question 
 - Push status / authorized remote and branch targets: No pushes authorized
 - Checks and results: PIN19/full backend72/household21/bundled browser8 PASS; final whitespace/pepper1 PASS. Standard gates PASS; native100/200 flows, both actual61sec idle locks and post-restart stored PIN/child revisit PASS.
 - Verification record: [developer evidence](../verification/003-pins-developer.md); [independent QA PASS](../verification/003-pins-qa.md).
-- Completion / integration evidence / outcome: Independent QA PASS; administrative completion/integration pending; final-release requirements review remains.
+- Completion / integration evidence / outcome: Independent QA attempt1 PASS all six criteria at `d18a01c0d5d22e4ed21ce7a4bf651a673c1cde1c`; administrative Done/integration under updated workflow, with final-only orchestrator requirements review.
 - Remaining risks or blockers: No QA blocker. Independent73backend/8bundled/15adversarial/2failure-source probes and all native100/200/actual61s idle/restart cases PASS. Actual child submission007/full board004 remain later. QA owned services stopped; onlyPG17 running; no pushes authorized.

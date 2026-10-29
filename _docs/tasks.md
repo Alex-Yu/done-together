@@ -15,7 +15,7 @@ Delivery handed over on 2026-10-28. PM reviewed bootstrap scope and the feature 
 | application-skeleton | [Create a runnable application skeleton](tasks/application-skeleton.md) | Done | environment-setup Done/integrated | [#12](https://github.com/Alex-Yu/done-together/issues/12) |
 | 001 | [Account registration, verification, sign-in, recovery, and safeguards](tasks/001-accounts.md) | Done | application-skeleton Done/integrated | [#1](https://github.com/Alex-Yu/done-together/issues/1) |
 | 002 | [Household creation, timezone setup, and second-parent invitation](tasks/002-households.md) | Done | 001 Done/integrated | [#2](https://github.com/Alex-Yu/done-together/issues/2) |
-| 003 | [Child profiles, parent/child PIN management, and protected shared access](tasks/003-pins.md) | In review | 002 Done/integrated | [#3](https://github.com/Alex-Yu/done-together/issues/3) |
+| 003 | [Child profiles, parent/child PIN management, and protected shared access](tasks/003-pins.md) | Done | 002 Done/integrated | [#3](https://github.com/Alex-Yu/done-together/issues/3) |
 | 004 | [Shared board, empty states, and settings navigation](tasks/004-board.md) | Draft | 003 | [#4](https://github.com/Alex-Yu/done-together/issues/4) |
 | 005 | [One-off chore assignment and maintenance](tasks/005-one-off-chores.md) | Draft | 004 | [#5](https://github.com/Alex-Yu/done-together/issues/5) |
 | 006 | [Recurrence, occurrence generation, future edits, and deletion](tasks/006-recurrence.md) | Draft | 005 | [#6](https://github.com/Alex-Yu/done-together/issues/6) |
@@ -340,3 +340,9 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Services: QA app/driver/Mailpit stopped exit0 and temporary fourportsclosed; PG17 running55432, PG13 preserved. No private values printed.
 - Synchronization: issue3 PASS handoff updated/exact readback; no closure/merge/push. No push authorization.
 - Next: administratively complete/integrate/check003, then PM readiness for004; real child submission007/full board004 remain later owners.
+
+## PIN completion —2026-10-29
+
+- Independent QA attempt1 PASS all six criteria at implementation `d18a01c0d5d22e4ed21ce7a4bf651a673c1cde1c`; evidence/status tip `2457faf3664a65459cce664ae6fc39690a210360`. [QA evidence](verification/003-pins-qa.md).
+- Administrative completion/integration follows QA PASS; no separate per-task orchestrator verification. Next merge, required integration checks, delivery hash and issue3 synchronization/closure; PM004 readiness after integration.
+- Active batch2 completion3/10 after successful integration;003 attempts1/3; setup2/skeleton1/accounts1/households2 retained,004–010 each0. No push.
