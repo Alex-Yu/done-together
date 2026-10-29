@@ -28,9 +28,9 @@ Bootstrap criteria preserve environment-before-skeleton separation. PM reconcile
 
 ## Checkpoint —2026-10-29
 
-- Active delivery:006 Done/integrated,007 In review; independent QA next. Agreed scope bootstrap plus001–010, REQ-001–027/P-01–P-07 unchanged. Final release incomplete; final-only orchestrator requirements review.
+- Active delivery:006 Done/integrated,007 In review for F001 targeted independent Firefox recheck after QA1 FAIL. Agreed scope bootstrap plus001–010, REQ-001–027/P-01–P-07 unchanged. Final release incomplete; final-only orchestrator requirements review.
 - Latest delivery/task006 final tip `42e1c982001f9ae687a6451a1b3d3ad25648edcc`; implementation `47268781b08fedb63330fcaaf27a98a3ee260c77`; independent QA1 PASS records tip `3968b76ae9c932f871f82393dda8e712151ba13d`, [record](verification/006-recurrence-qa.md). Integration migrate/check/drift,65 affected tests (1 deselected) in95.51s,Ruff lint/format132 files,diff PASS; no implementation change.
-- Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;0041/3;0051/3;0061/3;007–0100/3. Active batch2 completions6/10; historical batch1 bootstrap2. QA006 usage-limit interruption resumed same attempt; no count reset.
+- Attempts: setup2/3;skeleton1/3;0011/3;0022/3;0031/3;0041/3;0051/3;0061/3;0071/3;008–0100/3. Active batch2 completions6/10; historical batch1 bootstrap2. QA006 usage-limit interruption resumed same attempt; no count reset.
 -007 readiness reuses unchanged PM grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d`; dependency006 integrated, six ACs/contracts unchanged. Implementation `8b66f1b426de24e4bd9f48affb4e8f0b5e6d3db8` on task/007-review; independent QA gpt-6-luna medium next.
 - GitHub4/5/6 closed/readback;007 In review handoff synchronized/exact body/open readback verified. Explicit user authorization covers existing issues5–10 specification/status/evidence/completion updates. No source push/deployment authorization.
 - PG17 retained55432; unrelatedPG13 preserved5432. Owned driver/browser/server stopped. Uncommitted `_docs/resume.md` edit preserved/excluded.
@@ -456,3 +456,12 @@ Source publication: Issue bodies contain complete specifications; local source i
 - Independent QA attempt1/3 FAIL at immutable implementation `8b66f1b426de24e4bd9f48affb4e8f0b5e6d3db8`; evidence/status tip follows. AC001–005 PASS; AC006 FAIL because Firefox159 native sign-in did not reach the board, while Chrome156 100%/200% and server/timezone checks passed. PostgreSQL feature/affected regressions:97 passed,1 excluded 60-second unchanged scheduler scenario.
 - [Independent QA evidence](verification/007-review-qa.md). Reproduce F001 with documented native review command; Firefox returned to sign-in page with blank fields and no visible error. Response status/body not captured; cause unresolved. Route same developer thread for narrow Firefox investigation; after a fix this task needs fresh QA attempt2/3.
 - Issue7 remains In review/open and has been synchronized with the F001 QA handoff; exact body/open-state readback required. Batch2 remains6/10 before integration; prior counters unchanged. No implementation change, task completion, merge or push. QA processes and geckodriver stopped; PostgreSQL17 retained55432 and unrelated PostgreSQL13 preserved5432. User `_docs/resume.md` remains untouched and excluded.008 totals/week projection,009 synchronization/offline and010 full release gates remain later.
+
+##007 F001 investigation started —2026-10-29
+
+- Same developer/branch after QA1 FAIL ca6970e328c72daf7e87528249c7dc7edf3bddf8. In progress; Firefox100-only sanitized request/status/redirect probe, no diagnosis assumed. Retain97 server/Chrome/timezone evidence where unchanged; affected Firefox100/200 workflow required.0071/3, batch2 6/10, all earlier histories preserved. No merge/push; user resume edit untouched.
+
+##007 F001 developer handback —2026-10-29
+
+- No implementation/helper change; exact8b66f1b426de24e4bd9f48affb4e8f0b5e6d3db8 retained. [Investigation evidence](verification/007-review-f001-investigation.md):Firefox100 initial PASS9.68s; unchanged-helper100/200 repeat PASS17.42s with actual login POST302→redirect→board200 and complete review flows. Earlier QA cause unproven, F001 not QA-cleared.
+- In review for same QA narrow Firefox100/200 plus sanitized request tracing; retain97 server/Chrome/timezone evidence. QA1 FAIL preserved; next dispatch2/3 conservatively counts a handoff despite no code change. Batch2 6/10, earlier histories unchanged. Driver/profiles/live servers stopped, PG17/PG13 preserved; user resume untouched, no merge/push. Issue7 In review handback synchronized/exact body/open readback verified.

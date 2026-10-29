@@ -52,10 +52,14 @@ Product scope and architecture are confirmed; no consequential product question 
 - Final branch tip / delivery commit / integration results: Implementation above; following handoff records only. Integration pending independent QA.
 - Push status / authorized remote and branch targets: No pushes authorized
 - Checks and results:32 unique review cases and65 affected regressions PASS across scoped runs; stable Chrome156/Firefox159 native100/200 four flows and LA/Tokyo timeliness check PASS; migration/system/drift/static/Ruff/diff gates PASS. Exact selectors/results and resolved harness findings in the developer record.
-- Verification records: [007 developer](../verification/007-review-developer.md); [independent QA attempt1](../verification/007-review-qa.md)
+- Verification records: [007 developer](../verification/007-review-developer.md); [independent QA attempt1](../verification/007-review-qa.md); [F001 developer investigation](../verification/007-review-f001-investigation.md)
 - Completion / integration evidence / outcome: Pending
-- Remaining risks or blockers: Firefox159 native login→review journey does not reach the board in independent QA; Chrome and server scenarios pass. Route to developer for investigation before fresh QA. Visible aggregate totals/week filtering008; automatic synchronization/offline009.
+- Remaining risks or blockers: F001 remains not QA-cleared: developer narrow Firefox100 initial + unchanged-helper100/200 repeats PASS with actual login POST302→redirect→board200; root cause of earlier QA failure unproven. No implementation change. Same QA targeted recheck next; Chrome/server/timezone evidence retained. Visible aggregate totals/week filtering008; automatic synchronization/offline009.
 
 - Coordinator readiness2026-10-29: reused PM grooming `8feda09b8b827736f832fd8dff6a48ece0e7075d`, unchanged scope/AC/contracts;006 integrated,65 affected tests/static/migration gates PASS. Actual award creation and deletion retention now mandatory with006 recurrence hook and003 child limiter integration; no scope change. Fresh developer next,0070/3.
 
 - Developer handoff2026-10-29: immutable implementation `8b66f1b426de24e4bd9f48affb4e8f0b5e6d3db8`; In review, QA0070/3 before dispatch, batch2 6/10. Owned verification browser/server/driver stopped; PG17 retained/PG13 preserved. User resume edit untouched/excluded; no merge/push.
+
+- F001 investigation2026-10-29: returned In progress after independent QA0071 FAIL at8b66f1b; Firefox159 sign-in outcome unresolved. Narrow Firefox100 sanitized HTTP/redirect/focus probe next, then affected100/200 flow verification. No scope/AC change; batch2 6/10,0071/3 preserved.
+
+- F001 developer handback2026-10-29: no code change justified; exact implementation8b66f1b unchanged. Firefox100 probe1 PASS9.68s, unchanged-helper100/200 repeat1 PASS17.42s with sanitized successful HTTP traces. In review for independent targeted recheck; F001 not QA-cleared. QA1 FAIL retained, next dispatch2/3 per coordinator; batch2 6/10.
