@@ -11,7 +11,7 @@ from django.core.management import call_command
 from django.urls import reverse
 
 from chores.models import Approval, Definition, Occurrence
-from households.models import BoardAuthority, Child
+from households.models import Child
 from tests.integration.test_review import post_review, post_submit, ready
 
 
@@ -23,14 +23,20 @@ from tests.integration.test_review import post_review, post_submit, ready
 def test_http_release_recurrence_late_approval_future_edit_and_retention(
     monkeypatch, initial_schedule, approval_day, expected_day
 ):
-    _, _, household, client, child, _ = ready()
+    parent, _, household, client, child, _ = ready()
     instant = datetime(2026, 10, 26, 12, tzinfo=timezone.utc)  # Monday
     monkeypatch.setattr("django.utils.timezone.now", lambda: instant)
 
     def authorize():
-        # Clock movement is scenario setup; real authority was granted through
-        # the existing HTTP setup fixture. Never bypass role/state decisions.
-        BoardAuthority.objects.update(last_activity=instant)
+        # Moving across calendar boundaries expires real parent authority;
+        # renew it through the actual PIN endpoint rather than fixture writes.
+        assert (
+            client.post(
+                reverse("parent_unlock", args=[household.pk]),
+                {"parent": parent.pk, "pin": "2468"},
+            ).status_code
+            == 302
+        )
 
     authorize()
     assert (

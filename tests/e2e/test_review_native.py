@@ -6,7 +6,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 
 import pytest
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import expect, sync_playwright
 
 from chores.models import Approval
 from chores.services import save_one_off
@@ -192,10 +192,18 @@ def test_browser_timezone_submission_classification_survives_viewer_midnight(
                     "button", name="Submit for approval", exact=True
                 ).click()
                 card = page.locator(f'[data-work-id="{work.pk}"]')
-                assert card.locator("[data-overdue]").is_visible() == late
+                # Synchronization renders the accepted fetch document after
+                # click returns. Await that transition before advancing time or
+                # treating absence of an overdue marker as an on-time result.
+                expect(card).to_have_attribute("data-state", "awaiting_approval")
+                overdue = expect(card.locator("[data-overdue]"))
+                overdue.to_be_visible() if late else overdue.to_be_hidden()
                 page.clock.fast_forward(2 * 24 * 3600 * 1000)
-                assert card.locator("[data-overdue]").is_visible() == late
+                overdue.to_be_visible() if late else overdue.to_be_hidden()
                 work.refresh_from_db()
+                assert work.state == "awaiting_approval"
+                assert work.submitted_timezone == zone
+                assert work.submitted_late == late
                 review_work(
                     household,
                     work.pk,
@@ -206,7 +214,7 @@ def test_browser_timezone_submission_classification_survives_viewer_midnight(
                     now=instant + timedelta(days=2),
                 )
                 page.reload()
-                assert card.locator("[data-overdue]").is_visible()
+                expect(card.locator("[data-overdue]")).to_be_visible()
                 context.close()
             print(
                 "Server-receipt LA/Tokyo classification/later-midnight preservation/late return PASS"

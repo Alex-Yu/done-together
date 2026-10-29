@@ -11,7 +11,7 @@ import pytest
 from django.db import connections
 from playwright.sync_api import sync_playwright
 
-from tests.integration.test_pins import PASS_A
+from tests.integration.test_pins import PASS_A, unlock
 from tests.integration.test_review import ready
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -382,6 +382,10 @@ def test_native_open_form_stale_lost_response_and_failure(live_server, monkeypat
                             "document.querySelector('[name=title]').focus();document.querySelector('[name=title]').setSelectionRange(3,7)"
                         )
                         work.refresh_from_db()
+                        # This independent writer's authority was deliberately
+                        # expired in the previous case. Establish its own fresh
+                        # grant at the mutation, not before browser startup.
+                        assert unlock(c, h, a).status_code == 302
                         result = c.post(
                             f"/households/{h.pk}/chores/{work.pk}/edit/",
                             {
@@ -542,9 +546,6 @@ def test_native_open_form_stale_lost_response_and_failure(live_server, monkeypat
                             "open draft/caret/stale conflict/500/lost commit response/no retry/expiry PASS",
                         )
                         # New eligible work for the next independent browser case.
-                        from tests.integration.test_pins import unlock
-
-                        unlock(c, h, a)
                         from chores.services import save_one_off
 
                         work = save_one_off(
