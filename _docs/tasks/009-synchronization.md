@@ -48,7 +48,7 @@ Product scope and architecture are confirmed; no consequential product question 
 - Changed files / revision: `board/sync.py`, child revision/locking and snapshot route, synchronization/parent/local-date JS, board templates, targeted server/native tests. No schema/dependency change.
 - Final branch tip / delivery commit / integration results: Records-only QA evidence tip follows; coordinator completion/integration bookkeeping pending.
 - Push status / authorized remote and branch targets: No pushes authorized
-- Checks and results:109 affected server tests PASS (4 new synchronization cases); independent QA reran109 affected server checks and3 native tests PASS.36 same-host mutation events0.9051–2.0266s. System/drift/static/Ruff/diff PASS per developer evidence.
+- Checks and results:109 affected server tests PASS (4 new synchronization cases); independent QA reran109 affected server checks and3 native tests PASS. Developer36 same-host mutation events0.9051–2.0266s; independent QA fresh run36 events0.9086–2.0382s. System/drift/static/Ruff/diff PASS per developer evidence.
 - Verification record: [009 developer](../verification/009-synchronization-developer.md); [independent QA attempt1 PASS](../verification/009-synchronization-qa.md)
 - Completion / integration evidence / outcome: Independent QA attempt1 PASS; coordinator completion/integration checks pending. Not yet Done/merged.009 QA1/3; batch2 remains8/10.
 - Remaining risks or blockers: None for task QA. Evidence explicitly uses independent profiles on one Mac, not two physical computers. Full integrated verification remains010. Blank Chrome200 offline capture excluded as visual evidence. See verification records for exact scopes.
