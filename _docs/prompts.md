@@ -1,41 +1,13 @@
-# Reusable prompts
+# Feature development prompts
 
-These prompts work in ordinary chat or coding assistants. Replace placeholders with real paths or task IDs. Explicitly provide files when your assistant cannot access the repository.
+## Specify a feature
 
-## Discover the product
+> Read AGENTS.md and the current product specification and architecture. Help me specify [feature]. Ask focused questions about consequential behavior, scope, failure cases and data handling. Update the relevant specifications, preserving existing requirement IDs. Do not implement until the consequential decisions are resolved.
 
-> Help me turn <idea> into a precise product specification using `_docs/plan.md`. Ask one focused question at a time. Explore users, journeys, outcomes, scope, failure cases, data, and constraints. Keep technology choices separate. Record confirmed answers and unresolved questions. Do not write application code.
+## Hand over delivery
 
-## Choose an approach
-
-> Read `AGENTS.md` and the product plan. Compare plausible implementation options against the requirements and constraints. Explain tradeoffs and recommend an approach. Ask for the decision before scaffolding. Record the chosen approach in `_docs/architecture.md` and significant decisions using the decision template.
-
-## Prepare the backlog
-
-> Read `AGENTS.md` and the agreed specifications. Create small, dependency-ordered tasks using `_docs/task-template.md` and link them from the authoritative backlog. Link requirements to tasks and define verifiable acceptance criteria. Refine the Draft task labeled `environment-setup` and the application skeleton task for the selected architecture. Assign installation and configuration to the developer in the task labeled `environment-setup`, followed by the runnable skeleton and meaningful smoke check in the dependent application skeleton task. Do not require the user to perform setup manually. Do not implement yet or mark unreviewed tasks Ready.
-
-## Groom a task
-
-> Act as the PM in `_docs/team/pm.md` for <task>. Resolve ambiguity, define observable acceptance criteria and verification steps, and preserve deferred work with links. Ask about blocking decisions. Do not write application code.
-
-## Implement a task
-
-> Read `AGENTS.md`. Act as the engineer in `_docs/team/software-engineer.md` for <ready task>. Implement its agreed scope, run applicable checks, and record a reviewable handoff. Report blockers and actual results. Leave completion to verification.
-
-## Verify a task
-
-> Read `AGENTS.md`. Act as QA in `_docs/team/qa-engineer.md` for <task and revision>. Verify every criterion and required check. Record evidence using the verification template and give PASS, FAIL, or BLOCKED. Do not fix code during this pass.
-
-## Orchestrate delivery after architecture agreement
-
-> /goal Read `AGENTS.md` and act as orchestrator in `_docs/team/orchestrator.md`. Deliver the agreed first release through PM, developer, and QA roles using `_docs/process.md`. Create and groom tasks, refine the task labeled `environment-setup` and the dependent skeleton task, then coordinate setup, implementation, verification, fixes, and final release QA. After QA PASS, re-check each implementation against its linked requirements and acceptance criteria before marking Done. Return unmet requirements to the developer, then repeat QA and your re-check; record evidence in the handoff. Continue without per-task user approval. Use default limits and maintain checkpoints in `_docs/tasks.md`. Ask only about consequential decisions, scope changes, missing access, required authorization, or exhausted limits.
-
-Use `/goal` only when supported by your assistant and version; see README step 4 for compatibility remarks. Otherwise remove the prefix. Completion means all release tasks are Done and final QA passes; limits and blockers still stop execution. A plain prompt may need manual resumption between turns.
+> Read AGENTS.md, _docs/process.md, _docs/team/orchestrator.md and _docs/team/execution-policy.md. Deliver the agreed [feature/release] through PM, developer and independent QA. Record the task set, current checkpoint, explicit model/reasoning settings and applicable limits. Preserve prior history and uncommitted work. Follow the graph without routine per-task prompts, reuse valid grooming/evidence, and complete integrated release QA and final requirements review. Do not push or deploy. Ask for consequential decisions, missing access or an explicit extension if an existing limit is exhausted.
 
 ## Resume delivery
 
-> Read `AGENTS.md`, `_docs/tasks.md`, and linked handoffs. Resume as orchestrator from the recorded graph state. Preserve agreed decisions and task retry counts. Start a new batch with default limits unless overridden; request an extension for exhausted per-task attempts. Continue until verified delivery or a documented stop condition.
-
-## Change a requirement
-
-> Assess <proposed change> against the product specification, architecture, active tasks, and existing verification. Describe its impact and unresolved decisions. Once the change is agreed, update the source documents, affected tasks, and verification needs. Preserve decision history.
+> Read AGENTS.md, _docs/resume.md and the current task checkpoint. Resume the authorized [feature/release], preserving scope, retry/batch counts and unrelated work. Use fresh task-only agents and recorded model/reasoning settings. Continue until verified completion or a documented stop condition; do not reset limits because this session is new.

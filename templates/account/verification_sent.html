@@ -1,0 +1,1 @@
+{% extends "base.html" %}{% block content %}<h1>Check your email</h1><p>If verification is needed, a private link has been sent. It expires in one hour.</p><p><a href="{% url 'account_resend_verification' %}">Request a new link</a></p><p><a href="{% url 'account_login' %}">Return to sign in</a></p>{% endblock %}

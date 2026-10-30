@@ -1,0 +1,1 @@
+{% extends "base.html" %}{% block content %}<h1>Email could not be sent</h1><p>Nothing has been confirmed. Please try again shortly.</p><p><a href="{% url 'account_resend_verification' %}">Retry verification email</a></p><p><a href="{% url 'account_reset_password' %}">Retry password recovery</a></p>{% endblock %}

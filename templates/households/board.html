@@ -1,0 +1,26 @@
+{% extends "base.html" %}{% load static %}
+{% block main_class %}board-page{% endblock %}
+{% block content %}
+<h1>Done Together</h1>
+<p>Your household board stays visible when parent controls lock.</p>
+{% include 'board/columns.html' %}
+<section>
+  <h2>Parent controls</h2>
+  {% if parent_authority %}
+  <div data-parent-controls data-parent-remaining="{{ parent_remaining }}" data-parent-activity="{{ parent_activity_url }}" data-parent-board="{{ parent_board_url }}">
+    <p role="status" id="parent-lock-status">Parent controls unlocked.</p>
+    <a href="{% url 'household_settings' household.pk %}">Manage household settings</a>
+    <p><a href="{% url 'chore_create' household.pk %}">Assign one-off chore</a></p>
+    <p><a href="{% url 'recurring_create' household.pk %}">Assign recurring chore</a></p>
+    <div data-schedules>{% include "board/schedules.html" %}</div>
+    <form method="post" action="{% url 'parent_lock' household.pk %}">{% csrf_token %}<button type="submit">Lock parent controls</button></form>
+  </div>
+  {% else %}
+  <p role="status" id="parent-lock-status">Parent controls locked.</p>
+  <form method="post" action="{% url 'parent_unlock' household.pk %}">{% csrf_token %}{{ unlock_form.as_p }}<button type="submit">Unlock parent controls</button></form>
+  {% endif %}
+  <p><a href="{% url 'parent_pin' household.pk %}">Set or reset your own parent PIN</a></p>
+</section>
+<script src="{% static 'js/parent-controls.js' %}" defer></script>
+<script src="{% static 'js/local-dates.js' %}" defer></script>
+{% endblock %}

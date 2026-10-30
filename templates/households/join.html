@@ -1,0 +1,1 @@
+{% extends "base.html" %}{% block content %}<h1>Join the household</h1><p>You’re invited to join a household with scheduling timezone {{ household.timezone }}.</p><form method="post">{% csrf_token %}<button type="submit">Join household</button></form>{% endblock %}

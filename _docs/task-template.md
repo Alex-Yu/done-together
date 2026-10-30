@@ -35,6 +35,8 @@ Give each criterion a stable ID. Define quality thresholds explicitly when relev
 
 ## Handoff
 
+Keep this compact; link evidence and sanitized log artifacts instead of copying logs or prior narratives. Pass exact known commits; record later delivery hashes at the next normal checkpoint rather than creating self-referencing hash-only commits.
+
 - Implementation summary: Pending
 - Task branch / verified implementation commit: Pending
 - Changed files / revision: Pending
@@ -42,5 +44,6 @@ Give each criterion a stable ID. Define quality thresholds explicitly when relev
 - Push status / authorized remote and branch targets: Pending
 - Checks and results: Pending
 - Verification record: Pending
-- Orchestrator requirements re-check / evidence / outcome: Pending
+- Completion / integration evidence / outcome: Pending
+- Final release requirements review: Recorded in the release verification task; no per-task orchestrator verification
 - Remaining risks or blockers: Pending

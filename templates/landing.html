@@ -1,0 +1,29 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Done Together</title>
+  <link rel="icon" type="image/svg+xml" href="{% static 'favicon.svg' %}">
+  <link rel="stylesheet" href="{% static 'css/app.css' %}">
+  <script src="{% static 'vendor/htmx/htmx.min.js' %}" defer></script>
+</head>
+<body>
+  <main>
+    <nav aria-label="Account">{% if user.is_authenticated %}<a href="{% url 'household_entry' %}">Household settings</a> · <a href="{% url 'account_logout' %}">Sign out</a>{% else %}<a href="{% url 'account_login' %}">Sign in</a> · <a href="{% url 'account_signup' %}">Create account</a>{% endif %}</nav>
+    <p class="eyebrow">A little teamwork, every day</p>
+    <h1>Done Together</h1>
+    <p>A shared place for your family’s chores is taking shape.</p>
+    <section aria-labelledby="preview-heading">
+      <h2 id="preview-heading">Try the connection</h2>
+      <p>This preview checks that the page can respond. Household setup is coming next.</p>
+      <form method="post" action="{% url 'smoke' %}" hx-post="{% url 'smoke' %}" hx-target="#smoke-status">
+        {% csrf_token %}
+        <button type="submit">Check connection</button>
+      </form>
+      <p id="smoke-status" role="status" aria-live="polite">Ready to check.</p>
+    </section>
+  </main>
+</body>
+</html>

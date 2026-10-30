@@ -1,0 +1,26 @@
+<div class="child-columns" aria-label="Household chore board">
+{% for column in columns %}
+  <section class="child-column" aria-labelledby="child-heading-{{ column.child_id }}" data-child-id="{{ column.child_id }}">
+    <h2 id="child-heading-{{ column.child_id }}" data-child-name>{{ column.name }}</h2>
+    <p class="star-totals" data-star-totals><span data-weekly-stars>This week: {{ column.work.weekly_stars }} star{{ column.work.weekly_stars|pluralize }}</span> · <span data-all-time-stars>All time: {{ column.work.all_time_stars }} star{{ column.work.all_time_stars|pluralize }}</span></p>
+    {% if column.work.items %}
+      <ul class="chore-cards" aria-label="Chores for {{ column.name }}">
+      {% for item in column.work.items %}
+        <li><article class="chore-card state-{{ item.state }}{% if item.overdue %} is-overdue{% endif %}" data-work-id="{{ item.identity }}"{% if item.persisted %} data-local-due="{{ item.due_date|date:'Y-m-d' }}" data-state="{{ item.state }}" data-submitted-late="{{ item.submitted_late|yesno:'true,false,unknown' }}"{% endif %}>
+          <h3>{{ item.title }}</h3>
+          <p class="chore-state">{{ item.state_label }}{% if item.overdue %} · <strong>Overdue</strong>{% endif %}{% if item.persisted %}<strong data-overdue hidden> · Overdue</strong>{% endif %}</p>
+          <p>Due <time datetime="{{ item.due_date|date:'Y-m-d' }}">{{ item.due_date|date:'M j, Y' }}</time></p>
+          {% if item.return_note %}<p class="return-note"><strong>Parent explanation:</strong> {{ item.return_note }}</p>{% endif %}
+          {% if item.persisted and item.state == 'to_do' %}<p><a href="{% url 'chore_submit' household.pk item.identity %}">Submit chore</a></p>{% endif %}
+          {% if parent_authority and item.persisted and item.state == 'awaiting_approval' %}<p><a href="{% url 'chore_review' household.pk item.identity %}">Review chore</a></p>{% endif %}
+          {% if item.completed_at %}<p>Approved <time datetime="{{ item.completed_at|date:'c' }}">{{ item.completed_at|date:'M j, Y' }}</time></p>{% endif %}
+          {% if parent_authority and item.persisted and not item.recurring and item.state == 'to_do' %}<p><a href="{% url 'chore_edit' household.pk item.identity %}">Edit chore</a> · <a href="{% url 'chore_delete' household.pk item.identity %}">Delete chore</a></p>{% endif %}
+        </article></li>
+      {% endfor %}
+      </ul>
+    {% else %}<p class="empty-work">Nothing assigned yet.</p>{% endif %}
+  </section>
+{% empty %}
+  <section class="empty-board"><h2>Let’s set up your board</h2><p>Add children in household settings to give each child a column.</p><p>Set your own parent PIN if needed, then unlock parent controls to open settings.</p></section>
+{% endfor %}
+</div>

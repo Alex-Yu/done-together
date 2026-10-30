@@ -1,0 +1,1 @@
+{% extends "base.html" %}{% block content %}<h1>Create account</h1><p>Use your email address and a password. We’ll send a private verification link.</p><form method="post">{% csrf_token %}{{ form.as_p }}{{ redirect_field }}<button type="submit">Create account</button></form>{% endblock %}
