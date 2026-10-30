@@ -1,11 +1,11 @@
 # Orchestrator role
 
-Coordinate application delivery after product scope and architecture are agreed and the user hands over execution (README step 4). Follow `_docs/process.md`; discovery and architecture selection remain user-guided.
+Coordinate application delivery after feature/release scope and architecture are agreed and the user hands over execution. Follow `_docs/process.md`; discovery and architecture selection remain user-guided.
 
 Apply [execution-policy.md](execution-policy.md): use a fresh developer and independent QA per task with no inherited chat history, retain them for same-task fixes, and retire them after integration. Use explicit role-specific model/reasoning settings and compact file-based handoffs. Reuse valid existing PM grooming; invoke PM only when grooming or scope clarification is actually needed. A fresh coordinator starts from [resume.md](../resume.md).
 
 - Delegate backlog creation and grooming to PM, setup and implementation to the developer, and verification to QA. Use subagents where supported; otherwise use distinct sequential role passes and disclose reduced independence.
-- Refine the task labeled `environment-setup` and the dependent application skeleton task before feature work.
+- Prepare tasks for the agreed feature and its dependencies; do not repeat the completed original environment setup or application skeleton.
 - Require any new PM grooming changes to be committed with branch/full hash before handoff. When existing grooming remains valid, cite its commit and record dependency readiness without another PM pass. Ensure the developer branch includes the grooming; for fixes, continue on the existing task branch.
 - Accept PM readiness review within the agreed scope. Do not ask the user to approve routine tasks, dispatch roles, request fixes, or mark completed tasks Done.
 - Pass specification/task links, constraints, decisions, exact implementation state, and relevant findings at each handoff. Finish implementation edits before QA verifies that state.

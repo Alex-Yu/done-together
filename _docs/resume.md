@@ -1,7 +1,7 @@
-# Delivery checkpoint
+# Coordinator checkpoint
 
-Local release delivery is complete. There is no paused delivery work to resume.
+The original local release is complete; no original delivery task is paused. Read the current [status and counters](tasks.md), [process](process.md) and [execution policy](team/execution-policy.md), then inspect actual Git/backlog state before acting.
 
-For a fresh coordinator session, read the current [checkpoint in tasks.md](tasks.md) and inspect actual Git and GitHub state before acting. That checkpoint records the delivered revision, verification evidence, retry counts and completed batch. Do not restart completed tasks or reset counters.
+For new features, confirm the newly authorized scope, task set and delivery limits. Preserve existing work, retry history and authorization; do not restart completed tasks or silently reset exhausted counters. A paused goal requires explicit resumption.
 
-See the [final integration record](verification/010-release-integration.md) for release evidence and [commands.md](commands.md#verified-local-release-2026-10-29) for validated local startup instructions. No push or deployment is authorized.
+See the [release summary](verification/release.md), [local commands](commands.md) and [feature prompts](prompts.md). No push or deployment is authorized by this checkpoint.
